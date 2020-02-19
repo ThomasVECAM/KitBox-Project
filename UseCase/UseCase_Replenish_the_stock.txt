@@ -1,0 +1,23 @@
+Use Case : Replenish the stock
+
+Cas : Réapprovisionner le stock.
+
+Objectif: L'objectif est de permettre au magasinier de réapprovisionner le stock sur base des prix et délais de
+livraison.
+
+Pré-condition :
+- Le magasinier reçoit une proposition de commande de la part du système (cette proposition se base sur les prix et délais de livraison
+inscrit dans la base de données).
+
+Garantie de succès
+- Les pièces des commandes en attente (car manque de stock) sont commandées.
+- Les pièces sont commandées
+
+Flot :
+- Le magasinier reçoit une proposition de commande faites par le système.
+- Le magasinier confirme la commande.
+
+Flot alternatif :
+- Le magasinier reçoit une proposition de commande faites par le système.
+- Le magasinier modifie la proposition de commande.
+- Le magasinier confirme la commande.

@@ -1,0 +1,15 @@
+Use Case : Manage inventory
+
+Cas : Gérer les stocks
+
+Objectif: L'objectif est de permettre au magasinier de mettre à jour les stocks. 
+- Réapprovisionner le stock.
+- Modifier le stock
+- Créer un nouveau composant
+- ...
+
+Pré-condition :
+- Le magasinier est connecté.
+
+Garantie de succès
+- Le stock est mis à jour.

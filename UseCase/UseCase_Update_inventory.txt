@@ -1,0 +1,14 @@
+Use Case : Update invetory
+
+Cas : Mettre à jour le stock
+
+Objectif: L'objectif est de permettre au magasinier de modifier le stock en cas de casse de matériel (ou autre).
+
+
+Garantie de succès
+- Le stock est mis à jour.
+
+Flot :
+- Le magasinier recherche une pièce dans la base de données.
+- Le magasinier modifie la valeur en stock de cette pièce.
+- Le magasinier confirme les modifictions

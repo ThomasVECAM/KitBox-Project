@@ -1,0 +1,18 @@
+Use Case : Consult parts of an order
+
+Cas : Consulter les pièces d'une commande.
+
+Objectif: L'objectif est de permettre au magasinier de voir les pièces d'une commande. (afin de les 
+rassembler et les remettre au client).
+
+Pré-condition :
+- La commande doit exister
+- Le magasinier est connecté
+
+Garantie de succès
+- Le magasinier voit la liste des composants.
+
+Flot :
+- Le magasinier recherche la commande du client dans le système.
+- La liste des pièces de la commande est affichée.
+

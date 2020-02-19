@@ -1,0 +1,17 @@
+Use Case : Update the stock prices.
+
+Cas : Mettre  à jour les prix du stock.
+
+Objectif: L'objectif est de permettre à la secrétaire met régulièrement à jour les prix de 
+la base de données sur base des catalogues fournisseurs.
+
+Pré-condition :
+- La secrétaire est connectée.
+
+Garantie de succès
+- Les prix du catalogue sont mis à jour.
+
+Flot :
+- Rechercher un produit dans la base de données.
+- Modification des prix de ce produit sur base des catalogues fournisseurs.
+- Confirmer et sauver les modifications.

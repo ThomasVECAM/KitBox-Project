@@ -1,0 +1,18 @@
+Use Case : Log in
+
+Cas : Se connecter
+
+Objectif: L'objectif est de permettre au magasinier ou à la secrétaire de se connecter afin de réaliser des 
+actions administratuers.
+
+Garantie de succès
+- L'utilisateur reçoit les droits administrateurs.
+
+
+Flot :
+- L'utilisateur entre son mot de passe et son log in
+- Mot de passe correct : l'utilisateur est informé du succès  de sa connexion.
+
+Flot alternatif :
+- L'utilsateur entre son nom d'utilisateur et son mot de passe.
+- Mot de passe incorrect : le sytème informe que les données sont incorrectes.

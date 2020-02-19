@@ -1,0 +1,16 @@
+Use Case : Print list
+
+Cas : Imprimer la liste
+
+Objectif: L'objectif est de permettre au magasinier d'imprimer la liste des composants d'une commande client.
+
+
+Pré-condition:
+- La liste de composant est disponnible.
+
+
+Garantie de succès
+- La liste est imprimée
+
+Flot :
+- Le magasinier demande au système d'imprimer la liste.
