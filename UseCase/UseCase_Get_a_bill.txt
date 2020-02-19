@@ -1,0 +1,15 @@
+Use Case : Get a bill
+
+Cas : Recevoir une facture
+
+Objectif: L'objectif est de donner au client une facture.
+
+Pré-condition:
+- Une commande doit exister
+
+Garantie de succès
+- La facture est imprimée
+
+Flot :
+- Le système, sur base de la commande compose une facture.
+- Le système affiche/imprime la facture.

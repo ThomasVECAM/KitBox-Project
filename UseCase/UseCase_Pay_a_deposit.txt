@@ -1,0 +1,17 @@
+Use Case : Pay a deposit
+
+Cas : Payer un accompte.
+
+Objectif: Lorsque toutes les pièces ne sont pas disponnibles le client est invité à
+payer un accompte et revenir la semaine suivante.
+
+Pré-condition:
+- Une commande est créée et existe.
+- Toutes les pièces de la commande ne sont pas disponnibles.
+
+Garantie de succès
+- L'accompte est versé.
+
+Flot :
+- Le système calcule et affiche la valeur de l'accompte a versé
+(- Le client paye l'accompte)

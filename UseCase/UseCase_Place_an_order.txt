@@ -1,0 +1,16 @@
+Use Case : Place an order
+
+Cas : Passer une commande.
+
+Objectif: L'objectif est de permettre au client de commander les
+meubles qu'il souhaite et les caractéristiques de ceux-ci.
+
+Garantie de succès
+- Une commande valide est formée.
+
+Flot :
+- Le client entre ses informations personelles(nom, Prénom, email, adresse)
+- Le client ajoute un ou plusieurs meubles de la manière suivante :
+	- Il ajoute 1 à 7 "box" dont il choisit les différentes caractéristiques (dimensions, couleurs, portes?)
+	- Le système lui propose des cornières compatibles avec la couleur des "box"
+- Le client confirme la commande

@@ -1,0 +1,17 @@
+Use Case : See unclosed orders
+
+Cas : Voir les commandes non cloturées
+
+Objectif: L'objectif est de permettre au magasinier de voir quelles 
+commandes ne sont pas terminées, qui restent à préparer (ou commande de pièces).
+
+
+Pré-condition:
+- Le magasinier est connecté
+
+Garantie de succès
+- Le magasinier voit les différentes commandes non cloturées.
+
+Flot :
+- Le magasinier demande au système d'afficher les commandes non cloturées
+et celle-ci lui sont affichées à l'écran

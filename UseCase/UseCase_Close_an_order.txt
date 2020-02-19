@@ -1,0 +1,19 @@
+Use Case : Close an order
+
+Cas : Clôturer une commande.
+
+Objectif: L'objectif est de permettre au magasinier de clotûrer une commande une fois que le client a reçu
+toutes ses pièces.
+
+
+Pré-condition:
+- La commande doit exister
+- Le magasinier est connecté
+- La commande est payée et donnée au client.
+
+Garantie de succès
+- La commande est clôturée.
+
+Flot :
+- Le magasinier recherche la commande du client dans le système.
+- Le magasinier clotûre la commande.
