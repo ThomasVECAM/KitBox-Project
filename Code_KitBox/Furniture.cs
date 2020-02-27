@@ -8,9 +8,10 @@ namespace Code_KitBox
 {
     class Furniture
     {
+        //test
         public Furniture()
         {
-
+            
         }
     }
 }
