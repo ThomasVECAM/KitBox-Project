@@ -17,6 +17,7 @@ namespace Code_KitBox
         public int GetPrice()
         {
             // To Do
+            // Test comment
             return 0;
         }
     }
