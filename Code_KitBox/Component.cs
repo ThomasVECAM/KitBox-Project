@@ -10,9 +10,7 @@ namespace Code_KitBox
     {
         private int price;
         public int id;
-        public int height;
-        public int width;
-        public int depth;
+        public int width,depth, height;
 
         public int GetPrice()
         {
