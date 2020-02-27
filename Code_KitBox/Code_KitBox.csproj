@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="Furniture.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="Panel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
