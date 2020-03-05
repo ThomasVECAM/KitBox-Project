@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Code_KitBox
+namespace Interface_5
 {
     static class Program
     {
         /// <summary>
-        /// Point d'entrée principal de l'application.
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()

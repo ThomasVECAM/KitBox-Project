@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Code_KitBox.Properties
+namespace Interface_5.Properties
 {
 
 
