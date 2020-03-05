@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KitBox_Console", "KitBox_Console.csproj", "{84CD3F8F-AADC-4130-84FE-E547D97AB795}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84CD3F8F-AADC-4130-84FE-E547D97AB795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84CD3F8F-AADC-4130-84FE-E547D97AB795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84CD3F8F-AADC-4130-84FE-E547D97AB795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84CD3F8F-AADC-4130-84FE-E547D97AB795}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92CFF78B-FCA0-439B-90A2-0367C5CA3DFD}
+	EndGlobalSection
+EndGlobal
