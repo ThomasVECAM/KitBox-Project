@@ -15,7 +15,7 @@ namespace KitBox_Console
             MySqlConnection db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
 
             MySqlCommand cmd = db.CreateCommand();
-            cmd.CommandText = "SELECT * FROM `Composants` WHERE `Ref`='Panneau HB'";
+            cmd.CommandText = "SELECT Dimension FROM `Composants` WHERE `Ref`='Panneau HB'";
 
             try
             {
@@ -29,13 +29,19 @@ namespace KitBox_Console
             MySqlDataReader reader = cmd.ExecuteReader();
             Console.WriteLine("Dimension des meubles");
 
+            List<string> l = new List<string>();
             while (reader.Read())
             {
-                string largeur = reader["Largeur"].ToString();
-                string profondeur = reader["Profondeur"].ToString();
-                Console.WriteLine(largeur + "x" + profondeur);
+                string dimensions = reader["Dimension"].ToString();
+                l.Add(dimensions);
             }
             db.Close();
+            l = l.Distinct().ToList();
+            foreach (string element in l)
+            {
+                Console.WriteLine(element);
+            }
         }
     }
 }
+
