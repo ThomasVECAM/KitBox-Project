@@ -11,12 +11,14 @@ namespace KitBox_Console
     class Box
     {
         private List<Component> componentList;
-        private int height;
+        private int width,depth,height;
 
-        public Box()
+        public Box(int width, int depth,int height)
         {
             componentList = new List<Component>();
-            height = 0; //by default
+            this.width = width;
+            this.depth = depth;
+            this.height = height;
         }
 
         public int Name
@@ -38,5 +40,11 @@ namespace KitBox_Console
         {
             return 0;
         }
+        public int GetHeight
+        {
+            get { return this.height; }
+        }
+
+
     }
 }

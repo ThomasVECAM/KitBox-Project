@@ -11,12 +11,12 @@ namespace KitBox_Console
         private string name;
         private List<Box> boxList;
         private List<Corner> cornerList;
-        private int length, width;
+        private int depth, width;
 
-        public Furniture(string dimensions)
+        public Furniture(int width, int depth )
         {
-            this.name = name;
-            this.length = length;
+            this.name = "";
+            this.depth = depth;
             this.width = width;
             this.boxList = new List<Box>();
             this.cornerList = new List<Corner>();
@@ -34,6 +34,28 @@ namespace KitBox_Console
         {
             //to do
             return 0;
+        }
+        public string Name
+        {
+            get { return this.name; }   
+            set { this.name = value; }
+        }
+        public int GetDepth
+        {
+            get { return this.depth; }
+        }
+        public int GetWidth
+        {
+            get { return this.width; }
+        }
+        public int GetHeight()
+        {
+            int box_height = 0;
+            foreach(Box box in boxList)
+            {
+                box_height += box.GetHeight;
+            }
+            return box_height;
         }
     }
 }
