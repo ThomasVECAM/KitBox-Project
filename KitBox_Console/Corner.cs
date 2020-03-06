@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Code_KitBox
+namespace KitBox_Console
 {
     class Corner
     {

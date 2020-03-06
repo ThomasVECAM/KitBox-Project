@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Code_KitBox
+namespace KitBox_Console
 {
     class Furniture
     {
@@ -13,7 +13,7 @@ namespace Code_KitBox
         private List<Corner> cornerList;
         private int length, width;
 
-        public Furniture(string name, int length, int width)
+        public Furniture(string dimensions)
         {
             this.name = name;
             this.length = length;
