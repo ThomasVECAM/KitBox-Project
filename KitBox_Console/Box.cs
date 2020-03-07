@@ -13,12 +13,12 @@ namespace KitBox_Console
         private List<Component> componentList;
         private int width,depth,height;
 
-        public Box(int width, int depth,int height)
+        public Box(int height,int width, int depth)
         {
             componentList = new List<Component>();
+            this.height = height;
             this.width = width;
             this.depth = depth;
-            this.height = height;
         }
 
         public int Name
