@@ -44,6 +44,14 @@ namespace KitBox_Console
         {
             get { return this.height; }
         }
+        public int GetDepth
+        {
+            get { return this.depth; }
+        }
+        public int GetWidth
+        {
+            get { return this.width; }
+        }
 
 
     }
