@@ -251,6 +251,36 @@ namespace KitBox_Console
             Console.WriteLine("---------------------------------------------------");
 
 
+
+
+
+            Console.WriteLine("Portes avant");
+            db.Open();
+            MySqlCommand cmd11 = db.CreateCommand();
+            Console.WriteLine(box.GetHeight);
+            Console.WriteLine(box.GetWidth);
+
+
+            cmd11.CommandText = "SELECT Code,Largeur,Hauteur,Couleur,Prix_Client FROM `Composants` WHERE `Ref`= 'Porte ' AND `Largeur`=" + box.GetWidth + " AND `Hauteur`=" +  box.GetHeight;
+            MySqlDataReader reader11 = cmd11.ExecuteReader();
+            List<Tuple<string, int, int, string, string>> list7 = new List<Tuple<string, int, int, string, string>>();
+            while (reader11.Read())
+            {
+                string code = reader11["Code"].ToString();
+                int height = Int32.Parse(reader11["Hauteur"].ToString());
+                int width = Int32.Parse(reader11["Largeur"].ToString());
+                string color = reader11["Couleur"].ToString();
+                string customer_price = reader11["Prix_Client"].ToString();
+                Tuple<string,int,int,string,string> tuple = new Tuple<string,int,int,string,string>(code,height,width,color,customer_price);
+                list7.Add(tuple);
+            }
+            db.Close();
+            foreach(Tuple<string, int, int, string, string> element in list7)
+            {
+                Console.WriteLine(element);
+            }
+
+
             //Ajout des cornières adéquates
             db.Open();
             MySqlCommand cmd3 = db.CreateCommand();
