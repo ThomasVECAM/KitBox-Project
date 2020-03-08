@@ -8,10 +8,10 @@ namespace KitBox_Console
 {
     class Panel : Component
     {
-        private string orientation, color;
+        private string orientation, color,name;
 
         public Panel(string id, int height, int width, int depth,
-        int price, string color) : base(id, height, width, depth, price)
+        double price, string color) : base(id, height, width, depth, price)
         {
             this.color = color;
             if (height == 0)
@@ -26,6 +26,7 @@ namespace KitBox_Console
             {
                 this.orientation = "side";
             }
+            this.name = "Panel";
         }
         public string GetOrientation
         {

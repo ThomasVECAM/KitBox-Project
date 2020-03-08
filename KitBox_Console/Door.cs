@@ -8,14 +8,15 @@ namespace KitBox_Console
 {
     class Door : Component
     {
-        private string color;
+        private string color,name;
 
         public Door(string id, int height, int width, int depth,
-        int price, string color) : base(id, height, width, depth, price)
+        double price, string color) : base(id, height, width, depth, price)
         {
             this.color = color;
+            this.name = "Door";
         }
-	    string GetColor
+	    public string GetColor
         {
             get { return this.color; }
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace KitBox_Console
 {
@@ -28,9 +29,30 @@ namespace KitBox_Console
             furnitureList.Remove(furniture);
         }
 
-        public void GetPrice()
+        public double GetPrice()
         {
-            //to do
+            double totalPrice = 0;
+            foreach(Furniture furniture in furnitureList)
+            {
+                totalPrice += furniture.GetPrice();
+            }
+            return totalPrice;
+        }
+        public void WriteFacture(string path)
+        {
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                sw.WriteLine("Facture client");
+            }
+            foreach(Furniture furniture in furnitureList)
+            {
+                furniture.WriteFacture(path);
+            }
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                sw.WriteLine("Prix total :" + GetPrice());
+            }
+
         }
     }
 }

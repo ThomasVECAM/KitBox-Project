@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace KitBox_Console
 {
@@ -30,10 +31,14 @@ namespace KitBox_Console
         {
             boxList.Remove(box);
         }
-        public int GetPrice()
+        public double GetPrice()
         {
-            //to do
-            return 0;
+            double totalPrice = 0;
+            foreach(Box box in boxList)
+            {
+                totalPrice += box.GetPrice();
+            }
+            return totalPrice;
         }
         public string Name
         {
@@ -56,6 +61,17 @@ namespace KitBox_Console
                 box_height += box.GetHeight;
             }
             return box_height;
+        }
+        public void WriteFacture(string path)
+        {
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                sw.WriteLine(name + " : " + GetPrice());
+            }
+            foreach (Box box in boxList)
+            {
+                box.WriteFacture(path);
+            }
         }
     }
 }

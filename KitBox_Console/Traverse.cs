@@ -8,10 +8,10 @@ namespace KitBox_Console
 {
     class Traverse : Component
     {
-        private string orientation;
+        private string orientation,name;
 
         public Traverse(string id, int height, int width, int depth,
-        int price) : base(id, height, width, depth, price)
+        double price) : base(id, height, width, depth, price)
         {
             if (id.Contains("TRR"))
             {
@@ -25,6 +25,7 @@ namespace KitBox_Console
             {
                 this.orientation = "side";
             }
+            this.name = "Traverse";
         }
 
         public string GetOrientation

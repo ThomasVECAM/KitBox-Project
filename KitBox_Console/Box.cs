@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace KitBox_Console
 {
@@ -36,9 +37,14 @@ namespace KitBox_Console
         {
             componentList.Remove(component);
         }
-        public int GetPrice()
+        public double GetPrice()
         {
-            return 0;
+            double totalPrice = 0;
+            foreach (Component component in componentList)
+            {
+                totalPrice += component.GetPrice;
+            }
+            return totalPrice;
         }
         public int GetHeight
         {
@@ -52,7 +58,18 @@ namespace KitBox_Console
         {
             get { return this.width; }
         }
-
+        public void WriteFacture(string path)
+        {
+            int increment = 0;
+            foreach (Component component in componentList)
+            {
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    sw.WriteLine("  Box "+ increment +"    "+GetPrice());
+                }
+                component.WriteFacture(path);
+            }
+        }
 
     }
 }
