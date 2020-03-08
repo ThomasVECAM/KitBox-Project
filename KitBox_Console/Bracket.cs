@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace KitBox_Console
 {
-    class Bracket
+    // Tasseau
+    class Bracket : Component
     {
+        public Bracket(string id, int height, int width, int depth,
+        int price) : base(id, height, width, depth, price){}
     }
 }
