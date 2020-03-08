@@ -8,15 +8,21 @@ namespace KitBox_Console
 {
     abstract class Component
     {
-        private int price;
-        public int id;
-        public int width, depth, height;
+        protected int price;
+        protected string id;
+        protected int width, depth, height;
 
-        public int GetPrice()
+        public Component(string id, int height, int width, int depth, int price)
         {
-            // To Do
-            // Test comment
-            return 0;
+            this.id = id;
+            this.height = height;
+            this.width = width;
+            this.depth = depth;
+            this.price = price;
+        }
+        public int GetPrice
+        {
+            get { return this.price; }
         }
     }
 }
