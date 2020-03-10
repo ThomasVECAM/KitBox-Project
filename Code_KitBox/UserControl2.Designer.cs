@@ -609,6 +609,7 @@
             this.heightComboBox.Name = "heightComboBox";
             this.heightComboBox.Size = new System.Drawing.Size(191, 31);
             this.heightComboBox.TabIndex = 1;
+            this.heightComboBox.SelectedIndexChanged += new System.EventHandler(this.heightComboBox_SelectedIndexChanged);
             // 
             // button11
             // 
