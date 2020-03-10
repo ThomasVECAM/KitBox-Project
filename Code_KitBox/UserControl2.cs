@@ -118,9 +118,9 @@ namespace Interface_5
 
         private void Button12_Click(object sender, EventArgs e)
         {
-            if (!panel7.Controls.Contains(UserControl3.Instance))
+            if (!boxesPannel.Controls.Contains(UserControl3.Instance))
             {
-                panel7.Controls.Add(UserControl3.Instance);
+                boxesPannel.Controls.Add(UserControl3.Instance);
                 UserControl3.Instance.Dock = DockStyle.Fill;
                 UserControl3.Instance.BringToFront();
             }
