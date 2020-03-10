@@ -40,19 +40,27 @@
             this.choicesBoxPanel = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.whiteDoorButton = new System.Windows.Forms.Button();
+            this.whiteDoorLabel = new System.Windows.Forms.Label();
+            this.brownDoorButton = new System.Windows.Forms.Button();
+            this.brownDoorLabel = new System.Windows.Forms.Label();
+            this.glassDoorLabel = new System.Windows.Forms.Label();
+            this.glassDoorButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.glassDoorLabel = new System.Windows.Forms.Label();
-            this.galvanisedCornerLabel = new System.Windows.Forms.Label();
-            this.brownBoxLabel = new System.Windows.Forms.Label();
-            this.blackCornerLabel = new System.Windows.Forms.Label();
-            this.whiteBoxLabel = new System.Windows.Forms.Label();
-            this.glassDoorButton = new System.Windows.Forms.Button();
-            this.galvanisedCornerButton = new System.Windows.Forms.Button();
-            this.brownBoxButton = new System.Windows.Forms.Button();
+            this.brownCornerButton = new System.Windows.Forms.Button();
+            this.brownCornerLabel = new System.Windows.Forms.Label();
+            this.whiteCornerButton = new System.Windows.Forms.Button();
+            this.whiteCornerLabel = new System.Windows.Forms.Label();
             this.blackCornerButton = new System.Windows.Forms.Button();
+            this.blackCornerLabel = new System.Windows.Forms.Label();
+            this.galvanisedCornerLabel = new System.Windows.Forms.Label();
+            this.galvanisedCornerButton = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.whiteBoxButton = new System.Windows.Forms.Button();
+            this.whiteBoxLabel = new System.Windows.Forms.Label();
+            this.brownBoxButton = new System.Windows.Forms.Button();
+            this.brownBoxLabel = new System.Windows.Forms.Label();
             this.removeBoxButton = new System.Windows.Forms.Button();
             this.duplicateBoxButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,14 +73,6 @@
             this.button11 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.furnitureName = new System.Windows.Forms.TextBox();
-            this.whiteCornerButton = new System.Windows.Forms.Button();
-            this.whiteCornerLabel = new System.Windows.Forms.Label();
-            this.brownCornerButton = new System.Windows.Forms.Button();
-            this.brownCornerLabel = new System.Windows.Forms.Label();
-            this.whiteDoorButton = new System.Windows.Forms.Button();
-            this.whiteDoorLabel = new System.Windows.Forms.Label();
-            this.brownDoorButton = new System.Windows.Forms.Button();
-            this.brownDoorLabel = new System.Windows.Forms.Label();
             this.boxesPannel.SuspendLayout();
             this.logoPanel.SuspendLayout();
             this.boxCompositionPanel.SuspendLayout();
@@ -118,7 +118,7 @@
             this.addBoxButton.TabIndex = 7;
             this.addBoxButton.Text = "Add";
             this.addBoxButton.UseVisualStyleBackColor = false;
-      
+            this.addBoxButton.Click += new System.EventHandler(this.AddBoxButton_Click);
             // 
             // logoPanel
             // 
@@ -196,7 +196,6 @@
             this.finishFurnitureButton.TabIndex = 9;
             this.finishFurnitureButton.Text = "Finish";
             this.finishFurnitureButton.UseVisualStyleBackColor = false;
-          
             // 
             // choicesBoxPanel
             // 
@@ -244,6 +243,78 @@
             this.panel8.Size = new System.Drawing.Size(195, 61);
             this.panel8.TabIndex = 32;
             // 
+            // whiteDoorButton
+            // 
+            this.whiteDoorButton.BackColor = System.Drawing.Color.White;
+            this.whiteDoorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.whiteDoorButton.FlatAppearance.BorderSize = 0;
+            this.whiteDoorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.whiteDoorButton.ForeColor = System.Drawing.Color.White;
+            this.whiteDoorButton.Location = new System.Drawing.Point(7, 8);
+            this.whiteDoorButton.Name = "whiteDoorButton";
+            this.whiteDoorButton.Size = new System.Drawing.Size(26, 25);
+            this.whiteDoorButton.TabIndex = 39;
+            this.whiteDoorButton.UseVisualStyleBackColor = false;
+            // 
+            // whiteDoorLabel
+            // 
+            this.whiteDoorLabel.AutoSize = true;
+            this.whiteDoorLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.whiteDoorLabel.ForeColor = System.Drawing.Color.White;
+            this.whiteDoorLabel.Location = new System.Drawing.Point(-3, 36);
+            this.whiteDoorLabel.Name = "whiteDoorLabel";
+            this.whiteDoorLabel.Size = new System.Drawing.Size(50, 19);
+            this.whiteDoorLabel.TabIndex = 41;
+            this.whiteDoorLabel.Text = "White";
+            // 
+            // brownDoorButton
+            // 
+            this.brownDoorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(88)))), ((int)(((byte)(81)))));
+            this.brownDoorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.brownDoorButton.FlatAppearance.BorderSize = 0;
+            this.brownDoorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brownDoorButton.ForeColor = System.Drawing.Color.White;
+            this.brownDoorButton.Location = new System.Drawing.Point(67, 8);
+            this.brownDoorButton.Name = "brownDoorButton";
+            this.brownDoorButton.Size = new System.Drawing.Size(26, 25);
+            this.brownDoorButton.TabIndex = 40;
+            this.brownDoorButton.UseVisualStyleBackColor = false;
+            // 
+            // brownDoorLabel
+            // 
+            this.brownDoorLabel.AutoSize = true;
+            this.brownDoorLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brownDoorLabel.ForeColor = System.Drawing.Color.White;
+            this.brownDoorLabel.Location = new System.Drawing.Point(53, 36);
+            this.brownDoorLabel.Name = "brownDoorLabel";
+            this.brownDoorLabel.Size = new System.Drawing.Size(51, 19);
+            this.brownDoorLabel.TabIndex = 42;
+            this.brownDoorLabel.Text = "Brown";
+            // 
+            // glassDoorLabel
+            // 
+            this.glassDoorLabel.AutoSize = true;
+            this.glassDoorLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.glassDoorLabel.ForeColor = System.Drawing.Color.White;
+            this.glassDoorLabel.Location = new System.Drawing.Point(115, 36);
+            this.glassDoorLabel.Name = "glassDoorLabel";
+            this.glassDoorLabel.Size = new System.Drawing.Size(44, 19);
+            this.glassDoorLabel.TabIndex = 38;
+            this.glassDoorLabel.Text = "Glass";
+            // 
+            // glassDoorButton
+            // 
+            this.glassDoorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.glassDoorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.glassDoorButton.FlatAppearance.BorderSize = 0;
+            this.glassDoorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.glassDoorButton.ForeColor = System.Drawing.Color.White;
+            this.glassDoorButton.Location = new System.Drawing.Point(126, 8);
+            this.glassDoorButton.Name = "glassDoorButton";
+            this.glassDoorButton.Size = new System.Drawing.Size(26, 25);
+            this.glassDoorButton.TabIndex = 15;
+            this.glassDoorButton.UseVisualStyleBackColor = false;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -270,113 +341,53 @@
             this.panel3.Size = new System.Drawing.Size(214, 60);
             this.panel3.TabIndex = 32;
             // 
-            // panel2
+            // brownCornerButton
             // 
-            this.panel2.Controls.Add(this.whiteBoxButton);
-            this.panel2.Controls.Add(this.whiteBoxLabel);
-            this.panel2.Controls.Add(this.brownBoxButton);
-            this.panel2.Controls.Add(this.brownBoxLabel);
-            this.panel2.Location = new System.Drawing.Point(180, 109);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(118, 52);
-            this.panel2.TabIndex = 31;
+            this.brownCornerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(88)))), ((int)(((byte)(81)))));
+            this.brownCornerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.brownCornerButton.FlatAppearance.BorderSize = 0;
+            this.brownCornerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brownCornerButton.ForeColor = System.Drawing.Color.White;
+            this.brownCornerButton.Location = new System.Drawing.Point(178, 3);
+            this.brownCornerButton.Name = "brownCornerButton";
+            this.brownCornerButton.Size = new System.Drawing.Size(26, 25);
+            this.brownCornerButton.TabIndex = 37;
+            this.brownCornerButton.UseVisualStyleBackColor = false;
             // 
-            // glassDoorLabel
+            // brownCornerLabel
             // 
-            this.glassDoorLabel.AutoSize = true;
-            this.glassDoorLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.glassDoorLabel.ForeColor = System.Drawing.Color.White;
-            this.glassDoorLabel.Location = new System.Drawing.Point(115, 36);
-            this.glassDoorLabel.Name = "glassDoorLabel";
-            this.glassDoorLabel.Size = new System.Drawing.Size(44, 19);
-            this.glassDoorLabel.TabIndex = 38;
-            this.glassDoorLabel.Text = "Glass";
+            this.brownCornerLabel.AutoSize = true;
+            this.brownCornerLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brownCornerLabel.ForeColor = System.Drawing.Color.White;
+            this.brownCornerLabel.Location = new System.Drawing.Point(164, 31);
+            this.brownCornerLabel.Name = "brownCornerLabel";
+            this.brownCornerLabel.Size = new System.Drawing.Size(51, 19);
+            this.brownCornerLabel.TabIndex = 38;
+            this.brownCornerLabel.Text = "Brown";
             // 
-            // galvanisedCornerLabel
+            // whiteCornerButton
             // 
-            this.galvanisedCornerLabel.AutoSize = true;
-            this.galvanisedCornerLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.galvanisedCornerLabel.ForeColor = System.Drawing.Color.White;
-            this.galvanisedCornerLabel.Location = new System.Drawing.Point(89, 31);
-            this.galvanisedCornerLabel.Name = "galvanisedCornerLabel";
-            this.galvanisedCornerLabel.Size = new System.Drawing.Size(88, 19);
-            this.galvanisedCornerLabel.TabIndex = 37;
-            this.galvanisedCornerLabel.Text = "Galvanised";
+            this.whiteCornerButton.BackColor = System.Drawing.Color.White;
+            this.whiteCornerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.whiteCornerButton.FlatAppearance.BorderSize = 0;
+            this.whiteCornerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.whiteCornerButton.ForeColor = System.Drawing.Color.White;
+            this.whiteCornerButton.Location = new System.Drawing.Point(19, 3);
+            this.whiteCornerButton.Name = "whiteCornerButton";
+            this.whiteCornerButton.Size = new System.Drawing.Size(26, 25);
+            this.whiteCornerButton.TabIndex = 37;
+            this.whiteCornerButton.UseVisualStyleBackColor = false;
             // 
-            // brownBoxLabel
+            // whiteCornerLabel
             // 
-            this.brownBoxLabel.AutoSize = true;
-            this.brownBoxLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brownBoxLabel.ForeColor = System.Drawing.Color.White;
-            this.brownBoxLabel.Location = new System.Drawing.Point(46, 31);
-            this.brownBoxLabel.Name = "brownBoxLabel";
-            this.brownBoxLabel.Size = new System.Drawing.Size(51, 19);
-            this.brownBoxLabel.TabIndex = 36;
-            this.brownBoxLabel.Text = "Brown";
-            // 
-            // blackCornerLabel
-            // 
-            this.blackCornerLabel.AutoSize = true;
-            this.blackCornerLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blackCornerLabel.ForeColor = System.Drawing.Color.White;
-            this.blackCornerLabel.Location = new System.Drawing.Point(54, 31);
-            this.blackCornerLabel.Name = "blackCornerLabel";
-            this.blackCornerLabel.Size = new System.Drawing.Size(46, 19);
-            this.blackCornerLabel.TabIndex = 35;
-            this.blackCornerLabel.Text = "Black";
-            // 
-            // whiteBoxLabel
-            // 
-            this.whiteBoxLabel.AutoSize = true;
-            this.whiteBoxLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.whiteBoxLabel.ForeColor = System.Drawing.Color.White;
-            this.whiteBoxLabel.Location = new System.Drawing.Point(-4, 31);
-            this.whiteBoxLabel.Name = "whiteBoxLabel";
-            this.whiteBoxLabel.Size = new System.Drawing.Size(50, 19);
-            this.whiteBoxLabel.TabIndex = 34;
-            this.whiteBoxLabel.Text = "White";
-            // 
-            // glassDoorButton
-            // 
-            this.glassDoorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.glassDoorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.glassDoorButton.FlatAppearance.BorderSize = 0;
-            this.glassDoorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.glassDoorButton.ForeColor = System.Drawing.Color.White;
-            this.glassDoorButton.Location = new System.Drawing.Point(126, 8);
-            this.glassDoorButton.Name = "glassDoorButton";
-            this.glassDoorButton.Size = new System.Drawing.Size(26, 25);
-            this.glassDoorButton.TabIndex = 15;
-            this.glassDoorButton.UseVisualStyleBackColor = false;
-          
-            // 
-            // galvanisedCornerButton
-            // 
-            this.galvanisedCornerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(189)))), ((int)(((byte)(198)))));
-            this.galvanisedCornerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.galvanisedCornerButton.FlatAppearance.BorderSize = 0;
-            this.galvanisedCornerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.galvanisedCornerButton.ForeColor = System.Drawing.Color.White;
-            this.galvanisedCornerButton.Location = new System.Drawing.Point(123, 3);
-            this.galvanisedCornerButton.Name = "galvanisedCornerButton";
-            this.galvanisedCornerButton.Size = new System.Drawing.Size(26, 25);
-            this.galvanisedCornerButton.TabIndex = 14;
-            this.galvanisedCornerButton.UseVisualStyleBackColor = false;
-    
-            // 
-            // brownBoxButton
-            // 
-            this.brownBoxButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(88)))), ((int)(((byte)(81)))));
-            this.brownBoxButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.brownBoxButton.FlatAppearance.BorderSize = 0;
-            this.brownBoxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.brownBoxButton.ForeColor = System.Drawing.Color.White;
-            this.brownBoxButton.Location = new System.Drawing.Point(60, 3);
-            this.brownBoxButton.Name = "brownBoxButton";
-            this.brownBoxButton.Size = new System.Drawing.Size(26, 25);
-            this.brownBoxButton.TabIndex = 13;
-            this.brownBoxButton.UseVisualStyleBackColor = false;
-         
+            this.whiteCornerLabel.AutoSize = true;
+            this.whiteCornerLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.whiteCornerLabel.ForeColor = System.Drawing.Color.White;
+            this.whiteCornerLabel.Location = new System.Drawing.Point(4, 31);
+            this.whiteCornerLabel.Name = "whiteCornerLabel";
+            this.whiteCornerLabel.Size = new System.Drawing.Size(50, 19);
+            this.whiteCornerLabel.TabIndex = 38;
+            this.whiteCornerLabel.Text = "White";
             // 
             // blackCornerButton
             // 
@@ -390,7 +401,52 @@
             this.blackCornerButton.Size = new System.Drawing.Size(26, 25);
             this.blackCornerButton.TabIndex = 12;
             this.blackCornerButton.UseVisualStyleBackColor = false;
-       
+            // 
+            // blackCornerLabel
+            // 
+            this.blackCornerLabel.AutoSize = true;
+            this.blackCornerLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blackCornerLabel.ForeColor = System.Drawing.Color.White;
+            this.blackCornerLabel.Location = new System.Drawing.Point(54, 31);
+            this.blackCornerLabel.Name = "blackCornerLabel";
+            this.blackCornerLabel.Size = new System.Drawing.Size(46, 19);
+            this.blackCornerLabel.TabIndex = 35;
+            this.blackCornerLabel.Text = "Black";
+            // 
+            // galvanisedCornerLabel
+            // 
+            this.galvanisedCornerLabel.AutoSize = true;
+            this.galvanisedCornerLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.galvanisedCornerLabel.ForeColor = System.Drawing.Color.White;
+            this.galvanisedCornerLabel.Location = new System.Drawing.Point(89, 31);
+            this.galvanisedCornerLabel.Name = "galvanisedCornerLabel";
+            this.galvanisedCornerLabel.Size = new System.Drawing.Size(88, 19);
+            this.galvanisedCornerLabel.TabIndex = 37;
+            this.galvanisedCornerLabel.Text = "Galvanised";
+            // 
+            // galvanisedCornerButton
+            // 
+            this.galvanisedCornerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(189)))), ((int)(((byte)(198)))));
+            this.galvanisedCornerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.galvanisedCornerButton.FlatAppearance.BorderSize = 0;
+            this.galvanisedCornerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.galvanisedCornerButton.ForeColor = System.Drawing.Color.White;
+            this.galvanisedCornerButton.Location = new System.Drawing.Point(123, 3);
+            this.galvanisedCornerButton.Name = "galvanisedCornerButton";
+            this.galvanisedCornerButton.Size = new System.Drawing.Size(26, 25);
+            this.galvanisedCornerButton.TabIndex = 14;
+            this.galvanisedCornerButton.UseVisualStyleBackColor = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.whiteBoxButton);
+            this.panel2.Controls.Add(this.whiteBoxLabel);
+            this.panel2.Controls.Add(this.brownBoxButton);
+            this.panel2.Controls.Add(this.brownBoxLabel);
+            this.panel2.Location = new System.Drawing.Point(180, 109);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(118, 52);
+            this.panel2.TabIndex = 31;
             // 
             // whiteBoxButton
             // 
@@ -404,7 +460,41 @@
             this.whiteBoxButton.Size = new System.Drawing.Size(26, 25);
             this.whiteBoxButton.TabIndex = 11;
             this.whiteBoxButton.UseVisualStyleBackColor = false;
-
+            // 
+            // whiteBoxLabel
+            // 
+            this.whiteBoxLabel.AutoSize = true;
+            this.whiteBoxLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.whiteBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.whiteBoxLabel.Location = new System.Drawing.Point(-4, 31);
+            this.whiteBoxLabel.Name = "whiteBoxLabel";
+            this.whiteBoxLabel.Size = new System.Drawing.Size(50, 19);
+            this.whiteBoxLabel.TabIndex = 34;
+            this.whiteBoxLabel.Text = "White";
+            // 
+            // brownBoxButton
+            // 
+            this.brownBoxButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(88)))), ((int)(((byte)(81)))));
+            this.brownBoxButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.brownBoxButton.FlatAppearance.BorderSize = 0;
+            this.brownBoxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brownBoxButton.ForeColor = System.Drawing.Color.White;
+            this.brownBoxButton.Location = new System.Drawing.Point(60, 3);
+            this.brownBoxButton.Name = "brownBoxButton";
+            this.brownBoxButton.Size = new System.Drawing.Size(26, 25);
+            this.brownBoxButton.TabIndex = 13;
+            this.brownBoxButton.UseVisualStyleBackColor = false;
+            // 
+            // brownBoxLabel
+            // 
+            this.brownBoxLabel.AutoSize = true;
+            this.brownBoxLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brownBoxLabel.ForeColor = System.Drawing.Color.White;
+            this.brownBoxLabel.Location = new System.Drawing.Point(46, 31);
+            this.brownBoxLabel.Name = "brownBoxLabel";
+            this.brownBoxLabel.Size = new System.Drawing.Size(51, 19);
+            this.brownBoxLabel.TabIndex = 36;
+            this.brownBoxLabel.Text = "Brown";
             // 
             // removeBoxButton
             // 
@@ -419,7 +509,7 @@
             this.removeBoxButton.TabIndex = 22;
             this.removeBoxButton.Text = "Remove";
             this.removeBoxButton.UseVisualStyleBackColor = false;
-   
+            this.removeBoxButton.Click += new System.EventHandler(this.RemoveBoxButton_Click);
             // 
             // duplicateBoxButton
             // 
@@ -519,7 +609,6 @@
             this.heightComboBox.Name = "heightComboBox";
             this.heightComboBox.Size = new System.Drawing.Size(191, 31);
             this.heightComboBox.TabIndex = 1;
-    
             // 
             // button11
             // 
@@ -558,107 +647,6 @@
             this.furnitureName.Size = new System.Drawing.Size(309, 50);
             this.furnitureName.TabIndex = 4;
             this.furnitureName.Text = "FurnitureName1";
-   
-            // 
-            // whiteCornerButton
-            // 
-            this.whiteCornerButton.BackColor = System.Drawing.Color.White;
-            this.whiteCornerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.whiteCornerButton.FlatAppearance.BorderSize = 0;
-            this.whiteCornerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.whiteCornerButton.ForeColor = System.Drawing.Color.White;
-            this.whiteCornerButton.Location = new System.Drawing.Point(19, 3);
-            this.whiteCornerButton.Name = "whiteCornerButton";
-            this.whiteCornerButton.Size = new System.Drawing.Size(26, 25);
-            this.whiteCornerButton.TabIndex = 37;
-            this.whiteCornerButton.UseVisualStyleBackColor = false;
-
-            // 
-            // whiteCornerLabel
-            // 
-            this.whiteCornerLabel.AutoSize = true;
-            this.whiteCornerLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.whiteCornerLabel.ForeColor = System.Drawing.Color.White;
-            this.whiteCornerLabel.Location = new System.Drawing.Point(4, 31);
-            this.whiteCornerLabel.Name = "whiteCornerLabel";
-            this.whiteCornerLabel.Size = new System.Drawing.Size(50, 19);
-            this.whiteCornerLabel.TabIndex = 38;
-            this.whiteCornerLabel.Text = "White";
-            // 
-            // brownCornerButton
-            // 
-            this.brownCornerButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(88)))), ((int)(((byte)(81)))));
-            this.brownCornerButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.brownCornerButton.FlatAppearance.BorderSize = 0;
-            this.brownCornerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.brownCornerButton.ForeColor = System.Drawing.Color.White;
-            this.brownCornerButton.Location = new System.Drawing.Point(178, 3);
-            this.brownCornerButton.Name = "brownCornerButton";
-            this.brownCornerButton.Size = new System.Drawing.Size(26, 25);
-            this.brownCornerButton.TabIndex = 37;
-            this.brownCornerButton.UseVisualStyleBackColor = false;
-
-            // 
-            // brownCornerLabel
-            // 
-            this.brownCornerLabel.AutoSize = true;
-            this.brownCornerLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brownCornerLabel.ForeColor = System.Drawing.Color.White;
-            this.brownCornerLabel.Location = new System.Drawing.Point(164, 31);
-            this.brownCornerLabel.Name = "brownCornerLabel";
-            this.brownCornerLabel.Size = new System.Drawing.Size(51, 19);
-            this.brownCornerLabel.TabIndex = 38;
-            this.brownCornerLabel.Text = "Brown";
-            // 
-            // whiteDoorButton
-            // 
-            this.whiteDoorButton.BackColor = System.Drawing.Color.White;
-            this.whiteDoorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.whiteDoorButton.FlatAppearance.BorderSize = 0;
-            this.whiteDoorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.whiteDoorButton.ForeColor = System.Drawing.Color.White;
-            this.whiteDoorButton.Location = new System.Drawing.Point(7, 8);
-            this.whiteDoorButton.Name = "whiteDoorButton";
-            this.whiteDoorButton.Size = new System.Drawing.Size(26, 25);
-            this.whiteDoorButton.TabIndex = 39;
-            this.whiteDoorButton.UseVisualStyleBackColor = false;
-
-            // 
-            // whiteDoorLabel
-            // 
-            this.whiteDoorLabel.AutoSize = true;
-            this.whiteDoorLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.whiteDoorLabel.ForeColor = System.Drawing.Color.White;
-            this.whiteDoorLabel.Location = new System.Drawing.Point(-3, 36);
-            this.whiteDoorLabel.Name = "whiteDoorLabel";
-            this.whiteDoorLabel.Size = new System.Drawing.Size(50, 19);
-            this.whiteDoorLabel.TabIndex = 41;
-            this.whiteDoorLabel.Text = "White";
-            // 
-            // brownDoorButton
-            // 
-            this.brownDoorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(88)))), ((int)(((byte)(81)))));
-            this.brownDoorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.brownDoorButton.FlatAppearance.BorderSize = 0;
-            this.brownDoorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.brownDoorButton.ForeColor = System.Drawing.Color.White;
-            this.brownDoorButton.Location = new System.Drawing.Point(67, 8);
-            this.brownDoorButton.Name = "brownDoorButton";
-            this.brownDoorButton.Size = new System.Drawing.Size(26, 25);
-            this.brownDoorButton.TabIndex = 40;
-            this.brownDoorButton.UseVisualStyleBackColor = false;
-  
-            // 
-            // brownDoorLabel
-            // 
-            this.brownDoorLabel.AutoSize = true;
-            this.brownDoorLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brownDoorLabel.ForeColor = System.Drawing.Color.White;
-            this.brownDoorLabel.Location = new System.Drawing.Point(53, 36);
-            this.brownDoorLabel.Name = "brownDoorLabel";
-            this.brownDoorLabel.Size = new System.Drawing.Size(51, 19);
-            this.brownDoorLabel.TabIndex = 42;
-            this.brownDoorLabel.Text = "Brown";
             // 
             // UserControl2
             // 
