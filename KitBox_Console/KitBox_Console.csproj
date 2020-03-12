@@ -50,8 +50,6 @@
     <Compile Include="Corner.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="Furniture.cs" />
-    <Compile Include="GlassDoor.cs" />
-    <Compile Include="NormalDoor.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Panel.cs" />
     <Compile Include="Program.cs" />

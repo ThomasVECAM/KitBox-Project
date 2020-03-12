@@ -1916,12 +1916,12 @@
 										"$ref": "AAAAAAFwqtcWgDF3b8k="
 									},
 									"font": "Arial;13;0",
-									"left": 839,
-									"top": 416,
+									"left": 807,
+									"top": 415,
 									"width": 166.2197265625,
 									"height": 13,
-									"alpha": 2.866166327286086,
-									"distance": 95.60334722173695,
+									"alpha": -3.0764677204419217,
+									"distance": 92.19544457292888,
 									"hostEdge": {
 										"$ref": "AAAAAAFwqtcWgTF4x58="
 									},
@@ -2327,11 +2327,39 @@
 								"$ref": "AAAAAAFwqp8WWyaMgOQ="
 							},
 							"font": "Arial;42;0",
-							"left": 768,
-							"top": 32,
-							"width": 585,
+							"left": 632,
+							"top": 16,
+							"width": 721,
 							"height": 73,
-							"text": "stock management activity diagram"
+							"text": "Stock management activity diagram"
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAFwyU7gfbN0R5Q=",
+							"_parent": {
+								"$ref": "AAAAAAFwqp8WWyaMgOQ="
+							},
+							"font": "Arial;13;0",
+							"left": 1032,
+							"top": 576,
+							"width": 152,
+							"height": 51,
+							"text": "Orders the components based on the system proposal"
+						},
+						{
+							"_type": "UMLNoteLinkView",
+							"_id": "AAAAAAFwyVAo8LN7A6w=",
+							"_parent": {
+								"$ref": "AAAAAAFwqp8WWyaMgOQ="
+							},
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAFwyU7gfbN0R5Q="
+							},
+							"tail": {
+								"$ref": "AAAAAAFwqtL5cjFDxfM="
+							},
+							"points": "1097:543;1097:560;1096:560;1096:576"
 						}
 					]
 				}

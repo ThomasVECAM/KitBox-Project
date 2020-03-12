@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
-namespace Code_KitBox
+namespace KitBox_Console
 {
 
 
     class Box
     {
         private List<Component> componentList;
-        private int height;
+        private int width,depth,height;
 
-        public Box()
+        public Box(int height,int width, int depth)
         {
             componentList = new List<Component>();
-            height = 0; //by default
+            this.height = height;
+            this.width = width;
+            this.depth = depth;
         }
 
         public int Name
@@ -34,9 +37,39 @@ namespace Code_KitBox
         {
             componentList.Remove(component);
         }
-        public int GetPrice()
+        public double GetPrice()
         {
-            return 0;
+            double totalPrice = 0;
+            foreach (Component component in componentList)
+            {
+                totalPrice += component.GetPrice;
+            }
+            return totalPrice;
         }
+        public int GetHeight
+        {
+            get { return this.height; }
+        }
+        public int GetDepth
+        {
+            get { return this.depth; }
+        }
+        public int GetWidth
+        {
+            get { return this.width; }
+        }
+        public void WriteFacture(string path)
+        {
+            int increment = 0;
+            foreach (Component component in componentList)
+            {
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    sw.WriteLine("  Box "+ increment +"    "+GetPrice());
+                }
+                component.WriteFacture(path);
+            }
+        }
+
     }
 }
