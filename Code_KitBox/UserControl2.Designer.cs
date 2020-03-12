@@ -560,6 +560,7 @@
             this.checkBoxNo.Text = "No";
             this.checkBoxNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxNo.UseVisualStyleBackColor = true;
+            this.checkBoxNo.CheckedChanged += new System.EventHandler(this.CheckBoxNo_CheckedChanged);
             // 
             // checkBoxYes
             // 
@@ -575,6 +576,7 @@
             this.checkBoxYes.Text = "Yes";
             this.checkBoxYes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxYes.UseVisualStyleBackColor = true;
+            this.checkBoxYes.CheckedChanged += new System.EventHandler(this.CheckBoxYes_CheckedChanged);
             // 
             // label4
             // 

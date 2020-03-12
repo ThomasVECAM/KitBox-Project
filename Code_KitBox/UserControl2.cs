@@ -108,9 +108,9 @@ namespace Interface_5
                 }
 
             }
-            //Checkbox Event attribute when mouseClick
-            checkBoxNo.MouseClick += DoorCheckBox_Event;
-            checkBoxYes.MouseClick += DoorCheckBox_Event;
+            //Checkbox 
+            checkBoxYes.Checked = false;
+            checkBoxNo.Checked = false;
             doorsPanel.Hide(); // hide the door pannel by default
 
             //Integer height data in ComboBox
@@ -156,9 +156,7 @@ namespace Interface_5
 
             for (int j = 1; j <= listButtons.Count; j++)
             {
-                Console.WriteLine("Box" + j.ToString());
-                Console.WriteLine(allBoxesDico["Box" + j.ToString()]["cornerColor"]);
-                Console.WriteLine(allBoxesDico["Box" + j.ToString()]["boxColor"]);
+             
                 if (buttonNr == j)
                 {
                     allBoxesDico["Box" + j.ToString()]["cornerColor"] = colorButtons.IndexOf(btnColor).ToString();
@@ -168,31 +166,47 @@ namespace Interface_5
             }
 
         }
-        private void DoorCheckBox_Event(object sender, EventArgs e)
+       
+
+        private void CheckBoxYes_CheckedChanged(object sender, EventArgs e)
         {
-            //checkboxes false every time you change your choice and after atribute the choosed value
-            checkBoxNo.Checked = false;
-            checkBoxYes.Checked = false;
-            var check = (CheckBox)sender;
-            check.Checked = true;
             if (checkBoxYes.Checked == true)
             {
-                doorsPanel.Show();
+                checkBoxYes.Checked = false;
             }
-            else
-            {
-                doorsPanel.Hide();
-            }
+     
 
+            doorsPanel.Show();
             for (int j = 1; j <= listButtons.Count; j++)
             {
                 if (buttonNr == j)
                 {
-                    allBoxesDico["Box" + j.ToString()]["doors"] =check.Checked.ToString();
+                    allBoxesDico["Box" + j.ToString()]["doors"] = checkBoxYes.Checked.ToString();
                 }
-
+                Console.WriteLine("Box" + j.ToString());
+                Console.WriteLine(allBoxesDico["Box" + j.ToString()]["doors"]);
             }
         }
+
+        private void CheckBoxNo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxNo.Checked == true)
+            {
+                checkBoxNo.Checked = false;
+            }
+         
+            doorsPanel.Hide();
+                for (int j = 1; j <= listButtons.Count; j++)
+                {
+                    if (buttonNr == j)
+                    {
+                        allBoxesDico["Box" + j.ToString()]["doors"] = checkBoxNo.Checked.ToString();
+                    }
+                Console.WriteLine("Box" + j.ToString());
+                Console.WriteLine(allBoxesDico["Box" + j.ToString()]["doors"]);
+
+            }
+          }
         private void DoorColor_Event(object sender, EventArgs e)
         {
             // take the buttons in the list coresponding to DoorColor cliked buttons and create a BorderSize 
@@ -339,9 +353,9 @@ namespace Interface_5
 
             for (int m = 1; m <= listButtons.Count; m++)
             {
-                Console.WriteLine("Box" + m.ToString());
+                /*Console.WriteLine("Box" + m.ToString());
                 Console.WriteLine(allBoxesDico["Box" + m.ToString()]["cornerColor"]);
-                Console.WriteLine(allBoxesDico["Box" + m.ToString()]["boxColor"]);
+                Console.WriteLine(allBoxesDico["Box" + m.ToString()]["boxColor"]);*/
 
 
                 if (allBoxesDico["Box" + m.ToString()]["cornerColor"] == "")
@@ -372,11 +386,35 @@ namespace Interface_5
 
                 }
 
-
+                
 
                 if (buttonNr == m)
                 {
                     heightComboBox.Text = allBoxesDico["Box" + m.ToString()]["height"];
+
+                    if(allBoxesDico["Box" + m.ToString()]["doors"] == "")
+                    {
+
+                    }
+                    else
+                    {
+                        if (allBoxesDico["Box" + m.ToString()]["doors"] == "True")
+                        {
+
+                            doorsPanel.Show();
+                            checkBoxYes.Checked = true;
+                            checkBoxNo.Checked = false;
+
+                        }
+                        else
+                        {
+                            doorsPanel.Hide();
+                            checkBoxYes.Checked = false;
+                            checkBoxNo.Checked = true;
+                        }
+                    }
+                    
+
                     for (int u = 0; u <= 1; u++)
                     {
                         if (u != indexB)
@@ -479,9 +517,8 @@ namespace Interface_5
             return D;
 
         }
-  
 
-
+        
     }
 }
 
