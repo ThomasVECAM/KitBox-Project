@@ -42,7 +42,6 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -55,11 +54,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 24F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(117, 336);
+            this.label2.Location = new System.Drawing.Point(267, 138);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 49);
+            this.label2.Size = new System.Drawing.Size(173, 49);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Depth";
+            this.label2.Text = "x Depth";
             this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // button1
@@ -120,7 +119,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 24F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(117, 174);
+            this.label1.Location = new System.Drawing.Point(139, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(134, 49);
             this.label1.TabIndex = 0;
@@ -130,7 +129,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(47, 336);
+            this.pictureBox3.Location = new System.Drawing.Point(446, 138);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(64, 60);
             this.pictureBox3.TabIndex = 12;
@@ -139,7 +138,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(47, 163);
+            this.pictureBox2.Location = new System.Drawing.Point(69, 138);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(64, 60);
             this.pictureBox2.TabIndex = 11;
@@ -157,7 +156,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.comboBox2);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
@@ -179,9 +177,9 @@
             // 
             this.comboBox2.Font = new System.Drawing.Font("Century Gothic", 24F);
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(279, 166);
+            this.comboBox2.Location = new System.Drawing.Point(132, 218);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(266, 57);
+            this.comboBox2.Size = new System.Drawing.Size(335, 57);
             this.comboBox2.TabIndex = 18;
             // 
             // label6
@@ -202,15 +200,6 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "122";
             this.label5.Click += new System.EventHandler(this.Label5_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 24F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(279, 328);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(266, 57);
-            this.comboBox1.TabIndex = 19;
             // 
             // UserControl1
             // 
@@ -250,6 +239,5 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
