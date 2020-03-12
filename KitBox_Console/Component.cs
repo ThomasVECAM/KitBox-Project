@@ -20,7 +20,6 @@ namespace KitBox_Console
             this.width = width;
             this.depth = depth;
             this.price = price;
-            this.name = "";
         }
         public double GetPrice
         {
@@ -30,7 +29,7 @@ namespace KitBox_Console
         {
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine("      (" + id + " ) :  "+ name + "      " + price + " €");
+                sw.WriteLine("                  (" + id + ") : " + price + " €");
             }
         }
         public string GetName

@@ -42,7 +42,7 @@ namespace KitBox_Console
         {
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine("Facture client");
+                sw.WriteLine("# Facture client");
             }
             foreach(Furniture furniture in furnitureList)
             {
@@ -50,9 +50,9 @@ namespace KitBox_Console
             }
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine("Prix total :" + GetPrice());
+                sw.WriteLine("\nPrix total :" + GetPrice());
             }
 
-        }
+        } 
     }
 }

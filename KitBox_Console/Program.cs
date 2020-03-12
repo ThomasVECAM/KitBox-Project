@@ -13,6 +13,7 @@ namespace KitBox_Console
         {
             //Connexion to database
             MySqlConnection db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
+            
             try
             {
                 db.Open();
@@ -20,27 +21,21 @@ namespace KitBox_Console
             catch (Exception erro)
             {
                 Console.WriteLine("Erro" + erro);
-            }
+            } //db.Open
 
             //Create a order
             Order order = new Order();
 
             //Choix dimensions meuble - en fonction des plaques horizontales existantes
-
+            
             MySqlCommand cmd = db.CreateCommand();
             cmd.CommandText = "SELECT Dimension,Largeur,Profondeur FROM `Composants` WHERE `Ref`='Panneau HB'";
-
             MySqlDataReader reader = cmd.ExecuteReader();
             List<Tuple<string, int, int>> list = new List<Tuple<string, int, int>>(); //liste où l'on va stocker les composants
-
             while (reader.Read())
             {
-                string dimensions = reader["Dimension"].ToString();
-                int width = Int32.Parse(reader["Largeur"].ToString());
-                int depth = Int32.Parse(reader["Profondeur"].ToString());
-
-                Tuple<string, int, int> tuple = new Tuple<string, int, int>(dimensions, width, depth);
-                list.Add(tuple);
+                list.Add(new Tuple<string, int, int>(reader["Dimension"].ToString(),
+                    Convert.ToInt32(reader["Largeur"]), Convert.ToInt32(reader["Profondeur"])));
             }
             list = list.Distinct().ToList(); //enlever les panneaux de même taille
             foreach (Tuple<string, int, int> element in list)
@@ -54,15 +49,15 @@ namespace KitBox_Console
 
             Console.WriteLine("Ajout d'un meuble");
             Furniture furniture = new Furniture(list[0].Item2, list[0].Item3);  //pour essayer, on prend le premier élement de 
-                                                                                //la liste ci-dessus pour les dimensions du meuble
+                                                                         //la liste ci-dessus pour les dimensions du meuble
             order.AddFurniture(furniture);
             furniture.Name = "Meuble 1"; //changement du nom du meuble
+            
             Console.WriteLine("Nom du meuble : " + furniture.Name); //test du changement de nom
             Console.WriteLine("------------------------------------------------------------");
 
 
             Console.WriteLine("Ajout d'une box à un meuble ici : " + furniture.Name);
-
             Console.WriteLine("Choix de la hauteur de la box");
 
             //Création d'une liste avec les hauteurs possibles
@@ -75,8 +70,7 @@ namespace KitBox_Console
             List<int> list2 = new List<int>();
             while (reader2.Read())
             {
-                int hauteur = Int32.Parse(reader2["Hauteur"].ToString());
-                list2.Add(hauteur);
+                list2.Add(Convert.ToInt32(reader2["Hauteur"]));
             }
             list2 = list2.Distinct().ToList(); //enlever les objets qui ont les mêmes hauteur
             foreach (int value in list2)
@@ -99,20 +93,15 @@ namespace KitBox_Console
             Console.WriteLine("        Panneaux GD choix : ");
             db.Open();
             MySqlCommand cmd4 = db.CreateCommand();
-            cmd4.CommandText = "SELECT Code,Hauteur,Largeur,Profondeur,Prix_Client,Couleur FROM `Composants` WHERE `Ref`='Panneau GD' AND `Profondeur`=" + box.GetDepth + " AND `Hauteur`=" + box.GetHeight;
+            cmd4.CommandText = "SELECT Code,Hauteur,Profondeur,Prix_Client,Couleur FROM `Composants` WHERE `Ref`='Panneau GD' AND `Profondeur`=" + box.GetDepth + " AND `Hauteur`=" + box.GetHeight;
 
             MySqlDataReader reader4 = cmd4.ExecuteReader();
             List<Panel> side_panel_list = new List<Panel>();
             while (reader4.Read())
             {
-                string id = reader4["Code"].ToString();
-                int height = Int32.Parse(reader4["Hauteur"].ToString());
-                int width = Int32.Parse(reader4["Largeur"].ToString());
-                int depth = Int32.Parse(reader4["Profondeur"].ToString());
-                double price = Convert.ToDouble(reader4["Prix_Client"].ToString());
-                string color = reader4["Couleur"].ToString();
-
-                side_panel_list.Add(new Panel(id, height, width, depth, price, color));
+                side_panel_list.Add(new Panel(reader4["Code"].ToString(), Convert.ToInt32(reader4["Hauteur"]),
+                    0, Convert.ToInt32(reader4["Profondeur"]), Convert.ToDouble(reader4["Prix_Client"]),
+                    reader4["Couleur"].ToString()));
             }
             db.Close();
             foreach (Panel panel in side_panel_list)
@@ -130,14 +119,9 @@ namespace KitBox_Console
             List<Panel> back_panel_list = new List<Panel>();
             while (reader5.Read())
             {
-
-                string id = reader5["Code"].ToString();
-                int height = Int32.Parse(reader5["Hauteur"].ToString());
-                int width = Int32.Parse(reader5["Largeur"].ToString());
-                int depth = Int32.Parse(reader5["Profondeur"].ToString());
-                double price = Convert.ToDouble(reader5["Prix_Client"]);
-                string color = reader5["Couleur"].ToString();
-                back_panel_list.Add(new Panel(id, height, width, depth, price, color));
+                back_panel_list.Add(new Panel(reader5["Code"].ToString(), Convert.ToInt32(reader5["Hauteur"]),
+                    Convert.ToInt32(reader5["Largeur"]), Convert.ToInt32(reader5["Profondeur"]),
+                    Convert.ToDouble(reader5["Prix_Client"]), reader5["Couleur"].ToString()));
             }
             db.Close();
             foreach (Panel panel in back_panel_list)
@@ -156,13 +140,9 @@ namespace KitBox_Console
             List<Panel> horizontal_panel_list = new List<Panel>();
             while (reader6.Read())
             {
-                string id = reader6["Code"].ToString();
-                int height = Int32.Parse(reader6["Hauteur"].ToString());
-                int width = Int32.Parse(reader6["Largeur"].ToString());
-                int depth = Int32.Parse(reader6["Profondeur"].ToString());
-                double price = Convert.ToDouble(reader6["Prix_Client"]);
-                string color = reader6["Couleur"].ToString();
-                horizontal_panel_list.Add(new Panel(id, height, width, depth, price, color));
+                horizontal_panel_list.Add(new Panel(reader6["Code"].ToString(), Convert.ToInt32(reader6["Hauteur"]),
+                    Convert.ToInt32(reader6["Largeur"]), Convert.ToInt32(reader6["Profondeur"]),
+                     Convert.ToDouble(reader6["Prix_Client"]), reader6["Couleur"].ToString()));
             }
             db.Close();
             foreach (Panel panel in horizontal_panel_list)
@@ -181,10 +161,8 @@ namespace KitBox_Console
             List<Bracket> bracket_list = new List<Bracket>();
             while (reader7.Read())
             {
-                string id = reader7["Code"].ToString();
-                int height = Int32.Parse(reader7["Hauteur"].ToString());
-                double price = Convert.ToDouble(reader7["Prix_Client"]);
-                bracket_list.Add(new Bracket(id, height, 0, 0, price));
+                bracket_list.Add(new Bracket(reader7["Code"].ToString(), Convert.ToInt32(reader7["Hauteur"]), 0, 0,
+                    Convert.ToDouble(reader7["Prix_Client"])));
             }
             db.Close();
             foreach (Bracket bracket in bracket_list)
@@ -203,10 +181,8 @@ namespace KitBox_Console
             List<Traverse> side_traverse_list = new List<Traverse>();
             while (reader8.Read())
             {
-                string id = reader8["Code"].ToString();
-                int depth = Int32.Parse(reader8["Profondeur"].ToString());
-                double price = Convert.ToDouble(reader8["Prix_Client"]);
-                side_traverse_list.Add(new Traverse(id, 0, 0, depth, price));
+                side_traverse_list.Add(new Traverse(reader8["Code"].ToString(), 0, 0, Convert.ToInt32(reader8["Profondeur"]),
+                    Convert.ToDouble(reader8["Prix_Client"])));
             }
             foreach (Traverse traverse in side_traverse_list)
             {
@@ -224,10 +200,8 @@ namespace KitBox_Console
 
             while (reader9.Read())
             {
-                string id = reader9["Code"].ToString();
-                int width = Int32.Parse(reader9["Largeur"].ToString());
-                double price = Convert.ToDouble(reader9["Prix_Client"]);
-                back_traverse_list.Add(new Traverse(id, 0, width, 0, price));
+                back_traverse_list.Add(new Traverse(reader9["Code"].ToString(), 0,
+                    Convert.ToInt32(reader9["Largeur"]), 0, Convert.ToDouble(reader9["Prix_Client"])));
             }
             db.Close();
             foreach (Traverse traverse in back_traverse_list)
@@ -245,10 +219,8 @@ namespace KitBox_Console
 
             while (reader10.Read())
             {
-                string id = reader10["Code"].ToString();
-                int width = Int32.Parse(reader10["Largeur"].ToString());
-                double price = Convert.ToDouble(reader10["Prix_Client"]);
-                forward_traverse_list.Add(new Traverse(id, 0, width, 0, price));
+                forward_traverse_list.Add(new Traverse(reader10["Code"].ToString(), 0,
+                    Convert.ToInt32(reader10["Largeur"]), 0, Convert.ToDouble(reader10["Prix_Client"])));
             }
             db.Close();
             foreach (Traverse traverse in forward_traverse_list)
@@ -267,12 +239,9 @@ namespace KitBox_Console
             List<Door> door_list = new List<Door>();
             while (reader11.Read())
             {
-                string id = reader11["Code"].ToString();
-                int height = Int32.Parse(reader11["Hauteur"].ToString());
-                int width = Int32.Parse(reader11["Largeur"].ToString());
-                string color = reader11["Couleur"].ToString();
-                double customer_price = Convert.ToDouble(reader11["Prix_Client"]);
-                door_list.Add(new Door(id, height, width, 0, customer_price, color));
+                door_list.Add(new Door(reader11["Code"].ToString(), Convert.ToInt32(reader11["Hauteur"]),
+                    Convert.ToInt32(reader11["Largeur"]), 0, Convert.ToDouble(reader11["Prix_Client"]),
+                    reader11["Couleur"].ToString()));
             }
             db.Close();
             foreach(Door door in door_list )
@@ -282,7 +251,7 @@ namespace KitBox_Console
 
 
             //Ajout des cornières adéquates
-            /*db.Open();
+            db.Open();
             MySqlCommand cmd3 = db.CreateCommand();
             cmd3.CommandText = "SELECT Code,Hauteur,Couleur FROM `Composants` WHERE `Ref`= 'Cornieres' AND `Hauteur`>=" + furniture.GetHeight();
 
@@ -290,17 +259,12 @@ namespace KitBox_Console
             List<Tuple<int, string>> list3 = new List<Tuple<int, string>>();
             while (reader3.Read())
             {
-                int height = Int32.Parse(reader3["Hauteur"].ToString());
-                string color = reader3["Couleur"].ToString();
-                Tuple<int, string> tuple2 = new Tuple<int, string>(height, color);
-                list3.Add(tuple2);
+                list3.Add(new Tuple<int, string>(Convert.ToInt32(reader3["Hauteur"]), reader3["Couleur"].ToString()));
             }
             db.Close();
-            int max_corn = 2000;*/
-
 
             // Composons une petite commande
-            //Il faut ajouter des trucs à la box !!
+            //Il faut ajouter des composants à la box !!
             box.AddComponent(side_panel_list[0]);
             box.AddComponent(side_panel_list[0]);
             box.AddComponent(back_panel_list[0]);
@@ -318,7 +282,8 @@ namespace KitBox_Console
             order.AddFurniture(furniture);
 
             Console.WriteLine("Prix total de la commande : " + order.GetPrice());
-            order.WriteFacture("C:\\Users\\Thomas Vandermeersch\\Documents\\Facture.txt");
+            order.WriteFacture("C:\\Users\\Thomas Vandermeersch\\Documents\\Facture_2.markdown");
+            Console.WriteLine(furniture.GetType().Name);
         }
     }
 }

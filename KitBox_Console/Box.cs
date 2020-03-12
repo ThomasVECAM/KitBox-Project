@@ -7,8 +7,6 @@ using System.IO;
 
 namespace KitBox_Console
 {
-
-
     class Box
     {
         private List<Component> componentList;
@@ -60,16 +58,14 @@ namespace KitBox_Console
         }
         public void WriteFacture(string path)
         {
-            int increment = 0;
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                sw.WriteLine("          Box :" + GetPrice());
+            }
             foreach (Component component in componentList)
             {
-                using (StreamWriter sw = File.AppendText(path))
-                {
-                    sw.WriteLine("  Box "+ increment +"    "+GetPrice());
-                }
                 component.WriteFacture(path);
             }
         }
-
     }
 }
