@@ -20,9 +20,11 @@ namespace Interface_5
         List<Label> colorLabels = new List<Label>();
         string cornerColorChoosed = "";
         int i = 1;
+        int remove = 2;
         int startPosition = 8;
         int endPosition = 162;
         int buttonNr = 0;
+        int AddOrDupli = 0;
 
         public static UserControl2 Instance
         {
@@ -38,7 +40,7 @@ namespace Interface_5
         public UserControl2()
         {
             InitializeComponent();
-            
+
             //Create the first Box Button by default 
             Button Bdefault = new Button();
             Bdefault = addButtonFunction(0, 8, 112);
@@ -72,7 +74,7 @@ namespace Interface_5
 
             colorLabels.Add(whiteBoxLabel5);
             colorLabels.Add(brownBoxLabel6);
-           
+
             //Doors Colors labels and buttons
             colorButtons.Add(whiteDoorButton7);
             colorButtons.Add(brownDoorButton8);
@@ -88,19 +90,19 @@ namespace Interface_5
                 l.Hide();
             }
             //Button event attribute when mouse enter and leave
-            foreach(Button b in colorButtons)
+            foreach (Button b in colorButtons)
             {
                 b.MouseEnter += MouseEnter_Event;
                 b.MouseLeave += MouseLeave_Event;
-            }  
+            }
             //Boutons event attribute when clicked ( box and doors buttons)
-            for (int i =0; i < colorButtons.Count; i++)
+            for (int i = 0; i < colorButtons.Count; i++)
             {
-                if (i <=3)
+                if (i <= 3)
                 {
                     colorButtons[i].MouseClick += CornerColor_Event;
                 }
-                else if(i>3 && i<=5)
+                else if (i > 3 && i <= 5)
                 {
                     colorButtons[i].MouseClick += BoxColor_Event;
                 }
@@ -110,9 +112,12 @@ namespace Interface_5
                 }
 
             }
-            
-          
-            
+            // when click duplicate button, call the add function
+            duplicateBoxButton.Click += AddBoxButton_Click;
+
+            // when remove a button , reclick the button
+            removeBoxButton.Click += Button_Click_Event;
+
             //Checkbox Event attribute when mouseClick
             checkBoxNo.MouseClick += DoorCheckBox_Event;
             checkBoxYes.MouseClick += DoorCheckBox_Event;
@@ -125,12 +130,12 @@ namespace Interface_5
 
 
         }
-        
-        private  void BoxColor_Event(object sender, EventArgs e)
+
+        private void BoxColor_Event(object sender, EventArgs e)
         {
-           
+
             // take the buttons in the list coresponding to boxColor cliked buttons and create a BorderSize 
-            for(int i =4; i <= 5; i++)
+            for (int i = 4; i <= 5; i++)
             {
                 colorButtons[i].FlatAppearance.BorderSize = 0;
             }
@@ -142,17 +147,17 @@ namespace Interface_5
                 if (buttonNr == j)
                 {
                     allBoxesDico["Box" + j.ToString()]["boxColor"] = colorButtons.IndexOf(btnColor).ToString();
-                 
+
                 }
 
             }
-            
+
 
         }
         private void CornerColor_Event(object sender, EventArgs e)
         {
             // take the buttons in the list coresponding to CornerColor cliked buttons and create a BorderSize 
-            for (int i =0; i<=3; i++)
+            for (int i = 0; i <= 3; i++)
             {
                 colorButtons[i].FlatAppearance.BorderSize = 0;
             }
@@ -181,7 +186,7 @@ namespace Interface_5
             {
                 doorsPanel.Show();
             }
-            else if(check.Name == "checkBoxNo")
+            else if (check.Name == "checkBoxNo")
             {
                 doorsPanel.Hide();
             }
@@ -190,8 +195,6 @@ namespace Interface_5
             {
                 if (buttonNr == j)
                 {
-                    Console.WriteLine("CHECKED //"+ check.Checked.ToString());
-                    Console.WriteLine("CHECKED Name //" + check.Name) ;
                     allBoxesDico["Box" + j.ToString()]["doors"] = check.Name;
                 }
 
@@ -202,7 +205,7 @@ namespace Interface_5
         private void DoorColor_Event(object sender, EventArgs e)
         {
             // take the buttons in the list coresponding to DoorColor cliked buttons and create a BorderSize 
-            for (int i=6; i <= colorButtons.Count-1; i++)
+            for (int i = 6; i <= colorButtons.Count - 1; i++)
             {
                 colorButtons[i].FlatAppearance.BorderSize = 0;
             }
@@ -221,18 +224,18 @@ namespace Interface_5
         private void MouseEnter_Event(object sender, EventArgs e)
         {// when mouse go over button:
             var colorBtne = (Button)sender;
-            int indexButton=0;
+            int indexButton = 0;
             indexButton = colorButtons.IndexOf(colorBtne); // take index of the button in buttonlist
             colorLabels[indexButton].Show();//show label coresponding to the button index
-            
-            
+
+
         }
         private void MouseLeave_Event(object sender, EventArgs e)
         {// when mouse leave over the button:
             var colorBtnl = (Button)sender;
             int indexButton = 0;
             indexButton = colorButtons.IndexOf(colorBtnl); // take index of the button in buttonlist
-            colorLabels[indexButton ].Hide();//hide label coresponding to the button index
+            colorLabels[indexButton].Hide();//hide label coresponding to the button index
 
 
         }
@@ -240,9 +243,6 @@ namespace Interface_5
         {
 
         }
-
-
-
         private void Button12_Click(object sender, EventArgs e)
         {
             if (!boxesPannel.Controls.Contains(UserControl3.Instance))
@@ -254,30 +254,42 @@ namespace Interface_5
             else
                 UserControl3.Instance.BringToFront();
         }
-
-
         private void AddBoxButton_Click(object sender, EventArgs e)
         {
             if (i <= 6)
             {
                 //Create a button for each click on "Add"
+
                 Button B = new Button();
                 B = addButtonFunction(i, startPosition, endPosition);
                 listButtons.Add(B);
                 foreach (Button b in listButtons)
                 {
                     boxesPannel.Controls.Add(b);
-
-
                 }
                 //Add a dictionary in the allBoxesDico for each box created 
                 Dictionary<string, string> D = new Dictionary<string, string>();
                 D = addBoxToDico();
-                allBoxesDico.Add("Box" + (i + 1).ToString(), D);
+                foreach (KeyValuePair<string, Dictionary<string, string>> boxes in allBoxesDico)
+                {
+                    Console.WriteLine(boxes.Key);
+                }
+                Console.WriteLine("///////");
+                Console.WriteLine((i + 1).ToString());
+                    allBoxesDico.Add("Box" + (i + 1).ToString(), D);
+                
+
+                if (AddOrDupli == 1)
+                {
+                    for (int j = listButtons.Count - 1; j >= buttonNr; j--)
+                    {
+                        allBoxesDico["Box" + (j + 1).ToString()] = allBoxesDico["Box" + (j).ToString()];
+                    }
+                    AddOrDupli = 0;
+                    
+                }
 
                 i++;
-                //Move sideBarPanel next the new button created
-                sideBarPanel.Top = listButtons[listButtons.Count - 1].Top;
             }
             else
             {
@@ -307,16 +319,18 @@ namespace Interface_5
             return B;
         }
 
-     
+
 
         void Button_Click_Event(object sender, EventArgs e)
         {
-              
-      
+
+          
             //Take the button object 
             Button btnClicked = sender as Button;
             string btnName = btnClicked.Text;
             string b = string.Empty;
+           
+          
 
             //This manipulation take the number of the box in the name of the box
             for (int i = 0; i < btnName.Length; i++)
@@ -332,45 +346,43 @@ namespace Interface_5
 
 
             // The choices box pannel and the side bar apear only when a box is selected.
-            if (buttonNr != 0)
+            if (remove == 1)
+            {
+               
+                sideBarPanel.Top = listButtons[buttonNr-1].Top;
+                remove = 0;
+            }
+            else if (buttonNr != 0)
             {
                 sideBarPanel.Show();
-                sideBarPanel.Top = btnClicked.Top;
+                sideBarPanel.Top = btnClicked.Top; //Move sideBarPanel to the clicked button
                 choicesBoxPanel.Show();
             }
+            
 
-            int indexB=15 ;
-            int indexD =15;
+            int indexB = 15;
+            int indexD = 15;
 
             for (int m = 1; m <= listButtons.Count; m++)
             {
-                
 
-
-                
-
-
-
-              
 
                 if (buttonNr == m)
                 {
                     heightComboBox.Text = allBoxesDico["Box" + m.ToString()]["height"];
-                    Console.WriteLine("Box" + m.ToString());
-                    Console.WriteLine("Box" + allBoxesDico["Box" + m.ToString()]["doors"]);
+/*                    Console.WriteLine("Box" + m.ToString());
+                    Console.WriteLine("Box" + allBoxesDico["Box" + m.ToString()]["doors"]);*/
 
                     if (allBoxesDico["Box" + m.ToString()]["doors"] == "")
                     {
                         checkBoxNo.Checked = true;
                         checkBoxYes.Checked = false;
                         doorsPanel.Hide();
-                        Console.WriteLine("JE SUIS VIDE");
                     }
                     else
                     {
                         if (allBoxesDico["Box" + m.ToString()]["doors"] == "checkBoxYes")
                         {
-                            Console.WriteLine("JE SUIS A YES");
                             doorsPanel.Show();
                             checkBoxYes.Checked = true;
                             checkBoxNo.Checked = false;
@@ -378,16 +390,15 @@ namespace Interface_5
                         }
                         else if (allBoxesDico["Box" + m.ToString()]["doors"] == "checkBoxNo")
                         {
-                            Console.WriteLine("JE SUIS A NO");
                             doorsPanel.Hide();
                             checkBoxYes.Checked = false;
                             checkBoxNo.Checked = true;
                         }
                     }
-                  
+
                     if (allBoxesDico["Box" + m.ToString()]["boxColor"] == "")
                     {
-                       
+
                     }
                     else
                     {
@@ -396,7 +407,7 @@ namespace Interface_5
                     }
                     if (allBoxesDico["Box" + m.ToString()]["doorsColor"] == "")
                     {
-                   
+
                     }
                     else
                     {
@@ -404,7 +415,7 @@ namespace Interface_5
 
                     }
 
-                    for (int u = 4; u <= 5; u++) 
+                    for (int u = 4; u <= 5; u++)
                     {
                         if (u != indexB)
                         {
@@ -416,26 +427,26 @@ namespace Interface_5
                         }
 
                     }
-                   
-                    for (int u = 6; u <=colorButtons.Count-1; u++)
+
+                    for (int u = 6; u <= colorButtons.Count - 1; u++)
                     {
                         if (u != indexD)
                         {
                             colorButtons[u].FlatAppearance.BorderSize = 0;
-                           
+
                         }
                         else
                         {
                             colorButtons[indexD].FlatAppearance.BorderSize = 5;
                         }
                     }
-                    
-                  
-                  
-                   
-                   
+
+
+
+
+
                 }
-                
+
 
 
 
@@ -443,14 +454,13 @@ namespace Interface_5
             }
 
 
-       
+
 
         }
         //int r = buttonNr;
         private void RemoveBoxButton_Click(object sender, EventArgs e)
         {
-
-    
+            remove = 1;// put at 1 when passed by remove function for after can move the sideBarPanel
 
             if (listButtons.Count > 1)
             {
@@ -476,21 +486,17 @@ namespace Interface_5
 
                     count++;
                 }
-                
-                sideBarPanel.Top = listButtons[listButtons.Count-1].Top;
-                
-                
+
                 buttonNr = count;
-          
 
             }
             else
             {
                 MessageBox.Show("This is the minimum boxes for a furniture!");
+                i = 2;// when going in add function , we add box(i+1). This statement avoid to readd box1 in the alldicobox 
             }
             i--;
         }
-
 
         private void heightComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -516,8 +522,25 @@ namespace Interface_5
             return D;
 
         }
+        void interfacePrice()
+        {
+            foreach (KeyValuePair<string, Dictionary<string, string>> boxes in allBoxesDico)
+            {
+                Console.WriteLine("////////////" + boxes.Key + "////////////");
+                Console.WriteLine(boxes.Key);
 
-        
+                foreach (KeyValuePair<string, string> components in boxes.Value)
+                {
+                    Console.WriteLine(components.Key + "  " + components.Value);
+                }
+
+            }
+        }
+
+        private void duplicatBoxButton_Click(object sender, EventArgs e)
+        {
+            AddOrDupli = 1;
+        }
     }
 }
 

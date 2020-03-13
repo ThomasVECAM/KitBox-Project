@@ -47,6 +47,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.finishFurnitureButton = new System.Windows.Forms.Button();
             this.choicesBoxPanel = new System.Windows.Forms.Panel();
+            this.tvaLabel = new System.Windows.Forms.Label();
+            this.priceLabel = new System.Windows.Forms.Label();
             this.doorsPanel = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.whiteDoorButton7 = new System.Windows.Forms.Button();
@@ -69,6 +71,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.heightComboBox = new System.Windows.Forms.ComboBox();
+            this.panelPrice = new System.Windows.Forms.Panel();
             this.button11 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -167,7 +170,7 @@
             this.dimensionsLabel.AutoSize = true;
             this.dimensionsLabel.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.dimensionsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.dimensionsLabel.Location = new System.Drawing.Point(343, 72);
+            this.dimensionsLabel.Location = new System.Drawing.Point(343, 56);
             this.dimensionsLabel.Name = "dimensionsLabel";
             this.dimensionsLabel.Size = new System.Drawing.Size(63, 23);
             this.dimensionsLabel.TabIndex = 32;
@@ -183,7 +186,7 @@
             this.panel3.Controls.Add(this.blackCornerLabel2);
             this.panel3.Controls.Add(this.galvanisedCornerLabel3);
             this.panel3.Controls.Add(this.galvanisedCornerButton3);
-            this.panel3.Location = new System.Drawing.Point(403, 120);
+            this.panel3.Location = new System.Drawing.Point(367, 104);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(214, 60);
             this.panel3.TabIndex = 32;
@@ -293,7 +296,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.label7.Location = new System.Drawing.Point(230, 72);
+            this.label7.Location = new System.Drawing.Point(230, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(116, 23);
             this.label7.TabIndex = 31;
@@ -306,7 +309,7 @@
             this.finishFurnitureButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.finishFurnitureButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.finishFurnitureButton.ForeColor = System.Drawing.Color.White;
-            this.finishFurnitureButton.Location = new System.Drawing.Point(733, 532);
+            this.finishFurnitureButton.Location = new System.Drawing.Point(722, 534);
             this.finishFurnitureButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.finishFurnitureButton.Name = "finishFurnitureButton";
             this.finishFurnitureButton.Size = new System.Drawing.Size(150, 50);
@@ -318,6 +321,8 @@
             // 
             this.choicesBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(84)))), ((int)(((byte)(60)))));
             this.choicesBoxPanel.CausesValidation = false;
+            this.choicesBoxPanel.Controls.Add(this.tvaLabel);
+            this.choicesBoxPanel.Controls.Add(this.priceLabel);
             this.choicesBoxPanel.Controls.Add(this.doorsPanel);
             this.choicesBoxPanel.Controls.Add(this.panel2);
             this.choicesBoxPanel.Controls.Add(this.removeBoxButton);
@@ -328,21 +333,46 @@
             this.choicesBoxPanel.Controls.Add(this.label2);
             this.choicesBoxPanel.Controls.Add(this.label1);
             this.choicesBoxPanel.Controls.Add(this.heightComboBox);
+            this.choicesBoxPanel.Controls.Add(this.panelPrice);
             this.choicesBoxPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.choicesBoxPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.choicesBoxPanel.Location = new System.Drawing.Point(216, 185);
+            this.choicesBoxPanel.Location = new System.Drawing.Point(216, 169);
             this.choicesBoxPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.choicesBoxPanel.Name = "choicesBoxPanel";
-            this.choicesBoxPanel.Size = new System.Drawing.Size(456, 370);
+            this.choicesBoxPanel.Size = new System.Drawing.Size(456, 415);
             this.choicesBoxPanel.TabIndex = 5;
+            // 
+            // tvaLabel
+            // 
+            this.tvaLabel.AutoSize = true;
+            this.tvaLabel.BackColor = System.Drawing.Color.Transparent;
+            this.tvaLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tvaLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tvaLabel.Location = new System.Drawing.Point(376, 37);
+            this.tvaLabel.Name = "tvaLabel";
+            this.tvaLabel.Size = new System.Drawing.Size(77, 17);
+            this.tvaLabel.TabIndex = 35;
+            this.tvaLabel.Text = "TVAC 21%";
+            // 
+            // priceLabel
+            // 
+            this.priceLabel.AutoSize = true;
+            this.priceLabel.BackColor = System.Drawing.Color.Transparent;
+            this.priceLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.priceLabel.Location = new System.Drawing.Point(385, 8);
+            this.priceLabel.Name = "priceLabel";
+            this.priceLabel.Size = new System.Drawing.Size(65, 30);
+            this.priceLabel.TabIndex = 34;
+            this.priceLabel.Text = "255€";
             // 
             // doorsPanel
             // 
             this.doorsPanel.Controls.Add(this.panel8);
             this.doorsPanel.Controls.Add(this.label6);
-            this.doorsPanel.Location = new System.Drawing.Point(11, 201);
+            this.doorsPanel.Location = new System.Drawing.Point(28, 231);
             this.doorsPanel.Name = "doorsPanel";
-            this.doorsPanel.Size = new System.Drawing.Size(390, 89);
+            this.doorsPanel.Size = new System.Drawing.Size(329, 72);
             this.doorsPanel.TabIndex = 33;
             // 
             // panel8
@@ -353,9 +383,9 @@
             this.panel8.Controls.Add(this.brownDoorLabel8);
             this.panel8.Controls.Add(this.glassDoorLabel9);
             this.panel8.Controls.Add(this.glassDoorButton9);
-            this.panel8.Location = new System.Drawing.Point(175, 10);
+            this.panel8.Location = new System.Drawing.Point(147, 3);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(195, 61);
+            this.panel8.Size = new System.Drawing.Size(174, 61);
             this.panel8.TabIndex = 32;
             // 
             // whiteDoorButton7
@@ -438,7 +468,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(24, 10);
+            this.label6.Location = new System.Drawing.Point(1, 3);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(124, 23);
             this.label6.TabIndex = 23;
@@ -450,9 +480,9 @@
             this.panel2.Controls.Add(this.whiteBoxLabel5);
             this.panel2.Controls.Add(this.brownBoxButton6);
             this.panel2.Controls.Add(this.brownBoxLabel6);
-            this.panel2.Location = new System.Drawing.Point(178, 75);
+            this.panel2.Location = new System.Drawing.Point(170, 97);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(126, 67);
+            this.panel2.Size = new System.Drawing.Size(105, 49);
             this.panel2.TabIndex = 31;
             // 
             // whiteBoxButton5
@@ -463,7 +493,7 @@
             this.whiteBoxButton5.FlatAppearance.BorderSize = 0;
             this.whiteBoxButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.whiteBoxButton5.ForeColor = System.Drawing.Color.White;
-            this.whiteBoxButton5.Location = new System.Drawing.Point(11, 24);
+            this.whiteBoxButton5.Location = new System.Drawing.Point(7, 3);
             this.whiteBoxButton5.Name = "whiteBoxButton5";
             this.whiteBoxButton5.Size = new System.Drawing.Size(26, 25);
             this.whiteBoxButton5.TabIndex = 11;
@@ -474,7 +504,7 @@
             this.whiteBoxLabel5.AutoSize = true;
             this.whiteBoxLabel5.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.whiteBoxLabel5.ForeColor = System.Drawing.Color.White;
-            this.whiteBoxLabel5.Location = new System.Drawing.Point(3, 52);
+            this.whiteBoxLabel5.Location = new System.Drawing.Point(-1, 31);
             this.whiteBoxLabel5.Name = "whiteBoxLabel5";
             this.whiteBoxLabel5.Size = new System.Drawing.Size(50, 19);
             this.whiteBoxLabel5.TabIndex = 34;
@@ -488,7 +518,7 @@
             this.brownBoxButton6.FlatAppearance.BorderSize = 0;
             this.brownBoxButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.brownBoxButton6.ForeColor = System.Drawing.Color.White;
-            this.brownBoxButton6.Location = new System.Drawing.Point(60, 24);
+            this.brownBoxButton6.Location = new System.Drawing.Point(62, 3);
             this.brownBoxButton6.Name = "brownBoxButton6";
             this.brownBoxButton6.Size = new System.Drawing.Size(26, 25);
             this.brownBoxButton6.TabIndex = 13;
@@ -499,7 +529,7 @@
             this.brownBoxLabel6.AutoSize = true;
             this.brownBoxLabel6.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brownBoxLabel6.ForeColor = System.Drawing.Color.White;
-            this.brownBoxLabel6.Location = new System.Drawing.Point(52, 52);
+            this.brownBoxLabel6.Location = new System.Drawing.Point(54, 31);
             this.brownBoxLabel6.Name = "brownBoxLabel6";
             this.brownBoxLabel6.Size = new System.Drawing.Size(51, 19);
             this.brownBoxLabel6.TabIndex = 36;
@@ -511,7 +541,7 @@
             this.removeBoxButton.FlatAppearance.BorderSize = 0;
             this.removeBoxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeBoxButton.ForeColor = System.Drawing.Color.White;
-            this.removeBoxButton.Location = new System.Drawing.Point(281, 297);
+            this.removeBoxButton.Location = new System.Drawing.Point(281, 319);
             this.removeBoxButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.removeBoxButton.Name = "removeBoxButton";
             this.removeBoxButton.Size = new System.Drawing.Size(149, 59);
@@ -527,20 +557,21 @@
             this.duplicateBoxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.duplicateBoxButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.duplicateBoxButton.ForeColor = System.Drawing.Color.White;
-            this.duplicateBoxButton.Location = new System.Drawing.Point(57, 297);
+            this.duplicateBoxButton.Location = new System.Drawing.Point(28, 319);
             this.duplicateBoxButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.duplicateBoxButton.Name = "duplicateBoxButton";
             this.duplicateBoxButton.Size = new System.Drawing.Size(149, 59);
             this.duplicateBoxButton.TabIndex = 9;
             this.duplicateBoxButton.Text = "Duplicate";
             this.duplicateBoxButton.UseVisualStyleBackColor = false;
+            this.duplicateBoxButton.Click += new System.EventHandler(this.duplicatBoxButton_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(71, 169);
+            this.label5.Location = new System.Drawing.Point(61, 178);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 23);
             this.label5.TabIndex = 21;
@@ -552,7 +583,7 @@
             this.checkBoxNo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxNo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.checkBoxNo.Location = new System.Drawing.Point(244, 169);
+            this.checkBoxNo.Location = new System.Drawing.Point(236, 174);
             this.checkBoxNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxNo.Name = "checkBoxNo";
             this.checkBoxNo.Size = new System.Drawing.Size(60, 27);
@@ -567,7 +598,7 @@
             this.checkBoxYes.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxYes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.checkBoxYes.Location = new System.Drawing.Point(170, 169);
+            this.checkBoxYes.Location = new System.Drawing.Point(162, 174);
             this.checkBoxYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxYes.Name = "checkBoxYes";
             this.checkBoxYes.Size = new System.Drawing.Size(66, 27);
@@ -581,7 +612,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(53, 101);
+            this.label2.Location = new System.Drawing.Point(45, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 23);
             this.label2.TabIndex = 3;
@@ -592,7 +623,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(84, 18);
+            this.label1.Location = new System.Drawing.Point(72, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 23);
             this.label1.TabIndex = 2;
@@ -602,12 +633,19 @@
             // 
             this.heightComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.heightComboBox.FormattingEnabled = true;
-            this.heightComboBox.Location = new System.Drawing.Point(175, 15);
+            this.heightComboBox.Location = new System.Drawing.Point(166, 37);
             this.heightComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.heightComboBox.Name = "heightComboBox";
-            this.heightComboBox.Size = new System.Drawing.Size(191, 31);
+            this.heightComboBox.Size = new System.Drawing.Size(155, 31);
             this.heightComboBox.TabIndex = 1;
             this.heightComboBox.SelectedIndexChanged += new System.EventHandler(this.heightComboBox_SelectedIndexChanged);
+            // 
+            // panelPrice
+            // 
+            this.panelPrice.Location = new System.Drawing.Point(371, 11);
+            this.panelPrice.Name = "panelPrice";
+            this.panelPrice.Size = new System.Drawing.Size(78, 51);
+            this.panelPrice.TabIndex = 36;
             // 
             // button11
             // 
@@ -627,7 +665,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Interface_5.Properties.Resources.cabinet_166863743_270;
-            this.pictureBox1.Location = new System.Drawing.Point(697, 185);
+            this.pictureBox1.Location = new System.Drawing.Point(683, 185);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(200, 287);
@@ -639,7 +677,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.label4.Location = new System.Drawing.Point(240, 125);
+            this.label4.Location = new System.Drawing.Point(226, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(135, 23);
             this.label4.TabIndex = 11;
@@ -651,7 +689,7 @@
             this.furnitureName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.furnitureName.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold);
             this.furnitureName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.furnitureName.Location = new System.Drawing.Point(225, 28);
+            this.furnitureName.Location = new System.Drawing.Point(225, 12);
             this.furnitureName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.furnitureName.Name = "furnitureName";
             this.furnitureName.Size = new System.Drawing.Size(309, 50);
@@ -736,5 +774,8 @@
         private System.Windows.Forms.Label brownCornerLabel4;
         internal System.Windows.Forms.Button whiteCornerButton1;
         private System.Windows.Forms.Label whiteCornerLabel1;
+        private System.Windows.Forms.Label tvaLabel;
+        private System.Windows.Forms.Label priceLabel;
+        private System.Windows.Forms.Panel panelPrice;
     }
 }
