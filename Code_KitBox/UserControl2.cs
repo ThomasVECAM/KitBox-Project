@@ -23,7 +23,6 @@ namespace Interface_5
         int startPosition = 8;
         int endPosition = 162;
         int buttonNr = 0;
-        string height = "";
 
         public static UserControl2 Instance
         {
@@ -174,16 +173,15 @@ namespace Interface_5
         }
         private void DoorCheckBox_Event(object sender, EventArgs e)
         {
-            //checkboxes false every time you change your choice and after atribute the choosed value
             checkBoxNo.Checked = false;
             checkBoxYes.Checked = false;
             var check = (CheckBox)sender;
             check.Checked = true;
-            if (checkBoxYes.Checked == true)
+            if (check.Name == "checkBoxYes")
             {
                 doorsPanel.Show();
             }
-            else
+            else if(check.Name == "checkBoxNo")
             {
                 doorsPanel.Hide();
             }
@@ -192,7 +190,9 @@ namespace Interface_5
             {
                 if (buttonNr == j)
                 {
-                    allBoxesDico["Box" + i.ToString()]["doors"] = check.Checked.ToString();
+                    Console.WriteLine("CHECKED //"+ check.Checked.ToString());
+                    Console.WriteLine("CHECKED Name //" + check.Name) ;
+                    allBoxesDico["Box" + j.ToString()]["doors"] = check.Name;
                 }
 
             }
@@ -344,8 +344,7 @@ namespace Interface_5
 
             for (int m = 1; m <= listButtons.Count; m++)
             {
-                Console.WriteLine("Box" + m.ToString());
-                Console.WriteLine("BoxColorIndex" + allBoxesDico["Box" + m.ToString()]["boxColor"]);
+                
 
 
                 
@@ -357,28 +356,34 @@ namespace Interface_5
                 if (buttonNr == m)
                 {
                     heightComboBox.Text = allBoxesDico["Box" + m.ToString()]["height"];
+                    Console.WriteLine("Box" + m.ToString());
+                    Console.WriteLine("Box" + allBoxesDico["Box" + m.ToString()]["doors"]);
 
-                    /*if (allBoxesDico["Box" + m.ToString()]["doors"] == "")
+                    if (allBoxesDico["Box" + m.ToString()]["doors"] == "")
                     {
-
+                        checkBoxNo.Checked = true;
+                        checkBoxYes.Checked = false;
+                        doorsPanel.Hide();
+                        Console.WriteLine("JE SUIS VIDE");
                     }
                     else
                     {
-                        if (allBoxesDico["Box" + m.ToString()]["doors"] == "True")
+                        if (allBoxesDico["Box" + m.ToString()]["doors"] == "checkBoxYes")
                         {
-
+                            Console.WriteLine("JE SUIS A YES");
                             doorsPanel.Show();
                             checkBoxYes.Checked = true;
                             checkBoxNo.Checked = false;
 
                         }
-                        else
+                        else if (allBoxesDico["Box" + m.ToString()]["doors"] == "checkBoxNo")
                         {
+                            Console.WriteLine("JE SUIS A NO");
                             doorsPanel.Hide();
                             checkBoxYes.Checked = false;
                             checkBoxNo.Checked = true;
                         }
-                    }*/
+                    }
                   
                     if (allBoxesDico["Box" + m.ToString()]["boxColor"] == "")
                     {
