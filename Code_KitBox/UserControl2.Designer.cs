@@ -48,19 +48,19 @@
             this.glassDoorButton9 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.brownCornerButton6 = new System.Windows.Forms.Button();
-            this.brownCornerLabel6 = new System.Windows.Forms.Label();
-            this.whiteCornerButton3 = new System.Windows.Forms.Button();
-            this.whiteCornerLabel3 = new System.Windows.Forms.Label();
-            this.blackCornerButton4 = new System.Windows.Forms.Button();
-            this.blackCornerLabel4 = new System.Windows.Forms.Label();
-            this.galvanisedCornerLabel5 = new System.Windows.Forms.Label();
-            this.galvanisedCornerButton5 = new System.Windows.Forms.Button();
+            this.brownCornerButton4 = new System.Windows.Forms.Button();
+            this.brownCornerLabel4 = new System.Windows.Forms.Label();
+            this.whiteCornerButton1 = new System.Windows.Forms.Button();
+            this.whiteCornerLabel1 = new System.Windows.Forms.Label();
+            this.blackCornerButton2 = new System.Windows.Forms.Button();
+            this.blackCornerLabel2 = new System.Windows.Forms.Label();
+            this.galvanisedCornerLabel3 = new System.Windows.Forms.Label();
+            this.galvanisedCornerButton3 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.whiteBoxButton1 = new System.Windows.Forms.Button();
-            this.whiteBoxLabel1 = new System.Windows.Forms.Label();
-            this.brownBoxButton2 = new System.Windows.Forms.Button();
-            this.brownBoxLabel2 = new System.Windows.Forms.Label();
+            this.whiteBoxButton5 = new System.Windows.Forms.Button();
+            this.whiteBoxLabel5 = new System.Windows.Forms.Label();
+            this.brownBoxButton6 = new System.Windows.Forms.Button();
+            this.brownBoxLabel6 = new System.Windows.Forms.Label();
             this.removeBoxButton = new System.Windows.Forms.Button();
             this.duplicateBoxButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -145,12 +145,14 @@
             // boxCompositionPanel
             // 
             this.boxCompositionPanel.Controls.Add(this.dimensionsLabel);
+            this.boxCompositionPanel.Controls.Add(this.panel3);
             this.boxCompositionPanel.Controls.Add(this.label7);
             this.boxCompositionPanel.Controls.Add(this.finishFurnitureButton);
             this.boxCompositionPanel.Controls.Add(this.logoPanel);
             this.boxCompositionPanel.Controls.Add(this.choicesBoxPanel);
             this.boxCompositionPanel.Controls.Add(this.button11);
             this.boxCompositionPanel.Controls.Add(this.pictureBox1);
+            this.boxCompositionPanel.Controls.Add(this.label4);
             this.boxCompositionPanel.Controls.Add(this.furnitureName);
             this.boxCompositionPanel.Controls.Add(this.boxesPannel);
             this.boxCompositionPanel.ForeColor = System.Drawing.Color.White;
@@ -202,30 +204,28 @@
             this.choicesBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(84)))), ((int)(((byte)(60)))));
             this.choicesBoxPanel.CausesValidation = false;
             this.choicesBoxPanel.Controls.Add(this.doorsPanel);
-            this.choicesBoxPanel.Controls.Add(this.panel3);
             this.choicesBoxPanel.Controls.Add(this.panel2);
             this.choicesBoxPanel.Controls.Add(this.removeBoxButton);
             this.choicesBoxPanel.Controls.Add(this.duplicateBoxButton);
             this.choicesBoxPanel.Controls.Add(this.label5);
             this.choicesBoxPanel.Controls.Add(this.checkBoxNo);
             this.choicesBoxPanel.Controls.Add(this.checkBoxYes);
-            this.choicesBoxPanel.Controls.Add(this.label4);
             this.choicesBoxPanel.Controls.Add(this.label2);
             this.choicesBoxPanel.Controls.Add(this.label1);
             this.choicesBoxPanel.Controls.Add(this.heightComboBox);
             this.choicesBoxPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.choicesBoxPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.choicesBoxPanel.Location = new System.Drawing.Point(212, 114);
+            this.choicesBoxPanel.Location = new System.Drawing.Point(216, 185);
             this.choicesBoxPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.choicesBoxPanel.Name = "choicesBoxPanel";
-            this.choicesBoxPanel.Size = new System.Drawing.Size(464, 470);
+            this.choicesBoxPanel.Size = new System.Drawing.Size(456, 370);
             this.choicesBoxPanel.TabIndex = 5;
             // 
             // doorsPanel
             // 
             this.doorsPanel.Controls.Add(this.panel8);
             this.doorsPanel.Controls.Add(this.label6);
-            this.doorsPanel.Location = new System.Drawing.Point(13, 286);
+            this.doorsPanel.Location = new System.Drawing.Point(11, 201);
             this.doorsPanel.Name = "doorsPanel";
             this.doorsPanel.Size = new System.Drawing.Size(390, 89);
             this.doorsPanel.TabIndex = 33;
@@ -331,179 +331,179 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.brownCornerButton6);
-            this.panel3.Controls.Add(this.brownCornerLabel6);
-            this.panel3.Controls.Add(this.whiteCornerButton3);
-            this.panel3.Controls.Add(this.whiteCornerLabel3);
-            this.panel3.Controls.Add(this.blackCornerButton4);
-            this.panel3.Controls.Add(this.blackCornerLabel4);
-            this.panel3.Controls.Add(this.galvanisedCornerLabel5);
-            this.panel3.Controls.Add(this.galvanisedCornerButton5);
-            this.panel3.Location = new System.Drawing.Point(172, 178);
+            this.panel3.Controls.Add(this.brownCornerButton4);
+            this.panel3.Controls.Add(this.brownCornerLabel4);
+            this.panel3.Controls.Add(this.whiteCornerButton1);
+            this.panel3.Controls.Add(this.whiteCornerLabel1);
+            this.panel3.Controls.Add(this.blackCornerButton2);
+            this.panel3.Controls.Add(this.blackCornerLabel2);
+            this.panel3.Controls.Add(this.galvanisedCornerLabel3);
+            this.panel3.Controls.Add(this.galvanisedCornerButton3);
+            this.panel3.Location = new System.Drawing.Point(403, 120);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(214, 60);
             this.panel3.TabIndex = 32;
             // 
-            // brownCornerButton6
+            // brownCornerButton4
             // 
-            this.brownCornerButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(173)))), ((int)(((byte)(127)))));
-            this.brownCornerButton6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.brownCornerButton6.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.brownCornerButton6.FlatAppearance.BorderSize = 0;
-            this.brownCornerButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.brownCornerButton6.ForeColor = System.Drawing.Color.White;
-            this.brownCornerButton6.Location = new System.Drawing.Point(178, 3);
-            this.brownCornerButton6.Name = "brownCornerButton6";
-            this.brownCornerButton6.Size = new System.Drawing.Size(26, 25);
-            this.brownCornerButton6.TabIndex = 37;
-            this.brownCornerButton6.UseVisualStyleBackColor = false;
+            this.brownCornerButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(173)))), ((int)(((byte)(127)))));
+            this.brownCornerButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.brownCornerButton4.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.brownCornerButton4.FlatAppearance.BorderSize = 0;
+            this.brownCornerButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brownCornerButton4.ForeColor = System.Drawing.Color.White;
+            this.brownCornerButton4.Location = new System.Drawing.Point(178, 3);
+            this.brownCornerButton4.Name = "brownCornerButton4";
+            this.brownCornerButton4.Size = new System.Drawing.Size(26, 25);
+            this.brownCornerButton4.TabIndex = 37;
+            this.brownCornerButton4.UseVisualStyleBackColor = false;
             // 
-            // brownCornerLabel6
+            // brownCornerLabel4
             // 
-            this.brownCornerLabel6.AutoSize = true;
-            this.brownCornerLabel6.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brownCornerLabel6.ForeColor = System.Drawing.Color.White;
-            this.brownCornerLabel6.Location = new System.Drawing.Point(167, 31);
-            this.brownCornerLabel6.Name = "brownCornerLabel6";
-            this.brownCornerLabel6.Size = new System.Drawing.Size(51, 19);
-            this.brownCornerLabel6.TabIndex = 38;
-            this.brownCornerLabel6.Text = "Brown";
+            this.brownCornerLabel4.AutoSize = true;
+            this.brownCornerLabel4.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brownCornerLabel4.ForeColor = System.Drawing.Color.White;
+            this.brownCornerLabel4.Location = new System.Drawing.Point(167, 31);
+            this.brownCornerLabel4.Name = "brownCornerLabel4";
+            this.brownCornerLabel4.Size = new System.Drawing.Size(51, 19);
+            this.brownCornerLabel4.TabIndex = 38;
+            this.brownCornerLabel4.Text = "Brown";
             // 
-            // whiteCornerButton3
+            // whiteCornerButton1
             // 
-            this.whiteCornerButton3.BackColor = System.Drawing.Color.White;
-            this.whiteCornerButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.whiteCornerButton3.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.whiteCornerButton3.FlatAppearance.BorderSize = 0;
-            this.whiteCornerButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.whiteCornerButton3.ForeColor = System.Drawing.Color.White;
-            this.whiteCornerButton3.Location = new System.Drawing.Point(19, 3);
-            this.whiteCornerButton3.Name = "whiteCornerButton3";
-            this.whiteCornerButton3.Size = new System.Drawing.Size(26, 25);
-            this.whiteCornerButton3.TabIndex = 37;
-            this.whiteCornerButton3.UseVisualStyleBackColor = false;
+            this.whiteCornerButton1.BackColor = System.Drawing.Color.White;
+            this.whiteCornerButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.whiteCornerButton1.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.whiteCornerButton1.FlatAppearance.BorderSize = 0;
+            this.whiteCornerButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.whiteCornerButton1.ForeColor = System.Drawing.Color.White;
+            this.whiteCornerButton1.Location = new System.Drawing.Point(19, 3);
+            this.whiteCornerButton1.Name = "whiteCornerButton1";
+            this.whiteCornerButton1.Size = new System.Drawing.Size(26, 25);
+            this.whiteCornerButton1.TabIndex = 37;
+            this.whiteCornerButton1.UseVisualStyleBackColor = false;
             // 
-            // whiteCornerLabel3
+            // whiteCornerLabel1
             // 
-            this.whiteCornerLabel3.AutoSize = true;
-            this.whiteCornerLabel3.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.whiteCornerLabel3.ForeColor = System.Drawing.Color.White;
-            this.whiteCornerLabel3.Location = new System.Drawing.Point(11, 31);
-            this.whiteCornerLabel3.Name = "whiteCornerLabel3";
-            this.whiteCornerLabel3.Size = new System.Drawing.Size(50, 19);
-            this.whiteCornerLabel3.TabIndex = 38;
-            this.whiteCornerLabel3.Text = "White";
+            this.whiteCornerLabel1.AutoSize = true;
+            this.whiteCornerLabel1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.whiteCornerLabel1.ForeColor = System.Drawing.Color.White;
+            this.whiteCornerLabel1.Location = new System.Drawing.Point(11, 31);
+            this.whiteCornerLabel1.Name = "whiteCornerLabel1";
+            this.whiteCornerLabel1.Size = new System.Drawing.Size(50, 19);
+            this.whiteCornerLabel1.TabIndex = 38;
+            this.whiteCornerLabel1.Text = "White";
             // 
-            // blackCornerButton4
+            // blackCornerButton2
             // 
-            this.blackCornerButton4.BackColor = System.Drawing.Color.Black;
-            this.blackCornerButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.blackCornerButton4.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.blackCornerButton4.FlatAppearance.BorderSize = 0;
-            this.blackCornerButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.blackCornerButton4.ForeColor = System.Drawing.Color.White;
-            this.blackCornerButton4.Location = new System.Drawing.Point(68, 3);
-            this.blackCornerButton4.Name = "blackCornerButton4";
-            this.blackCornerButton4.Size = new System.Drawing.Size(26, 25);
-            this.blackCornerButton4.TabIndex = 12;
-            this.blackCornerButton4.UseVisualStyleBackColor = false;
+            this.blackCornerButton2.BackColor = System.Drawing.Color.Black;
+            this.blackCornerButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.blackCornerButton2.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.blackCornerButton2.FlatAppearance.BorderSize = 0;
+            this.blackCornerButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.blackCornerButton2.ForeColor = System.Drawing.Color.White;
+            this.blackCornerButton2.Location = new System.Drawing.Point(68, 3);
+            this.blackCornerButton2.Name = "blackCornerButton2";
+            this.blackCornerButton2.Size = new System.Drawing.Size(26, 25);
+            this.blackCornerButton2.TabIndex = 12;
+            this.blackCornerButton2.UseVisualStyleBackColor = false;
             // 
-            // blackCornerLabel4
+            // blackCornerLabel2
             // 
-            this.blackCornerLabel4.AutoSize = true;
-            this.blackCornerLabel4.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blackCornerLabel4.ForeColor = System.Drawing.Color.White;
-            this.blackCornerLabel4.Location = new System.Drawing.Point(60, 31);
-            this.blackCornerLabel4.Name = "blackCornerLabel4";
-            this.blackCornerLabel4.Size = new System.Drawing.Size(46, 19);
-            this.blackCornerLabel4.TabIndex = 35;
-            this.blackCornerLabel4.Text = "Black";
+            this.blackCornerLabel2.AutoSize = true;
+            this.blackCornerLabel2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.blackCornerLabel2.ForeColor = System.Drawing.Color.White;
+            this.blackCornerLabel2.Location = new System.Drawing.Point(60, 31);
+            this.blackCornerLabel2.Name = "blackCornerLabel2";
+            this.blackCornerLabel2.Size = new System.Drawing.Size(46, 19);
+            this.blackCornerLabel2.TabIndex = 35;
+            this.blackCornerLabel2.Text = "Black";
             // 
-            // galvanisedCornerLabel5
+            // galvanisedCornerLabel3
             // 
-            this.galvanisedCornerLabel5.AutoSize = true;
-            this.galvanisedCornerLabel5.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.galvanisedCornerLabel5.ForeColor = System.Drawing.Color.White;
-            this.galvanisedCornerLabel5.Location = new System.Drawing.Point(98, 31);
-            this.galvanisedCornerLabel5.Name = "galvanisedCornerLabel5";
-            this.galvanisedCornerLabel5.Size = new System.Drawing.Size(88, 19);
-            this.galvanisedCornerLabel5.TabIndex = 37;
-            this.galvanisedCornerLabel5.Text = "Galvanised";
+            this.galvanisedCornerLabel3.AutoSize = true;
+            this.galvanisedCornerLabel3.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.galvanisedCornerLabel3.ForeColor = System.Drawing.Color.White;
+            this.galvanisedCornerLabel3.Location = new System.Drawing.Point(98, 31);
+            this.galvanisedCornerLabel3.Name = "galvanisedCornerLabel3";
+            this.galvanisedCornerLabel3.Size = new System.Drawing.Size(88, 19);
+            this.galvanisedCornerLabel3.TabIndex = 37;
+            this.galvanisedCornerLabel3.Text = "Galvanised";
             // 
-            // galvanisedCornerButton5
+            // galvanisedCornerButton3
             // 
-            this.galvanisedCornerButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(189)))), ((int)(((byte)(198)))));
-            this.galvanisedCornerButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.galvanisedCornerButton5.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.galvanisedCornerButton5.FlatAppearance.BorderSize = 0;
-            this.galvanisedCornerButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.galvanisedCornerButton5.ForeColor = System.Drawing.Color.White;
-            this.galvanisedCornerButton5.Location = new System.Drawing.Point(123, 3);
-            this.galvanisedCornerButton5.Name = "galvanisedCornerButton5";
-            this.galvanisedCornerButton5.Size = new System.Drawing.Size(26, 25);
-            this.galvanisedCornerButton5.TabIndex = 14;
-            this.galvanisedCornerButton5.UseVisualStyleBackColor = false;
+            this.galvanisedCornerButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(189)))), ((int)(((byte)(198)))));
+            this.galvanisedCornerButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.galvanisedCornerButton3.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.galvanisedCornerButton3.FlatAppearance.BorderSize = 0;
+            this.galvanisedCornerButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.galvanisedCornerButton3.ForeColor = System.Drawing.Color.White;
+            this.galvanisedCornerButton3.Location = new System.Drawing.Point(123, 3);
+            this.galvanisedCornerButton3.Name = "galvanisedCornerButton3";
+            this.galvanisedCornerButton3.Size = new System.Drawing.Size(26, 25);
+            this.galvanisedCornerButton3.TabIndex = 14;
+            this.galvanisedCornerButton3.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.whiteBoxButton1);
-            this.panel2.Controls.Add(this.whiteBoxLabel1);
-            this.panel2.Controls.Add(this.brownBoxButton2);
-            this.panel2.Controls.Add(this.brownBoxLabel2);
-            this.panel2.Location = new System.Drawing.Point(180, 94);
+            this.panel2.Controls.Add(this.whiteBoxButton5);
+            this.panel2.Controls.Add(this.whiteBoxLabel5);
+            this.panel2.Controls.Add(this.brownBoxButton6);
+            this.panel2.Controls.Add(this.brownBoxLabel6);
+            this.panel2.Location = new System.Drawing.Point(178, 75);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(126, 67);
             this.panel2.TabIndex = 31;
             // 
-            // whiteBoxButton1
+            // whiteBoxButton5
             // 
-            this.whiteBoxButton1.BackColor = System.Drawing.Color.White;
-            this.whiteBoxButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.whiteBoxButton1.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.whiteBoxButton1.FlatAppearance.BorderSize = 0;
-            this.whiteBoxButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.whiteBoxButton1.ForeColor = System.Drawing.Color.White;
-            this.whiteBoxButton1.Location = new System.Drawing.Point(11, 24);
-            this.whiteBoxButton1.Name = "whiteBoxButton1";
-            this.whiteBoxButton1.Size = new System.Drawing.Size(26, 25);
-            this.whiteBoxButton1.TabIndex = 11;
-            this.whiteBoxButton1.UseVisualStyleBackColor = false;
+            this.whiteBoxButton5.BackColor = System.Drawing.Color.White;
+            this.whiteBoxButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.whiteBoxButton5.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.whiteBoxButton5.FlatAppearance.BorderSize = 0;
+            this.whiteBoxButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.whiteBoxButton5.ForeColor = System.Drawing.Color.White;
+            this.whiteBoxButton5.Location = new System.Drawing.Point(11, 24);
+            this.whiteBoxButton5.Name = "whiteBoxButton5";
+            this.whiteBoxButton5.Size = new System.Drawing.Size(26, 25);
+            this.whiteBoxButton5.TabIndex = 11;
+            this.whiteBoxButton5.UseVisualStyleBackColor = false;
             // 
-            // whiteBoxLabel1
+            // whiteBoxLabel5
             // 
-            this.whiteBoxLabel1.AutoSize = true;
-            this.whiteBoxLabel1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.whiteBoxLabel1.ForeColor = System.Drawing.Color.White;
-            this.whiteBoxLabel1.Location = new System.Drawing.Point(3, 52);
-            this.whiteBoxLabel1.Name = "whiteBoxLabel1";
-            this.whiteBoxLabel1.Size = new System.Drawing.Size(50, 19);
-            this.whiteBoxLabel1.TabIndex = 34;
-            this.whiteBoxLabel1.Text = "White";
+            this.whiteBoxLabel5.AutoSize = true;
+            this.whiteBoxLabel5.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.whiteBoxLabel5.ForeColor = System.Drawing.Color.White;
+            this.whiteBoxLabel5.Location = new System.Drawing.Point(3, 52);
+            this.whiteBoxLabel5.Name = "whiteBoxLabel5";
+            this.whiteBoxLabel5.Size = new System.Drawing.Size(50, 19);
+            this.whiteBoxLabel5.TabIndex = 34;
+            this.whiteBoxLabel5.Text = "White";
             // 
-            // brownBoxButton2
+            // brownBoxButton6
             // 
-            this.brownBoxButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(173)))), ((int)(((byte)(127)))));
-            this.brownBoxButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.brownBoxButton2.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.brownBoxButton2.FlatAppearance.BorderSize = 0;
-            this.brownBoxButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.brownBoxButton2.ForeColor = System.Drawing.Color.White;
-            this.brownBoxButton2.Location = new System.Drawing.Point(60, 24);
-            this.brownBoxButton2.Name = "brownBoxButton2";
-            this.brownBoxButton2.Size = new System.Drawing.Size(26, 25);
-            this.brownBoxButton2.TabIndex = 13;
-            this.brownBoxButton2.UseVisualStyleBackColor = false;
+            this.brownBoxButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(173)))), ((int)(((byte)(127)))));
+            this.brownBoxButton6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.brownBoxButton6.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.brownBoxButton6.FlatAppearance.BorderSize = 0;
+            this.brownBoxButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brownBoxButton6.ForeColor = System.Drawing.Color.White;
+            this.brownBoxButton6.Location = new System.Drawing.Point(60, 24);
+            this.brownBoxButton6.Name = "brownBoxButton6";
+            this.brownBoxButton6.Size = new System.Drawing.Size(26, 25);
+            this.brownBoxButton6.TabIndex = 13;
+            this.brownBoxButton6.UseVisualStyleBackColor = false;
             // 
-            // brownBoxLabel2
+            // brownBoxLabel6
             // 
-            this.brownBoxLabel2.AutoSize = true;
-            this.brownBoxLabel2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brownBoxLabel2.ForeColor = System.Drawing.Color.White;
-            this.brownBoxLabel2.Location = new System.Drawing.Point(52, 52);
-            this.brownBoxLabel2.Name = "brownBoxLabel2";
-            this.brownBoxLabel2.Size = new System.Drawing.Size(51, 19);
-            this.brownBoxLabel2.TabIndex = 36;
-            this.brownBoxLabel2.Text = "Brown";
+            this.brownBoxLabel6.AutoSize = true;
+            this.brownBoxLabel6.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brownBoxLabel6.ForeColor = System.Drawing.Color.White;
+            this.brownBoxLabel6.Location = new System.Drawing.Point(52, 52);
+            this.brownBoxLabel6.Name = "brownBoxLabel6";
+            this.brownBoxLabel6.Size = new System.Drawing.Size(51, 19);
+            this.brownBoxLabel6.TabIndex = 36;
+            this.brownBoxLabel6.Text = "Brown";
             // 
             // removeBoxButton
             // 
@@ -511,7 +511,7 @@
             this.removeBoxButton.FlatAppearance.BorderSize = 0;
             this.removeBoxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeBoxButton.ForeColor = System.Drawing.Color.White;
-            this.removeBoxButton.Location = new System.Drawing.Point(283, 382);
+            this.removeBoxButton.Location = new System.Drawing.Point(281, 297);
             this.removeBoxButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.removeBoxButton.Name = "removeBoxButton";
             this.removeBoxButton.Size = new System.Drawing.Size(149, 59);
@@ -527,7 +527,7 @@
             this.duplicateBoxButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.duplicateBoxButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.duplicateBoxButton.ForeColor = System.Drawing.Color.White;
-            this.duplicateBoxButton.Location = new System.Drawing.Point(59, 382);
+            this.duplicateBoxButton.Location = new System.Drawing.Point(57, 297);
             this.duplicateBoxButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.duplicateBoxButton.Name = "duplicateBoxButton";
             this.duplicateBoxButton.Size = new System.Drawing.Size(149, 59);
@@ -540,7 +540,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(73, 254);
+            this.label5.Location = new System.Drawing.Point(71, 169);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 23);
             this.label5.TabIndex = 21;
@@ -552,7 +552,7 @@
             this.checkBoxNo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxNo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.checkBoxNo.Location = new System.Drawing.Point(246, 254);
+            this.checkBoxNo.Location = new System.Drawing.Point(244, 169);
             this.checkBoxNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxNo.Name = "checkBoxNo";
             this.checkBoxNo.Size = new System.Drawing.Size(60, 27);
@@ -560,7 +560,6 @@
             this.checkBoxNo.Text = "No";
             this.checkBoxNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxNo.UseVisualStyleBackColor = true;
-            this.checkBoxNo.CheckedChanged += new System.EventHandler(this.CheckBoxNo_CheckedChanged);
             // 
             // checkBoxYes
             // 
@@ -568,7 +567,7 @@
             this.checkBoxYes.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxYes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.checkBoxYes.Location = new System.Drawing.Point(172, 254);
+            this.checkBoxYes.Location = new System.Drawing.Point(170, 169);
             this.checkBoxYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxYes.Name = "checkBoxYes";
             this.checkBoxYes.Size = new System.Drawing.Size(66, 27);
@@ -576,14 +575,13 @@
             this.checkBoxYes.Text = "Yes";
             this.checkBoxYes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxYes.UseVisualStyleBackColor = true;
-            this.checkBoxYes.CheckedChanged += new System.EventHandler(this.CheckBoxYes_CheckedChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(32, 198);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.label4.Location = new System.Drawing.Point(240, 125);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(135, 23);
             this.label4.TabIndex = 11;
@@ -594,7 +592,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(55, 120);
+            this.label2.Location = new System.Drawing.Point(53, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 23);
             this.label2.TabIndex = 3;
@@ -605,7 +603,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(86, 37);
+            this.label1.Location = new System.Drawing.Point(84, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 23);
             this.label1.TabIndex = 2;
@@ -615,7 +613,7 @@
             // 
             this.heightComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.heightComboBox.FormattingEnabled = true;
-            this.heightComboBox.Location = new System.Drawing.Point(177, 34);
+            this.heightComboBox.Location = new System.Drawing.Point(175, 15);
             this.heightComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.heightComboBox.Name = "heightComboBox";
             this.heightComboBox.Size = new System.Drawing.Size(191, 31);
@@ -712,10 +710,10 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         internal System.Windows.Forms.Button glassDoorButton9;
-        internal System.Windows.Forms.Button galvanisedCornerButton5;
-        internal System.Windows.Forms.Button brownBoxButton2;
-        internal System.Windows.Forms.Button blackCornerButton4;
-        internal System.Windows.Forms.Button whiteBoxButton1;
+        internal System.Windows.Forms.Button galvanisedCornerButton3;
+        internal System.Windows.Forms.Button brownBoxButton6;
+        internal System.Windows.Forms.Button blackCornerButton2;
+        internal System.Windows.Forms.Button whiteBoxButton5;
         private System.Windows.Forms.Button removeBoxButton;
         private System.Windows.Forms.Button duplicateBoxButton;
         private System.Windows.Forms.Label label5;
@@ -726,17 +724,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox heightComboBox;
         private System.Windows.Forms.Label glassDoorLabel9;
-        private System.Windows.Forms.Label galvanisedCornerLabel5;
-        private System.Windows.Forms.Label brownBoxLabel2;
-        private System.Windows.Forms.Label blackCornerLabel4;
-        private System.Windows.Forms.Label whiteBoxLabel1;
+        private System.Windows.Forms.Label galvanisedCornerLabel3;
+        private System.Windows.Forms.Label brownBoxLabel6;
+        private System.Windows.Forms.Label blackCornerLabel2;
+        private System.Windows.Forms.Label whiteBoxLabel5;
         internal System.Windows.Forms.Button whiteDoorButton7;
         private System.Windows.Forms.Label whiteDoorLabel7;
         internal System.Windows.Forms.Button brownDoorButton8;
         private System.Windows.Forms.Label brownDoorLabel8;
-        internal System.Windows.Forms.Button brownCornerButton6;
-        private System.Windows.Forms.Label brownCornerLabel6;
-        internal System.Windows.Forms.Button whiteCornerButton3;
-        private System.Windows.Forms.Label whiteCornerLabel3;
+        internal System.Windows.Forms.Button brownCornerButton4;
+        private System.Windows.Forms.Label brownCornerLabel4;
+        internal System.Windows.Forms.Button whiteCornerButton1;
+        private System.Windows.Forms.Label whiteCornerLabel1;
     }
 }

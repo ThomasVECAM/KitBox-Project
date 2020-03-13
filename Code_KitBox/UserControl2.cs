@@ -18,6 +18,7 @@ namespace Interface_5
         List<Button> listButtons = new List<Button>();//list of Boxes Buttons
         List<Button> colorButtons = new List<Button>();
         List<Label> colorLabels = new List<Label>();
+        string cornerColorChoosed = "";
         int i = 1;
         int startPosition = 8;
         int endPosition = 162;
@@ -55,22 +56,24 @@ namespace Interface_5
             allBoxesDico.Add("Box1", Ddefault);
 
 
-            //Box Colors labels and buttons
-            colorButtons.Add(whiteBoxButton1);
-            colorButtons.Add(brownBoxButton2);
-
-            colorLabels.Add(whiteBoxLabel1);
-            colorLabels.Add(brownBoxLabel2);
             //Cornel Colors labels and buttons
-            colorButtons.Add(whiteCornerButton3);
-            colorButtons.Add(blackCornerButton4);
-            colorButtons.Add(galvanisedCornerButton5);
-            colorButtons.Add(brownCornerButton6);
+            colorButtons.Add(whiteCornerButton1);
+            colorButtons.Add(blackCornerButton2);
+            colorButtons.Add(galvanisedCornerButton3);
+            colorButtons.Add(brownCornerButton4);
 
-            colorLabels.Add(whiteCornerLabel3);
-            colorLabels.Add(blackCornerLabel4);
-            colorLabels.Add(galvanisedCornerLabel5);
-            colorLabels.Add(brownCornerLabel6);
+            colorLabels.Add(whiteCornerLabel1);
+            colorLabels.Add(blackCornerLabel2);
+            colorLabels.Add(galvanisedCornerLabel3);
+            colorLabels.Add(brownCornerLabel4);
+
+            //Box Colors labels and buttons
+            colorButtons.Add(whiteBoxButton5);
+            colorButtons.Add(brownBoxButton6);
+
+            colorLabels.Add(whiteBoxLabel5);
+            colorLabels.Add(brownBoxLabel6);
+           
             //Doors Colors labels and buttons
             colorButtons.Add(whiteDoorButton7);
             colorButtons.Add(brownDoorButton8);
@@ -90,27 +93,30 @@ namespace Interface_5
             {
                 b.MouseEnter += MouseEnter_Event;
                 b.MouseLeave += MouseLeave_Event;
-            }
-            //Boutons event attribute when clicked
-            for(int i =0; i < colorButtons.Count; i++)
+            }  
+            //Boutons event attribute when clicked ( box and doors buttons)
+            for (int i =0; i < colorButtons.Count; i++)
             {
-                if (i <=1)
-                {
-                    colorButtons[i].MouseClick += BoxColor_Event;
-                }
-                else if (i>1 && i<=5)
+                if (i <=3)
                 {
                     colorButtons[i].MouseClick += CornerColor_Event;
                 }
-                else if (i > 5)
+                else if(i>3 && i<=5)
+                {
+                    colorButtons[i].MouseClick += BoxColor_Event;
+                }
+                else
                 {
                     colorButtons[i].MouseClick += DoorColor_Event;
                 }
 
             }
-            //Checkbox 
-            checkBoxYes.Checked = false;
-            checkBoxNo.Checked = false;
+            
+          
+            
+            //Checkbox Event attribute when mouseClick
+            checkBoxNo.MouseClick += DoorCheckBox_Event;
+            checkBoxYes.MouseClick += DoorCheckBox_Event;
             doorsPanel.Hide(); // hide the door pannel by default
 
             //Integer height data in ComboBox
@@ -125,7 +131,7 @@ namespace Interface_5
         {
            
             // take the buttons in the list coresponding to boxColor cliked buttons and create a BorderSize 
-            for(int i = 0; i <= 1; i++)
+            for(int i =4; i <= 5; i++)
             {
                 colorButtons[i].FlatAppearance.BorderSize = 0;
             }
@@ -147,7 +153,7 @@ namespace Interface_5
         private void CornerColor_Event(object sender, EventArgs e)
         {
             // take the buttons in the list coresponding to CornerColor cliked buttons and create a BorderSize 
-            for (int i = 2; i <=5; i++)
+            for (int i =0; i<=3; i++)
             {
                 colorButtons[i].FlatAppearance.BorderSize = 0;
             }
@@ -156,61 +162,47 @@ namespace Interface_5
 
             for (int j = 1; j <= listButtons.Count; j++)
             {
-             
+
                 if (buttonNr == j)
                 {
-                    allBoxesDico["Box" + j.ToString()]["cornerColor"] = colorButtons.IndexOf(btnColor).ToString();
- 
+                    cornerColorChoosed = colorButtons.IndexOf(btnColor).ToString();
+
                 }
 
             }
 
         }
-       
-
-        private void CheckBoxYes_CheckedChanged(object sender, EventArgs e)
+        private void DoorCheckBox_Event(object sender, EventArgs e)
         {
+            //checkboxes false every time you change your choice and after atribute the choosed value
+            checkBoxNo.Checked = false;
+            checkBoxYes.Checked = false;
+            var check = (CheckBox)sender;
+            check.Checked = true;
             if (checkBoxYes.Checked == true)
             {
-                checkBoxYes.Checked = false;
+                doorsPanel.Show();
             }
-     
+            else
+            {
+                doorsPanel.Hide();
+            }
 
-            doorsPanel.Show();
             for (int j = 1; j <= listButtons.Count; j++)
             {
                 if (buttonNr == j)
                 {
-                    allBoxesDico["Box" + j.ToString()]["doors"] = checkBoxYes.Checked.ToString();
+                    allBoxesDico["Box" + i.ToString()]["doors"] = check.Checked.ToString();
                 }
-                Console.WriteLine("Box" + j.ToString());
-                Console.WriteLine(allBoxesDico["Box" + j.ToString()]["doors"]);
+
             }
         }
 
-        private void CheckBoxNo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxNo.Checked == true)
-            {
-                checkBoxNo.Checked = false;
-            }
-         
-            doorsPanel.Hide();
-                for (int j = 1; j <= listButtons.Count; j++)
-                {
-                    if (buttonNr == j)
-                    {
-                        allBoxesDico["Box" + j.ToString()]["doors"] = checkBoxNo.Checked.ToString();
-                    }
-                Console.WriteLine("Box" + j.ToString());
-                Console.WriteLine(allBoxesDico["Box" + j.ToString()]["doors"]);
 
-            }
-          }
         private void DoorColor_Event(object sender, EventArgs e)
         {
             // take the buttons in the list coresponding to DoorColor cliked buttons and create a BorderSize 
-            for (int i = 6; i <= 8; i++)
+            for (int i=6; i <= colorButtons.Count-1; i++)
             {
                 colorButtons[i].FlatAppearance.BorderSize = 0;
             }
@@ -319,7 +311,7 @@ namespace Interface_5
 
         void Button_Click_Event(object sender, EventArgs e)
         {
-
+              
       
             //Take the button object 
             Button btnClicked = sender as Button;
@@ -347,52 +339,26 @@ namespace Interface_5
                 choicesBoxPanel.Show();
             }
 
-            int indexB = 0;
-            int indexC = 0;
-            int indexD = 0;
+            int indexB=15 ;
+            int indexD =15;
 
             for (int m = 1; m <= listButtons.Count; m++)
             {
-                /*Console.WriteLine("Box" + m.ToString());
-                Console.WriteLine(allBoxesDico["Box" + m.ToString()]["cornerColor"]);
-                Console.WriteLine(allBoxesDico["Box" + m.ToString()]["boxColor"]);*/
+                Console.WriteLine("Box" + m.ToString());
+                Console.WriteLine("BoxColorIndex" + allBoxesDico["Box" + m.ToString()]["boxColor"]);
 
-
-                if (allBoxesDico["Box" + m.ToString()]["cornerColor"] == "")
-                {
-                    
-                }
-                else
-                {
-                    indexC= int.Parse(allBoxesDico["Box" + m.ToString()]["cornerColor"]);
-
-                }
-                if (allBoxesDico["Box" + m.ToString()]["boxColor"] == "")
-                {
-
-                }
-                else
-                {
-                    indexB = int.Parse(allBoxesDico["Box" + m.ToString()]["boxColor"]);
-
-                }
-                if (allBoxesDico["Box" + m.ToString()]["doorsColor"] == "")
-                {
-
-                }
-                else
-                {
-                    indexD = int.Parse(allBoxesDico["Box" + m.ToString()]["doorsColor"]);
-
-                }
 
                 
+
+
+
+              
 
                 if (buttonNr == m)
                 {
                     heightComboBox.Text = allBoxesDico["Box" + m.ToString()]["height"];
 
-                    if(allBoxesDico["Box" + m.ToString()]["doors"] == "")
+                    /*if (allBoxesDico["Box" + m.ToString()]["doors"] == "")
                     {
 
                     }
@@ -412,44 +378,70 @@ namespace Interface_5
                             checkBoxYes.Checked = false;
                             checkBoxNo.Checked = true;
                         }
+                    }*/
+                  
+                    if (allBoxesDico["Box" + m.ToString()]["boxColor"] == "")
+                    {
+                       
                     }
-                    
+                    else
+                    {
+                        indexB = int.Parse(allBoxesDico["Box" + m.ToString()]["boxColor"]);
 
-                    for (int u = 0; u <= 1; u++)
+                    }
+                    if (allBoxesDico["Box" + m.ToString()]["doorsColor"] == "")
+                    {
+                   
+                    }
+                    else
+                    {
+                        indexD = int.Parse(allBoxesDico["Box" + m.ToString()]["doorsColor"]);
+
+                    }
+
+                    for (int u = 4; u <= 5; u++) 
                     {
                         if (u != indexB)
                         {
                             colorButtons[u].FlatAppearance.BorderSize = 0;
                         }
-                    }
-                    for (int u = 2; u <= 5; u++)
-                    {
-                        if (u != indexC)
+                        else
                         {
-                            colorButtons[u].FlatAppearance.BorderSize = 0;
+                            colorButtons[indexB].FlatAppearance.BorderSize = 5;
                         }
+
                     }
-                    for (int u = 6; u <= 8; u++)
+                   
+                    for (int u = 6; u <=colorButtons.Count-1; u++)
                     {
                         if (u != indexD)
                         {
                             colorButtons[u].FlatAppearance.BorderSize = 0;
+                           
+                        }
+                        else
+                        {
+                            colorButtons[indexD].FlatAppearance.BorderSize = 5;
                         }
                     }
-                    colorButtons[indexC].FlatAppearance.BorderSize = 5;
-                    colorButtons[indexB].FlatAppearance.BorderSize = 5;
-                    colorButtons[indexD].FlatAppearance.BorderSize = 5;
+                    
+                  
+                  
+                   
+                   
                 }
-               
-               
                 
+
+
+
+
             }
 
 
        
 
         }
-
+        //int r = buttonNr;
         private void RemoveBoxButton_Click(object sender, EventArgs e)
         {
 
@@ -479,7 +471,10 @@ namespace Interface_5
 
                     count++;
                 }
-                sideBarPanel.Top = listButtons[listButtons.Count - 1].Top;
+                
+                sideBarPanel.Top = listButtons[listButtons.Count-1].Top;
+                
+                
                 buttonNr = count;
           
 
@@ -510,7 +505,6 @@ namespace Interface_5
 
             D.Add("height", "");
             D.Add("boxColor", "");
-            D.Add("cornerColor","");
             D.Add("doors", "");
             D.Add("doorsColor", "");
 
