@@ -25,7 +25,7 @@ namespace KitBox_Console
         {
             get { return this.price; }
         }
-        public void WriteFacture(string path)
+        /*public void WriteFacture(string path)
         {
             using (StreamWriter sw = File.AppendText(path))
             {
@@ -35,6 +35,6 @@ namespace KitBox_Console
         public string GetName
         {
             get { return this.name; }
-        }
+        }*/
     }
 }
