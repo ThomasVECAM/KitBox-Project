@@ -17,9 +17,9 @@ namespace Interface_5
             this.furnitureList = new List<Furniture>();
         }
 
-        public void AddFurniture(Furniture furniture)
+        public void AddFurniture(int width,int depth)
         {
-            furnitureList.Add(furniture);
+            furnitureList.Add(new Furniture(width, depth));
         }
 
         public void RemoveFurniture(Furniture furniture)
@@ -49,5 +49,9 @@ namespace Interface_5
 
             }
         }
+        public List<Furniture> GetFurnitureList
+        {
+            get { return this.furnitureList; }
+        }       
     }
 }

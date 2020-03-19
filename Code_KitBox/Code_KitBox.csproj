@@ -60,6 +60,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Furniture.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Panel.cs" />
     <Compile Include="Program.cs" />

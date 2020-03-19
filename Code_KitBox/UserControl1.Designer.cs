@@ -56,7 +56,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(267, 138);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 49);
+            this.label2.Size = new System.Drawing.Size(138, 39);
             this.label2.TabIndex = 1;
             this.label2.Text = "x Depth";
             // 
@@ -107,7 +107,7 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(0, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 67);
+            this.label4.Size = new System.Drawing.Size(160, 55);
             this.label4.TabIndex = 8;
             this.label4.Text = "KitBox";
             // 
@@ -118,7 +118,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(139, 138);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 49);
+            this.label1.Size = new System.Drawing.Size(106, 39);
             this.label1.TabIndex = 0;
             this.label1.Text = "Width";
             // 
@@ -148,6 +148,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(306, 354);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // sizePanel
             // 
@@ -175,7 +176,7 @@
             this.depthLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.depthLabel.Location = new System.Drawing.Point(790, 138);
             this.depthLabel.Name = "depthLabel";
-            this.depthLabel.Size = new System.Drawing.Size(0, 21);
+            this.depthLabel.Size = new System.Drawing.Size(0, 19);
             this.depthLabel.TabIndex = 20;
             // 
             // widthLabel
@@ -186,18 +187,20 @@
             this.widthLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.widthLabel.Location = new System.Drawing.Point(651, 138);
             this.widthLabel.Name = "widthLabel";
-            this.widthLabel.Size = new System.Drawing.Size(0, 21);
+            this.widthLabel.Size = new System.Drawing.Size(0, 19);
             this.widthLabel.TabIndex = 19;
-           
             // 
             // widthDepthComboBox
             // 
+            this.widthDepthComboBox.DropDownHeight = 160;
             this.widthDepthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.widthDepthComboBox.Font = new System.Drawing.Font("Century Gothic", 24F);
             this.widthDepthComboBox.FormattingEnabled = true;
+            this.widthDepthComboBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.widthDepthComboBox.IntegralHeight = false;
             this.widthDepthComboBox.Location = new System.Drawing.Point(116, 256);
             this.widthDepthComboBox.Name = "widthDepthComboBox";
-            this.widthDepthComboBox.Size = new System.Drawing.Size(335, 57);
+            this.widthDepthComboBox.Size = new System.Drawing.Size(335, 47);
             this.widthDepthComboBox.Sorted = true;
             this.widthDepthComboBox.TabIndex = 18;
             this.widthDepthComboBox.SelectedIndexChanged += new System.EventHandler(this.WidthDepthComboBox_SelectedIndexChanged);

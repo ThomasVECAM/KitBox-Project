@@ -24,9 +24,9 @@ namespace Interface_5
             this.cornerList = new List<Corner>();
         }
 
-        public void AddBox(Box box)
+        public void AddBox(int id)
         {
-            boxList.Add(box);
+            boxList.Add(new Box(width, depth,id));
         }
         public void Remove(Box box)
         {
@@ -73,6 +73,10 @@ namespace Interface_5
             {
                 box.WriteFacture(path);
             }
+        }
+        public int GetBoxListLength()
+        {
+            return boxList.Count;
         }
     }
 }

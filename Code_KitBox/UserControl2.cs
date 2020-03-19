@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Interface_5
 {
@@ -40,13 +41,7 @@ namespace Interface_5
         public UserControl2()
         {
             InitializeComponent();
-
-            //Create the first Box Button by default 
-            Button Bdefault = new Button();
-            Bdefault = addButtonFunction(0, 8, 112);
-            listButtons.Add(Bdefault);
-            boxesPannel.Controls.Add(Bdefault);
-
+      
             //By default the two follow pannels are hidden.
             choicesBoxPanel.Hide();
             sideBarPanel.Hide();
@@ -124,11 +119,25 @@ namespace Interface_5
             doorsPanel.Hide(); // hide the door pannel by default
 
             //Integer height data in ComboBox
-            heightComboBox.Items.Add("330");
-            heightComboBox.Items.Add("220");
-            heightComboBox.Items.Add("440");
+            MySqlConnection db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
+            db.Open();
+            MySqlCommand cmd2 = db.CreateCommand();
+            cmd2.CommandText = "SELECT Hauteur FROM `Composants` WHERE `Ref`='Panneau GD' AND `Profondeur`=" + Globals.order.GetFurnitureList[0].GetDepth;
+            //N.B. : j'aurais aussi pu faire la recherche sur le panneau arrière
 
-
+            MySqlDataReader reader2 = cmd2.ExecuteReader();
+            List<int> heightList = new List<int>();
+            while (reader2.Read())
+            {
+                heightList.Add(Convert.ToInt32(reader2["Hauteur"]));
+            }
+            heightList = heightList.Distinct().ToList(); //enlever les objets qui ont les mêmes hauteur
+            foreach (int value in heightList)
+            {
+                heightComboBox.Items.Add(value.ToString());
+            }
+            db.Close();
+            AddInterfaceBox();
         }
 
         private void BoxColor_Event(object sender, EventArgs e)
@@ -255,10 +264,17 @@ namespace Interface_5
                 UserControl3.Instance.BringToFront();
         }
         private void AddBoxButton_Click(object sender, EventArgs e)
-        { 
-            if (i <= 6)
+        {
+            AddInterfaceBox();
+        }
+
+        private void AddInterfaceBox()
+        {
+            int boxCounter = Globals.order.GetFurnitureList[0].GetBoxListLength();
+            if (boxCounter <= 7)
             {
-                //Create a button for each click on "Add"
+                Globals.order.GetFurnitureList[0].AddBox(boxCounter);
+
 
                 Button B = new Button();
                 B = addButtonFunction(i, startPosition, endPosition);
@@ -270,8 +286,8 @@ namespace Interface_5
                 //Add a dictionary in the allBoxesDico for each box created 
                 Dictionary<string, string> D = new Dictionary<string, string>();
                 D = addBoxToDico();
-                allBoxesDico.Add("Box" + (i + 1).ToString(), D);
-                
+                allBoxesDico.Add("Box" + (i+1).ToString(), D);
+
 
                 if (AddOrDupli == 1)
                 {
@@ -281,20 +297,16 @@ namespace Interface_5
                     }
                     AddOrDupli = 0;
 
-                   // acutalizeDimensions();
-
+                    // acutalizeDimensions();
                 }
-
                 i++;
             }
             else
             {
                 MessageBox.Show("You have reached the max number of boxes!");
             }
-
-
-
         }
+
 
         Button addButtonFunction(int i, int startPosition, int endPosition)
         {
@@ -305,10 +317,10 @@ namespace Interface_5
             B.ForeColor = System.Drawing.Color.White;
             B.Image = global::Interface_5.Properties.Resources.boxes;
             B.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            B.Location = new System.Drawing.Point(startPosition, (i * 50) + 112);// increment the position of each new button
-            B.Name = "button" + (i + 1).ToString();
+            B.Location = new System.Drawing.Point(startPosition, (i * 50)+64);// increment the position of each new button
+            B.Name = "button" + (i).ToString();
             B.Size = new System.Drawing.Size(195, 50);
-            B.Text = "Box" + (i + 1).ToString();
+            B.Text = "Box" + (i).ToString();
             B.UseVisualStyleBackColor = true;
             B.Click += new EventHandler(this.Button_Click_Event); // this function is an eventcaled when a button is clicked  and send the button object to the Button_Click_Event function
 
@@ -436,22 +448,8 @@ namespace Interface_5
                             colorButtons[indexD].FlatAppearance.BorderSize = 5;
                         }
                     }
-
-
-
-
-
                 }
-
-
-
-
-
             }
-
-
-
-
         }
         
         private void RemoveBoxButton_Click(object sender, EventArgs e)
@@ -496,12 +494,13 @@ namespace Interface_5
        
         private void heightComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             for (int i = 1; i <= listButtons.Count; i++)
             {
                 if (buttonNr == i)
                 {
                     allBoxesDico["Box" + i.ToString()]["height"] = heightComboBox.SelectedItem.ToString();
-   
+                    //Globals.box.
                 }
             }
 
@@ -525,7 +524,6 @@ namespace Interface_5
             return D;
 
         }
-       
        
         void acutalizeDimensions()
         {
@@ -570,5 +568,3 @@ namespace Interface_5
         }
     }
 }
-
-

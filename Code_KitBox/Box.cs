@@ -13,20 +13,27 @@ namespace Interface_5
         private List<Component> componentList;
         private int width, depth, height;
         private string color;
+        private int id;
 
-        public Box(int height, int width, int depth, string color)
+        public Box(int width, int depth, int id)
         {
             componentList = new List<Component>();
-            this.height = height;
+            this.height = 0;
             this.width = width;
             this.depth = depth;
-            this.color = color;
+            this.color = "";
+            this.id = id;
         }
 
         public int Name
         {
             get { return height; }
             set { height = value; }
+        }
+
+        public int Id
+        {
+            get { return id; }
         }
 
         public void AddRequiredComponents()
@@ -186,6 +193,7 @@ namespace Interface_5
         public int GetHeight
         {
             get { return this.height; }
+            set { height = value; }
         }
         public int GetDepth
         {

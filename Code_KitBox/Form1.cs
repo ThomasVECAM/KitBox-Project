@@ -12,10 +12,9 @@ namespace Interface_5
 {
     public partial class Form1 : Form
     {
-        
-        UserControl1 FirstUser =new UserControl1();
-        UserControl2 SecondUser = new UserControl2();
-        UserControl3 ThirdUser = new UserControl3();
+        //UserControl1 FirstUser =new UserControl1();
+        //UserControl2 SecondUser = new UserControl2();
+        //UserControl3 ThirdUser = new UserControl3();
 
         private static Form1 _instance;
         public Panel StartPanel
@@ -26,8 +25,6 @@ namespace Interface_5
         public Form1()
         {
             InitializeComponent();
-         
-
         }
         public static Form1 Instance
         {
@@ -47,7 +44,6 @@ namespace Interface_5
         }
 
     
-
         private void Label1_Click(object sender, EventArgs e)
         {
 
@@ -55,16 +51,15 @@ namespace Interface_5
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
+            Globals.order = new Order();
+
             if (!startPanel.Controls.Contains(UserControl1.Instance))
             {
                 startPanel.Controls.Add(UserControl1.Instance);
                 UserControl1.Instance.Dock = DockStyle.Fill;
                 UserControl1.Instance.BringToFront();
             }
-            else
-                UserControl1.Instance.BringToFront();
-
-
+            else  UserControl1.Instance.BringToFront();
         }
 
         private void Panel2_Paint(object sender, PaintEventArgs e)
