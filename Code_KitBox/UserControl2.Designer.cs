@@ -34,6 +34,8 @@
             this.logoPanel = new System.Windows.Forms.Panel();
             this.logoLabel = new System.Windows.Forms.Label();
             this.boxCompositionPanel = new System.Windows.Forms.Panel();
+            this.heightLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.dimensionsLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.brownCornerButton4 = new System.Windows.Forms.Button();
@@ -147,6 +149,8 @@
             // 
             // boxCompositionPanel
             // 
+            this.boxCompositionPanel.Controls.Add(this.heightLabel);
+            this.boxCompositionPanel.Controls.Add(this.label3);
             this.boxCompositionPanel.Controls.Add(this.dimensionsLabel);
             this.boxCompositionPanel.Controls.Add(this.panel3);
             this.boxCompositionPanel.Controls.Add(this.label7);
@@ -164,17 +168,38 @@
             this.boxCompositionPanel.Name = "boxCompositionPanel";
             this.boxCompositionPanel.Size = new System.Drawing.Size(900, 600);
             this.boxCompositionPanel.TabIndex = 4;
+            this.boxCompositionPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BoxCompositionPanel_Paint);
+            // 
+            // heightLabel
+            // 
+            this.heightLabel.AutoSize = true;
+            this.heightLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.heightLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.heightLabel.Location = new System.Drawing.Point(401, 56);
+            this.heightLabel.Name = "heightLabel";
+            this.heightLabel.Size = new System.Drawing.Size(73, 23);
+            this.heightLabel.TabIndex = 34;
+            this.heightLabel.Text = "Height";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.label3.Location = new System.Drawing.Point(450, 289);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 23);
+            this.label3.TabIndex = 33;
             // 
             // dimensionsLabel
             // 
             this.dimensionsLabel.AutoSize = true;
             this.dimensionsLabel.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.dimensionsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.dimensionsLabel.Location = new System.Drawing.Point(343, 56);
+            this.dimensionsLabel.Location = new System.Drawing.Point(353, 56);
             this.dimensionsLabel.Name = "dimensionsLabel";
-            this.dimensionsLabel.Size = new System.Drawing.Size(63, 23);
+            this.dimensionsLabel.Size = new System.Drawing.Size(0, 23);
             this.dimensionsLabel.TabIndex = 32;
-            this.dimensionsLabel.Text = "0x0x0";
             // 
             // panel3
             // 
@@ -296,7 +321,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 12F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.label7.Location = new System.Drawing.Point(230, 56);
+            this.label7.Location = new System.Drawing.Point(239, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(116, 23);
             this.label7.TabIndex = 31;
@@ -631,8 +656,8 @@
             // 
             // heightComboBox
             // 
+            this.heightComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.heightComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.heightComboBox.FormattingEnabled = true;
             this.heightComboBox.Location = new System.Drawing.Point(166, 37);
             this.heightComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.heightComboBox.Name = "heightComboBox";
@@ -689,7 +714,7 @@
             this.furnitureName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.furnitureName.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold);
             this.furnitureName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.furnitureName.Location = new System.Drawing.Point(225, 12);
+            this.furnitureName.Location = new System.Drawing.Point(228, 4);
             this.furnitureName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.furnitureName.Name = "furnitureName";
             this.furnitureName.Size = new System.Drawing.Size(309, 50);
@@ -777,5 +802,7 @@
         private System.Windows.Forms.Label tvaLabel;
         private System.Windows.Forms.Label priceLabel;
         private System.Windows.Forms.Panel panelPrice;
+        private System.Windows.Forms.Label heightLabel;
+        private System.Windows.Forms.Label label3;
     }
 }

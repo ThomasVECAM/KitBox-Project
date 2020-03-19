@@ -12,10 +12,10 @@ namespace Interface_5
 {
     public partial class UserControl1 : UserControl
     {
-  
+        public static  string transDimensions = "";
         private static UserControl1 _instance;
-      
-     
+
+       
         public static UserControl1 Instance
         {
             get
@@ -28,40 +28,25 @@ namespace Interface_5
         public UserControl1()
         {
             InitializeComponent();
+            widthDepthComboBox.Items.Add("330x220");
+            widthDepthComboBox.Items.Add("220x650");
+            widthDepthComboBox.Items.Add("440x800");
+            
         }
 
-        private void Label1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void Label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void UserControl1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        public void NextButton_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        public void Button2_Click_1(object sender, EventArgs e)
-        {
-
-
-            if (!panel1.Controls.Contains(UserControl2.Instance))
+            if (!sizePanel.Controls.Contains(UserControl2.Instance))
             {
-                panel1.Controls.Add(UserControl2.Instance);
+                sizePanel.Controls.Add(UserControl2.Instance);
                 UserControl2.Instance.Dock = DockStyle.Fill;
                 UserControl2.Instance.BringToFront();
             }
@@ -69,53 +54,23 @@ namespace Interface_5
             {
                 UserControl2.Instance.BringToFront();
             }
-
-            
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void Label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TrackBar1_Scroll(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
            
         }
 
-        private void TrackBar2_Scroll(object sender, EventArgs e)
+
+        private void WidthDepthComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-         
-        }
-
-        private void PictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label5_Click(object sender, EventArgs e)
-        {
-
+            char[] separator = { 'x' };
+            Int32 tokens = 2;
+            String[] widthDepth = widthDepthComboBox.SelectedItem.ToString().Split(separator, tokens, StringSplitOptions.None);
+            widthLabel.Text = widthDepth[0];
+            depthLabel.Text = widthDepth[1];
+            transDimensions = widthLabel.Text + "x" + depthLabel.Text+"x";
         }
     }
 }
+ 

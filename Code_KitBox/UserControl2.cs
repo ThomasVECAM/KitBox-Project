@@ -255,7 +255,7 @@ namespace Interface_5
                 UserControl3.Instance.BringToFront();
         }
         private void AddBoxButton_Click(object sender, EventArgs e)
-        {
+        { 
             if (i <= 6)
             {
                 //Create a button for each click on "Add"
@@ -270,13 +270,7 @@ namespace Interface_5
                 //Add a dictionary in the allBoxesDico for each box created 
                 Dictionary<string, string> D = new Dictionary<string, string>();
                 D = addBoxToDico();
-                foreach (KeyValuePair<string, Dictionary<string, string>> boxes in allBoxesDico)
-                {
-                    Console.WriteLine(boxes.Key);
-                }
-                Console.WriteLine("///////");
-                Console.WriteLine((i + 1).ToString());
-                    allBoxesDico.Add("Box" + (i + 1).ToString(), D);
+                allBoxesDico.Add("Box" + (i + 1).ToString(), D);
                 
 
                 if (AddOrDupli == 1)
@@ -286,7 +280,9 @@ namespace Interface_5
                         allBoxesDico["Box" + (j + 1).ToString()] = allBoxesDico["Box" + (j).ToString()];
                     }
                     AddOrDupli = 0;
-                    
+
+                   // acutalizeDimensions();
+
                 }
 
                 i++;
@@ -362,6 +358,8 @@ namespace Interface_5
 
             int indexB = 15;
             int indexD = 15;
+            Console.WriteLine(buttonNr.ToString() + "  " + allBoxesDico["Box" + buttonNr.ToString()]["height"]);
+            heightComboBox.Text = allBoxesDico["Box" + buttonNr.ToString()]["height"];
 
             for (int m = 1; m <= listButtons.Count; m++)
             {
@@ -369,9 +367,7 @@ namespace Interface_5
 
                 if (buttonNr == m)
                 {
-                    heightComboBox.Text = allBoxesDico["Box" + m.ToString()]["height"];
-/*                    Console.WriteLine("Box" + m.ToString());
-                    Console.WriteLine("Box" + allBoxesDico["Box" + m.ToString()]["doors"]);*/
+                    
 
                     if (allBoxesDico["Box" + m.ToString()]["doors"] == "")
                     {
@@ -457,7 +453,7 @@ namespace Interface_5
 
 
         }
-        //int r = buttonNr;
+        
         private void RemoveBoxButton_Click(object sender, EventArgs e)
         {
             remove = 1;// put at 1 when passed by remove function for after can move the sideBarPanel
@@ -488,7 +484,7 @@ namespace Interface_5
                 }
 
                 buttonNr = count;
-
+               // acutalizeDimensions();
             }
             else
             {
@@ -497,7 +493,7 @@ namespace Interface_5
             }
             i--;
         }
-
+       
         private void heightComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             for (int i = 1; i <= listButtons.Count; i++)
@@ -505,10 +501,17 @@ namespace Interface_5
                 if (buttonNr == i)
                 {
                     allBoxesDico["Box" + i.ToString()]["height"] = heightComboBox.SelectedItem.ToString();
+   
                 }
             }
 
+           acutalizeDimensions();
+
         }
+
+               
+            
+        
         Dictionary<string, string> addBoxToDico()
         {
             //Create a dicttionary type which can be multipiclated for each box whith initial values
@@ -520,6 +523,25 @@ namespace Interface_5
             D.Add("doorsColor", "");
 
             return D;
+
+        }
+       
+       
+        void acutalizeDimensions()
+        {
+            int totalHeight = 0;
+           
+            for (int v =1; v<=listButtons.Count; v++)
+                {
+                    if(allBoxesDico["Box" + v.ToString()]["height"] != "")
+                    {
+                        totalHeight += int.Parse(allBoxesDico["Box" + v.ToString()]["height"]);
+                        //dimensionsLabel.Text = totalHeight.ToString();
+                    }
+                   
+                }
+                
+               heightLabel.Text = totalHeight.ToString();
 
         }
         void interfacePrice()
@@ -541,6 +563,12 @@ namespace Interface_5
         {
             AddOrDupli = 1;
         }
+
+        private void BoxCompositionPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
+
 

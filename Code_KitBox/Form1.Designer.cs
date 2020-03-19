@@ -31,9 +31,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.startPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.startPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -76,22 +76,22 @@
             this.panel1.Size = new System.Drawing.Size(424, 149);
             this.panel1.TabIndex = 2;
             // 
-            // panel2
+            // startPanel
             // 
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Location = new System.Drawing.Point(-3, -1);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(900, 600);
-            this.panel2.TabIndex = 3;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel2_Paint);
+            this.startPanel.Controls.Add(this.button1);
+            this.startPanel.Controls.Add(this.panel1);
+            this.startPanel.Location = new System.Drawing.Point(-3, -1);
+            this.startPanel.Name = "startPanel";
+            this.startPanel.Size = new System.Drawing.Size(904, 600);
+            this.startPanel.TabIndex = 3;
+            this.startPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel2_Paint);
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(84)))), ((int)(((byte)(91)))));
             this.ClientSize = new System.Drawing.Size(900, 600);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.startPanel);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -99,7 +99,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.startPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -109,7 +109,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel startPanel;
     }
 }
 
