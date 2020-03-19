@@ -21,7 +21,7 @@ namespace KitBox_Console
             this.width = width;
             this.boxList = new List<Box>();
             this.cornerList = new List<Corner>();
-        }
+        }                             
 
         public void AddBox(Box box)
         {

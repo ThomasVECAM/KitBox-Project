@@ -20,22 +20,21 @@ namespace KitBox_Console
             this.width = width;
             this.depth = depth;
             this.price = price;
-            this.name = "";
         }
         public double GetPrice
         {
             get { return this.price; }
         }
-        public void WriteFacture(string path)
+        /*public void WriteFacture(string path)
         {
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine("      (" + id + " ) :  "+ name + "      " + price + " €");
+                sw.WriteLine("                  (" + id + ") : " + price + " €");
             }
         }
         public string GetName
         {
             get { return this.name; }
-        }
+        }*/
     }
 }

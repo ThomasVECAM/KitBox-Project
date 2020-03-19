@@ -1,0 +1,23 @@
+Use Case : Confirm reception of an order
+
+Cas : Confirmer la réception d'une commande
+
+Objectif: L'objectif est de permettre au magasinier de confirmer la réception de la commande de pièces afin de mettre à jour la base de données.
+
+Pré-condition :
+- La commande est livrée au magasinier.
+
+Garantie de succès
+- Le stock de la base de données est mis à jour en fonction des pièces réellement livrées.
+
+
+Flot :
+- Le magasinier vérifie que toutes les pièces commandées sont dans le colis.
+- Toutes les pièces commandées sont dans le colis et en bon état.
+- Le magasinier met à jour le stock en fonction de la liste de matériels commandés.
+
+Flot alternatif :
+- Le magasinier vérifie que toutes les pièces commandées sont dans le colis.
+- Il manque des pièces, il y a plus de pièces que commandées ou il y a des pièces endommagées.
+- Le magasinier modifie la liste de matériels commandés en fontion du matériel qui se trouve dans le colis.
+- Le magasinier met à jour le stock en fonction de la liste de matériels commandés modifiée.

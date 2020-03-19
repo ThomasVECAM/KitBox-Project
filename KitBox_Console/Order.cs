@@ -9,13 +9,10 @@ namespace KitBox_Console
 {
     class Order
     {
-        private int id;
         private List<Furniture> furnitureList;
-
 
         public Order()
         {
-            id = 1;
             this.furnitureList = new List<Furniture>();
         }
 
@@ -42,17 +39,14 @@ namespace KitBox_Console
         {
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine("Facture client");
-            }
-            foreach(Furniture furniture in furnitureList)
-            {
-                furniture.WriteFacture(path);
-            }
-            using (StreamWriter sw = File.AppendText(path))
-            {
-                sw.WriteLine("Prix total :" + GetPrice());
-            }
+                sw.WriteLine("# Facture client");
+                foreach (Furniture furniture in furnitureList)
+                {
+                    furniture.WriteFacture(path);
+                }
+                sw.WriteLine("\nPrix total :" + GetPrice());
 
-        }
+            }
+        } 
     }
 }
