@@ -78,5 +78,9 @@ namespace Interface_5
         {
             return boxList.Count;
         }
+        public List<Box> GetBoxList
+        {
+            get { return boxList; }
+        }
     }
 }

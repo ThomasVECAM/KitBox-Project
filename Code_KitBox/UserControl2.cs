@@ -19,6 +19,7 @@ namespace Interface_5
         List<Button> listButtons = new List<Button>();//list of Boxes Buttons
         List<Button> colorButtons = new List<Button>();
         List<Label> colorLabels = new List<Label>();
+
         string cornerColorChoosed = "";
         int i = 1;
         int remove = 2;
@@ -36,7 +37,6 @@ namespace Interface_5
                 return _instance;
             }
         }
-
 
         public UserControl2()
         {
@@ -142,48 +142,24 @@ namespace Interface_5
 
         private void BoxColor_Event(object sender, EventArgs e)
         {
-
-            // take the buttons in the list coresponding to boxColor cliked buttons and create a BorderSize 
+            var btnColor = (Button)sender;            
+            //déselectionner tous les boutons
             for (int i = 4; i <= 5; i++)
             {
                 colorButtons[i].FlatAppearance.BorderSize = 0;
             }
-            var btnColor = (Button)sender;
             btnColor.FlatAppearance.BorderSize = 5;
-
-            for (int j = 1; j <= listButtons.Count; j++)
-            {
-                if (buttonNr == j)
-                {
-                    allBoxesDico["Box" + j.ToString()]["boxColor"] = colorButtons.IndexOf(btnColor).ToString();
-
-                }
-
-            }
-
-
+            Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetColor = btnColor.Name;
         }
         private void CornerColor_Event(object sender, EventArgs e)
         {
-            // take the buttons in the list coresponding to CornerColor cliked buttons and create a BorderSize 
+            var btnColor = (Button)sender;
             for (int i = 0; i <= 3; i++)
             {
                 colorButtons[i].FlatAppearance.BorderSize = 0;
             }
-            var btnColor = (Button)sender;
             btnColor.FlatAppearance.BorderSize = 5;
-
-            for (int j = 1; j <= listButtons.Count; j++)
-            {
-
-                if (buttonNr == j)
-                {
-                    cornerColorChoosed = colorButtons.IndexOf(btnColor).ToString();
-
-                }
-
-            }
-
+            Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetCornerColor = btnColor.Name;
         }
         private void DoorCheckBox_Event(object sender, EventArgs e)
         {
@@ -193,42 +169,24 @@ namespace Interface_5
             check.Checked = true;
             if (check.Name == "checkBoxYes")
             {
+                Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].HasDoor = true;
                 doorsPanel.Show();
             }
             else if (check.Name == "checkBoxNo")
             {
+                Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].HasDoor = false;
                 doorsPanel.Hide();
             }
-
-            for (int j = 1; j <= listButtons.Count; j++)
-            {
-                if (buttonNr == j)
-                {
-                    allBoxesDico["Box" + j.ToString()]["doors"] = check.Name;
-                }
-
-            }
         }
-
-
         private void DoorColor_Event(object sender, EventArgs e)
         {
-            // take the buttons in the list coresponding to DoorColor cliked buttons and create a BorderSize 
+            var btnColor = (Button)sender;
             for (int i = 6; i <= colorButtons.Count - 1; i++)
             {
                 colorButtons[i].FlatAppearance.BorderSize = 0;
             }
-            var btnColor = (Button)sender;
             btnColor.FlatAppearance.BorderSize = 5;
-
-            for (int j = 1; j <= listButtons.Count; j++)
-            {
-                if (buttonNr == j)
-                {
-                    allBoxesDico["Box" + j.ToString()]["doorsColor"] = colorButtons.IndexOf(btnColor).ToString();
-                }
-
-            }
+            Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetDoorColor = btnColor.Name;
         }
         private void MouseEnter_Event(object sender, EventArgs e)
         {// when mouse go over button:
@@ -236,8 +194,6 @@ namespace Interface_5
             int indexButton = 0;
             indexButton = colorButtons.IndexOf(colorBtne); // take index of the button in buttonlist
             colorLabels[indexButton].Show();//show label coresponding to the button index
-
-
         }
         private void MouseLeave_Event(object sender, EventArgs e)
         {// when mouse leave over the button:
@@ -245,9 +201,9 @@ namespace Interface_5
             int indexButton = 0;
             indexButton = colorButtons.IndexOf(colorBtnl); // take index of the button in buttonlist
             colorLabels[indexButton].Hide();//hide label coresponding to the button index
-
-
         }
+        
+        
         private void Button11_Click(object sender, EventArgs e)
         {
 
@@ -307,7 +263,6 @@ namespace Interface_5
             }
         }
 
-
         Button addButtonFunction(int i, int startPosition, int endPosition)
         {
             //Create a Button type with him caracteristics, which can be multiplicated when function is called
@@ -318,45 +273,27 @@ namespace Interface_5
             B.Image = global::Interface_5.Properties.Resources.boxes;
             B.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             B.Location = new System.Drawing.Point(startPosition, (i * 50)+64);// increment the position of each new button
-            B.Name = "button" + (i).ToString();
+            B.Name = (i).ToString();
             B.Size = new System.Drawing.Size(195, 50);
             B.Text = "Box" + (i).ToString();
             B.UseVisualStyleBackColor = true;
-            B.Click += new EventHandler(this.Button_Click_Event); // this function is an eventcaled when a button is clicked  and send the button object to the Button_Click_Event function
-
+            B.Click += new EventHandler(this.Button_Click_Event); 
+            // this function is an eventcaled when a button is clicked  and send the button object to the Button_Click_Event function
             return B;
         }
 
-
-
         void Button_Click_Event(object sender, EventArgs e)
-        {
-
-          
+        {  
             //Take the button object 
             Button btnClicked = sender as Button;
-            string btnName = btnClicked.Text;
-            string b = string.Empty;
-           
-          
+            
+            //Get the number of the button that is clicked
+            buttonNr = int.Parse(btnClicked.Name);
 
-            //This manipulation take the number of the box in the name of the box
-            for (int i = 0; i < btnName.Length; i++)
-            {
-                if (Char.IsDigit(btnName[i]))
-                    b += btnName[i];
-            }
-
-            if (b.Length > 0)
-            {
-                buttonNr = int.Parse(b);
-            }
-
-
+            
             // The choices box pannel and the side bar apear only when a box is selected.
             if (remove == 1)
             {
-               
                 sideBarPanel.Top = listButtons[buttonNr-1].Top;
                 remove = 0;
             }
@@ -366,89 +303,37 @@ namespace Interface_5
                 sideBarPanel.Top = btnClicked.Top; //Move sideBarPanel to the clicked button
                 choicesBoxPanel.Show();
             }
-            
 
-            int indexB = 15;
-            int indexD = 15;
-            Console.WriteLine(buttonNr.ToString() + "  " + allBoxesDico["Box" + buttonNr.ToString()]["height"]);
             heightComboBox.Text = allBoxesDico["Box" + buttonNr.ToString()]["height"];
 
-            for (int m = 1; m <= listButtons.Count; m++)
+            //Door configuration
+            if (Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].HasDoor)
             {
+                checkBoxYes.Checked = true;
+                checkBoxNo.Checked = false;
+                doorsPanel.Show();
+            }
+            else
+            {
+                checkBoxNo.Checked = true;
+                checkBoxYes.Checked = false;
+                doorsPanel.Hide();
+            }
+            //Box color
+            string boxColor = Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetColor;
+            string doorColor = Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetDoorColor;
+            string cornerColor = Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetCornerColor; ;
+            foreach (Button button in colorButtons)
+            {
+                if (button.Name == boxColor)
+                    button.FlatAppearance.BorderSize = 5;
+                else if(button.Name == cornerColor)
+                    button.FlatAppearance.BorderSize = 5;
 
-
-                if (buttonNr == m)
-                {
-                    
-
-                    if (allBoxesDico["Box" + m.ToString()]["doors"] == "")
-                    {
-                        checkBoxNo.Checked = true;
-                        checkBoxYes.Checked = false;
-                        doorsPanel.Hide();
-                    }
-                    else
-                    {
-                        if (allBoxesDico["Box" + m.ToString()]["doors"] == "checkBoxYes")
-                        {
-                            doorsPanel.Show();
-                            checkBoxYes.Checked = true;
-                            checkBoxNo.Checked = false;
-
-                        }
-                        else if (allBoxesDico["Box" + m.ToString()]["doors"] == "checkBoxNo")
-                        {
-                            doorsPanel.Hide();
-                            checkBoxYes.Checked = false;
-                            checkBoxNo.Checked = true;
-                        }
-                    }
-
-                    if (allBoxesDico["Box" + m.ToString()]["boxColor"] == "")
-                    {
-
-                    }
-                    else
-                    {
-                        indexB = int.Parse(allBoxesDico["Box" + m.ToString()]["boxColor"]);
-
-                    }
-                    if (allBoxesDico["Box" + m.ToString()]["doorsColor"] == "")
-                    {
-
-                    }
-                    else
-                    {
-                        indexD = int.Parse(allBoxesDico["Box" + m.ToString()]["doorsColor"]);
-
-                    }
-
-                    for (int u = 4; u <= 5; u++)
-                    {
-                        if (u != indexB)
-                        {
-                            colorButtons[u].FlatAppearance.BorderSize = 0;
-                        }
-                        else
-                        {
-                            colorButtons[indexB].FlatAppearance.BorderSize = 5;
-                        }
-
-                    }
-
-                    for (int u = 6; u <= colorButtons.Count - 1; u++)
-                    {
-                        if (u != indexD)
-                        {
-                            colorButtons[u].FlatAppearance.BorderSize = 0;
-
-                        }
-                        else
-                        {
-                            colorButtons[indexD].FlatAppearance.BorderSize = 5;
-                        }
-                    }
-                }
+                else if(button.Name == doorColor)
+                    button.FlatAppearance.BorderSize = 5;
+                else
+                    button.FlatAppearance.BorderSize = 0;
             }
         }
         
@@ -491,7 +376,6 @@ namespace Interface_5
             }
             i--;
         }
-       
         private void heightComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -503,14 +387,9 @@ namespace Interface_5
                     //Globals.box.
                 }
             }
-
            acutalizeDimensions();
-
         }
-
-               
-            
-        
+      
         Dictionary<string, string> addBoxToDico()
         {
             //Create a dicttionary type which can be multipiclated for each box whith initial values
@@ -520,49 +399,27 @@ namespace Interface_5
             D.Add("boxColor", "");
             D.Add("doors", "");
             D.Add("doorsColor", "");
-
             return D;
-
         }
        
         void acutalizeDimensions()
         {
-            int totalHeight = 0;
-           
-            for (int v =1; v<=listButtons.Count; v++)
-                {
-                    if(allBoxesDico["Box" + v.ToString()]["height"] != "")
-                    {
-                        totalHeight += int.Parse(allBoxesDico["Box" + v.ToString()]["height"]);
-                        //dimensionsLabel.Text = totalHeight.ToString();
-                    }
-                   
-                }
-                
-               heightLabel.Text = totalHeight.ToString();
-
+            string height = (Globals.order.GetFurnitureList[0].GetHeight()).ToString();
+            string width = (Globals.order.GetFurnitureList[0].GetWidth).ToString();
+            string depth = (Globals.order.GetFurnitureList[0].GetDepth).ToString();
+            
+            heightLabel.Text = height + "x" + width + "x" + depth;   
         }
-        void interfacePrice()
-        {
-            foreach (KeyValuePair<string, Dictionary<string, string>> boxes in allBoxesDico)
-            {
-                Console.WriteLine("////////////" + boxes.Key + "////////////");
-                Console.WriteLine(boxes.Key);
-
-                foreach (KeyValuePair<string, string> components in boxes.Value)
-                {
-                    Console.WriteLine(components.Key + "  " + components.Value);
-                }
-
-            }
-        }
-
+      
         private void duplicatBoxButton_Click(object sender, EventArgs e)
         {
             AddOrDupli = 1;
         }
-
         private void BoxCompositionPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void whiteCornerButton1_Click(object sender, EventArgs e)
         {
 
         }
