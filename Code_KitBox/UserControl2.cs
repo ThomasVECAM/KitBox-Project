@@ -15,19 +15,15 @@ namespace Interface_5
     {
         private static UserControl2 _instance;
 
-        Dictionary<string, Dictionary<string, string>> allBoxesDico = new Dictionary<string, Dictionary<string, string>>();
         List<Button> listButtons = new List<Button>();//list of Boxes Buttons
         List<Button> colorButtons = new List<Button>();
         List<Label> colorLabels = new List<Label>();
 
-        string cornerColorChoosed = "";
-        int i = 1;
-        int remove = 2;
-        int startPosition = 8;
-        int endPosition = 162;
-        int buttonNr = 0;
-        int AddOrDupli = 0;
-
+        private int i = 1;
+        private int startPosition = 8;
+        private int endPosition = 162;
+        private int buttonNr = 0;
+        private int AddOrDupli = 0;
         public static UserControl2 Instance
         {
             get
@@ -37,7 +33,6 @@ namespace Interface_5
                 return _instance;
             }
         }
-
         public UserControl2()
         {
             InitializeComponent();
@@ -45,12 +40,6 @@ namespace Interface_5
             //By default the two follow pannels are hidden.
             choicesBoxPanel.Hide();
             sideBarPanel.Hide();
-
-            //Include the first Box Dico by default in allBoxesDico
-            Dictionary<string, string> Ddefault = new Dictionary<string, string>();
-            Ddefault = addBoxToDico();
-            allBoxesDico.Add("Box1", Ddefault);
-
 
             //Cornel Colors labels and buttons
             colorButtons.Add(whiteCornerButton1);
@@ -105,13 +94,7 @@ namespace Interface_5
                 {
                     colorButtons[i].MouseClick += DoorColor_Event;
                 }
-
             }
-            // when click duplicate button, call the add function
-            duplicateBoxButton.Click += AddBoxButton_Click;
-
-            // when remove a button , reclick the button
-            removeBoxButton.Click += Button_Click_Event;
 
             //Checkbox Event attribute when mouseClick
             checkBoxNo.MouseClick += DoorCheckBox_Event;
@@ -137,57 +120,40 @@ namespace Interface_5
                 heightComboBox.Items.Add(value.ToString());
             }
             db.Close();
+            Globals.order.GetFurnitureList[0].AddBox();
             AddInterfaceBox();
         }
-
         private void BoxColor_Event(object sender, EventArgs e)
         {
             var btnColor = (Button)sender;            
-            //déselectionner tous les boutons
-            for (int i = 4; i <= 5; i++)
-            {
-                colorButtons[i].FlatAppearance.BorderSize = 0;
-            }
-            btnColor.FlatAppearance.BorderSize = 5;
             Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetColor = btnColor.Name;
-        }
+            UpdateBoxPannel();
+        } //ok verified
         private void CornerColor_Event(object sender, EventArgs e)
         {
             var btnColor = (Button)sender;
-            for (int i = 0; i <= 3; i++)
-            {
-                colorButtons[i].FlatAppearance.BorderSize = 0;
-            }
-            btnColor.FlatAppearance.BorderSize = 5;
-            Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetCornerColor = btnColor.Name;
-        }
+            Globals.order.GetFurnitureList[0].GetCornerColor = btnColor.Name;
+            UpdateBoxPannel();
+        }  //ok verified
         private void DoorCheckBox_Event(object sender, EventArgs e)
         {
-            checkBoxNo.Checked = false;
-            checkBoxYes.Checked = false;
             var check = (CheckBox)sender;
-            check.Checked = true;
             if (check.Name == "checkBoxYes")
             {
                 Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].HasDoor = true;
-                doorsPanel.Show();
             }
             else if (check.Name == "checkBoxNo")
             {
                 Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].HasDoor = false;
-                doorsPanel.Hide();
             }
-        }
+            UpdateBoxPannel();
+        }   //ok verified
         private void DoorColor_Event(object sender, EventArgs e)
         {
             var btnColor = (Button)sender;
-            for (int i = 6; i <= colorButtons.Count - 1; i++)
-            {
-                colorButtons[i].FlatAppearance.BorderSize = 0;
-            }
-            btnColor.FlatAppearance.BorderSize = 5;
             Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetDoorColor = btnColor.Name;
-        }
+            UpdateBoxPannel();
+        }  //ok verified
         private void MouseEnter_Event(object sender, EventArgs e)
         {// when mouse go over button:
             var colorBtne = (Button)sender;
@@ -201,68 +167,36 @@ namespace Interface_5
             int indexButton = 0;
             indexButton = colorButtons.IndexOf(colorBtnl); // take index of the button in buttonlist
             colorLabels[indexButton].Hide();//hide label coresponding to the button index
-        }
-        
-        
+        }  
         private void Button11_Click(object sender, EventArgs e)
         {
 
         }
-        private void Button12_Click(object sender, EventArgs e)
-        {
-            if (!boxesPannel.Controls.Contains(UserControl3.Instance))
-            {
-                boxesPannel.Controls.Add(UserControl3.Instance);
-                UserControl3.Instance.Dock = DockStyle.Fill;
-                UserControl3.Instance.BringToFront();
-            }
-            else
-                UserControl3.Instance.BringToFront();
-        }
         private void AddBoxButton_Click(object sender, EventArgs e)
         {
-            AddInterfaceBox();
-        }
-
-        private void AddInterfaceBox()
-        {
             int boxCounter = Globals.order.GetFurnitureList[0].GetBoxListLength();
-            if (boxCounter <= 7)
+            if(boxCounter <7)
             {
-                Globals.order.GetFurnitureList[0].AddBox(boxCounter);
-
-
-                Button B = new Button();
-                B = addButtonFunction(i, startPosition, endPosition);
-                listButtons.Add(B);
-                foreach (Button b in listButtons)
-                {
-                    boxesPannel.Controls.Add(b);
-                }
-                //Add a dictionary in the allBoxesDico for each box created 
-                Dictionary<string, string> D = new Dictionary<string, string>();
-                D = addBoxToDico();
-                allBoxesDico.Add("Box" + (i+1).ToString(), D);
-
-
-                if (AddOrDupli == 1)
-                {
-                    for (int j = listButtons.Count - 1; j >= buttonNr; j--)
-                    {
-                        allBoxesDico["Box" + (j + 1).ToString()] = allBoxesDico["Box" + (j).ToString()];
-                    }
-                    AddOrDupli = 0;
-
-                    // acutalizeDimensions();
-                }
-                i++;
+                Globals.order.GetFurnitureList[0].AddBox();
+                AddInterfaceBox();
             }
             else
-            {
-                MessageBox.Show("You have reached the max number of boxes!");
-            }
+                MessageBox.Show("Maximum of 7 boxes reached");
         }
-
+        private void AddInterfaceBox()
+        {
+            Button B = new Button();
+            B = addButtonFunction(i, startPosition, endPosition);
+            listButtons.Add(B);
+            foreach (Button b in listButtons)
+            {
+                boxesPannel.Controls.Add(b);
+            }
+            i++;
+            buttonNr = listButtons.Count;
+            sideBarPanel.Top = listButtons[listButtons.Count - 1].Top;
+            UpdateBoxPannel();
+        }
         Button addButtonFunction(int i, int startPosition, int endPosition)
         {
             //Create a Button type with him caracteristics, which can be multiplicated when function is called
@@ -281,30 +215,21 @@ namespace Interface_5
             // this function is an eventcaled when a button is clicked  and send the button object to the Button_Click_Event function
             return B;
         }
-
         void Button_Click_Event(object sender, EventArgs e)
-        {  
+        {
             //Take the button object 
             Button btnClicked = sender as Button;
-            
+
             //Get the number of the button that is clicked
             buttonNr = int.Parse(btnClicked.Name);
-
-            
-            // The choices box pannel and the side bar apear only when a box is selected.
-            if (remove == 1)
-            {
-                sideBarPanel.Top = listButtons[buttonNr-1].Top;
-                remove = 0;
-            }
-            else if (buttonNr != 0)
-            {
-                sideBarPanel.Show();
-                sideBarPanel.Top = btnClicked.Top; //Move sideBarPanel to the clicked button
-                choicesBoxPanel.Show();
-            }
-
-            heightComboBox.Text = allBoxesDico["Box" + buttonNr.ToString()]["height"];
+            sideBarPanel.Show();
+            sideBarPanel.Top = btnClicked.Top; //Move sideBarPanel to the clicked button
+            choicesBoxPanel.Show();
+            UpdateBoxPannel();
+        }
+        private void UpdateBoxPannel()
+        { 
+            heightComboBox.Text = (Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetHeight).ToString();
 
             //Door configuration
             if (Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].HasDoor)
@@ -315,14 +240,14 @@ namespace Interface_5
             }
             else
             {
-                checkBoxNo.Checked = true;
                 checkBoxYes.Checked = false;
+                checkBoxNo.Checked = true;
                 doorsPanel.Hide();
             }
             //Box color
             string boxColor = Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetColor;
             string doorColor = Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetDoorColor;
-            string cornerColor = Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetCornerColor; ;
+            string cornerColor = Globals.order.GetFurnitureList[0].GetCornerColor; ;
             foreach (Button button in colorButtons)
             {
                 if (button.Name == boxColor)
@@ -335,93 +260,61 @@ namespace Interface_5
                 else
                     button.FlatAppearance.BorderSize = 0;
             }
-        }
-        
+        } 
         private void RemoveBoxButton_Click(object sender, EventArgs e)
         {
-            remove = 1;// put at 1 when passed by remove function for after can move the sideBarPanel
-
-            if (listButtons.Count > 1)
+            int boxListLength = Globals.order.GetFurnitureList[0].GetBoxListLength(); 
+            if (boxListLength > 1)
             {
-                // replacing values for each dicitionary removed by the values in the box +1  
-                for (int j = buttonNr; j <= listButtons.Count - 1; j++)
+                i = 1;
+                //Enlever l'objet supprimé
+                Globals.order.GetFurnitureList[0].GetBoxList.RemoveAt(buttonNr - 1);
+
+                //Enlever tout les boutons
+                boxesPannel.Controls.Clear();
+                listButtons.Clear();
+
+                //Rajouter les boutons des box qui existent encore
+                foreach (Box box in Globals.order.GetFurnitureList[0].GetBoxList)
                 {
-                    allBoxesDico["Box" + j.ToString()] = allBoxesDico["Box" + (j + 1).ToString()];
+                    AddInterfaceBox();
                 }
-                allBoxesDico.Remove("Box" + (listButtons.Count).ToString());
-
-
-                // removing the button selected, from the list button and from the pannel
-                boxesPannel.Controls.Remove(listButtons[buttonNr - 1]);
-                listButtons.RemoveAt(buttonNr - 1);
-
-                //rename and repositioning of each box after removing
-                int count = 0;
-                foreach (Button BafterRemove in listButtons)
+                this.boxesPannel.Controls.Add(this.sideBarPanel);
+                this.boxesPannel.Controls.Add(this.addBoxButton);
+                if(buttonNr == boxListLength)//lorsqu'on retire le deuxième élement de la liste;
                 {
-                    BafterRemove.Name = "button" + (count + 1).ToString();
-                    BafterRemove.Text = "Box" + (count + 1).ToString();
-                    BafterRemove.Location = new System.Drawing.Point(startPosition, (count * 50) + 112);
-
-                    count++;
+                    sideBarPanel.Top = listButtons[listButtons.Count - 1].Top;//la side 
+                    buttonNr--;
                 }
-
-                buttonNr = count;
-               // acutalizeDimensions();
+                UpdateBoxPannel();
             }
+
             else
-            {
-                MessageBox.Show("This is the minimum boxes for a furniture!");
-                i = 2;// when going in add function , we add box(i+1). This statement avoid to readd box1 in the alldicobox 
-            }
-            i--;
+                MessageBox.Show("You need at least 1 Box");
         }
         private void heightComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            for (int i = 1; i <= listButtons.Count; i++)
-            {
-                if (buttonNr == i)
-                {
-                    allBoxesDico["Box" + i.ToString()]["height"] = heightComboBox.SelectedItem.ToString();
-                    //Globals.box.
-                }
-            }
+            Globals.order.GetFurnitureList[0].GetBoxList[buttonNr - 1].GetHeight =
+                            Convert.ToInt32(heightComboBox.SelectedItem);
            acutalizeDimensions();
-        }
-      
-        Dictionary<string, string> addBoxToDico()
-        {
-            //Create a dicttionary type which can be multipiclated for each box whith initial values
-            Dictionary<string, string> D = new Dictionary<string, string>();
-
-            D.Add("height", "");
-            D.Add("boxColor", "");
-            D.Add("doors", "");
-            D.Add("doorsColor", "");
-            return D;
-        }
-       
+        } 
         void acutalizeDimensions()
         {
             string height = (Globals.order.GetFurnitureList[0].GetHeight()).ToString();
             string width = (Globals.order.GetFurnitureList[0].GetWidth).ToString();
             string depth = (Globals.order.GetFurnitureList[0].GetDepth).ToString();
-            
             heightLabel.Text = height + "x" + width + "x" + depth;   
         }
-      
         private void duplicatBoxButton_Click(object sender, EventArgs e)
         {
-            AddOrDupli = 1;
-        }
-        private void BoxCompositionPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void whiteCornerButton1_Click(object sender, EventArgs e)
-        {
-
+            int boxCounter = Globals.order.GetFurnitureList[0].GetBoxListLength();
+            if (boxCounter < 7)
+            {
+                Globals.order.GetFurnitureList[0].DuplicateBox(buttonNr);
+                AddInterfaceBox();
+            }
+            else
+                MessageBox.Show("Maximum of 7 boxes reached");
         }
     }
 }

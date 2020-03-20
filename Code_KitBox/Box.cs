@@ -12,19 +12,17 @@ namespace Interface_5
     {
         private List<Component> componentList;
         private int width, depth, height;
-        private string color, doorColor, cornerColor;
-        private int id;
+        private string color, doorColor;
         private bool hasDoor;
 
 
-        public Box(int width, int depth, int id)
+        public Box(int width, int depth)
         {
             componentList = new List<Component>();
             this.height = 0;
             this.width = width;
             this.depth = depth;
             this.color = "";
-            this.id = id;
             this.hasDoor = false;
         }
 
@@ -37,11 +35,6 @@ namespace Interface_5
         {
             get { return height; }
             set { height = value; }
-        }
-
-        public int Id
-        {
-            get { return id; }
         }
 
         public void AddRequiredComponents()
@@ -226,12 +219,6 @@ namespace Interface_5
             {
                 component.WriteFacture(path);
             }*/
-        }
-        public string GetCornerColor
-        {
-          get  { return cornerColor; }
-            set { cornerColor = value; }
-
         }
 
         public string GetDoorColor

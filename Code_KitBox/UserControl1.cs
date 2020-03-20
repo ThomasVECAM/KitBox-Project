@@ -57,7 +57,6 @@ namespace Interface_5
             {
                 widthDepthComboBox.Items.Add(element.Item2 + "x" + element.Item3); 
             }
-
         }
 
         private void UserControl1_Load(object sender, EventArgs e)

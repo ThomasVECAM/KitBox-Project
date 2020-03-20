@@ -10,7 +10,7 @@ namespace Interface_5
 {
     class Furniture
     {
-        private string name;
+        private string name, cornerColor;
         private List<Box> boxList;
         private List<Corner> cornerList;
         private int depth, width;
@@ -22,11 +22,12 @@ namespace Interface_5
             this.width = width;
             this.boxList = new List<Box>();
             this.cornerList = new List<Corner>();
+            this.cornerColor = "";
         }
 
-        public void AddBox(int id)
+        public void AddBox()
         {
-            boxList.Add(new Box(width, depth,id));
+            boxList.Add(new Box(width, depth));
         }
         public void Remove(Box box)
         {
@@ -81,6 +82,15 @@ namespace Interface_5
         public List<Box> GetBoxList
         {
             get { return boxList; }
+        }
+        public string GetCornerColor
+        {
+            get { return cornerColor; }
+            set { cornerColor = value; }
+        }
+        public void DuplicateBox(int boxNumber)
+        {
+            AddBox();
         }
     }
 }
