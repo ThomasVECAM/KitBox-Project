@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 
 namespace Interface_5
 {
+    //[Serializable]
+
     class Furniture
     {
         private string name, cornerColor;
@@ -88,9 +91,26 @@ namespace Interface_5
             get { return cornerColor; }
             set { cornerColor = value; }
         }
+
         public void DuplicateBox(int boxNumber)
         {
-            AddBox();
+            Box copy  = boxList[boxNumber - 1];
+           // Box copy = ExtensionMethods.DeepClone(boxList[boxNumber - 1]);
+            boxList.Add(copy);
         }
     }
+   /* public static class ExtensionMethods
+    {
+        // Deep clone
+        public static T DeepClone<T>(this T a)
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, a);
+                stream.Position = 0;
+                return (T)formatter.Deserialize(stream);
+            }
+        }
+    }*/
 }
