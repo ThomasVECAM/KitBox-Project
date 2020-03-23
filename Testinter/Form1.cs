@@ -68,11 +68,12 @@ namespace Testdb
             MySqlCommand cmd = db.CreateCommand();
             var random = new Random();
             int index = random.Next(mylist.Count);
-            cmd.CommandText = mylist[index];
+            cmd.CommandText = "SELECT ID_Composant FROM `Composant_Commande` WHERE `ID_Commande`="+ dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                lb1.Items.Add(reader["Dimension"].ToString()+reader["Largeur"].ToString()+ reader["Profondeur"].ToString());
+                
+                lb1.Items.Add(reader["ID_Composant"]);
             }
             db.Close();
         }
