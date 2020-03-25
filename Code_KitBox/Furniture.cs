@@ -94,23 +94,9 @@ namespace Interface_5
 
         public void DuplicateBox(int boxNumber)
         {
-            Box copy  = boxList[boxNumber - 1];
-           // Box copy = ExtensionMethods.DeepClone(boxList[boxNumber - 1]);
+            Box copy = new Box(0, 0);
+            Box.Copy(boxList[boxNumber - 1], copy);
             boxList.Add(copy);
         }
     }
-   /* public static class ExtensionMethods
-    {
-        // Deep clone
-        public static T DeepClone<T>(this T a)
-        {
-            using (MemoryStream stream = new MemoryStream())
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, a);
-                stream.Position = 0;
-                return (T)formatter.Deserialize(stream);
-            }
-        }
-    }*/
 }
