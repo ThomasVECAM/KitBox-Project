@@ -15,7 +15,6 @@ namespace Interface_5
         private string color, doorColor;
         private bool hasDoor;
 
-
         public Box(int width, int depth)
         {
             componentList = new List<Component>();
@@ -225,7 +224,18 @@ namespace Interface_5
         {
             get { return doorColor; }
             set { doorColor = value; }
+        }
 
+        // Copy a Box
+        public static void Copy(Box sourceBox, Box destinationBox)
+        {
+            destinationBox.width = sourceBox.width;
+            destinationBox.depth = sourceBox.depth;
+            destinationBox.height = sourceBox.height;
+            destinationBox.color = sourceBox.color;
+            destinationBox.doorColor = sourceBox.doorColor;
+            destinationBox.hasDoor = sourceBox.hasDoor;
+            destinationBox.AddRequiredComponents();
         }
     }
 }
