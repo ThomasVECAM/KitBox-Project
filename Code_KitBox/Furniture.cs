@@ -98,5 +98,13 @@ namespace Interface_5
             Box.Copy(boxList[boxNumber - 1], copy);
             boxList.Add(copy);
         }
+
+        public static void Copy(Furniture sourceFurniture, Furniture destinationFurniture)
+        {
+            destinationFurniture.name = sourceFurniture.name;
+            destinationFurniture.width = sourceFurniture.width;
+            destinationFurniture.depth = sourceFurniture.depth;
+            destinationFurniture.boxList = sourceFurniture.boxList;
+        }
     }
 }

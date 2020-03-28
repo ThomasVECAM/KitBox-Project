@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interface_5
 {
-    class PanelClass : Component
+    public class PanelClass : Component
     {
         private string orientation, color, name;
 

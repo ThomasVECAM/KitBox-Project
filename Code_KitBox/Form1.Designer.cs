@@ -49,7 +49,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "START";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.startButton_Click);
             // 
             // label1
             // 
@@ -65,7 +65,6 @@
             this.label1.Size = new System.Drawing.Size(413, 141);
             this.label1.TabIndex = 3;
             this.label1.Text = "KitBox";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // panel1
             // 
@@ -84,7 +83,6 @@
             this.startPanel.Name = "startPanel";
             this.startPanel.Size = new System.Drawing.Size(904, 600);
             this.startPanel.TabIndex = 3;
-            this.startPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel2_Paint);
             // 
             // Form1
             // 
@@ -97,7 +95,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.startPanel.ResumeLayout(false);
             this.ResumeLayout(false);

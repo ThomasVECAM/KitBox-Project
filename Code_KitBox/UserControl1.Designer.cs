@@ -56,7 +56,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(267, 138);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 39);
+            this.label2.Size = new System.Drawing.Size(205, 58);
             this.label2.TabIndex = 1;
             this.label2.Text = "x Depth";
             // 
@@ -73,7 +73,6 @@
             this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // nextButton
             // 
@@ -107,7 +106,7 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(0, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 55);
+            this.label4.Size = new System.Drawing.Size(234, 81);
             this.label4.TabIndex = 8;
             this.label4.Text = "KitBox";
             // 
@@ -118,7 +117,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(139, 138);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 39);
+            this.label1.Size = new System.Drawing.Size(156, 58);
             this.label1.TabIndex = 0;
             this.label1.Text = "Width";
             // 
@@ -148,7 +147,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(306, 354);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // sizePanel
             // 
@@ -176,7 +174,7 @@
             this.depthLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.depthLabel.Location = new System.Drawing.Point(790, 138);
             this.depthLabel.Name = "depthLabel";
-            this.depthLabel.Size = new System.Drawing.Size(0, 19);
+            this.depthLabel.Size = new System.Drawing.Size(0, 24);
             this.depthLabel.TabIndex = 20;
             // 
             // widthLabel
@@ -187,7 +185,7 @@
             this.widthLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.widthLabel.Location = new System.Drawing.Point(651, 138);
             this.widthLabel.Name = "widthLabel";
-            this.widthLabel.Size = new System.Drawing.Size(0, 19);
+            this.widthLabel.Size = new System.Drawing.Size(0, 24);
             this.widthLabel.TabIndex = 19;
             // 
             // widthDepthComboBox
@@ -200,7 +198,7 @@
             this.widthDepthComboBox.IntegralHeight = false;
             this.widthDepthComboBox.Location = new System.Drawing.Point(116, 256);
             this.widthDepthComboBox.Name = "widthDepthComboBox";
-            this.widthDepthComboBox.Size = new System.Drawing.Size(335, 47);
+            this.widthDepthComboBox.Size = new System.Drawing.Size(335, 66);
             this.widthDepthComboBox.Sorted = true;
             this.widthDepthComboBox.TabIndex = 18;
             this.widthDepthComboBox.SelectedIndexChanged += new System.EventHandler(this.WidthDepthComboBox_SelectedIndexChanged);
@@ -216,7 +214,6 @@
             this.Name = "UserControl1";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Size = new System.Drawing.Size(900, 600);
-            this.Load += new System.EventHandler(this.UserControl1_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

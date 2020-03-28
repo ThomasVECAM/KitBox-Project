@@ -15,57 +15,33 @@ namespace Interface_5
         public UserControl3()
         {
             InitializeComponent();
-        }
-
-        private static UserControl3 _instance;
-        public static UserControl3 Instance
-        {
-            get
+            
+            for (int i=0;  i < Globals.order.GetFurnitureList.Count; i++)
             {
-                if (_instance == null)
-                    _instance = new UserControl3();
-                return _instance;
+                UserControl4 furnitureTemplate = new UserControl4(i);
+                furnitureTemplate.Modify.Click += new EventHandler(Modify);
+                furnitureTemplate.Remove.Click += new EventHandler(Remove_Duplicate);
+                furnitureTemplate.Duplicate.Click += new EventHandler(Remove_Duplicate);
+                flowLayoutPanel1.Controls.Add(furnitureTemplate);
             }
         }
 
-        private void UserControl3_Load(object sender, EventArgs e)
+        private void addButton_Click(object sender, EventArgs e)
         {
-            FurnitureItems();
+            UserControl1 FirstUser = new UserControl1();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(FirstUser);
         }
-        public void FurnitureItems()
+        private void Modify(object sender, EventArgs e)
         {
-            /*
-           UserControl4 [] listItems = new UserControl4[20];
-
-           for(int i=0; i< listItems.Length;i++)
-           {
-               listItems[i] = new UserControl4();
-               listItems[i].FurnitureName = "Meuble Cuisine";
-               listItems[i].FurnitureDimensions = "240x40x300";
-
-               if(flowLayoutPanel1.Controls.Count <0)
-               {
-                   flowLayoutPanel1.Controls.Clear();
-
-               }
-               else
-               flowLayoutPanel1.Controls.Add(listItems[i]);
-           }*/
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new UserControl2());
         }
-
-        private void Panel1_Paint(object sender, PaintEventArgs e)
+        private void Remove_Duplicate(object sender, EventArgs e)
         {
-
-        }
-
-        private void FlowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void FurnitureDetails_TextChanged(object sender, EventArgs e)
-        {
-
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new UserControl3());
+            // new page that will be an update
         }
     }
 }

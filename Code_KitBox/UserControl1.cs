@@ -16,17 +16,6 @@ namespace Interface_5
         public static string transDimensions = "";
         private static UserControl1 _instance;
         private String[] widthDepth;
-
-       
-        public static UserControl1 Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new UserControl1();
-                return _instance;
-            }
-        }
         public UserControl1()
         {
             InitializeComponent();
@@ -39,53 +28,26 @@ namespace Interface_5
             {
                 Console.WriteLine("Erro" + erro);
             }
-
-            //Choix dimensions meuble - en fonction des plaques horizontales existantes
-            MySqlCommand cmd = db.CreateCommand();
-            cmd.CommandText = "SELECT Dimension,Largeur,Profondeur,Couleur FROM `Composants` WHERE `Ref`='Panneau HB'";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            List<Tuple<string, int, int>> dimension_list = new List<Tuple<string, int, int>>(); //liste où l'on va stocker les composants
-            while (reader.Read())
+            
+            List<string> dimension_list = new List<string>(); //liste où l'on va stocker les dimensions
+            foreach (PanelClass panel in Globals.requiredComponents.horizontalPanelList)
             {
-                dimension_list.Add(new Tuple<string, int, int>(reader["Dimension"].ToString(),
-                    Convert.ToInt32(reader["Largeur"]), Convert.ToInt32(reader["Profondeur"])));
+                dimension_list.Add(panel.GetWidth + "x" + panel.GetDepth);
             }
-            db.Close();
             dimension_list = dimension_list.Distinct().ToList(); //enlever les panneaux de même taille
 
-            foreach (Tuple<string, int, int> element in dimension_list)
+            foreach (string element in dimension_list)
             {
-                widthDepthComboBox.Items.Add(element.Item2 + "x" + element.Item3); 
+                widthDepthComboBox.Items.Add(element); 
             }
         }
-
-        private void UserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public void NextButton_Click(object sender, EventArgs e)
         {
-            
             Globals.order.AddFurniture(Convert.ToInt32(widthDepth[0]), Convert.ToInt32(widthDepth[1]));
-            if (!sizePanel.Controls.Contains(UserControl2.Instance))
-            {
-                sizePanel.Controls.Add(UserControl2.Instance);
-                UserControl2.Instance.Dock = DockStyle.Fill;
-                UserControl2.Instance.BringToFront();
-            }
-            else
-            {
-                UserControl2.Instance.BringToFront();
-            }
+            Globals.furnitureIndex = Globals.order.GetFurnitureList.Count - 1;
+            sizePanel.Controls.Clear();
+            sizePanel.Controls.Add(new UserControl2());
         }
-
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-
         private void WidthDepthComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             char[] separator = { 'x' };
@@ -95,11 +57,5 @@ namespace Interface_5
             depthLabel.Text = widthDepth[1];
             transDimensions = widthLabel.Text + "x" + depthLabel.Text+"x";
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
- 

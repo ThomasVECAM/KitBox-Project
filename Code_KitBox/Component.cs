@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Interface_5
 {
 
-    abstract class Component
+    public abstract class Component
     {
         protected double price;
         protected string id, name;
@@ -25,6 +26,22 @@ namespace Interface_5
         {
             get { return this.price; }
         }
+
+        public int GetWidth
+        {
+            get { return this.width; }
+        }
+
+        public int GetHeight
+        {
+            get { return this.height; }
+        }
+
+        public int GetDepth
+        {
+            get { return this.depth; }
+        }
+
         /*public void WriteFacture(string path)
         {
             using (StreamWriter sw = File.AppendText(path))
@@ -37,5 +54,5 @@ namespace Interface_5
             get { return this.name; }
         }*/
     }
-    
+
 }

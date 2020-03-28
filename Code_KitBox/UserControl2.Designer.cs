@@ -217,6 +217,7 @@
             // 
             // brownCornerButton4
             // 
+            this.brownCornerButton4.AccessibleDescription = "Brun";
             this.brownCornerButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(173)))), ((int)(((byte)(127)))));
             this.brownCornerButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.brownCornerButton4.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
@@ -242,6 +243,7 @@
             // 
             // whiteCornerButton1
             // 
+            this.whiteCornerButton1.AccessibleDescription = "Blanc";
             this.whiteCornerButton1.BackColor = System.Drawing.Color.White;
             this.whiteCornerButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.whiteCornerButton1.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
@@ -267,6 +269,7 @@
             // 
             // blackCornerButton2
             // 
+            this.blackCornerButton2.AccessibleDescription = "Noir";
             this.blackCornerButton2.BackColor = System.Drawing.Color.Black;
             this.blackCornerButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.blackCornerButton2.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
@@ -303,6 +306,7 @@
             // 
             // galvanisedCornerButton3
             // 
+            this.galvanisedCornerButton3.AccessibleDescription = "Galvanise";
             this.galvanisedCornerButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(189)))), ((int)(((byte)(198)))));
             this.galvanisedCornerButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.galvanisedCornerButton3.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
@@ -340,6 +344,7 @@
             this.finishFurnitureButton.TabIndex = 9;
             this.finishFurnitureButton.Text = "Finish";
             this.finishFurnitureButton.UseVisualStyleBackColor = false;
+            this.finishFurnitureButton.Click += new System.EventHandler(this.finishFurnitureButton_Click);
             // 
             // choicesBoxPanel
             // 
@@ -414,6 +419,7 @@
             // 
             // whiteDoorButton7
             // 
+            this.whiteDoorButton7.AccessibleDescription = "Blanc";
             this.whiteDoorButton7.BackColor = System.Drawing.Color.White;
             this.whiteDoorButton7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.whiteDoorButton7.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
@@ -439,6 +445,7 @@
             // 
             // brownDoorButton8
             // 
+            this.brownDoorButton8.AccessibleDescription = "Brun";
             this.brownDoorButton8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(173)))), ((int)(((byte)(127)))));
             this.brownDoorButton8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.brownDoorButton8.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
@@ -475,6 +482,7 @@
             // 
             // glassDoorButton9
             // 
+            this.glassDoorButton9.AccessibleDescription = "Verre";
             this.glassDoorButton9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.glassDoorButton9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.glassDoorButton9.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
@@ -511,6 +519,7 @@
             // 
             // whiteBoxButton5
             // 
+            this.whiteBoxButton5.AccessibleDescription = "Blanc";
             this.whiteBoxButton5.BackColor = System.Drawing.Color.White;
             this.whiteBoxButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.whiteBoxButton5.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
@@ -536,6 +545,7 @@
             // 
             // brownBoxButton6
             // 
+            this.brownBoxButton6.AccessibleDescription = "Brun";
             this.brownBoxButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(173)))), ((int)(((byte)(127)))));
             this.brownBoxButton6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.brownBoxButton6.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
@@ -673,7 +683,6 @@
             // 
             // button11
             // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.ForeColor = System.Drawing.Color.White;
@@ -684,7 +693,6 @@
             this.button11.TabIndex = 9;
             this.button11.Text = "Finish";
             this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.Button11_Click);
             // 
             // pictureBox1
             // 
@@ -719,6 +727,7 @@
             this.furnitureName.Size = new System.Drawing.Size(309, 59);
             this.furnitureName.TabIndex = 4;
             this.furnitureName.Text = "FurnitureName1";
+            this.furnitureName.TextChanged += new System.EventHandler(this.furnitureName_TextChanged);
             // 
             // UserControl2
             // 
@@ -731,6 +740,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UserControl2";
             this.Size = new System.Drawing.Size(900, 600);
+            this.Tag = "";
             this.boxesPannel.ResumeLayout(false);
             this.logoPanel.ResumeLayout(false);
             this.logoPanel.PerformLayout();

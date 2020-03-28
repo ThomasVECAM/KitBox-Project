@@ -49,6 +49,12 @@ namespace Interface_5
 
             }
         }
+        public void Duplicate()
+        {
+            Furniture copy = new Furniture(0,0);
+            Furniture.Copy(furnitureList[Globals.furnitureIndex], copy);
+            furnitureList.Add(copy);
+        }
         public List<Furniture> GetFurnitureList
         {
             get { return this.furnitureList; }
