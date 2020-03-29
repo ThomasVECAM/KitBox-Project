@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-
 namespace Interface_5
 {
     public class RequiredComponents

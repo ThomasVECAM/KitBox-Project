@@ -9,14 +9,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Interface_5
 {
-    //[Serializable]
-
     class Furniture
     {
         private string name, cornerColor;
         private List<Box> boxList;
         private List<Corner> cornerList;
         private int depth, width;
+        public int nbFurnitures;
 
         public Furniture(int width, int depth)
         {
@@ -26,6 +25,7 @@ namespace Interface_5
             this.boxList = new List<Box>();
             this.cornerList = new List<Corner>();
             this.cornerColor = "";
+            this.nbFurnitures = 1;
         }
 
         public void AddBox()
@@ -105,6 +105,7 @@ namespace Interface_5
             destinationFurniture.width = sourceFurniture.width;
             destinationFurniture.depth = sourceFurniture.depth;
             destinationFurniture.boxList = sourceFurniture.boxList;
+            destinationFurniture.cornerColor = sourceFurniture.cornerColor;
         }
     }
 }

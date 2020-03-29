@@ -21,16 +21,15 @@ namespace Interface_5
                 UserControl4 furnitureTemplate = new UserControl4(i);
                 furnitureTemplate.Modify.Click += new EventHandler(Modify);
                 furnitureTemplate.Remove.Click += new EventHandler(Remove_Duplicate);
-                furnitureTemplate.Duplicate.Click += new EventHandler(Remove_Duplicate);
+                //furnitureTemplate.Duplicate.Click += new EventHandler(Remove_Duplicate);
                 flowLayoutPanel1.Controls.Add(furnitureTemplate);
             }
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            UserControl1 FirstUser = new UserControl1();
             panel1.Controls.Clear();
-            panel1.Controls.Add(FirstUser);
+            panel1.Controls.Add(new UserControl1());
         }
         private void Modify(object sender, EventArgs e)
         {
