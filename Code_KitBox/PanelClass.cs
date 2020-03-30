@@ -11,7 +11,7 @@ namespace Interface_5
         private string orientation, color, name;
 
         public PanelClass(string id, int height, int width, int depth,
-        double price, string color) : base(id, height, width, depth, price)
+        double price, int quantity, string color) : base(id, height, width, depth, price, quantity)
         {
             this.color = color;
             if (height == 0)

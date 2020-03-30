@@ -13,14 +13,16 @@ namespace Interface_5
         protected double price;
         protected string id, name;
         protected int width, depth, height;
+        public int quantity;
 
-        public Component(string id, int height, int width, int depth, double price)
+        public Component(string id, int height, int width, int depth, double price, int quantity)
         {
             this.id = id;
             this.height = height;
             this.width = width;
             this.depth = depth;
             this.price = price;
+            this.quantity = quantity;
         }
         public double GetPrice
         {

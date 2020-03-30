@@ -11,7 +11,7 @@ namespace Interface_5
         private string orientation, name;
 
         public Traverse(string id, int height, int width, int depth,
-        double price) : base(id, height, width, depth, price)
+        double price, int quantity) : base(id, height, width, depth, price, quantity)
         {
             if (id.Contains("TRR"))
             {
