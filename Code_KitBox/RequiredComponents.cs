@@ -12,11 +12,11 @@ namespace Interface_5
         public List<PanelClass> sidePanelList = new List<PanelClass>();
         public List<PanelClass> backPanelList = new List<PanelClass>();
         public List<PanelClass> horizontalPanelList = new List<PanelClass>();
-        List<Bracket> bracketList = new List<Bracket>();
-        List<Door> doorList = new List<Door>();
-        List<Traverse> sideTraverseList = new List<Traverse>();
-        List<Traverse> backTraverseList = new List<Traverse>();
-        List<Traverse> forwardTraverseList = new List<Traverse>();
+        public List<Bracket> bracketList = new List<Bracket>();
+        public List<Door> doorList = new List<Door>();
+        public List<Traverse> sideTraverseList = new List<Traverse>();
+        public List<Traverse> backTraverseList = new List<Traverse>();
+        public List<Traverse> forwardTraverseList = new List<Traverse>();
 
         public RequiredComponents()
         {
@@ -51,9 +51,6 @@ namespace Interface_5
                         Convert.ToInt32(reader["Largeur"]), 0,
                         Convert.ToDouble(reader["Prix_Client"]), reader["Couleur"].ToString()));
                 }
-
-
-
                 else if(componentReference == "Panneau HB")
                 {
                     horizontalPanelList.Add(new PanelClass(reader["Code"].ToString(), 0,

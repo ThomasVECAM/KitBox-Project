@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interface_5
 {
-    class Bracket : Component
+    public class Bracket : Component
     {
         public Bracket(string id, int height, int width, int depth,
         double price) : base(id, height, width, depth, price)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interface_5
 {
-    class Traverse : Component
+    public class Traverse : Component
     {
         private string orientation, name;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Interface_5
 {
-    class Door : Component
+    public class Door : Component
     {
         private string color;
 
