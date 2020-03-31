@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 
 namespace Interface_5
 {
-    class Corner
+    public class Corner
     {
         private string id, color;
-        private int height, price;
+        private int height;
+        private double price;
+        public int quantity;
 
-        public Corner(string id, int height, int price, string color)
+        public Corner(string id, int height, double price, int quantity, string color)
         {
             this.id = id;
             this.height = height;
             this.price = price;
+            this.quantity = quantity;
             this.color = color;
         }
-        public int GetPrice
+        public double GetPrice
         {
             get { return this.price; }
         }
