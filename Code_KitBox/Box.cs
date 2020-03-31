@@ -145,7 +145,20 @@ namespace Interface_5
 
         public void UpdateRequiredComponents()
         {
-            // to do
+            foreach (Component component in this.componentList)
+            {
+                // On garde les traverses
+                if (!component.GetId.Contains("TR"))
+                {
+                    foreach (Component stockComponent in Globals.requiredComponents.componentStock)
+                    {
+                        if (component.GetId == stockComponent.GetId)
+                            stockComponent.quantity += component.quantity;
+                    }
+                    this.componentList.Remove(component);
+                }
+            }
+            this.AddRequiredComponents();
         }
 
         public void AddComponent(Component component)
