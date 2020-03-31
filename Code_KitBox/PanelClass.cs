@@ -8,7 +8,7 @@ namespace Interface_5
 {
     public class PanelClass : Component
     {
-        private string orientation, color, name;
+        private string orientation, color;
 
         public PanelClass(string id, int height, int width, int depth,
         double price, int quantity, string color) : base(id, height, width, depth, price, quantity)

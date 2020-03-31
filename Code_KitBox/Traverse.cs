@@ -8,7 +8,7 @@ namespace Interface_5
 {
     public class Traverse : Component
     {
-        private string orientation, name;
+        private string orientation;
 
         public Traverse(string id, int height, int width, int depth,
         double price, int quantity) : base(id, height, width, depth, price, quantity)
