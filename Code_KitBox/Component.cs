@@ -24,6 +24,10 @@ namespace Interface_5
             this.price = price;
             this.quantity = quantity;
         }
+        public string GetId
+        {
+            get { return this.id; }
+        }
         public double GetPrice
         {
             get { return this.price; }
