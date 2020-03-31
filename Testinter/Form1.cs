@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Data.OleDb;
 
 namespace Testdb
 {
     public partial class Form1 : Form
 
-    {
+    {   
+
         MySqlConnection db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
-        List<string> mylist = new List<string>(new string[] { "SELECT Dimension,Largeur,Profondeur,Couleur FROM `Composants` WHERE `Ref`='Panneau HB'", "SELECT Dimension, Largeur, Profondeur, Couleur FROM `Composants` WHERE `Ref`= 'Panneau Ar'", "SELECT Dimension,Largeur,Profondeur,Couleur FROM `Composants` WHERE `Ref`='Panneau HB'" });
+        
+
         public Form1()
         {
             
@@ -41,17 +45,27 @@ namespace Testdb
                 Console.WriteLine("Erro" + erro);
             }
             MySqlCommand cmd = db.CreateCommand();
-            cmd.CommandText = "SELECT ID,ID_CLIENT FROM `Commande` ";
+            cmd.CommandText = "SELECT * FROM Commande ";
             MySqlDataReader reader = cmd.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
-            dataGridView1.CurrentCell.Selected = false;
-            /*while (reader.Read())
+            try
             {
-                lb1.Items.Add(reader["ID"].ToString() + reader["ID_CLIENT"].ToString()) ;
-            }*/
-            db.Close();
+               
+                db.Close();
+            }
+            catch
+            {
+                db.Close();
+            }
+            
+            
+            
+            
+            
+           
+           
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -60,6 +74,7 @@ namespace Testdb
             try
             {
                 db.Open();
+                
             }
             catch (Exception erro)
             {
@@ -67,15 +82,68 @@ namespace Testdb
             }
             MySqlCommand cmd = db.CreateCommand();
             var random = new Random();
-            int index = random.Next(mylist.Count);
-            cmd.CommandText = "SELECT ID_Composant FROM `Composant_Commande` WHERE `ID_Commande`="+ dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            //int index = random.Next(mylist.Count);
+            //cmd.CommandText = "SELECT ID_Composant FROM `Composant_Commande` WHERE `ID_Commande`="+ dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+
+            cmd.CommandText = "Select Ref,Profondeur from Composants WHERE Code IN (SELECT ID_Composant FROM Composant_Commande WHERE  ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + ")";
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                
-                lb1.Items.Add(reader["ID_Composant"]);
+                lb1.Items.Add(reader["Ref"]+"Prof =" +reader["Profondeur"]);
             }
             db.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            db.Open();
+            DataTable dt = (DataTable)(dataGridView1.DataSource);
+            DataSet myDS = new DataSet();
+            dt.TableName = "Table";
+            myDS.Tables.Add(dt);
+
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM Commande ", db);
+            MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter);
+            richTextBox1.Text = builder.GetUpdateCommand().CommandText;
+            dataAdapter.Fill(myDS, "Commande");
+            dataAdapter.Update(myDS);
+            
+            db.Close();
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            db.Open();
+            MySqlCommand cmd = db.CreateCommand();
+            cmd.CommandText = "DELETE FROM Composant_Commande WHERE ID_Commande=" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() ;
+            MySqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt = (DataTable)(dataGridView1.DataSource);
+            dt.Rows[0].Delete();
+
+            db.Close();
+            
+            
+            
+            /*db.Open();
+            cmd.CommandText = "DELETE FROM Commande WHERE ID=" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString(); 
+            reader = cmd.ExecuteReader();
+
+            db.Close();*/
+            //dataGridView1.Rows.RemoveAt(0);
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2(); // This is bad
+            f.Show();
+        }
     }
 }
+
