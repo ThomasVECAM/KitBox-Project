@@ -11,15 +11,6 @@ namespace Interface_5
     {
         public List<Component> componentStock = new List<Component>();
         public List<Corner> cornerStock = new List<Corner>();
-        
-        public List<PanelClass> sidePanelList = new List<PanelClass>(); // A enlever
-        public List<PanelClass> backPanelList = new List<PanelClass>(); // A enlever
-        public List<PanelClass> horizontalPanelList = new List<PanelClass>(); // A enlever
-        public List<Bracket> bracketList = new List<Bracket>(); // A enlever
-        public List<Door> doorList = new List<Door>(); // A enlever
-        public List<Traverse> sideTraverseList = new List<Traverse>(); // A enlever
-        public List<Traverse> backTraverseList = new List<Traverse>(); // A enlever
-        public List<Traverse> forwardTraverseList = new List<Traverse>(); // A enlever
 
 
         public RequiredComponents()
@@ -73,63 +64,6 @@ namespace Interface_5
                     cornerStock.Add(new Corner(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
                         Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]), 
                         reader["Couleur"].ToString()));
-                }
-
-                // A enlever
-                if (componentReference == "Panneau GD")
-                {
-                    sidePanelList.Add(new PanelClass(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
-                        0, Convert.ToInt32(reader["Profondeur"]), Convert.ToDouble(reader["Prix_Client"]),
-                        Convert.ToInt32(reader["En_stock"]), reader["Couleur"].ToString()));
-                }
-                else if(componentReference == "Panneau Ar")
-                {
-                    backPanelList.Add(new PanelClass(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
-                        Convert.ToInt32(reader["Largeur"]), 0, Convert.ToDouble(reader["Prix_Client"]),
-                        Convert.ToInt32(reader["En_stock"]), reader["Couleur"].ToString()));
-                }
-                else if(componentReference == "Panneau HB")
-                {
-                    horizontalPanelList.Add(new PanelClass(reader["Code"].ToString(), 0,
-                        Convert.ToInt32(reader["Largeur"]), Convert.ToInt32(reader["Profondeur"]),
-                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]),
-                        reader["Couleur"].ToString()));
-                }
-
-                else if (componentReference == "Tasseau")
-                {
-                    bracketList.Add(new Bracket(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]), 0, 0,
-                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"])));
-                }
-
-                else if(componentReference == "Traverse GD")
-                {
-                    sideTraverseList.Add(new Traverse(reader["Code"].ToString(), 0, 0, Convert.ToInt32(reader["Profondeur"]),
-                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"])));
-                }
-
-                else if(componentReference == "Traverse Ar")
-                {
-                    backTraverseList.Add(new Traverse(reader["Code"].ToString(), 0, Convert.ToInt32(reader["Largeur"]), 0,
-                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"])));
-                }
-
-                else if(componentReference == "Traverse Av")
-                {
-                    forwardTraverseList.Add(new Traverse(reader["Code"].ToString(), 0, Convert.ToInt32(reader["Largeur"]),
-                        0, Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"])));
-                }
-                
-                else if (componentReference == "Porte")
-                {
-                    doorList.Add(new Door(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
-                        Convert.ToInt32(reader["Largeur"]), 0, Convert.ToDouble(reader["Prix_Client"]),
-                        Convert.ToInt32(reader["En_stock"]), reader["Couleur"].ToString()));
-                }
-
-                else if(componentReference == "Corniere" )
-                {
-                    //to do
                 }
                 
             }

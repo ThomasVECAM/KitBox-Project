@@ -92,10 +92,11 @@ namespace Interface_5
 
             List<int> heightList = new List<int>();
 
-            foreach (PanelClass panel in Globals.requiredComponents.sidePanelList)
+            foreach (Component component in Globals.requiredComponents.componentStock)
             {
-                if(panel.GetDepth == Globals.order.GetFurnitureList[Globals.furnitureIndex].GetDepth)
-                heightList.Add(panel.GetHeight);
+                if (component.GetId.Contains("PAG")
+                    && component.GetDepth == Globals.order.GetFurnitureList[Globals.furnitureIndex].GetDepth)
+                    heightList.Add(component.GetHeight);
             }
             
             heightList = heightList.Distinct().ToList(); //enlever les objets qui ont les mêmes hauteur

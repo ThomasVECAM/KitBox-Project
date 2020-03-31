@@ -30,9 +30,11 @@ namespace Interface_5
             }
             
             List<string> dimension_list = new List<string>(); //liste où l'on va stocker les dimensions
-            foreach (PanelClass panel in Globals.requiredComponents.horizontalPanelList)
+
+            foreach (Component component in Globals.requiredComponents.componentStock)
             {
-                dimension_list.Add(panel.GetWidth + "x" + panel.GetDepth);
+                if (component.GetId.Contains("PAH"))
+                    dimension_list.Add(component.GetWidth + "x" + component.GetDepth);
             }
             dimension_list = dimension_list.Distinct().ToList(); //enlever les panneaux de même taille
 
