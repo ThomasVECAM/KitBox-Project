@@ -9,14 +9,18 @@ namespace Interface_5
 {
     public class RequiredComponents
     {
-        public List<PanelClass> sidePanelList = new List<PanelClass>();
-        public List<PanelClass> backPanelList = new List<PanelClass>();
-        public List<PanelClass> horizontalPanelList = new List<PanelClass>();
-        public List<Bracket> bracketList = new List<Bracket>();
-        public List<Door> doorList = new List<Door>();
-        public List<Traverse> sideTraverseList = new List<Traverse>();
-        public List<Traverse> backTraverseList = new List<Traverse>();
-        public List<Traverse> forwardTraverseList = new List<Traverse>();
+        public List<Component> componentStock = new List<Component>();
+        public List<Corner> cornerStock = new List<Corner>();
+        
+        public List<PanelClass> sidePanelList = new List<PanelClass>(); // A enlever
+        public List<PanelClass> backPanelList = new List<PanelClass>(); // A enlever
+        public List<PanelClass> horizontalPanelList = new List<PanelClass>(); // A enlever
+        public List<Bracket> bracketList = new List<Bracket>(); // A enlever
+        public List<Door> doorList = new List<Door>(); // A enlever
+        public List<Traverse> sideTraverseList = new List<Traverse>(); // A enlever
+        public List<Traverse> backTraverseList = new List<Traverse>(); // A enlever
+        public List<Traverse> forwardTraverseList = new List<Traverse>(); // A enlever
+
 
         public RequiredComponents()
         {
@@ -35,10 +39,43 @@ namespace Interface_5
             MySqlCommand cmd = db.CreateCommand();
             cmd.CommandText = "SELECT Ref,Code, Hauteur, Largeur, Profondeur, Prix_Client, Couleur, En_stock FROM `Composants`";
             MySqlDataReader reader = cmd.ExecuteReader();
+
+
             while (reader.Read())
             {
                 string componentReference = reader["Ref"].ToString();
-                
+                if (componentReference.Contains("Panneau"))
+                {
+                    componentStock.Add(new PanelClass(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
+                        Convert.ToInt32(reader["Largeur"]), Convert.ToInt32(reader["Profondeur"]),
+                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]),
+                        reader["Couleur"].ToString()));
+                }
+                else if (componentReference == "Tasseau")
+                {
+                    componentStock.Add(new Bracket(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
+                        0, 0, Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"])));
+                }
+                else if (componentReference.Contains("Traverse"))
+                {
+                    componentStock.Add(new Traverse(reader["Code"].ToString(), 0, Convert.ToInt32(reader["Largeur"]),
+                        Convert.ToInt32(reader["Profondeur"]), Convert.ToDouble(reader["Prix_Client"]),
+                        Convert.ToInt32(reader["En_stock"])));
+                }
+                else if (componentReference == "Porte")
+                {
+                    componentStock.Add(new Door(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
+                        Convert.ToInt32(reader["Largeur"]), 0, Convert.ToDouble(reader["Prix_Client"]),
+                        Convert.ToInt32(reader["En_stock"]), reader["Couleur"].ToString()));
+                }
+                else if (componentReference == "Corniere")
+                {
+                    cornerStock.Add(new Corner(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
+                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]), 
+                        reader["Couleur"].ToString()));
+                }
+
+                // A enlever
                 if (componentReference == "Panneau GD")
                 {
                     sidePanelList.Add(new PanelClass(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
@@ -82,7 +119,7 @@ namespace Interface_5
                     forwardTraverseList.Add(new Traverse(reader["Code"].ToString(), 0, Convert.ToInt32(reader["Largeur"]),
                         0, Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"])));
                 }
-
+                
                 else if (componentReference == "Porte")
                 {
                     doorList.Add(new Door(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
@@ -94,6 +131,7 @@ namespace Interface_5
                 {
                     //to do
                 }
+                
             }
             db.Close();
         }
