@@ -13,7 +13,8 @@ namespace Interface_5
         private List<Component> componentList, componentToOrder;
         private int width, depth, height;
         private string color, doorColor;
-        private bool hasDoor, inStock;
+        public bool inStock;
+        private bool hasDoor;
 
         public Box(int width, int depth)
         {
@@ -238,6 +239,12 @@ namespace Interface_5
 
         public void UpdateRequiredComponents()
         {
+            this.RemoveRequiredComponents();
+            this.inStock = true;
+            this.AddRequiredComponents();
+        }
+        public void RemoveRequiredComponents()
+        {
             foreach (Component component in this.componentList)
             {
                 foreach (Component stockComponent in Globals.requiredComponents.componentStock)
@@ -248,8 +255,6 @@ namespace Interface_5
                 this.componentList.Remove(component);
             }
             this.componentToOrder.Clear();
-            this.inStock = true;
-            this.AddRequiredComponents();
         }
 
         public void AddComponent(Component component)
