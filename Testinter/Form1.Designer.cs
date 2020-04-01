@@ -64,6 +64,7 @@
             // dataGridView1
             // 
             this.dataGridView1.AccessibleRole = System.Windows.Forms.AccessibleRole.Row;
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
@@ -83,7 +84,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(575, 49);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 28);
             this.button2.TabIndex = 3;
@@ -94,7 +95,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(575, 121);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 28);
             this.button3.TabIndex = 4;
@@ -105,7 +106,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(575, 85);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 28);
             this.button4.TabIndex = 7;
@@ -116,7 +117,7 @@
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(575, 186);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(157, 217);
             this.richTextBox1.TabIndex = 6;

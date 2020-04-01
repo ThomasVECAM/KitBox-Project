@@ -18,7 +18,7 @@ namespace Testdb
     {   
 
         MySqlConnection db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
-        
+        DataSet myDS = new DataSet();
 
         public Form1()
         {
@@ -45,7 +45,7 @@ namespace Testdb
                 Console.WriteLine("Erro" + erro);
             }
             MySqlCommand cmd = db.CreateCommand();
-            cmd.CommandText = "SELECT * FROM Commande ";
+            cmd.CommandText = "SELECT * FROM Commande WHERE Validation = 0 ";
             MySqlDataReader reader = cmd.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(reader);
@@ -85,11 +85,11 @@ namespace Testdb
             //int index = random.Next(mylist.Count);
             //cmd.CommandText = "SELECT ID_Composant FROM `Composant_Commande` WHERE `ID_Commande`="+ dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
-            cmd.CommandText = "Select Ref,Profondeur from Composants WHERE Code IN (SELECT ID_Composant FROM Composant_Commande WHERE  ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + ")";
+            cmd.CommandText = "Select Ref,Profondeur,Hauteur,Largeur,Couleur from Composants WHERE Code IN (SELECT ID_Composant FROM Composant_Commande WHERE ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + ")";
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                lb1.Items.Add(reader["Ref"]+"Prof =" +reader["Profondeur"]);
+                lb1.Items.Add(reader["Ref"]+" Prof =" +reader["Profondeur"]+reader["Couleur"]);
             }
             db.Close();
         }
@@ -98,9 +98,17 @@ namespace Testdb
         {
             db.Open();
             DataTable dt = (DataTable)(dataGridView1.DataSource);
-            DataSet myDS = new DataSet();
+            
             dt.TableName = "Table";
-            myDS.Tables.Add(dt);
+            try
+            {
+                
+                myDS.Tables.Add(dt);
+            }
+            catch
+            {
+                
+            }
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM Commande ", db);
             MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter);
@@ -119,7 +127,11 @@ namespace Testdb
             cmd.CommandText = "DELETE FROM Composant_Commande WHERE ID_Commande=" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() ;
             MySqlDataReader reader = cmd.ExecuteReader();
             DataTable dt = (DataTable)(dataGridView1.DataSource);
-            dt.Rows[0].Delete();
+            foreach(DataGridViewRow item in dataGridView1.SelectedRows)
+            {
+                dt.Rows[item.Index].Delete();
+            }
+            
 
             db.Close();
             
