@@ -10,19 +10,21 @@ namespace Interface_5
 {
     class Box
     {
-        private List<Component> componentList;
+        private List<Component> componentList, componentToOrder;
         private int width, depth, height;
         private string color, doorColor;
-        private bool hasDoor;
+        private bool hasDoor, inStock;
 
         public Box(int width, int depth)
         {
             componentList = new List<Component>();
+            componentToOrder = new List<Component>();
             this.height = 0;
             this.width = width;
             this.depth = depth;
             this.color = "";
             this.hasDoor = false;
+            this.inStock = true;
         }
 
         public bool HasDoor
@@ -35,7 +37,7 @@ namespace Interface_5
             get { return height; }
             set { height = value; }
         }
-
+        
         public void AddRequiredComponents()
         {
             foreach (Component component in Globals.requiredComponents.componentStock)
@@ -49,12 +51,38 @@ namespace Interface_5
                     if (panel.GetOrientation == "horizontal" && this.GetWidth == panel.GetWidth
                         && this.GetDepth == panel.GetDepth && this.GetColor == panel.GetColor)
                     {
+                        // Si il y en a suffisement en stock
                         if (panel.quantity >= 2)
                         {
                             panel.quantity -= 2;
                             this.AddComponent(new PanelClass(panel.GetId, panel.GetHeight,
                                 panel.GetWidth, panel.GetDepth, panel.GetPrice,
                                 2, panel.GetColor));
+                        }
+                        // Si il y en a plus du tou en stock
+                        else if (panel.quantity == 0)
+                        {
+                            this.inStock = false;
+                            this.componentToOrder.Add(new PanelClass(panel.GetId, panel.GetHeight,
+                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
+                                2, panel.GetColor));
+                            panel.quantity = 0;
+                        }
+                        // Si il y en a plus suffisement en stock
+                        else
+                        {
+                            this.inStock = false;
+                            // Si il en reste au moins un
+                            if (panel.quantity > 0)
+                            {
+                                this.AddComponent(new PanelClass(panel.GetId, panel.GetHeight,
+                                  panel.GetWidth, panel.GetDepth, panel.GetPrice,
+                                  panel.quantity, panel.GetColor));
+                            }
+                            this.componentToOrder.Add(new PanelClass(panel.GetId, panel.GetHeight,
+                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
+                                2 - panel.quantity, panel.GetColor));
+                            panel.quantity = 0;
                         }
                     }
 
@@ -66,6 +94,13 @@ namespace Interface_5
                         {
                             panel.quantity -= 1;
                             this.AddComponent(new PanelClass(panel.GetId, panel.GetHeight,
+                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
+                                1, panel.GetColor));
+                        }
+                        else
+                        {
+                            this.inStock = false;
+                            this.componentToOrder.Add(new PanelClass(panel.GetId, panel.GetHeight,
                                 panel.GetWidth, panel.GetDepth, panel.GetPrice,
                                 1, panel.GetColor));
                         }
@@ -81,6 +116,20 @@ namespace Interface_5
                             this.AddComponent(new PanelClass(panel.GetId, panel.GetHeight,
                                 panel.GetWidth, panel.GetDepth, panel.GetPrice,
                                 2, panel.GetColor));
+                        }
+                        else
+                        {
+                            this.inStock = false;
+                            if (panel.quantity > 0)
+                            {
+                                this.AddComponent(new PanelClass(panel.GetId, panel.GetHeight,
+                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
+                                panel.quantity, panel.GetColor));
+                            }
+                            this.componentToOrder.Add(new PanelClass(panel.GetId, panel.GetHeight,
+                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
+                                2 - panel.quantity, panel.GetColor));
+                            panel.quantity = 0;
                         }
                     }
                 }
@@ -98,6 +147,12 @@ namespace Interface_5
                             this.AddComponent(new Traverse(traverse.GetId, traverse.GetHeight,
                                 traverse.GetWidth, traverse.GetDepth, traverse.GetPrice, 1));
                         }
+                        else
+                        {
+                            this.inStock = false;
+                            this.componentToOrder.Add(new Traverse(traverse.GetId, traverse.GetHeight,
+                                traverse.GetWidth, traverse.GetDepth, traverse.GetPrice, 1));
+                        }
                     }
 
                     //Ajout des traverses de cotés
@@ -108,6 +163,18 @@ namespace Interface_5
                             traverse.quantity -= 2;
                             this.AddComponent(new Traverse(traverse.GetId, traverse.GetHeight,
                                 traverse.GetWidth, traverse.GetDepth, traverse.GetPrice, 2));
+                        }
+                        else
+                        {
+                            this.inStock = false;
+                            if (traverse.quantity > 0)
+                            {
+                                this.AddComponent(new Traverse(traverse.GetId, traverse.GetHeight,
+                                traverse.GetWidth, traverse.GetDepth, traverse.GetPrice, traverse.quantity));
+                            }
+                            this.componentToOrder.Add(new Traverse(traverse.GetId, traverse.GetHeight,
+                                traverse.GetWidth, traverse.GetDepth, traverse.GetPrice, 2 - traverse.quantity));
+                            traverse.quantity = 0;
                         }
                     }
                 }
@@ -120,6 +187,18 @@ namespace Interface_5
                         component.quantity -= 4;
                         this.AddComponent(new Bracket(component.GetId, component.GetHeight,
                             component.GetWidth, component.GetDepth, component.GetPrice, 4));
+                    }
+                    else
+                    {
+                        this.inStock = false;
+                        if (component.quantity > 0)
+                        {
+                            this.AddComponent(new Bracket(component.GetId, component.GetHeight,
+                            component.GetWidth, component.GetDepth, component.GetPrice, component.quantity));
+                        }
+                        this.componentToOrder.Add((new Bracket(component.GetId, component.GetHeight,
+                            component.GetWidth, component.GetDepth, component.GetPrice, 4 - component.quantity)));
+                        component.quantity = 0;
                     }
                 }
 
@@ -138,6 +217,20 @@ namespace Interface_5
                                 door.GetWidth, door.GetDepth, door.GetPrice,
                                 2, door.GetColor));
                         }
+                        else
+                        {
+                            this.inStock = false;
+                            if (door.quantity > 0)
+                            {
+                                this.AddComponent(new Door(door.GetId, door.GetHeight,
+                                door.GetWidth, door.GetDepth, door.GetPrice,
+                                door.quantity, door.GetColor));
+                            }
+                            this.componentToOrder.Add(new Door(door.GetId, door.GetHeight,
+                                door.GetWidth, door.GetDepth, door.GetPrice,
+                                2 - door.quantity, door.GetColor));
+                            door.quantity = 0;
+                        }
                     }
                 }
             }
@@ -147,17 +240,15 @@ namespace Interface_5
         {
             foreach (Component component in this.componentList)
             {
-                // On garde les traverses
-                if (!component.GetId.Contains("TR"))
+                foreach (Component stockComponent in Globals.requiredComponents.componentStock)
                 {
-                    foreach (Component stockComponent in Globals.requiredComponents.componentStock)
-                    {
-                        if (component.GetId == stockComponent.GetId)
-                            stockComponent.quantity += component.quantity;
-                    }
-                    this.componentList.Remove(component);
+                    if (component.GetId == stockComponent.GetId)
+                        stockComponent.quantity += component.quantity;
                 }
+                this.componentList.Remove(component);
             }
+            this.componentToOrder.Clear();
+            this.inStock = true;
             this.AddRequiredComponents();
         }
 
