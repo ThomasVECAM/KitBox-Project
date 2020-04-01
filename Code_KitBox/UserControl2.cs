@@ -224,7 +224,11 @@ namespace Interface_5
         { 
             heightComboBox.Text = (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].GetHeight).ToString();
             furnitureName.Text = Globals.order.GetFurnitureList[Globals.furnitureIndex].Name;
-
+            Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].UpdateRequiredComponents();
+            if (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].inStock)
+                stockLabel.BackColor = Color.Lime;
+            else
+                stockLabel.BackColor = Color.Red;
             //Door configuration
             if (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].HasDoor)
             {
@@ -266,6 +270,7 @@ namespace Interface_5
             int boxListLength = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxListLength(); 
             if (boxListLength > 1)
             {
+                Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].RemoveRequiredComponents();
                 i = 1;
                 //Enlever l'objet supprimé
                 Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList.RemoveAt(buttonNr - 1);
