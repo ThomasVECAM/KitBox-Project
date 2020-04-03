@@ -60,12 +60,12 @@ namespace Interface_5
         }
         public int GetHeight()
         {
-            int box_height = 0;
+            int furnitureHeight = 0;
             foreach (Box box in boxList)
             {
-                box_height += box.GetHeight;
+                furnitureHeight += box.GetHeight;
             }
-            return box_height;
+            return furnitureHeight;
         }
         public void WriteFacture(string path)
         {
@@ -99,6 +99,25 @@ namespace Interface_5
             boxList.Add(copy);
         }
 
+        public void RemoveBoxes()
+        {
+            foreach(Box box in boxList)
+            {
+                box.RemoveRequiredComponents();
+            }
+        }
+
+        public bool InStock()
+        {
+            foreach(Box box in boxList)
+            {
+                if(box.InStock()==false)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public static void Copy(Furniture sourceFurniture, Furniture destinationFurniture)
         {
             destinationFurniture.name = sourceFurniture.name;
@@ -107,5 +126,6 @@ namespace Interface_5
             destinationFurniture.boxList = sourceFurniture.boxList;
             destinationFurniture.cornerColor = sourceFurniture.cornerColor;
         }
+
     }
 }

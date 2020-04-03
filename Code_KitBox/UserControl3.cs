@@ -20,7 +20,7 @@ namespace Interface_5
             {
                 UserControl4 furnitureTemplate = new UserControl4(i);
                 furnitureTemplate.Modify.Click += new EventHandler(Modify);
-                furnitureTemplate.Remove.Click += new EventHandler(Remove_Duplicate);
+                furnitureTemplate.Remove.Click += new EventHandler(Remove);
                 //furnitureTemplate.Duplicate.Click += new EventHandler(Remove_Duplicate);
                 flowLayoutPanel1.Controls.Add(furnitureTemplate);
             }
@@ -36,7 +36,7 @@ namespace Interface_5
             panel1.Controls.Clear();
             panel1.Controls.Add(new UserControl2());
         }
-        private void Remove_Duplicate(object sender, EventArgs e)
+        private void Remove(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
             panel1.Controls.Add(new UserControl3());

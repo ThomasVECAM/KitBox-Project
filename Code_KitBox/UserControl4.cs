@@ -38,6 +38,11 @@ namespace Interface_5
             LabelFurnitureDimensions.Text = Globals.order.GetFurnitureList[indiceFurnitureList].GetHeight().ToString()
                 + "x" + Globals.order.GetFurnitureList[indiceFurnitureList].GetWidth.ToString()
                 + "x" + Globals.order.GetFurnitureList[indiceFurnitureList].GetDepth.ToString();
+            
+            if (Globals.order.GetFurnitureList[indiceFurnitureList].InStock())
+                stockLabel.BackColor = Color.Lime;
+            else
+                stockLabel.BackColor = Color.Red;
         }
 
         private void modifyButton_Click_1(object sender, EventArgs e)
@@ -53,6 +58,7 @@ namespace Interface_5
             if(dialog == DialogResult.Yes)
             {
                 Globals.furnitureIndex = indiceFurnitureList;
+                Globals.order.GetFurnitureList[indiceFurnitureList].RemoveBoxes();
                 Globals.order.GetFurnitureList.RemoveAt(indiceFurnitureList);
                 //rest of function is done in User3
             }

@@ -13,8 +13,6 @@ namespace Interface_5
 {
     public partial class UserControl2 : UserControl
     {
-        private static UserControl2 _instance;
-
         List<Button> listButtons = new List<Button>();//list of Boxes Buttons
         List<Button> colorButtons = new List<Button>();
         List<Label> colorLabels = new List<Label>();
@@ -92,10 +90,9 @@ namespace Interface_5
 
             List<int> heightList = new List<int>();
 
-            foreach (Component component in Globals.requiredComponents.componentStock)
+            foreach (Component component in Globals.requiredComponents.sidePanelList)
             {
-                if (component.GetId.Contains("PAG")
-                    && component.GetDepth == Globals.order.GetFurnitureList[Globals.furnitureIndex].GetDepth)
+                if (component.GetDepth == Globals.order.GetFurnitureList[Globals.furnitureIndex].GetDepth)
                     heightList.Add(component.GetHeight);
             }
             
@@ -118,6 +115,7 @@ namespace Interface_5
                     AddInterfaceBox();
                 }
             }
+            acutalizeDimensions();
         }
         private void BoxColor_Event(object sender, EventArgs e)
         {
@@ -221,11 +219,22 @@ namespace Interface_5
             UpdateBoxPannel();
         }
         private void UpdateBoxPannel()
-        { 
-            heightComboBox.Text = (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].GetHeight).ToString();
-            furnitureName.Text = Globals.order.GetFurnitureList[Globals.furnitureIndex].Name;
+        {
+            int comboIndex = -1; //set to avoid problems of changes
+            int boxHeight = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].GetHeight;
+            for(int i = 0; i < heightComboBox.Items.Count; i++)
+            {
+                if (Convert.ToInt32(heightComboBox.Items[i]) == boxHeight)
+                {
+                    comboIndex = i;                
+                }
+            }
+            heightComboBox.SelectedIndex = comboIndex;
+
             Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].UpdateRequiredComponents();
-            if (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].inStock)
+            furniturePrice.Text = "Price : " +
+                (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetPrice()).ToString();
+            if (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].InStock())
                 stockLabel.BackColor = Color.Lime;
             else
                 stockLabel.BackColor = Color.Red;
@@ -301,7 +310,8 @@ namespace Interface_5
         {
             Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].GetHeight =
                             Convert.ToInt32(heightComboBox.SelectedItem);
-           acutalizeDimensions();
+            acutalizeDimensions();
+            UpdateBoxPannel();
         } 
         void acutalizeDimensions()
         {
@@ -320,6 +330,8 @@ namespace Interface_5
             }
             else
                 MessageBox.Show("Maximum of 7 boxes reached");
+            acutalizeDimensions();
+
         }
         private void finishFurnitureButton_Click(object sender, EventArgs e)
         {

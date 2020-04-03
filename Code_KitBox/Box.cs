@@ -33,176 +33,87 @@ namespace Interface_5
             get { return hasDoor; }
             set { hasDoor = value; }
         }
-        public int Name
-        {
-            get { return height; }
-            set { height = value; }
-        }
         
         public void AddRequiredComponents()
         {
-            foreach (Component component in Globals.requiredComponents.componentStock)
+            //Ajout des panneaux
+            //Horizontaux
+            foreach (PanelClass panel in Globals.requiredComponents.horizontalPanelList)
             {
-                //Ajout des panneaux
-                if (component.GetId.Contains("PA"))
+                if (this.width == panel.GetWidth
+                    && this.depth == panel.GetDepth && this.color == panel.GetColor)
                 {
-                    PanelClass panel = (PanelClass)component;
-
-                    //Ajout des panneaux horizontaux
-                    if (panel.GetOrientation == "horizontal" && this.GetWidth == panel.GetWidth
-                        && this.GetDepth == panel.GetDepth && this.GetColor == panel.GetColor)
-                    {
-                        // Si il y en a suffisement en stock
-                        if (panel.quantity >= 2)
-                        {
-                            panel.quantity -= 2;
-                            this.AddComponent(new PanelClass(panel.GetId, panel.GetHeight,
-                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
-                                2, panel.GetColor));
-                        }
-                        // Si il y en a plus du tou en stock
-                        else if (panel.quantity == 0)
-                        {
-                            this.inStock = false;
-                            this.componentToOrder.Add(new PanelClass(panel.GetId, panel.GetHeight,
-                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
-                                2, panel.GetColor));
-                            panel.quantity = 0;
-                        }
-                        // Si il y en a plus suffisement en stock
-                        else
-                        {
-                            this.inStock = false;
-                            // Si il en reste au moins un
-                            if (panel.quantity > 0)
-                            {
-                                this.AddComponent(new PanelClass(panel.GetId, panel.GetHeight,
-                                  panel.GetWidth, panel.GetDepth, panel.GetPrice,
-                                  panel.quantity, panel.GetColor));
-                            }
-                            this.componentToOrder.Add(new PanelClass(panel.GetId, panel.GetHeight,
-                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
-                                2 - panel.quantity, panel.GetColor));
-                            panel.quantity = 0;
-                        }
-                    }
-
-                    //Ajout des panneaux arrière
-                    if (panel.GetOrientation == "back" && this.GetWidth == panel.GetWidth
-                        && this.GetHeight == panel.GetHeight && this.GetColor == panel.GetColor)
-                    {
-                        if (panel.quantity >= 1)
-                        {
-                            panel.quantity -= 1;
-                            this.AddComponent(new PanelClass(panel.GetId, panel.GetHeight,
-                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
-                                1, panel.GetColor));
-                        }
-                        else
-                        {
-                            this.inStock = false;
-                            this.componentToOrder.Add(new PanelClass(panel.GetId, panel.GetHeight,
-                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
-                                1, panel.GetColor));
-                        }
-                    }
-
-                    //Ajout des panneaux de cotés
-                    if (panel.GetOrientation == "side" && this.GetDepth == panel.GetDepth
-                        && this.GetHeight == panel.GetHeight && this.GetColor == panel.GetColor)
-                    {
-                        if (panel.quantity >= 2)
-                        {
-                            panel.quantity -= 2;
-                            this.AddComponent(new PanelClass(panel.GetId, panel.GetHeight,
-                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
-                                2, panel.GetColor));
-                        }
-                        else
-                        {
-                            this.inStock = false;
-                            if (panel.quantity > 0)
-                            {
-                                this.AddComponent(new PanelClass(panel.GetId, panel.GetHeight,
-                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
-                                panel.quantity, panel.GetColor));
-                            }
-                            this.componentToOrder.Add(new PanelClass(panel.GetId, panel.GetHeight,
-                                panel.GetWidth, panel.GetDepth, panel.GetPrice,
-                                2 - panel.quantity, panel.GetColor));
-                            panel.quantity = 0;
-                        }
-                    }
+                    componentList.Add(panel);
+                    componentList.Add(panel);
+                    panel.quantity -= 2;
                 }
-                //Ajout des traverse
-                else if (component.GetId.Contains("TR"))
+            }
+            //Panneau arrière
+            foreach (PanelClass panel in Globals.requiredComponents.backPanelList)
+            {
+                if (this.width == panel.GetWidth
+                    && this.height == panel.GetHeight && this.color == panel.GetColor)
                 {
-                    Traverse traverse = (Traverse)component;
-
-                    //Ajout de la traverse avant et arrière
-                    if (this.GetWidth == traverse.GetWidth)
-                    {
-                        if (traverse.quantity >= 1)
-                        {
-                            traverse.quantity -= 1;
-                            this.AddComponent(new Traverse(traverse.GetId, traverse.GetHeight,
-                                traverse.GetWidth, traverse.GetDepth, traverse.GetPrice, 1));
-                        }
-                        else
-                        {
-                            this.inStock = false;
-                            this.componentToOrder.Add(new Traverse(traverse.GetId, traverse.GetHeight,
-                                traverse.GetWidth, traverse.GetDepth, traverse.GetPrice, 1));
-                        }
-                    }
-
-                    //Ajout des traverses de cotés
-                    else if (this.GetDepth == traverse.GetDepth)
-                    {
-                        if (traverse.quantity >= 2)
-                        {
-                            traverse.quantity -= 2;
-                            this.AddComponent(new Traverse(traverse.GetId, traverse.GetHeight,
-                                traverse.GetWidth, traverse.GetDepth, traverse.GetPrice, 2));
-                        }
-                        else
-                        {
-                            this.inStock = false;
-                            if (traverse.quantity > 0)
-                            {
-                                this.AddComponent(new Traverse(traverse.GetId, traverse.GetHeight,
-                                traverse.GetWidth, traverse.GetDepth, traverse.GetPrice, traverse.quantity));
-                            }
-                            this.componentToOrder.Add(new Traverse(traverse.GetId, traverse.GetHeight,
-                                traverse.GetWidth, traverse.GetDepth, traverse.GetPrice, 2 - traverse.quantity));
-                            traverse.quantity = 0;
-                        }
-                    }
+                    componentList.Add(panel);
+                    panel.quantity -= 1;
                 }
+            }
 
-                //Ajout des tasseaux
-                else if (component.GetId.Contains("TAS") && this.GetHeight == component.GetHeight)
+            foreach (PanelClass panel in Globals.requiredComponents.sidePanelList)
+            {
+
+                if (this.depth == panel.GetDepth
+                       && this.height == panel.GetHeight && this.color == panel.GetColor)
                 {
-                    if (component.quantity >= 4)
-                    {
-                        component.quantity -= 4;
-                        this.AddComponent(new Bracket(component.GetId, component.GetHeight,
-                            component.GetWidth, component.GetDepth, component.GetPrice, 4));
-                    }
-                    else
-                    {
-                        this.inStock = false;
-                        if (component.quantity > 0)
-                        {
-                            this.AddComponent(new Bracket(component.GetId, component.GetHeight,
-                            component.GetWidth, component.GetDepth, component.GetPrice, component.quantity));
-                        }
-                        this.componentToOrder.Add((new Bracket(component.GetId, component.GetHeight,
-                            component.GetWidth, component.GetDepth, component.GetPrice, 4 - component.quantity)));
-                        component.quantity = 0;
-                    }
+                    componentList.Add(panel);
+                    componentList.Add(panel);
+                    panel.quantity -= 2;
                 }
+            }
 
+            foreach(Traverse traverse in Globals.requiredComponents.backTraverseList)
+            {
+                if (this.width == traverse.GetWidth)
+                {
+                    componentList.Add(traverse);
+                    traverse.quantity -= 1;
+                }
+            }
+
+            foreach (Traverse traverse in Globals.requiredComponents.forwardTraverseList)
+            {
+                if (this.width == traverse.GetWidth)
+                {
+                    componentList.Add(traverse);
+                    traverse.quantity -= 1;
+                }
+            }
+
+            foreach (Traverse traverse in Globals.requiredComponents.sideTraverseList)
+            {
+                if (this.depth == traverse.GetDepth)
+                {
+                    componentList.Add(traverse);
+                    componentList.Add(traverse);
+                    traverse.quantity -= 2;
+                }
+            }
+
+
+            foreach(Bracket bracket in Globals.requiredComponents.bracketList)
+            {
+                if(this.height == bracket.GetHeight)
+                {
+                    componentList.Add(bracket);
+                    componentList.Add(bracket);
+                    componentList.Add(bracket);
+                    componentList.Add(bracket);
+                    bracket.quantity -= 4;
+                }
+            }
+
+
+            /*
                 //Ajout des portes
                 else if (component.GetId.Contains("POR") && this.hasDoor)
                 {
@@ -233,34 +144,35 @@ namespace Interface_5
                             door.quantity = 0;
                         }
                     }
-                }
-            }
+                }*
+            }*/
         }
 
         public void UpdateRequiredComponents()
         {
             this.RemoveRequiredComponents();
-            this.inStock = true;
             this.AddRequiredComponents();
         }
         public void RemoveRequiredComponents()
         {
-            foreach (Component component in this.componentList)
+            foreach(Component component in componentList)
             {
-                foreach (Component stockComponent in Globals.requiredComponents.componentStock)
-                {
-                    if (component.GetId == stockComponent.GetId)
-                        stockComponent.quantity += component.quantity;
-                }
-                this.componentList.Remove(component);
+                component.quantity += 1;
             }
-            this.componentToOrder.Clear();
+            componentList.Clear();
+        }
+        public bool InStock()
+        {
+            foreach (Component component in componentList)
+            {
+                if (component.quantity <= 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
-        public void AddComponent(Component component)
-        {
-            componentList.Add(component);
-        }
         public void RemoveComponent(Component component)
         {
             componentList.Remove(component);

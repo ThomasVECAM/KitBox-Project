@@ -37,9 +37,10 @@
             this.LabelNrOfBoxes = new System.Windows.Forms.Label();
             this.LabelFurnitureDimensions = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.nbFurnitureLabel = new System.Windows.Forms.Label();
-            this.removenbButton = new System.Windows.Forms.Button();
             this.addnbButton = new System.Windows.Forms.Button();
+            this.removenbButton = new System.Windows.Forms.Button();
+            this.nbFurnitureLabel = new System.Windows.Forms.Label();
+            this.stockLabel = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +75,7 @@
             this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeButton.ForeColor = System.Drawing.Color.White;
-            this.removeButton.Location = new System.Drawing.Point(233, 116);
+            this.removeButton.Location = new System.Drawing.Point(204, 116);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(130, 47);
             this.removeButton.TabIndex = 8;
@@ -89,7 +90,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(417, 116);
+            this.button4.Location = new System.Drawing.Point(385, 116);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(125, 47);
             this.button4.TabIndex = 9;
@@ -138,6 +139,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.stockLabel);
             this.panel2.Controls.Add(this.addnbButton);
             this.panel2.Controls.Add(this.removenbButton);
             this.panel2.Controls.Add(this.nbFurnitureLabel);
@@ -154,14 +156,18 @@
             this.panel2.Size = new System.Drawing.Size(554, 196);
             this.panel2.TabIndex = 14;
             // 
-            // nbFurnitureLabel
+            // addnbButton
             // 
-            this.nbFurnitureLabel.AutoSize = true;
-            this.nbFurnitureLabel.Location = new System.Drawing.Point(500, 13);
-            this.nbFurnitureLabel.Name = "nbFurnitureLabel";
-            this.nbFurnitureLabel.Size = new System.Drawing.Size(28, 30);
-            this.nbFurnitureLabel.TabIndex = 14;
-            this.nbFurnitureLabel.Text = "X";
+            this.addnbButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.addnbButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addnbButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.addnbButton.Location = new System.Drawing.Point(456, 13);
+            this.addnbButton.Name = "addnbButton";
+            this.addnbButton.Size = new System.Drawing.Size(35, 35);
+            this.addnbButton.TabIndex = 16;
+            this.addnbButton.Text = "+";
+            this.addnbButton.UseVisualStyleBackColor = false;
+            this.addnbButton.Click += new System.EventHandler(this.addnbButton_Click);
             // 
             // removenbButton
             // 
@@ -176,18 +182,29 @@
             this.removenbButton.UseVisualStyleBackColor = false;
             this.removenbButton.Click += new System.EventHandler(this.removenbButton_Click);
             // 
-            // addnbButton
+            // nbFurnitureLabel
             // 
-            this.addnbButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.addnbButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addnbButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.addnbButton.Location = new System.Drawing.Point(456, 13);
-            this.addnbButton.Name = "addnbButton";
-            this.addnbButton.Size = new System.Drawing.Size(35, 35);
-            this.addnbButton.TabIndex = 16;
-            this.addnbButton.Text = "+";
-            this.addnbButton.UseVisualStyleBackColor = false;
-            this.addnbButton.Click += new System.EventHandler(this.addnbButton_Click);
+            this.nbFurnitureLabel.AutoSize = true;
+            this.nbFurnitureLabel.Location = new System.Drawing.Point(500, 13);
+            this.nbFurnitureLabel.Name = "nbFurnitureLabel";
+            this.nbFurnitureLabel.Size = new System.Drawing.Size(28, 30);
+            this.nbFurnitureLabel.TabIndex = 14;
+            this.nbFurnitureLabel.Text = "X";
+            // 
+            // stockLabel
+            // 
+            this.stockLabel.AccessibleDescription = "";
+            this.stockLabel.BackColor = System.Drawing.Color.Lime;
+            this.stockLabel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.stockLabel.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.stockLabel.FlatAppearance.BorderSize = 0;
+            this.stockLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stockLabel.ForeColor = System.Drawing.Color.White;
+            this.stockLabel.Location = new System.Drawing.Point(385, 16);
+            this.stockLabel.Name = "stockLabel";
+            this.stockLabel.Size = new System.Drawing.Size(26, 25);
+            this.stockLabel.TabIndex = 35;
+            this.stockLabel.UseVisualStyleBackColor = false;
             // 
             // UserControl4
             // 
@@ -218,5 +235,6 @@
         private System.Windows.Forms.Label nbFurnitureLabel;
         private System.Windows.Forms.Button addnbButton;
         private System.Windows.Forms.Button removenbButton;
+        internal System.Windows.Forms.Button stockLabel;
     }
 }
