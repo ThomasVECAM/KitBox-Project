@@ -32,15 +32,14 @@
             this.modifyButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.nbBoxLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.LabelNrOfBoxes = new System.Windows.Forms.Label();
             this.LabelFurnitureDimensions = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.stockLabel = new System.Windows.Forms.Button();
             this.addnbButton = new System.Windows.Forms.Button();
             this.removenbButton = new System.Windows.Forms.Button();
             this.nbFurnitureLabel = new System.Windows.Forms.Label();
-            this.stockLabel = new System.Windows.Forms.Button();
+            this.furniturePrice = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,31 +96,11 @@
             this.button4.Text = "Details";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // nbBoxLabel
-            // 
-            this.nbBoxLabel.AutoSize = true;
-            this.nbBoxLabel.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.nbBoxLabel.Location = new System.Drawing.Point(14, 70);
-            this.nbBoxLabel.Name = "nbBoxLabel";
-            this.nbBoxLabel.Size = new System.Drawing.Size(125, 23);
-            this.nbBoxLabel.TabIndex = 10;
-            this.nbBoxLabel.Text = "Nr of boxes:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label2.Location = new System.Drawing.Point(189, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 23);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Dimensions:";
-            // 
             // LabelNrOfBoxes
             // 
             this.LabelNrOfBoxes.AutoSize = true;
             this.LabelNrOfBoxes.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.LabelNrOfBoxes.Location = new System.Drawing.Point(118, 70);
+            this.LabelNrOfBoxes.Location = new System.Drawing.Point(14, 70);
             this.LabelNrOfBoxes.Name = "LabelNrOfBoxes";
             this.LabelNrOfBoxes.Size = new System.Drawing.Size(21, 23);
             this.LabelNrOfBoxes.TabIndex = 12;
@@ -131,14 +110,15 @@
             // 
             this.LabelFurnitureDimensions.AutoSize = true;
             this.LabelFurnitureDimensions.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.LabelFurnitureDimensions.Location = new System.Drawing.Point(300, 70);
+            this.LabelFurnitureDimensions.Location = new System.Drawing.Point(144, 70);
             this.LabelFurnitureDimensions.Name = "LabelFurnitureDimensions";
-            this.LabelFurnitureDimensions.Size = new System.Drawing.Size(63, 23);
+            this.LabelFurnitureDimensions.Size = new System.Drawing.Size(133, 23);
             this.LabelFurnitureDimensions.TabIndex = 13;
-            this.LabelFurnitureDimensions.Text = "0x0x0";
+            this.LabelFurnitureDimensions.Text = "Dimensions : ";
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.furniturePrice);
             this.panel2.Controls.Add(this.stockLabel);
             this.panel2.Controls.Add(this.addnbButton);
             this.panel2.Controls.Add(this.removenbButton);
@@ -147,14 +127,27 @@
             this.panel2.Controls.Add(this.LabelFurnitureDimensions);
             this.panel2.Controls.Add(this.LabelNrOfBoxes);
             this.panel2.Controls.Add(this.modifyButton);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.nbBoxLabel);
             this.panel2.Controls.Add(this.removeButton);
             this.panel2.Controls.Add(this.LabelFurnitureName);
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(554, 196);
+            this.panel2.Size = new System.Drawing.Size(554, 197);
             this.panel2.TabIndex = 14;
+            // 
+            // stockLabel
+            // 
+            this.stockLabel.AccessibleDescription = "";
+            this.stockLabel.BackColor = System.Drawing.Color.Lime;
+            this.stockLabel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.stockLabel.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.stockLabel.FlatAppearance.BorderSize = 0;
+            this.stockLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stockLabel.ForeColor = System.Drawing.Color.White;
+            this.stockLabel.Location = new System.Drawing.Point(385, 16);
+            this.stockLabel.Name = "stockLabel";
+            this.stockLabel.Size = new System.Drawing.Size(26, 25);
+            this.stockLabel.TabIndex = 35;
+            this.stockLabel.UseVisualStyleBackColor = false;
             // 
             // addnbButton
             // 
@@ -191,20 +184,15 @@
             this.nbFurnitureLabel.TabIndex = 14;
             this.nbFurnitureLabel.Text = "X";
             // 
-            // stockLabel
+            // furniturePrice
             // 
-            this.stockLabel.AccessibleDescription = "";
-            this.stockLabel.BackColor = System.Drawing.Color.Lime;
-            this.stockLabel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.stockLabel.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.stockLabel.FlatAppearance.BorderSize = 0;
-            this.stockLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.stockLabel.ForeColor = System.Drawing.Color.White;
-            this.stockLabel.Location = new System.Drawing.Point(385, 16);
-            this.stockLabel.Name = "stockLabel";
-            this.stockLabel.Size = new System.Drawing.Size(26, 25);
-            this.stockLabel.TabIndex = 35;
-            this.stockLabel.UseVisualStyleBackColor = false;
+            this.furniturePrice.AutoSize = true;
+            this.furniturePrice.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.furniturePrice.Location = new System.Drawing.Point(366, 70);
+            this.furniturePrice.Name = "furniturePrice";
+            this.furniturePrice.Size = new System.Drawing.Size(115, 23);
+            this.furniturePrice.TabIndex = 36;
+            this.furniturePrice.Text = "Unit Price : ";
             // 
             // UserControl4
             // 
@@ -227,8 +215,6 @@
         private System.Windows.Forms.Button modifyButton;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label nbBoxLabel;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LabelNrOfBoxes;
         private System.Windows.Forms.Label LabelFurnitureDimensions;
         private System.Windows.Forms.Panel panel2;
@@ -236,5 +222,6 @@
         private System.Windows.Forms.Button addnbButton;
         private System.Windows.Forms.Button removenbButton;
         internal System.Windows.Forms.Button stockLabel;
+        private System.Windows.Forms.Label furniturePrice;
     }
 }

@@ -101,9 +101,31 @@ namespace Interface_5
 
         public void RemoveBoxes()
         {
+            for(int i=0; i < nbFurnitures -1; i++)
+            {
+                foreach (Box box in boxList)
+                {
+                    box.RemoveRequiredComponents_1();
+                }
+            }
             foreach(Box box in boxList)
             {
                 box.RemoveRequiredComponents();
+            }
+
+        }
+        public void RemoveBoxes_1()
+        {
+            foreach (Box box in boxList)
+            {
+                box.RemoveRequiredComponents_1();
+            }
+        }
+        public void AddBoxes()
+        {
+            foreach (Box box in boxList)
+            {
+                box.DuplicationFurniture();
             }
         }
 

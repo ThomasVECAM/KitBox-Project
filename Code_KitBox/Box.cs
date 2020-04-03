@@ -161,6 +161,21 @@ namespace Interface_5
             }
             componentList.Clear();
         }
+
+        public void RemoveRequiredComponents_1()
+        {
+            foreach (Component component in componentList)
+            {
+                component.quantity += 1;
+            }
+        }
+        public void DuplicationFurniture()
+        {
+            foreach (Component component in componentList)
+            {
+                component.quantity -= 1;
+            }
+        }
         public bool InStock()
         {
             foreach (Component component in componentList)

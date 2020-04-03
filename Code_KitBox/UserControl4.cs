@@ -30,12 +30,22 @@ namespace Interface_5
             get { return removeButton; }
         }
 
-        private void UpdateFurniturePanel()
+        public Button AddnbButton
+        {
+            get { return addnbButton; }
+        }
+        public Button RemovenbButton
+        {
+            get { return removenbButton; }
+        }
+
+        public void UpdateFurniturePanel()
         {
             nbFurnitureLabel.Text = "X " + Globals.order.GetFurnitureList[indiceFurnitureList].nbFurnitures.ToString();
             LabelFurnitureName.Text = Globals.order.GetFurnitureList[indiceFurnitureList].Name;
-            LabelNrOfBoxes.Text = Globals.order.GetFurnitureList[indiceFurnitureList].GetBoxList.Count().ToString();
-            LabelFurnitureDimensions.Text = Globals.order.GetFurnitureList[indiceFurnitureList].GetHeight().ToString()
+            LabelNrOfBoxes.Text = "Nb boxes : " + Globals.order.GetFurnitureList[indiceFurnitureList].GetBoxList.Count().ToString();
+            LabelFurnitureDimensions.Text = "Dimensions : "
+                + Globals.order.GetFurnitureList[indiceFurnitureList].GetHeight().ToString()
                 + "x" + Globals.order.GetFurnitureList[indiceFurnitureList].GetWidth.ToString()
                 + "x" + Globals.order.GetFurnitureList[indiceFurnitureList].GetDepth.ToString();
             
@@ -43,6 +53,11 @@ namespace Interface_5
                 stockLabel.BackColor = Color.Lime;
             else
                 stockLabel.BackColor = Color.Red;
+
+            furniturePrice.Text = "Unit Price : " +
+                (Globals.order.GetFurnitureList[indiceFurnitureList].GetPrice()).ToString()
+                + "€";
+            
         }
 
         private void modifyButton_Click_1(object sender, EventArgs e)
@@ -68,7 +83,8 @@ namespace Interface_5
         {
             Globals.order.GetFurnitureList[indiceFurnitureList].nbFurnitures += 1;
             Globals.furnitureIndex = indiceFurnitureList;
-            nbFurnitureLabel.Text = "X " + Globals.order.GetFurnitureList[indiceFurnitureList].nbFurnitures.ToString();
+            Globals.order.GetFurnitureList[indiceFurnitureList].AddBoxes();
+            UpdateFurniturePanel();
         }
 
         private void removenbButton_Click(object sender, EventArgs e)
@@ -82,7 +98,8 @@ namespace Interface_5
             {
                 Globals.order.GetFurnitureList[indiceFurnitureList].nbFurnitures--;
                 Globals.furnitureIndex = indiceFurnitureList;
-                nbFurnitureLabel.Text = "X " + Globals.order.GetFurnitureList[indiceFurnitureList].nbFurnitures.ToString();
+                Globals.order.GetFurnitureList[indiceFurnitureList].RemoveBoxes_1();
+                UpdateFurniturePanel();
             }
         }
     }

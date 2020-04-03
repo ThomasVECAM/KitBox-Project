@@ -21,6 +21,8 @@ namespace Interface_5
                 UserControl4 furnitureTemplate = new UserControl4(i);
                 furnitureTemplate.Modify.Click += new EventHandler(Modify);
                 furnitureTemplate.Remove.Click += new EventHandler(Remove);
+                furnitureTemplate.AddnbButton.Click += new EventHandler(Update);
+                furnitureTemplate.RemovenbButton.Click += new EventHandler(Update);
                 //furnitureTemplate.Duplicate.Click += new EventHandler(Remove_Duplicate);
                 flowLayoutPanel1.Controls.Add(furnitureTemplate);
             }
@@ -41,6 +43,13 @@ namespace Interface_5
             panel1.Controls.Clear();
             panel1.Controls.Add(new UserControl3());
             // new page that will be an update
+        }
+        private void Update(object sender, EventArgs e)
+        {
+            foreach(UserControl4 userControl4 in flowLayoutPanel1.Controls)
+            {
+                userControl4.UpdateFurniturePanel();
+            }
         }
     }
 }
