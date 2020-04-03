@@ -14,6 +14,7 @@ namespace Testdb
     {
         MySqlConnection db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
         DataTable dt = new DataTable();
+        DataTable dt2 = new DataTable();
         DataSet myDS = new DataSet();
         public Form2()
         {
@@ -41,6 +42,10 @@ namespace Testdb
             dt.Load(reader);
             dataGridView1.DataSource = dt;
             dataGridView1.CurrentCell.Selected = false;
+            cmd.CommandText = "SELECT * FROM Commande_Fournisseur";
+            reader = cmd.ExecuteReader();
+            dt2.Load(reader);
+            dataGridView2.DataSource = dt2;
             db.Close();
 
         }
@@ -52,12 +57,29 @@ namespace Testdb
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            int count = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
+                count += 1;
 
-                listBox1.Items.Add(row.Cells[0].Value.ToString());
-                
+                try
+                {
+                    if (Int32.Parse(row.Cells["En_Stock"].Value.ToString()) > Int32.Parse(row.Cells["Stock_Minimum"].Value.ToString()))
+                    {
+                        //listBox1.Items.Add(row.Cells["Code"].Value.ToString() + " Stock suffisant ligne " + count.ToString());
+                        DataRow added = dt2.NewRow();
+                        added["ID_Fournisseur"] = 1;
+                        added["ID_Composant"] = row.Cells["Code"].Value;
+                        added["Validation"] = false;
+                        added["Quantity"] = 22;
+                        dt2.Rows.Add(added);
+
+                    }
+                }
+                catch
+                {
+
+                }
             }
         }
     }
