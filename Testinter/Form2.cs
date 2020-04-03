@@ -71,7 +71,7 @@ namespace Testdb
                         added["ID_Fournisseur"] = 1;
                         added["ID_Composant"] = row.Cells["Code"].Value;
                         added["Validation"] = false;
-                        added["Quantity"] = 22;
+                        added["Quantity"] = Int32.Parse(row.Cells["En_Stock"].Value.ToString()) - Int32.Parse(row.Cells["Stock_Minimum"].Value.ToString());
                         dt2.Rows.Add(added);
 
                     }
@@ -82,5 +82,33 @@ namespace Testdb
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            foreach (DataGridViewRow row in dataGridView2.SelectedRows)
+            {
+                
+                
+                    bool check = bool.Parse(row.Cells["Validation"].Value.ToString());
+                    if (check == true)
+                    {
+                        int compIndex;
+                        string searchValue = row.Cells["ID_Composant"].Value.ToString();
+                        foreach (DataGridViewRow comp in dataGridView1.Rows)
+                        {
+                            if (comp.Cells["Code"].Value.ToString().Equals(searchValue))
+                            {
+                                compIndex = row.Index;
+                                comp.Cells["En_Stock"].Value = Int32.Parse(dataGridView1.Rows[compIndex].Cells["En_Stock"].Value.ToString()) + Int32.Parse(row.Cells["Quantity"].Value.ToString());
+                                break;
+                            }
+                        }
+                        dataGridView2.Rows.Remove(row);
+                        
+                    }
+                }
+            }
+        }
     }
-}
+
