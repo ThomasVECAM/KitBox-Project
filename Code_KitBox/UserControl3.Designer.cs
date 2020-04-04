@@ -30,7 +30,7 @@
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.finishOrder = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.orderPrice = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -47,7 +47,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.orderPrice);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.finishOrder);
             this.panel1.Controls.Add(this.addButton);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -55,19 +55,20 @@
             this.panel1.Size = new System.Drawing.Size(900, 600);
             this.panel1.TabIndex = 1;
             // 
-            // button1
+            // finishOrder
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(730, 533);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 50);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Finish Order";
-            this.button1.UseVisualStyleBackColor = false;
+            this.finishOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.finishOrder.FlatAppearance.BorderSize = 0;
+            this.finishOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.finishOrder.ForeColor = System.Drawing.Color.White;
+            this.finishOrder.Location = new System.Drawing.Point(730, 533);
+            this.finishOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.finishOrder.Name = "finishOrder";
+            this.finishOrder.Size = new System.Drawing.Size(150, 50);
+            this.finishOrder.TabIndex = 11;
+            this.finishOrder.Text = "Finish Order";
+            this.finishOrder.UseVisualStyleBackColor = false;
+            this.finishOrder.Click += new System.EventHandler(this.finishOrder_Click);
             // 
             // addButton
             // 
@@ -113,7 +114,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button finishOrder;
         private System.Windows.Forms.Label orderPrice;
     }
 }

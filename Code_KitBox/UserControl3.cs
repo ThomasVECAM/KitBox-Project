@@ -54,5 +54,12 @@ namespace Interface_5
                 userControl4.UpdateFurniturePanel();
             }
         }
+
+        private void finishOrder_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(new UserControl5());
+
+        }
     }
 }

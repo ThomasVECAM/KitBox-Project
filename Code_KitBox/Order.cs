@@ -25,7 +25,7 @@ namespace Interface_5
         public void RemoveFurniture(Furniture furniture)
         {
             furnitureList.Remove(furniture);
-        }
+        } 
 
         public double GetPrice()
         {
@@ -58,6 +58,15 @@ namespace Interface_5
         public List<Furniture> GetFurnitureList
         {
             get { return this.furnitureList; }
-        }       
+        }
+        public bool InStock()
+        {
+            foreach(Furniture furniture in furnitureList)
+            {
+                if (!furniture.InStock())
+                    return false;
+            }
+            return true;
+        }
     }
 }
