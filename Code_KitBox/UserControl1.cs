@@ -44,10 +44,16 @@ namespace Interface_5
         }
         public void NextButton_Click(object sender, EventArgs e)
         {
-            Globals.order.AddFurniture(Convert.ToInt32(widthDepth[0]), Convert.ToInt32(widthDepth[1]));
-            Globals.furnitureIndex = Globals.order.GetFurnitureList.Count - 1;
-            sizePanel.Controls.Clear();
-            sizePanel.Controls.Add(new UserControl2());
+            if (widthDepthComboBox.SelectedIndex > -1)
+            {
+                Globals.order.AddFurniture(Convert.ToInt32(widthDepth[0]), Convert.ToInt32(widthDepth[1]));
+                Globals.furnitureIndex = Globals.order.GetFurnitureList.Count - 1;
+                sizePanel.Controls.Clear();
+                sizePanel.Controls.Add(new UserControl2());
+            }
+            else
+                MessageBox.Show("Please select width and depth");
+
         }
         private void WidthDepthComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -19,11 +19,20 @@ namespace Interface_5
             this.height = height;
             this.price = price;
             this.quantity = quantity;
+            Console.WriteLine("Corner quantity" + quantity);
             this.color = color;
         }
         public double GetPrice
         {
             get { return this.price; }
+        }
+        public int GetHeight
+        {
+            get { return this.height; }
+        }
+        public string GetColor
+        {
+            get { return this.color; }
         }
     }
 }

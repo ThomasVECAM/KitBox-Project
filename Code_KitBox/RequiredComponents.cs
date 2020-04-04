@@ -17,6 +17,8 @@ namespace Interface_5
         public List<Traverse> sideTraverseList = new List<Traverse>();
         public List<Traverse> backTraverseList = new List<Traverse>();
         public List<Traverse> forwardTraverseList = new List<Traverse>();
+        public List<Corner> cornerList = new List<Corner>();
+        public List<Cup> cupList = new List<Cup>();
 
         public RequiredComponents()
         {
@@ -56,6 +58,7 @@ namespace Interface_5
 
                 else if(componentReference == "Panneau HB")
                 {
+                    Console.WriteLine("Panneau added");
                     horizontalPanelList.Add(new PanelClass(reader["Code"].ToString(), 0,
                         Convert.ToInt32(reader["Largeur"]), Convert.ToInt32(reader["Profondeur"]),
                         Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]), reader["Couleur"].ToString()));
@@ -87,16 +90,23 @@ namespace Interface_5
                       Convert.ToInt32(reader["En_stock"])));
                 }
 
-                else if (componentReference == "Porte")
+                else if (componentReference == "Porte ")
                 {
                     doorList.Add(new Door(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
                         Convert.ToInt32(reader["Largeur"]), 0, Convert.ToDouble(reader["Prix_Client"]),
                         Convert.ToInt32(reader["En_stock"]), reader["Couleur"].ToString()));
                 }
 
-                else if(componentReference == "Corniere" )
+                else if(componentReference == "Cornieres" )
                 {
-                    //to do
+                    cornerList.Add(new Corner(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
+                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]),
+                        reader["Couleur"].ToString()));
+                }
+                else if(componentReference == "Coupelles")
+                {
+                    cupList.Add(new Cup(reader["Code"].ToString(), 0, 0, 0,
+                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"])));
                 }
             }
             db.Close();

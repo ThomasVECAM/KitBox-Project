@@ -55,8 +55,8 @@ namespace Interface_5
                 stockLabel.BackColor = Color.Red;
 
             furniturePrice.Text = "Unit Price : " +
-                (Globals.order.GetFurnitureList[indiceFurnitureList].GetPrice()).ToString()
-                + "€";
+                (Globals.order.GetFurnitureList[indiceFurnitureList].GetUnitPrice()).ToString()
+                + " €";
             
         }
 
@@ -75,6 +75,7 @@ namespace Interface_5
                 Globals.furnitureIndex = indiceFurnitureList;
                 Globals.order.GetFurnitureList[indiceFurnitureList].RemoveBoxes();
                 Globals.order.GetFurnitureList.RemoveAt(indiceFurnitureList);
+                Globals.furnitureIndex = indiceFurnitureList;
                 //rest of function is done in User3
             }
         }
@@ -101,6 +102,11 @@ namespace Interface_5
                 Globals.order.GetFurnitureList[indiceFurnitureList].RemoveBoxes_1();
                 UpdateFurniturePanel();
             }
+        }
+
+        private void stockLabel_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

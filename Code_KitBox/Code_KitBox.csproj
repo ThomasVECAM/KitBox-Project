@@ -52,6 +52,7 @@
     <Compile Include="Bracket.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="Corner.cs" />
+    <Compile Include="Cup.cs" />
     <Compile Include="Door.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

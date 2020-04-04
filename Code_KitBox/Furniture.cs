@@ -36,15 +36,26 @@ namespace Interface_5
         {
             boxList.Remove(box);
         }
-        public double GetPrice()
+        
+        public double GetUnitPrice()
         {
-            double totalPrice = 0;
+            double unitPrice = 0;
             foreach (Box box in boxList)
             {
-                totalPrice += box.GetPrice();
+                unitPrice += box.GetPrice();
             }
-            return totalPrice;
+            foreach(Corner corner in cornerList)
+            {
+                unitPrice += corner.GetPrice;
+            }
+            return unitPrice;
         }
+
+        public double GetPrice()
+        {
+            return nbFurnitures * GetUnitPrice();
+        }
+
         public string Name
         {
             get { return this.name; }
@@ -103,6 +114,10 @@ namespace Interface_5
         {
             for(int i=0; i < nbFurnitures -1; i++)
             {
+                foreach (Corner corner in cornerList)
+                {
+                    corner.quantity += 1;
+                }
                 foreach (Box box in boxList)
                 {
                     box.RemoveRequiredComponents_1();
@@ -112,10 +127,18 @@ namespace Interface_5
             {
                 box.RemoveRequiredComponents();
             }
+            foreach (Corner corner in cornerList)
+            {
+                corner.quantity += 1;
+            }
 
         }
         public void RemoveBoxes_1()
         {
+            foreach (Corner corner in cornerList)
+            {
+                corner.quantity  +=1;
+            }
             foreach (Box box in boxList)
             {
                 box.RemoveRequiredComponents_1();
@@ -123,6 +146,12 @@ namespace Interface_5
         }
         public void AddBoxes()
         {
+            foreach(Corner corner in cornerList)
+            {
+                corner.quantity--;
+                Console.WriteLine("corner added "+ corner.quantity);
+            }
+            Console.WriteLine("next to boxes");
             foreach (Box box in boxList)
             {
                 box.DuplicationFurniture();
@@ -131,12 +160,60 @@ namespace Interface_5
 
         public bool InStock()
         {
+            foreach(Corner corner in cornerList)
+            {
+                if (corner.quantity <= 0)
+                    return false;
+            }
             foreach(Box box in boxList)
             {
                 if(box.InStock()==false)
                 {
                     return false;
                 }
+            }
+            return true;
+        }
+
+
+    public void AddRequiredCorners()
+        {
+            foreach (Corner corner in cornerList)
+            {
+                corner.quantity++;
+            }
+            cornerList.Clear();
+            List<Corner> possibleCorner = new List<Corner>();
+            int maxHeight = 1000000 ; 
+            foreach(Corner corner in Globals.requiredComponents.cornerList)
+            {
+                if (corner.GetHeight >= this.GetHeight() && corner.GetHeight <= maxHeight && corner.GetColor == cornerColor)
+                {
+                    possibleCorner.Add(corner);
+                    maxHeight = corner.GetHeight;
+                }
+            }
+            foreach(Corner corner in possibleCorner)
+            {
+                if(corner.GetHeight == maxHeight)
+                {
+                    cornerList.Add(corner);
+                    cornerList.Add(corner);
+                    cornerList.Add(corner);
+                    cornerList.Add(corner);
+                    corner.quantity -= 4;
+                }
+            }
+            Console.WriteLine(cornerList.Count);
+        }
+        public bool IsFurnitureCompleted()
+        {
+            if (cornerColor == "")
+                return false;
+            foreach(Box box in boxList)
+            {
+                if (!box.IsBoxCompleted())
+                    return false;
             }
             return true;
         }

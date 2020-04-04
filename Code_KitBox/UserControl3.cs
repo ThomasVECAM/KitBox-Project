@@ -26,6 +26,8 @@ namespace Interface_5
                 //furnitureTemplate.Duplicate.Click += new EventHandler(Remove_Duplicate);
                 flowLayoutPanel1.Controls.Add(furnitureTemplate);
             }
+            orderPrice.Text = "Total price : " + Globals.order.GetPrice().ToString() + " €";
+
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -40,12 +42,13 @@ namespace Interface_5
         }
         private void Remove(object sender, EventArgs e)
         {
-            panel1.Controls.Clear();
+            //panel1.Controls.RemoveAt(Globals.furnitureIndex);
             panel1.Controls.Add(new UserControl3());
             // new page that will be an update
         }
         private void Update(object sender, EventArgs e)
         {
+            orderPrice.Text = "Total price : " + Globals.order.GetPrice().ToString() + " €";
             foreach(UserControl4 userControl4 in flowLayoutPanel1.Controls)
             {
                 userControl4.UpdateFurniturePanel();

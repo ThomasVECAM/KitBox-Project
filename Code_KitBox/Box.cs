@@ -26,6 +26,7 @@ namespace Interface_5
             this.color = "";
             this.hasDoor = false;
             this.inStock = true;
+            this.doorColor = "";
         }
 
         public bool HasDoor
@@ -112,40 +113,28 @@ namespace Interface_5
                 }
             }
 
-
-            /*
-                //Ajout des portes
-                else if (component.GetId.Contains("POR") && this.hasDoor)
+            if(this.hasDoor)
+            {
+                Console.WriteLine("YEs");
+                foreach(Door door in Globals.requiredComponents.doorList)
                 {
-                    Door door= (Door)component;
 
-                    if (this.GetHeight == door.GetHeight && this.GetWidth == door.GetWidth
-                        && this.GetDoorColor == door.GetColor)
+                    if(this.height == door.GetHeight && this.width == door.GetWidth && door.GetColor == this.doorColor)
                     {
-                        if (door.quantity >= 2)
+                        Console.WriteLine("Hello");
+                        componentList.Add(door);
+                        componentList.Add(door);
+                        door.quantity -= 2;
+                        Console.WriteLine(this.color);
+                        if(this.doorColor != "Verre")
                         {
-                            door.quantity -= 2;
-                            this.AddComponent(new Door(door.GetId, door.GetHeight,
-                                door.GetWidth, door.GetDepth, door.GetPrice,
-                                2, door.GetColor));
-                        }
-                        else
-                        {
-                            this.inStock = false;
-                            if (door.quantity > 0)
-                            {
-                                this.AddComponent(new Door(door.GetId, door.GetHeight,
-                                door.GetWidth, door.GetDepth, door.GetPrice,
-                                door.quantity, door.GetColor));
-                            }
-                            this.componentToOrder.Add(new Door(door.GetId, door.GetHeight,
-                                door.GetWidth, door.GetDepth, door.GetPrice,
-                                2 - door.quantity, door.GetColor));
-                            door.quantity = 0;
+                            componentList.Add(Globals.requiredComponents.cupList[0]);
+                            componentList.Add(Globals.requiredComponents.cupList[0]);
+                            Globals.requiredComponents.cupList[0].quantity -= 2;
                         }
                     }
-                }*
-            }*/
+                }
+            }
         }
 
         public void UpdateRequiredComponents()
@@ -229,6 +218,17 @@ namespace Interface_5
             {
                 component.WriteFacture(path);
             }*/
+        }
+        public bool IsBoxCompleted()
+        {
+            if (color == "" | height == 0)
+                return false;
+            if(hasDoor)
+            {
+                if (doorColor == "")
+                    return false;
+            }
+            return true;
         }
 
         public string GetDoorColor

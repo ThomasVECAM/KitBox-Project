@@ -34,6 +34,7 @@
             this.logoPanel = new System.Windows.Forms.Panel();
             this.logoLabel = new System.Windows.Forms.Label();
             this.boxCompositionPanel = new System.Windows.Forms.Panel();
+            this.furniturePrice = new System.Windows.Forms.Label();
             this.heightLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dimensionsLabel = new System.Windows.Forms.Label();
@@ -76,7 +77,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.furnitureName = new System.Windows.Forms.TextBox();
-            this.furniturePrice = new System.Windows.Forms.Label();
+            this.entireDoorPanel = new System.Windows.Forms.Panel();
             this.boxesPannel.SuspendLayout();
             this.logoPanel.SuspendLayout();
             this.boxCompositionPanel.SuspendLayout();
@@ -86,6 +87,7 @@
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.entireDoorPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // boxesPannel
@@ -168,6 +170,16 @@
             this.boxCompositionPanel.Name = "boxCompositionPanel";
             this.boxCompositionPanel.Size = new System.Drawing.Size(900, 600);
             this.boxCompositionPanel.TabIndex = 4;
+            // 
+            // furniturePrice
+            // 
+            this.furniturePrice.AutoSize = true;
+            this.furniturePrice.Font = new System.Drawing.Font("Century Gothic", 12.7F);
+            this.furniturePrice.Location = new System.Drawing.Point(726, 25);
+            this.furniturePrice.Name = "furniturePrice";
+            this.furniturePrice.Size = new System.Drawing.Size(99, 32);
+            this.furniturePrice.TabIndex = 35;
+            this.furniturePrice.Text = "Price : ";
             // 
             // heightLabel
             // 
@@ -350,14 +362,11 @@
             // 
             this.choicesBoxPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(84)))), ((int)(((byte)(60)))));
             this.choicesBoxPanel.CausesValidation = false;
+            this.choicesBoxPanel.Controls.Add(this.entireDoorPanel);
             this.choicesBoxPanel.Controls.Add(this.stockLabel);
-            this.choicesBoxPanel.Controls.Add(this.doorsPanel);
             this.choicesBoxPanel.Controls.Add(this.panel2);
             this.choicesBoxPanel.Controls.Add(this.removeBoxButton);
             this.choicesBoxPanel.Controls.Add(this.duplicateBoxButton);
-            this.choicesBoxPanel.Controls.Add(this.label5);
-            this.choicesBoxPanel.Controls.Add(this.checkBoxNo);
-            this.choicesBoxPanel.Controls.Add(this.checkBoxYes);
             this.choicesBoxPanel.Controls.Add(this.label2);
             this.choicesBoxPanel.Controls.Add(this.label1);
             this.choicesBoxPanel.Controls.Add(this.heightComboBox);
@@ -388,9 +397,9 @@
             // 
             this.doorsPanel.Controls.Add(this.panel8);
             this.doorsPanel.Controls.Add(this.label6);
-            this.doorsPanel.Location = new System.Drawing.Point(28, 231);
+            this.doorsPanel.Location = new System.Drawing.Point(12, 69);
             this.doorsPanel.Name = "doorsPanel";
-            this.doorsPanel.Size = new System.Drawing.Size(329, 72);
+            this.doorsPanel.Size = new System.Drawing.Size(345, 72);
             this.doorsPanel.TabIndex = 33;
             // 
             // panel8
@@ -452,7 +461,7 @@
             this.brownDoorLabel8.AutoSize = true;
             this.brownDoorLabel8.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brownDoorLabel8.ForeColor = System.Drawing.Color.White;
-            this.brownDoorLabel8.Location = new System.Drawing.Point(53, 36);
+            this.brownDoorLabel8.Location = new System.Drawing.Point(51, 36);
             this.brownDoorLabel8.Name = "brownDoorLabel8";
             this.brownDoorLabel8.Size = new System.Drawing.Size(58, 21);
             this.brownDoorLabel8.TabIndex = 42;
@@ -489,7 +498,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(1, 3);
+            this.label6.Location = new System.Drawing.Point(-2, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(152, 30);
             this.label6.TabIndex = 23;
@@ -594,7 +603,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(61, 178);
+            this.label5.Location = new System.Drawing.Point(12, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 30);
             this.label5.TabIndex = 21;
@@ -606,7 +615,7 @@
             this.checkBoxNo.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxNo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.checkBoxNo.Location = new System.Drawing.Point(236, 174);
+            this.checkBoxNo.Location = new System.Drawing.Point(224, 10);
             this.checkBoxNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxNo.Name = "checkBoxNo";
             this.checkBoxNo.Size = new System.Drawing.Size(73, 34);
@@ -621,7 +630,7 @@
             this.checkBoxYes.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBoxYes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.checkBoxYes.Location = new System.Drawing.Point(162, 174);
+            this.checkBoxYes.Location = new System.Drawing.Point(119, 10);
             this.checkBoxYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxYes.Name = "checkBoxYes";
             this.checkBoxYes.Size = new System.Drawing.Size(81, 34);
@@ -711,15 +720,16 @@
             this.furnitureName.Text = "Furniture 1";
             this.furnitureName.TextChanged += new System.EventHandler(this.furnitureName_TextChanged);
             // 
-            // furniturePrice
+            // entireDoorPanel
             // 
-            this.furniturePrice.AutoSize = true;
-            this.furniturePrice.Font = new System.Drawing.Font("Century Gothic", 12.7F);
-            this.furniturePrice.Location = new System.Drawing.Point(716, 12);
-            this.furniturePrice.Name = "furniturePrice";
-            this.furniturePrice.Size = new System.Drawing.Size(99, 32);
-            this.furniturePrice.TabIndex = 35;
-            this.furniturePrice.Text = "Price : ";
+            this.entireDoorPanel.Controls.Add(this.label5);
+            this.entireDoorPanel.Controls.Add(this.doorsPanel);
+            this.entireDoorPanel.Controls.Add(this.checkBoxYes);
+            this.entireDoorPanel.Controls.Add(this.checkBoxNo);
+            this.entireDoorPanel.Location = new System.Drawing.Point(39, 153);
+            this.entireDoorPanel.Name = "entireDoorPanel";
+            this.entireDoorPanel.Size = new System.Drawing.Size(362, 162);
+            this.entireDoorPanel.TabIndex = 35;
             // 
             // UserControl2
             // 
@@ -749,6 +759,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.entireDoorPanel.ResumeLayout(false);
+            this.entireDoorPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -804,5 +816,6 @@
         private System.Windows.Forms.Label label3;
         internal System.Windows.Forms.Button stockLabel;
         private System.Windows.Forms.Label furniturePrice;
+        private System.Windows.Forms.Panel entireDoorPanel;
     }
 }

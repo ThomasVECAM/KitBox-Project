@@ -83,6 +83,15 @@ namespace Interface_5
                 }
             }
 
+            int maxDoorWidth = 0;
+            foreach(Door door in Globals.requiredComponents.doorList)
+            {
+                if (door.GetWidth > maxDoorWidth)
+                    maxDoorWidth = door.GetWidth;
+            }
+            if (maxDoorWidth < Globals.order.GetFurnitureList[Globals.furnitureIndex].GetWidth)
+                entireDoorPanel.Hide();
+
             //Checkbox Event attribute when mouseClick
             checkBoxNo.MouseClick += DoorCheckBox_Event;
             checkBoxYes.MouseClick += DoorCheckBox_Event;
@@ -127,6 +136,7 @@ namespace Interface_5
         {
             var btnColor = (Button)sender;
             Globals.order.GetFurnitureList[Globals.furnitureIndex].GetCornerColor = btnColor.AccessibleDescription;
+            Globals.order.GetFurnitureList[Globals.furnitureIndex].AddRequiredCorners();
             UpdateBoxPannel();
         }
         private void DoorCheckBox_Event(object sender, EventArgs e)
@@ -335,9 +345,17 @@ namespace Interface_5
         }
         private void finishFurnitureButton_Click(object sender, EventArgs e)
         {
-            UserControl3 ThirdUser = new UserControl3();
-            boxCompositionPanel.Controls.Clear();
-            boxCompositionPanel.Controls.Add(ThirdUser);
+            if(Globals.order.GetFurnitureList[Globals.furnitureIndex].IsFurnitureCompleted())
+            {
+                UserControl3 ThirdUser = new UserControl3();
+                boxCompositionPanel.Controls.Clear();
+                boxCompositionPanel.Controls.Add(ThirdUser);
+            }
+            else
+            {
+                MessageBox.Show("Please fill in all the required fields");
+            }
+
         }
         private void furnitureName_TextChanged(object sender, EventArgs e)
         {
