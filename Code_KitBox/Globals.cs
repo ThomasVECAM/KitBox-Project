@@ -20,5 +20,6 @@ namespace Interface_5
         public static Person person;
         public static Company company;
         public static MySqlConnection db;
+        public static string MySQLCommandText;
     }
 }

@@ -32,7 +32,6 @@ namespace Interface_5
             }
             catch (Exception erro)
             {
-                Console.WriteLine("Erro" + erro);
             }
             MySqlCommand cmd = db.CreateCommand();
             cmd.CommandText = "SELECT Ref,Code, Hauteur, Largeur, Profondeur, Prix_Client, Couleur, En_stock FROM `Composants`";

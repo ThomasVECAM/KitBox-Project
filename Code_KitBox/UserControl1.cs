@@ -26,7 +26,6 @@ namespace Interface_5
             }
             catch (Exception erro)
             {
-                Console.WriteLine("Erro" + erro);
             }
             
             List<string> dimension_list = new List<string>(); //liste où l'on va stocker les dimensions

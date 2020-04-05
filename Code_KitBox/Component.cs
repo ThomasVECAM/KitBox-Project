@@ -50,14 +50,23 @@ namespace Interface_5
 
         public void AddToDB(string furnitureNumber,int boxNumber)
         {
-            Globals.command.Parameters.AddWithValue("@Component_Number",Globals.componentIndex);
+            Globals.MySQLCommandText += "("
+                + Globals.componentIndex + ",'"
+                + id + "',"
+                + Globals.commandId + ","
+                + boxNumber + ",'"
+                + furnitureNumber
+                + "'),";
+
+
+          /*  Globals.command.Parameters.AddWithValue("@Component_Number",Globals.componentIndex);
             Globals.command.Parameters.AddWithValue("@ID_Composant",id);
             Globals.command.Parameters.AddWithValue("@ID_Commande", Globals.commandId);
             Globals.command.Parameters.AddWithValue("@Box",boxNumber);
             Globals.command.Parameters.AddWithValue("@Meuble",furnitureNumber);
             Globals.command.ExecuteNonQuery();
             Globals.command.Parameters.Clear();
-            Console.WriteLine("component added");
+            Console.WriteLine("component added");*/
         }
     }
 }

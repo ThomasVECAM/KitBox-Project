@@ -56,21 +56,6 @@ namespace Interface_5
         private void confirmButton_Click(object sender, EventArgs e)
         {
             confirmButton.Text = "Wait...";
-
-            Globals.db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
-            bool connected = false;
-            while (!connected)
-                try
-                {
-                    Console.WriteLine("Try 1");
-                    Globals.db.Open();
-                    connected = true;
-                    confirmButton.Text = "Transfer, Please wait";
-                }
-                catch (Exception erro)
-                {
-                    Console.WriteLine("Erreur __________________________");
-                }
             if (customerStatus == "particular")
             {
                 Globals.person = new Person(name.Text, email.Text, phoneNumber.Text,
@@ -81,8 +66,6 @@ namespace Interface_5
                 Globals.company = new Company(name.Text, email.Text, phoneNumber.Text,
                     adress.Text, city.Text,Convert.ToInt32(postalCode.Text),Convert.ToInt32(tvaNumber.Text));
             }
-
-
 
 
             Globals.order.AddToDB(customerStatus);

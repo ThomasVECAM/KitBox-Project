@@ -28,7 +28,6 @@ namespace Interface_5
                 }
                 catch (Exception erro)
                 {
-                    Console.WriteLine("Erro" + erro);
                 }
             
             MySqlCommand cmd = db.CreateCommand();
@@ -53,7 +52,6 @@ namespace Interface_5
                 }
                 catch (Exception erro)
                 {
-                    Console.WriteLine("Erro" + erro);
                 }
 
             MySqlCommand cmd2 = db.CreateCommand();

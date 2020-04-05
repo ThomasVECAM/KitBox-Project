@@ -19,7 +19,6 @@ namespace Interface_5
             this.height = height;
             this.price = price;
             this.quantity = quantity;
-            Console.WriteLine("Corner quantity" + quantity);
             this.color = color;
         }
         public double GetPrice

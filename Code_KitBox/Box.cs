@@ -115,17 +115,14 @@ namespace Interface_5
 
             if(this.hasDoor)
             {
-                Console.WriteLine("YEs");
                 foreach(Door door in Globals.requiredComponents.doorList)
                 {
 
                     if(this.height == door.GetHeight && this.width == door.GetWidth && door.GetColor == this.doorColor)
                     {
-                        Console.WriteLine("Hello");
                         componentList.Add(door);
                         componentList.Add(door);
                         door.quantity -= 2;
-                        Console.WriteLine(this.color);
                         if(this.doorColor != "Verre")
                         {
                             componentList.Add(Globals.requiredComponents.cupList[0]);

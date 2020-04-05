@@ -71,6 +71,17 @@ namespace Interface_5
 
         public void AddToDB(string custommerStatus)
         {
+            Globals.db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
+            bool connected = false;
+            while (!connected)
+                try
+                {
+                    Globals.db.Open();
+                    connected = true;
+                }
+                catch (Exception erro)
+                {
+                }
             if (custommerStatus == "particular")
             {
                 Globals.person.AddToDB();
@@ -86,11 +97,10 @@ namespace Interface_5
             Globals.command.Parameters.AddWithValue("@ID_Client", Globals.customerId);
             Globals.command.ExecuteNonQuery();
             Globals.command.Parameters.Clear();
-
-
-            Globals.command = new MySqlCommand("INSERT INTO Composant_Commande(Component_Number,ID_Composant,ID_Commande,Box,Meuble) " +
-    "VALUES(@Component_Number,@ID_Composant,@ID_Commande,@Box,@Meuble)", Globals.db);
             
+            Globals.MySQLCommandText = 
+                "INSERT INTO Composant_Commande(Component_Number,ID_Composant,ID_Commande,Box,Meuble) VALUES ";
+
             Globals.componentIndex = 1;
             int furnitureNumber = 1;
             foreach (Furniture furniture in furnitureList)
@@ -98,6 +108,10 @@ namespace Interface_5
                 furniture.AddToDB(furnitureNumber.ToString());
                 furnitureNumber++;
             }
+            string sql = Globals.MySQLCommandText.Remove(Globals.MySQLCommandText.Length - 1, 1);
+            Console.WriteLine(sql);
+            Globals.command = new MySqlCommand(sql, Globals.db);
+            Globals.command.ExecuteNonQuery();
             Globals.db.Close();
         }
     }

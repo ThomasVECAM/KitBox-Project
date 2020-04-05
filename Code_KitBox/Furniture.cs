@@ -149,9 +149,9 @@ namespace Interface_5
             foreach(Corner corner in cornerList)
             {
                 corner.quantity--;
-                Console.WriteLine("corner added "+ corner.quantity);
+
             }
-            Console.WriteLine("next to boxes");
+
             foreach (Box box in boxList)
             {
                 box.DuplicationFurniture();
@@ -204,7 +204,7 @@ namespace Interface_5
                     corner.quantity -= 4;
                 }
             }
-            Console.WriteLine(cornerList.Count);
+
         }
         public bool IsFurnitureCompleted()
         {
