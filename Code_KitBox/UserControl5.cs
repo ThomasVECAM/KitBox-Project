@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
 
 namespace Interface_5
 {
@@ -18,14 +20,10 @@ namespace Interface_5
             InitializeComponent();
             tvaPannel.Hide();
             checkBoxParticular.Checked = true;
+            orderNbLabel.Text = "#" + Globals.commandId.ToString();
         }
 
         private void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label5_Click(object sender, EventArgs e)
         {
 
         }
@@ -54,25 +52,47 @@ namespace Interface_5
             tvaPannel.Show();
         }
 
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            userControlPannel.Controls.Add(new UserControl3());
-        }
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            if(customerStatus == "particular")
+            confirmButton.Text = "Wait...";
+
+            Globals.db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
+            bool connected = false;
+            while (!connected)
+                try
+                {
+                    Console.WriteLine("Try 1");
+                    Globals.db.Open();
+                    connected = true;
+                    confirmButton.Text = "Transfer, Please wait";
+                }
+                catch (Exception erro)
+                {
+                    Console.WriteLine("Erreur __________________________");
+                }
+            if (customerStatus == "particular")
             {
-                new Person(lastname.Text, firstname.Text, phoneNumber.Text,
-                    adress.Text, city.Text, postalCode.Text);
+                Globals.person = new Person(name.Text, email.Text, phoneNumber.Text,
+                    adress.Text, city.Text, Convert.ToInt32(postalCode.Text));
             }
             else
             {
-                new Company(lastname.Text, firstname.Text, phoneNumber.Text,
-                    adress.Text, city.Text, postalCode.Text,tvaNumber.Text);
+                Globals.company = new Company(name.Text, email.Text, phoneNumber.Text,
+                    adress.Text, city.Text,Convert.ToInt32(postalCode.Text),Convert.ToInt32(tvaNumber.Text));
             }
+
+
+
+
+            Globals.order.AddToDB(customerStatus);
             userControlPannel.Controls.Clear();
             userControlPannel.Controls.Add(new UserControl6());
+        }
+
+        private void lastname_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

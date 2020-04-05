@@ -217,6 +217,20 @@ namespace Interface_5
             }
             return true;
         }
+
+        public void AddToDB(string furnitureNumber)
+        {
+            for(int i=0; i < nbFurnitures; i++)
+            {
+                furnitureNumber = furnitureNumber + "_" + (i+1).ToString();
+                int boxNumber = 1;
+                foreach (Box box in boxList)
+                {
+                    box.AddToDB(furnitureNumber, boxNumber);
+                    boxNumber++;
+                }
+            }
+        }
         public static void Copy(Furniture sourceFurniture, Furniture destinationFurniture)
         {
             destinationFurniture.name = sourceFurniture.name;

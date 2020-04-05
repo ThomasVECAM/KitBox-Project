@@ -47,17 +47,17 @@ namespace Interface_5
         {
             get { return this.depth; }
         }
-        /*public void WriteFacture(string path)
-        {
-            using (StreamWriter sw = File.AppendText(path))
-            {
-                sw.WriteLine("                  (" + id + ") : " + price + " €");
-            }
-        }
-        public string GetName
-        {
-            get { return this.name; }
-        }*/
-    }
 
+        public void AddToDB(string furnitureNumber,int boxNumber)
+        {
+            Globals.command.Parameters.AddWithValue("@Component_Number",Globals.componentIndex);
+            Globals.command.Parameters.AddWithValue("@ID_Composant",id);
+            Globals.command.Parameters.AddWithValue("@ID_Commande", Globals.commandId);
+            Globals.command.Parameters.AddWithValue("@Box",boxNumber);
+            Globals.command.Parameters.AddWithValue("@Meuble",furnitureNumber);
+            Globals.command.ExecuteNonQuery();
+            Globals.command.Parameters.Clear();
+            Console.WriteLine("component added");
+        }
+    }
 }

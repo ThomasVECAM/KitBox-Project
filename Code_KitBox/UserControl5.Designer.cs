@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.orderNbLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.postalCode = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -40,13 +40,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.city = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.lastname = new System.Windows.Forms.TextBox();
+            this.name = new System.Windows.Forms.TextBox();
             this.checkBoxCompany = new System.Windows.Forms.CheckBox();
             this.checkBoxParticular = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.phoneNumber = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.firstname = new System.Windows.Forms.TextBox();
+            this.email = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.confirmButton = new System.Windows.Forms.Button();
@@ -66,15 +66,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Order :";
             // 
-            // label2
+            // orderNbLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 24F);
-            this.label2.Location = new System.Drawing.Point(185, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(181, 58);
-            this.label2.TabIndex = 1;
-            this.label2.Text = " #1245";
+            this.orderNbLabel.AutoSize = true;
+            this.orderNbLabel.Font = new System.Drawing.Font("Century Gothic", 24F);
+            this.orderNbLabel.Location = new System.Drawing.Point(185, 9);
+            this.orderNbLabel.Name = "orderNbLabel";
+            this.orderNbLabel.Size = new System.Drawing.Size(181, 58);
+            this.orderNbLabel.TabIndex = 1;
+            this.orderNbLabel.Text = " #1245";
             // 
             // panel1
             // 
@@ -85,13 +85,13 @@
             this.panel1.Controls.Add(this.tvaPannel);
             this.panel1.Controls.Add(this.city);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.lastname);
+            this.panel1.Controls.Add(this.name);
             this.panel1.Controls.Add(this.checkBoxCompany);
             this.panel1.Controls.Add(this.checkBoxParticular);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.phoneNumber);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.firstname);
+            this.panel1.Controls.Add(this.email);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(13, 113);
@@ -200,17 +200,18 @@
             this.label8.TabIndex = 34;
             this.label8.Text = "City :";
             // 
-            // lastname
+            // name
             // 
-            this.lastname.BackColor = System.Drawing.Color.White;
-            this.lastname.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lastname.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lastname.ForeColor = System.Drawing.Color.Black;
-            this.lastname.Location = new System.Drawing.Point(129, 22);
-            this.lastname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lastname.Name = "lastname";
-            this.lastname.Size = new System.Drawing.Size(224, 30);
-            this.lastname.TabIndex = 22;
+            this.name.BackColor = System.Drawing.Color.White;
+            this.name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.name.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name.ForeColor = System.Drawing.Color.Black;
+            this.name.Location = new System.Drawing.Point(129, 22);
+            this.name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(224, 30);
+            this.name.TabIndex = 22;
+            this.name.TextChanged += new System.EventHandler(this.lastname_TextChanged);
             // 
             // checkBoxCompany
             // 
@@ -279,17 +280,17 @@
             this.label6.TabIndex = 30;
             this.label6.Text = "Phone :";
             // 
-            // firstname
+            // email
             // 
-            this.firstname.BackColor = System.Drawing.Color.White;
-            this.firstname.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.firstname.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.firstname.ForeColor = System.Drawing.Color.Black;
-            this.firstname.Location = new System.Drawing.Point(129, 70);
-            this.firstname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.firstname.Name = "firstname";
-            this.firstname.Size = new System.Drawing.Size(224, 30);
-            this.firstname.TabIndex = 29;
+            this.email.BackColor = System.Drawing.Color.White;
+            this.email.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.email.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
+            this.email.ForeColor = System.Drawing.Color.Black;
+            this.email.Location = new System.Drawing.Point(129, 70);
+            this.email.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(224, 30);
+            this.email.TabIndex = 29;
             // 
             // label4
             // 
@@ -298,9 +299,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(17, 70);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(141, 30);
+            this.label4.Size = new System.Drawing.Size(99, 30);
             this.label4.TabIndex = 28;
-            this.label4.Text = "Firstname :";
+            this.label4.Text = "Email : ";
             this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // label3
@@ -333,7 +334,7 @@
             // 
             this.userControlPannel.Controls.Add(this.label1);
             this.userControlPannel.Controls.Add(this.confirmButton);
-            this.userControlPannel.Controls.Add(this.label2);
+            this.userControlPannel.Controls.Add(this.orderNbLabel);
             this.userControlPannel.Controls.Add(this.panel1);
             this.userControlPannel.Location = new System.Drawing.Point(3, 4);
             this.userControlPannel.Name = "userControlPannel";
@@ -366,12 +367,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label orderNbLabel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox firstname;
+        private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox lastname;
+        private System.Windows.Forms.TextBox name;
         private System.Windows.Forms.TextBox tvaNumber;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox phoneNumber;

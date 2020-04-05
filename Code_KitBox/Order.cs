@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-
+using MySql.Data.MySqlClient;
 
 namespace Interface_5
 {
@@ -67,6 +67,38 @@ namespace Interface_5
                     return false;
             }
             return true;
+        }
+
+        public void AddToDB(string custommerStatus)
+        {
+            if (custommerStatus == "particular")
+            {
+                Globals.person.AddToDB();
+            }
+            else
+                Globals.company.AddToDB_2();
+          
+
+                //Création du client dans la base de donnée;
+                Globals.command = new MySqlCommand("INSERT INTO Commande(ID,ID_Client,Validation)" +
+                " VALUES(@ID,@ID_Client,0)", Globals.db);
+            Globals.command.Parameters.AddWithValue("@ID", Globals.commandId);
+            Globals.command.Parameters.AddWithValue("@ID_Client", Globals.customerId);
+            Globals.command.ExecuteNonQuery();
+            Globals.command.Parameters.Clear();
+
+
+            Globals.command = new MySqlCommand("INSERT INTO Composant_Commande(Component_Number,ID_Composant,ID_Commande,Box,Meuble) " +
+    "VALUES(@Component_Number,@ID_Composant,@ID_Commande,@Box,@Meuble)", Globals.db);
+            
+            Globals.componentIndex = 1;
+            int furnitureNumber = 1;
+            foreach (Furniture furniture in furnitureList)
+            {
+                furniture.AddToDB(furnitureNumber.ToString());
+                furnitureNumber++;
+            }
+            Globals.db.Close();
         }
     }
 }

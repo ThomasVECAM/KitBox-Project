@@ -237,6 +237,15 @@ namespace Interface_5
             set { doorColor = value; }
         }
 
+        public void AddToDB(string furnitureNumber,int boxNumber)
+        {
+            foreach(Component component in componentList)
+            {
+                component.AddToDB(furnitureNumber, boxNumber);
+                Globals.componentIndex++;
+            }
+        }
+
         // Copy a Box
         public static void Copy(Box sourceBox, Box destinationBox)
         {

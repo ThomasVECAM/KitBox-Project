@@ -58,7 +58,6 @@ namespace Interface_5
 
                 else if(componentReference == "Panneau HB")
                 {
-                    Console.WriteLine("Panneau added");
                     horizontalPanelList.Add(new PanelClass(reader["Code"].ToString(), 0,
                         Convert.ToInt32(reader["Largeur"]), Convert.ToInt32(reader["Profondeur"]),
                         Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]), reader["Couleur"].ToString()));

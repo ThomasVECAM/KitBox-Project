@@ -59,7 +59,6 @@ namespace Interface_5
         {
             panel1.Controls.Clear();
             panel1.Controls.Add(new UserControl5());
-
         }
     }
 }
