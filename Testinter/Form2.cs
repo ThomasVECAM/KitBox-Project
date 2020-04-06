@@ -16,6 +16,7 @@ namespace Testdb
         DataTable dt = new DataTable();
         DataTable dt2 = new DataTable();
         DataSet myDS = new DataSet();
+        DataSet myDS2 = new DataSet();
         public Form2()
         {
             InitializeComponent();
@@ -64,9 +65,9 @@ namespace Testdb
 
                 try
                 {
-                    if (Int32.Parse(row.Cells["En_Stock"].Value.ToString()) > Int32.Parse(row.Cells["Stock_Minimum"].Value.ToString()))
+                    if (Int32.Parse(row.Cells["En_Stock"].Value.ToString()) < Int32.Parse(row.Cells["Stock_Minimum"].Value.ToString()))
                     {
-                        //listBox1.Items.Add(row.Cells["Code"].Value.ToString() + " Stock suffisant ligne " + count.ToString());
+                        
                         DataRow added = dt2.NewRow();
                         added["ID_Fournisseur"] = 1;
                         added["ID_Composant"] = row.Cells["Code"].Value;
@@ -109,6 +110,55 @@ namespace Testdb
                     }
                 }
             }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            db.Open();
+            DataTable dt = (DataTable)(dataGridView1.DataSource);
+           
+            dt.TableName = "Table";
+
+            try
+            {
+
+                myDS.Tables.Add(dt);
+            }
+            catch
+            {
+
+            }
+
+            MySqlDataAdapter dataAdapter1 = new MySqlDataAdapter("SELECT * FROM Composants ", db);
+            MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter1);
+            dataAdapter1.Fill(myDS, "Composants");
+            dataAdapter1.Update(myDS);
+
+            db.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            db.Open();
+            
+            DataTable dt2 = (DataTable)(dataGridView2.DataSource);
+            
+            dt2.TableName = "Table";
+            try
+            {
+                myDS.Tables.Add(dt2);
+            }
+            catch
+            {
+
+            }
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM Commande_Fournisseur", db);
+            MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter);
+            dataAdapter.Fill(myDS,"Commande_Fournisseur");
+            dataAdapter.Update(myDS);
+
+            db.Close();
+        }
+    }
     }
 

@@ -82,14 +82,13 @@ namespace Testdb
             }
             MySqlCommand cmd = db.CreateCommand();
             var random = new Random();
-            //int index = random.Next(mylist.Count);
-            //cmd.CommandText = "SELECT ID_Composant FROM `Composant_Commande` WHERE `ID_Commande`="+ dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            
 
             cmd.CommandText = "Select Ref,Profondeur,Hauteur,Largeur,Couleur from Composants WHERE Code IN (SELECT ID_Composant FROM Composant_Commande WHERE ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + ")";
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                lb1.Items.Add(reader["Ref"]+" Prof =" +reader["Profondeur"]+reader["Couleur"]);
+                lb1.Items.Add(reader["Ref"]+": Dimension ="+reader["Largeur"]+"x" +reader["Profondeur"]+"x"+reader["Hauteur"]+", Couleur ="+reader["Couleur"]);
             }
             db.Close();
         }
@@ -112,7 +111,7 @@ namespace Testdb
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM Commande ", db);
             MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter);
-            richTextBox1.Text = builder.GetUpdateCommand().CommandText;
+           
             dataAdapter.Fill(myDS, "Commande");
             dataAdapter.Update(myDS);
             
@@ -137,12 +136,7 @@ namespace Testdb
             
             
             
-            /*db.Open();
-            cmd.CommandText = "DELETE FROM Commande WHERE ID=" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString(); 
-            reader = cmd.ExecuteReader();
-
-            db.Close();*/
-            //dataGridView1.Rows.RemoveAt(0);
+            
 
         }
 
