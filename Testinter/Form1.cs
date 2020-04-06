@@ -19,6 +19,7 @@ namespace Testdb
 
         MySqlConnection db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
         DataSet myDS = new DataSet();
+        DataTable dt2 = new DataTable();
 
         public Form1()
         {
@@ -59,38 +60,43 @@ namespace Testdb
             {
                 db.Close();
             }
-            
-            
-            
-            
-            
            
-           
+
+
+
+
+
+
+
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            lb1.Items.Clear();
-            try
-            {
-                db.Open();
-                
-            }
-            catch (Exception erro)
-            {
-                Console.WriteLine("Erro" + erro);
-            }
-            MySqlCommand cmd = db.CreateCommand();
-            var random = new Random();
-            
 
-            cmd.CommandText = "Select Ref,Profondeur,Hauteur,Largeur,Couleur from Composants WHERE Code IN (SELECT ID_Composant FROM Composant_Commande WHERE ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + ")";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                lb1.Items.Add(reader["Ref"]+": Dimension ="+reader["Largeur"]+"x" +reader["Profondeur"]+"x"+reader["Hauteur"]+", Couleur ="+reader["Couleur"]);
-            }
+           // "Select Code,Ref,Profondeur,Hauteur,Largeur,Couleur from Composants WHERE Code IN (
+           MySqlCommand cmd = db.CreateCommand();
+            cmd.CommandText = "SELECT * FROM Composant_Commande WHERE ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            MySqlCommand cmd2 = db.CreateCommand();
+            cmd2.CommandText= "Select Code,Ref,Profondeur,Hauteur,Largeur,Couleur from Composants WHERE Code IN (SELECT ID_Composant FROM Composant_Commande WHERE ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() +")";
+                try
+                {
+                    db.Open();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+                    dt2.Clear();
+                    dt2.Load(reader);
+                db.Close();
+                db.Open();
+                    MySqlDataReader reader2 = cmd2.ExecuteReader();
+                    while (reader2.Read())
+                    {
+                        lb1.Items.Add(reader2["Ref"]+" "+reader2["Code"]+": Dimension ="+reader2["Largeur"]+"x" +reader2["Profondeur"]+"x"+reader2["Hauteur"]+", Couleur ="+reader2["Couleur"]);
+                        
+                    }
+                }
+                catch (Exception) { }
+            dataGridView2.DataSource = dt2;
             db.Close();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -149,6 +155,11 @@ namespace Testdb
         {
             Form2 f = new Form2(); // This is bad
             f.Show();
+        }
+
+        private void dataGridView2_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

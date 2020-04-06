@@ -58,10 +58,9 @@ namespace Testdb
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int count = 0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                count += 1;
+
 
                 try
                 {
@@ -69,6 +68,7 @@ namespace Testdb
                     {
                         
                         DataRow added = dt2.NewRow();
+                       // cmd.CommandText = "SELECT ID FROM Composants ";
                         added["ID_Fournisseur"] = 1;
                         added["ID_Composant"] = row.Cells["Code"].Value;
                         added["Validation"] = false;
@@ -158,6 +158,11 @@ namespace Testdb
             dataAdapter.Update(myDS);
 
             db.Close();
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
     }
