@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-namespace Interface_5
+﻿namespace Interface_5
 {
 
     public abstract class Component
@@ -24,9 +17,15 @@ namespace Interface_5
             this.price = price;
             this.quantity = quantity;
         }
-        public string GetId
+        public void AddToDB(string furnitureNumber,int boxNumber)
         {
-            get { return this.id; }
+            Globals.MySQLCommandText += "("
+                + Globals.componentIndex + ",'"
+                + id + "',"
+                + Globals.commandId + ","
+                + boxNumber + ",'"
+                + furnitureNumber
+                + "'),";
         }
         public double GetPrice
         {
@@ -46,27 +45,6 @@ namespace Interface_5
         public int GetDepth
         {
             get { return this.depth; }
-        }
-
-        public void AddToDB(string furnitureNumber,int boxNumber)
-        {
-            Globals.MySQLCommandText += "("
-                + Globals.componentIndex + ",'"
-                + id + "',"
-                + Globals.commandId + ","
-                + boxNumber + ",'"
-                + furnitureNumber
-                + "'),";
-
-
-          /*  Globals.command.Parameters.AddWithValue("@Component_Number",Globals.componentIndex);
-            Globals.command.Parameters.AddWithValue("@ID_Composant",id);
-            Globals.command.Parameters.AddWithValue("@ID_Commande", Globals.commandId);
-            Globals.command.Parameters.AddWithValue("@Box",boxNumber);
-            Globals.command.Parameters.AddWithValue("@Meuble",furnitureNumber);
-            Globals.command.ExecuteNonQuery();
-            Globals.command.Parameters.Clear();
-            Console.WriteLine("component added");*/
         }
     }
 }

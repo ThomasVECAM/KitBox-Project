@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
-
-
 
 namespace Interface_5
 {
@@ -30,16 +21,6 @@ namespace Interface_5
             tvaPannel.Hide();
             checkBoxParticular.Checked = true;
             orderNbLabel.Text = "#" + Globals.commandId.ToString();
-        }
-
-        private void UserControl5_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void checkBoxParticular_CheckedChanged(object sender, EventArgs e)
@@ -76,7 +57,6 @@ namespace Interface_5
                         adress.Text, city.Text, Convert.ToInt32(postalCode.Text), Convert.ToInt32(tvaNumber.Text));
                 }
 
-
                 Globals.order.AddToDB(customerStatus);
                 userControlPannel.Controls.Clear();
                 userControlPannel.Controls.Add(new UserControl6());
@@ -85,8 +65,6 @@ namespace Interface_5
             {
                 MessageBox.Show("All fields are not Valid");
             }
-
-           
         }
 
         private void lastname_TextChanged(object sender, EventArgs e)
@@ -119,9 +97,7 @@ namespace Interface_5
             {
                 email.ForeColor = Color.Red;
                 emailValid = false;
-
             }
-
         }
 
         private void phoneNumber_TextChanged(object sender, EventArgs e)

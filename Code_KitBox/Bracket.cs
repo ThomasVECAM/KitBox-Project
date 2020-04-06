@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Interface_5
+﻿namespace Interface_5
 {
     public class Bracket : Component
     {
@@ -13,5 +7,4 @@ namespace Interface_5
         {
         }
     }
-
 }

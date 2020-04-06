@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-
 
 namespace Interface_5
 {
@@ -32,22 +26,14 @@ namespace Interface_5
         {
             boxList.Add(new Box(width, depth));
         }
-        public void Remove(Box box)
-        {
-            boxList.Remove(box);
-        }
-        
+      
         public double GetUnitPrice()
         {
             double unitPrice = 0;
             foreach (Box box in boxList)
-            {
                 unitPrice += box.GetPrice();
-            }
             foreach(Corner corner in cornerList)
-            {
                 unitPrice += corner.GetPrice;
-            }
             return unitPrice;
         }
 
@@ -56,19 +42,6 @@ namespace Interface_5
             return nbFurnitures * GetUnitPrice();
         }
 
-        public string Name
-        {
-            get { return this.name; }
-            set { this.name = value; }
-        }
-        public int GetDepth
-        {
-            get { return this.depth; }
-        }
-        public int GetWidth
-        {
-            get { return this.width; }
-        }
         public int GetHeight()
         {
             int furnitureHeight = 0;
@@ -78,30 +51,6 @@ namespace Interface_5
             }
             return furnitureHeight;
         }
-        public void WriteFacture(string path)
-        {
-            using (StreamWriter sw = File.AppendText(path))
-            {
-                sw.WriteLine(name + " : " + GetPrice());
-            }
-            foreach (Box box in boxList)
-            {
-                box.WriteFacture(path);
-            }
-        }
-        public int GetBoxListLength()
-        {
-            return boxList.Count;
-        }
-        public List<Box> GetBoxList
-        {
-            get { return boxList; }
-        }
-        public string GetCornerColor
-        {
-            get { return cornerColor; }
-            set { cornerColor = value; }
-        }
 
         public void DuplicateBox(int boxNumber)
         {
@@ -110,52 +59,30 @@ namespace Interface_5
             boxList.Add(copy);
         }
 
-        public void RemoveBoxes()
+        public void RemoveEntireFurniture()
         {
             for(int i=0; i < nbFurnitures -1; i++)
-            {
-                foreach (Corner corner in cornerList)
-                {
-                    corner.quantity += 1;
-                }
-                foreach (Box box in boxList)
-                {
-                    box.RemoveRequiredComponents_1();
-                }
-            }
-            foreach(Box box in boxList)
-            {
-                box.RemoveRequiredComponents();
-            }
-            foreach (Corner corner in cornerList)
-            {
-                corner.quantity += 1;
-            }
+                RemoveDuplicadedFurniture();
 
+            foreach(Box box in boxList)
+                box.RemoveRequiredComponents();
+            foreach (Corner corner in cornerList)
+                corner.quantity += 1;
         }
-        public void RemoveBoxes_1()
+        public void RemoveDuplicadedFurniture()
         {
             foreach (Corner corner in cornerList)
-            {
                 corner.quantity  +=1;
-            }
             foreach (Box box in boxList)
-            {
                 box.RemoveRequiredComponents_1();
-            }
         }
-        public void AddBoxes()
+
+        public void DuplicateFurniture()
         {
             foreach(Corner corner in cornerList)
-            {
                 corner.quantity--;
-
-            }
-
             foreach (Box box in boxList)
-            {
                 box.DuplicationFurniture();
-            }
         }
 
         public bool InStock()
@@ -168,24 +95,22 @@ namespace Interface_5
             foreach(Box box in boxList)
             {
                 if(box.InStock()==false)
-                {
                     return false;
-                }
             }
             return true;
         }
 
-
     public void AddRequiredCorners()
         {
+            //Remove the old corners configuration
             foreach (Corner corner in cornerList)
-            {
                 corner.quantity++;
-            }
             cornerList.Clear();
+
+
             List<Corner> possibleCorner = new List<Corner>();
-            int maxHeight = 1000000 ; 
-            foreach(Corner corner in Globals.requiredComponents.cornerList)
+            int maxHeight = 10000; 
+            foreach(Corner corner in Globals.dataBaseComponents.cornerList)
             {
                 if (corner.GetHeight >= this.GetHeight() && corner.GetHeight <= maxHeight && corner.GetColor == cornerColor)
                 {
@@ -204,7 +129,6 @@ namespace Interface_5
                     corner.quantity -= 4;
                 }
             }
-
         }
         public bool IsFurnitureCompleted()
         {
@@ -222,7 +146,7 @@ namespace Interface_5
         {
             for(int i=0; i < nbFurnitures; i++)
             {
-                furnitureNumber = furnitureNumber + "_" + (i+1).ToString();
+                furnitureNumber = furnitureNumber + (i+1).ToString();
                 int boxNumber = 1;
                 foreach (Box box in boxList)
                 {
@@ -231,14 +155,27 @@ namespace Interface_5
                 }
             }
         }
-        public static void Copy(Furniture sourceFurniture, Furniture destinationFurniture)
+        public string Name
         {
-            destinationFurniture.name = sourceFurniture.name;
-            destinationFurniture.width = sourceFurniture.width;
-            destinationFurniture.depth = sourceFurniture.depth;
-            destinationFurniture.boxList = sourceFurniture.boxList;
-            destinationFurniture.cornerColor = sourceFurniture.cornerColor;
+            get { return this.name; }
+            set { this.name = value; }
         }
-
+        public int GetDepth
+        {
+            get { return this.depth; }
+        }
+        public int GetWidth
+        {
+            get { return this.width; }
+        }
+        public string CornerColor
+        {
+            get { return cornerColor; }
+            set { cornerColor = value; }
+        }
+        public List<Box> GetBoxList
+        {
+            get { return boxList; }
+        }
     }
 }

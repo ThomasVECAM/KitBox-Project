@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Interface_5
+﻿namespace Interface_5
 {
     public class PanelClass : Component
     {
@@ -15,22 +9,15 @@ namespace Interface_5
         {
             this.color = color;
             if (height == 0)
-            {
                 this.orientation = "horizontal";
-            }
+
             else if (depth == 0)
-            {
                 this.orientation = "back";
-            }
+
             else
-            {
                 this.orientation = "side";
-            }
+
             this.name = "Panel";
-        }
-        public string GetOrientation
-        {
-            get { return this.orientation; }
         }
         public string GetColor
         {

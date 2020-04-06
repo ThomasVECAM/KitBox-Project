@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-
+﻿using MySql.Data.MySqlClient;
 
 namespace Interface_5
 {
@@ -16,12 +10,8 @@ namespace Interface_5
         {
             this.tvaNumber = tvaNumber;
         }
-
-
         public void AddToDB_2()
         {
-
-
             //Création du client dans la base de donnée;
             Globals.command = new MySqlCommand("INSERT INTO Client(ID,Nom,Phone,Email,Adresse,Commune,Code_Postal,TVA)" +
                 " VALUES(@ID,@Nom,@Phone,@Email,@Adresse,@Commune,@Code_Postal,@TVA)", Globals.db);

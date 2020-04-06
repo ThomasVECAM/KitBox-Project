@@ -307,7 +307,6 @@
             this.label4.Size = new System.Drawing.Size(99, 30);
             this.label4.TabIndex = 28;
             this.label4.Text = "Email : ";
-            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // label3
             // 
@@ -358,7 +357,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControl5";
             this.Size = new System.Drawing.Size(900, 600);
-            this.Load += new System.EventHandler(this.UserControl5_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tvaPannel.ResumeLayout(false);

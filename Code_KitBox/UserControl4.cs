@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Interface_5
@@ -19,24 +14,6 @@ namespace Interface_5
             this.indiceFurnitureList = indiceFurnitureList;
             InitializeComponent();
             UpdateFurniturePanel();
-        }
-        public Button Modify
-        {
-            get{ return modifyButton; }
-        }
-
-        public Button Remove
-        {
-            get { return removeButton; }
-        }
-
-        public Button AddnbButton
-        {
-            get { return addnbButton; }
-        }
-        public Button RemovenbButton
-        {
-            get { return removenbButton; }
         }
 
         public void UpdateFurniturePanel()
@@ -57,13 +34,11 @@ namespace Interface_5
             furniturePrice.Text = "Unit Price : " +
                 (Globals.order.GetFurnitureList[indiceFurnitureList].GetUnitPrice()).ToString()
                 + " €";
-            
         }
 
         private void modifyButton_Click_1(object sender, EventArgs e)
         {
             Globals.furnitureIndex = indiceFurnitureList;
-            //rest of function is done in User3
         }
 
         private void removeButton_Click(object sender, EventArgs e)
@@ -73,10 +48,9 @@ namespace Interface_5
             if(dialog == DialogResult.Yes)
             {
                 Globals.furnitureIndex = indiceFurnitureList;
-                Globals.order.GetFurnitureList[indiceFurnitureList].RemoveBoxes();
+                Globals.order.GetFurnitureList[indiceFurnitureList].RemoveEntireFurniture();
                 Globals.order.GetFurnitureList.RemoveAt(indiceFurnitureList);
                 Globals.furnitureIndex = indiceFurnitureList;
-                //rest of function is done in User3
             }
         }
 
@@ -84,7 +58,7 @@ namespace Interface_5
         {
             Globals.order.GetFurnitureList[indiceFurnitureList].nbFurnitures += 1;
             Globals.furnitureIndex = indiceFurnitureList;
-            Globals.order.GetFurnitureList[indiceFurnitureList].AddBoxes();
+            Globals.order.GetFurnitureList[indiceFurnitureList].DuplicateFurniture();
             UpdateFurniturePanel();
         }
 
@@ -92,21 +66,33 @@ namespace Interface_5
         {
             int actualnbFurniture = Globals.order.GetFurnitureList[indiceFurnitureList].nbFurnitures;
             if (actualnbFurniture == 1)
-            {
                 MessageBox.Show("You need at least 1 of this furniture !, if you want 0 of them : Click Remove");
-            }
             else
             {
                 Globals.order.GetFurnitureList[indiceFurnitureList].nbFurnitures--;
                 Globals.furnitureIndex = indiceFurnitureList;
-                Globals.order.GetFurnitureList[indiceFurnitureList].RemoveBoxes_1();
+                Globals.order.GetFurnitureList[indiceFurnitureList].RemoveDuplicadedFurniture();
                 UpdateFurniturePanel();
             }
         }
 
-        private void stockLabel_Click(object sender, EventArgs e)
+        public Button Modify
         {
-            
+            get { return modifyButton; }
+        }
+
+        public Button Remove
+        {
+            get { return removeButton; }
+        }
+
+        public Button AddnbButton
+        {
+            get { return addnbButton; }
+        }
+        public Button RemovenbButton
+        {
+            get { return removenbButton; }
         }
     }
 }

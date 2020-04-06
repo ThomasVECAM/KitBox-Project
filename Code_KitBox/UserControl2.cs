@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Interface_5
 {
@@ -23,11 +18,7 @@ namespace Interface_5
         public UserControl2()
         {
             InitializeComponent();
-      
-            //By default the two follow pannels are hidden.
-            //choicesBoxPanel.Hide();
-            //sideBarPanel.Hide();
-
+            
             //Cornel Colors labels and buttons
             colorButtons.Add(whiteCornerButton1);
             colorButtons.Add(blackCornerButton2);
@@ -84,7 +75,7 @@ namespace Interface_5
             }
 
             int maxDoorWidth = 0;
-            foreach(Door door in Globals.requiredComponents.doorList)
+            foreach(Door door in Globals.dataBaseComponents.doorList)
             {
                 if (door.GetWidth > maxDoorWidth)
                     maxDoorWidth = door.GetWidth;
@@ -99,7 +90,7 @@ namespace Interface_5
 
             List<int> heightList = new List<int>();
 
-            foreach (Component component in Globals.requiredComponents.sidePanelList)
+            foreach (Component component in Globals.dataBaseComponents.sidePanelList)
             {
                 if (component.GetDepth == Globals.order.GetFurnitureList[Globals.furnitureIndex].GetDepth)
                     heightList.Add(component.GetHeight);
@@ -135,7 +126,7 @@ namespace Interface_5
         private void CornerColor_Event(object sender, EventArgs e)
         {
             var btnColor = (Button)sender;
-            Globals.order.GetFurnitureList[Globals.furnitureIndex].GetCornerColor = btnColor.AccessibleDescription;
+            Globals.order.GetFurnitureList[Globals.furnitureIndex].CornerColor = btnColor.AccessibleDescription;
             Globals.order.GetFurnitureList[Globals.furnitureIndex].AddRequiredCorners();
             UpdateBoxPannel();
         }
@@ -174,7 +165,7 @@ namespace Interface_5
         }  
         private void AddBoxButton_Click(object sender, EventArgs e)
         {
-            int boxCounter = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxListLength();
+            int boxCounter = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList.Count();
             if(boxCounter <7)
             {
                 Globals.order.GetFurnitureList[Globals.furnitureIndex].AddBox();
@@ -264,7 +255,7 @@ namespace Interface_5
             //Box color
             string boxColor = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].GetColor;
             string doorColor = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].GetDoorColor;
-            string cornerColor = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetCornerColor; ;
+            string cornerColor = Globals.order.GetFurnitureList[Globals.furnitureIndex].CornerColor; ;
             
             for (int i = 0; i < colorButtons.Count; i++)
             {
@@ -286,7 +277,7 @@ namespace Interface_5
         } 
         private void RemoveBoxButton_Click(object sender, EventArgs e)
         {
-            int boxListLength = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxListLength(); 
+            int boxListLength = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList.Count(); 
             if (boxListLength > 1)
             {
                 Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].RemoveRequiredComponents();
@@ -332,7 +323,7 @@ namespace Interface_5
         }
         private void duplicatBoxButton_Click(object sender, EventArgs e)
         {
-            int boxCounter = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxListLength();
+            int boxCounter = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList.Count();
             if (boxCounter < 7)
             {
                 Globals.order.GetFurnitureList[Globals.furnitureIndex].DuplicateBox(buttonNr);

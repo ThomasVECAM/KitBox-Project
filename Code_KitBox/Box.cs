@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace Interface_5
@@ -29,17 +24,9 @@ namespace Interface_5
             this.doorColor = "";
         }
 
-        public bool HasDoor
-        {
-            get { return hasDoor; }
-            set { hasDoor = value; }
-        }
-        
         public void AddRequiredComponents()
         {
-            //Ajout des panneaux
-            //Horizontaux
-            foreach (PanelClass panel in Globals.requiredComponents.horizontalPanelList)
+            foreach (PanelClass panel in Globals.dataBaseComponents.horizontalPanelList)
             {
                 if (this.width == panel.GetWidth
                     && this.depth == panel.GetDepth && this.color == panel.GetColor)
@@ -49,8 +36,7 @@ namespace Interface_5
                     panel.quantity -= 2;
                 }
             }
-            //Panneau arrière
-            foreach (PanelClass panel in Globals.requiredComponents.backPanelList)
+            foreach (PanelClass panel in Globals.dataBaseComponents.backPanelList)
             {
                 if (this.width == panel.GetWidth
                     && this.height == panel.GetHeight && this.color == panel.GetColor)
@@ -59,10 +45,8 @@ namespace Interface_5
                     panel.quantity -= 1;
                 }
             }
-
-            foreach (PanelClass panel in Globals.requiredComponents.sidePanelList)
+            foreach (PanelClass panel in Globals.dataBaseComponents.sidePanelList)
             {
-
                 if (this.depth == panel.GetDepth
                        && this.height == panel.GetHeight && this.color == panel.GetColor)
                 {
@@ -71,8 +55,7 @@ namespace Interface_5
                     panel.quantity -= 2;
                 }
             }
-
-            foreach(Traverse traverse in Globals.requiredComponents.backTraverseList)
+            foreach(Traverse traverse in Globals.dataBaseComponents.backTraverseList)
             {
                 if (this.width == traverse.GetWidth)
                 {
@@ -80,8 +63,7 @@ namespace Interface_5
                     traverse.quantity -= 1;
                 }
             }
-
-            foreach (Traverse traverse in Globals.requiredComponents.forwardTraverseList)
+            foreach (Traverse traverse in Globals.dataBaseComponents.forwardTraverseList)
             {
                 if (this.width == traverse.GetWidth)
                 {
@@ -89,8 +71,7 @@ namespace Interface_5
                     traverse.quantity -= 1;
                 }
             }
-
-            foreach (Traverse traverse in Globals.requiredComponents.sideTraverseList)
+            foreach (Traverse traverse in Globals.dataBaseComponents.sideTraverseList)
             {
                 if (this.depth == traverse.GetDepth)
                 {
@@ -99,9 +80,7 @@ namespace Interface_5
                     traverse.quantity -= 2;
                 }
             }
-
-
-            foreach(Bracket bracket in Globals.requiredComponents.bracketList)
+            foreach(Bracket bracket in Globals.dataBaseComponents.bracketList)
             {
                 if(this.height == bracket.GetHeight)
                 {
@@ -112,10 +91,9 @@ namespace Interface_5
                     bracket.quantity -= 4;
                 }
             }
-
             if(this.hasDoor)
             {
-                foreach(Door door in Globals.requiredComponents.doorList)
+                foreach(Door door in Globals.dataBaseComponents.doorList)
                 {
 
                     if(this.height == door.GetHeight && this.width == door.GetWidth && door.GetColor == this.doorColor)
@@ -125,15 +103,14 @@ namespace Interface_5
                         door.quantity -= 2;
                         if(this.doorColor != "Verre")
                         {
-                            componentList.Add(Globals.requiredComponents.cupList[0]);
-                            componentList.Add(Globals.requiredComponents.cupList[0]);
-                            Globals.requiredComponents.cupList[0].quantity -= 2;
+                            componentList.Add(Globals.dataBaseComponents.cupList[0]);
+                            componentList.Add(Globals.dataBaseComponents.cupList[0]);
+                            Globals.dataBaseComponents.cupList[0].quantity -= 2;
                         }
                     }
                 }
             }
         }
-
         public void UpdateRequiredComponents()
         {
             this.RemoveRequiredComponents();
@@ -148,7 +125,7 @@ namespace Interface_5
             componentList.Clear();
         }
 
-        public void RemoveRequiredComponents_1()
+        public void RemoveRequiredComponents_1() //when we remove a duplicaded furniture
         {
             foreach (Component component in componentList)
             {
@@ -167,55 +144,19 @@ namespace Interface_5
             foreach (Component component in componentList)
             {
                 if (component.quantity <= 0)
-                {
                     return false;
-                }
             }
             return true;
         }
 
-        public void RemoveComponent(Component component)
-        {
-            componentList.Remove(component);
-        }
         public double GetPrice()
         {
             double totalPrice = 0;
             foreach (Component component in componentList)
-            {
                 totalPrice += component.GetPrice;
-            }
             return totalPrice;
         }
-        public int GetHeight
-        {
-            get { return this.height; }
-            set { height = value; }
-        }
-        public int GetDepth
-        {
-            get { return this.depth; }
-        }
-        public int GetWidth
-        {
-            get { return this.width; }
-        }
-        public string GetColor
-        {
-            get { return this.color; }
-            set { color = value; }
-        }
-        public void WriteFacture(string path)
-        {
-            using (StreamWriter sw = File.AppendText(path))
-            {
-                sw.WriteLine("          Box :" + GetPrice());
-            }
-            /*foreach (Component component in componentList)
-            {
-                component.WriteFacture(path);
-            }*/
-        }
+
         public bool IsBoxCompleted()
         {
             if (color == "" | height == 0)
@@ -243,7 +184,6 @@ namespace Interface_5
             }
         }
 
-        // Copy a Box
         public static void Copy(Box sourceBox, Box destinationBox)
         {
             destinationBox.width = sourceBox.width;
@@ -253,6 +193,22 @@ namespace Interface_5
             destinationBox.doorColor = sourceBox.doorColor;
             destinationBox.hasDoor = sourceBox.hasDoor;
             destinationBox.AddRequiredComponents();
+        }
+        public bool HasDoor
+        {
+            get { return hasDoor; }
+            set { hasDoor = value; }
+        }
+        public int GetHeight
+        {
+            get { return this.height; }
+            set { height = value; }
+        }
+
+        public string GetColor
+        {
+            get { return this.color; }
+            set { color = value; }
         }
     }
 }

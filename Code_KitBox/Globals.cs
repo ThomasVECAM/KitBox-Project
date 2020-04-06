@@ -14,7 +14,7 @@ namespace Interface_5
         public static int commandId;
         public static Order order;
         public static int furnitureIndex;
-        public static RequiredComponents requiredComponents;
+        public static DataBaseComponents dataBaseComponents;
         public static MySqlCommand command;
         public static int componentIndex;
         public static Person person;

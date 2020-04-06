@@ -142,7 +142,6 @@
             this.stockLabel.Size = new System.Drawing.Size(26, 25);
             this.stockLabel.TabIndex = 35;
             this.stockLabel.UseVisualStyleBackColor = false;
-            this.stockLabel.Click += new System.EventHandler(this.stockLabel_Click);
             // 
             // addnbButton
             // 
