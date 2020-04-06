@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-namespace Interface_5
+﻿namespace Interface_5
 {
 
     public abstract class Component
@@ -24,9 +17,15 @@ namespace Interface_5
             this.price = price;
             this.quantity = quantity;
         }
-        public string GetId
+        public void AddToDB(string furnitureNumber,int boxNumber)
         {
-            get { return this.id; }
+            Globals.MySQLCommandText += "("
+                + Globals.componentIndex + ",'"
+                + id + "',"
+                + Globals.commandId + ","
+                + boxNumber + ",'"
+                + furnitureNumber
+                + "'),";
         }
         public double GetPrice
         {
@@ -47,17 +46,5 @@ namespace Interface_5
         {
             get { return this.depth; }
         }
-        /*public void WriteFacture(string path)
-        {
-            using (StreamWriter sw = File.AppendText(path))
-            {
-                sw.WriteLine("                  (" + id + ") : " + price + " €");
-            }
-        }
-        public string GetName
-        {
-            get { return this.name; }
-        }*/
     }
-
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Interface_5
+﻿namespace Interface_5
 {
     public class Corner
     {
@@ -24,6 +18,14 @@ namespace Interface_5
         public double GetPrice
         {
             get { return this.price; }
+        }
+        public int GetHeight
+        {
+            get { return this.height; }
+        }
+        public string GetColor
+        {
+            get { return this.color; }
         }
     }
 }
