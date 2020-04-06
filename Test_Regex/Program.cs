@@ -25,7 +25,7 @@ class Program
         else
             Console.WriteLine("no match");
 
-        Regex regex5 = new Regex(@"^[A-Za-z,\-0-9 ]{6,30}$");//adresse
+        Regex regex5 = new Regex(@"^[A-Za-z,\-'0-9 ]{6,30}$");//adresse
         Match match3 = regex5.Match("Thomas2 Van  derme ,-89ersch");
 
         if (match3.Success)
@@ -44,10 +44,6 @@ class Program
         }
         else
             Console.WriteLine("no match");
-
-
-
-
 
     }
 }

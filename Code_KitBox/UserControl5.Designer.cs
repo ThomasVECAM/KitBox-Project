@@ -104,12 +104,13 @@
             this.postalCode.BackColor = System.Drawing.Color.White;
             this.postalCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.postalCode.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.postalCode.ForeColor = System.Drawing.Color.Black;
+            this.postalCode.ForeColor = System.Drawing.Color.Red;
             this.postalCode.Location = new System.Drawing.Point(532, 117);
             this.postalCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.postalCode.Name = "postalCode";
             this.postalCode.Size = new System.Drawing.Size(224, 30);
             this.postalCode.TabIndex = 40;
+            this.postalCode.TextChanged += new System.EventHandler(this.postalCode_TextChanged);
             // 
             // label11
             // 
@@ -127,12 +128,13 @@
             this.adress.BackColor = System.Drawing.Color.White;
             this.adress.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.adress.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.adress.ForeColor = System.Drawing.Color.Black;
+            this.adress.ForeColor = System.Drawing.Color.Red;
             this.adress.Location = new System.Drawing.Point(532, 22);
             this.adress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.adress.Name = "adress";
             this.adress.Size = new System.Drawing.Size(224, 30);
             this.adress.TabIndex = 38;
+            this.adress.TextChanged += new System.EventHandler(this.adress_TextChanged);
             // 
             // label10
             // 
@@ -159,12 +161,13 @@
             this.tvaNumber.BackColor = System.Drawing.Color.White;
             this.tvaNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tvaNumber.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.tvaNumber.ForeColor = System.Drawing.Color.Black;
+            this.tvaNumber.ForeColor = System.Drawing.Color.Red;
             this.tvaNumber.Location = new System.Drawing.Point(181, 6);
             this.tvaNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tvaNumber.Name = "tvaNumber";
             this.tvaNumber.Size = new System.Drawing.Size(192, 30);
             this.tvaNumber.TabIndex = 33;
+            this.tvaNumber.TextChanged += new System.EventHandler(this.tvaNumber_TextChanged);
             // 
             // label7
             // 
@@ -182,12 +185,13 @@
             this.city.BackColor = System.Drawing.Color.White;
             this.city.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.city.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.city.ForeColor = System.Drawing.Color.Black;
+            this.city.ForeColor = System.Drawing.Color.Red;
             this.city.Location = new System.Drawing.Point(532, 70);
             this.city.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.city.Name = "city";
             this.city.Size = new System.Drawing.Size(224, 30);
             this.city.TabIndex = 35;
+            this.city.TextChanged += new System.EventHandler(this.city_TextChanged);
             // 
             // label8
             // 
@@ -205,7 +209,7 @@
             this.name.BackColor = System.Drawing.Color.White;
             this.name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.name.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.name.ForeColor = System.Drawing.Color.Black;
+            this.name.ForeColor = System.Drawing.Color.Red;
             this.name.Location = new System.Drawing.Point(129, 22);
             this.name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.name.Name = "name";
@@ -261,13 +265,13 @@
             this.phoneNumber.BackColor = System.Drawing.Color.White;
             this.phoneNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.phoneNumber.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.phoneNumber.ForeColor = System.Drawing.Color.Black;
+            this.phoneNumber.ForeColor = System.Drawing.Color.Red;
             this.phoneNumber.Location = new System.Drawing.Point(129, 117);
             this.phoneNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.phoneNumber.Name = "phoneNumber";
             this.phoneNumber.Size = new System.Drawing.Size(224, 30);
             this.phoneNumber.TabIndex = 31;
-            this.phoneNumber.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
+            this.phoneNumber.TextChanged += new System.EventHandler(this.phoneNumber_TextChanged);
             // 
             // label6
             // 
@@ -285,12 +289,13 @@
             this.email.BackColor = System.Drawing.Color.White;
             this.email.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.email.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold);
-            this.email.ForeColor = System.Drawing.Color.Black;
+            this.email.ForeColor = System.Drawing.Color.Red;
             this.email.Location = new System.Drawing.Point(129, 70);
             this.email.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(224, 30);
             this.email.TabIndex = 29;
+            this.email.TextChanged += new System.EventHandler(this.email_TextChanged);
             // 
             // label4
             // 
