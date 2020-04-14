@@ -5,10 +5,9 @@
     {
         protected double price;
         protected string id, name;
-        protected int width, depth, height;
-        public int quantity;
+        protected int width, depth, height, quantity, quantityNeedBox;
 
-        public Component(string id, int height, int width, int depth, double price, int quantity)
+        public Component(string id, int height, int width, int depth, double price, int quantity, int quantityNeedBox)
         {
             this.id = id;
             this.height = height;
@@ -16,6 +15,7 @@
             this.depth = depth;
             this.price = price;
             this.quantity = quantity;
+            this.quantityNeedBox = quantityNeedBox;
         }
         public void AddToDB(string furnitureNumber,int boxNumber)
         {
@@ -29,7 +29,7 @@
         }
         public double GetPrice
         {
-            get { return this.price; }
+            get { return this.price*this.quantityNeedBox; }
         }
 
         public int GetWidth
@@ -45,6 +45,17 @@
         public int GetDepth
         {
             get { return this.depth; }
+        }
+
+        public int Quantity
+        {
+            get { return this.quantity; }
+            set { quantity = value; }
+
+        }
+        public int QuantityNeedBox
+        {
+            get { return this.quantityNeedBox; }
         }
     }
 }

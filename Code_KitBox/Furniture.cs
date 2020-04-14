@@ -67,12 +67,12 @@ namespace Interface_5
             foreach(Box box in boxList)
                 box.RemoveRequiredComponents();
             foreach (Corner corner in cornerList)
-                corner.quantity += 1;
+                corner.Quantity += corner.GetQuantityNeedBox;
         }
         public void RemoveDuplicadedFurniture()
         {
             foreach (Corner corner in cornerList)
-                corner.quantity  +=1;
+                corner.Quantity  +=corner.GetQuantityNeedBox;
             foreach (Box box in boxList)
                 box.RemoveRequiredComponents_1();
         }
@@ -80,7 +80,7 @@ namespace Interface_5
         public void DuplicateFurniture()
         {
             foreach(Corner corner in cornerList)
-                corner.quantity--;
+                corner.Quantity -= corner.GetQuantityNeedBox;
             foreach (Box box in boxList)
                 box.DuplicationFurniture();
         }
@@ -89,7 +89,7 @@ namespace Interface_5
         {
             foreach(Corner corner in cornerList)
             {
-                if (corner.quantity <= 0)
+                if (corner.Quantity <= 0)
                     return false;
             }
             foreach(Box box in boxList)
@@ -104,7 +104,7 @@ namespace Interface_5
         {
             //Remove the old corners configuration
             foreach (Corner corner in cornerList)
-                corner.quantity++;
+                corner.Quantity++;
             cornerList.Clear();
 
 
@@ -123,10 +123,7 @@ namespace Interface_5
                 if(corner.GetHeight == maxHeight)
                 {
                     cornerList.Add(corner);
-                    cornerList.Add(corner);
-                    cornerList.Add(corner);
-                    cornerList.Add(corner);
-                    corner.quantity -= 4;
+                    corner.Quantity -= corner.GetQuantityNeedBox;
                 }
             }
         }
@@ -152,6 +149,17 @@ namespace Interface_5
                 {
                     box.AddToDB(furnitureNumber, boxNumber);
                     boxNumber++;
+                }
+                foreach(Corner corner in cornerList)
+                {
+                    Globals.MySQLCommandText += "("
+                        + Globals.componentIndex + ",'"
+                        + corner.GetID + "',"
+                        + Globals.commandId + ","
+                        + boxNumber + ",'"
+                        + furnitureNumber
+                        + "'),";
+                    Globals.componentIndex += 1;
                 }
             }
         }

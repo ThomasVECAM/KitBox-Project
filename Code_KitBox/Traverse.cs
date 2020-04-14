@@ -4,7 +4,7 @@
     {
         private string orientation;
         public Traverse(string id, int height, int width, int depth,
-            double price, int quantity) : base(id, height, width, depth, price, quantity)
+            double price, int quantity, int quantityNeedBox) : base(id, height, width, depth, price, quantity, quantityNeedBox)
         {
             if (id.Contains("TRR"))
             {
