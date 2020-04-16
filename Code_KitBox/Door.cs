@@ -4,7 +4,7 @@
     {
         private string color;
         public Door(string id, int height, int width, int depth,
-            double price, int quantity, string color) : base(id, height, width, depth, price, quantity)
+            double price, int quantity, string color, int quantityNeedBox) : base(id, height, width, depth, price, quantity, quantityNeedBox)
         {
             this.color = color;
         }

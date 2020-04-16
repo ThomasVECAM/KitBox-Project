@@ -33,6 +33,7 @@ namespace Interface_5
         }
         private void Remove(object sender, EventArgs e)
         {
+            panel1.Controls.Clear();
             panel1.Controls.Add(new UserControl3());
         }
         private void Update(object sender, EventArgs e)

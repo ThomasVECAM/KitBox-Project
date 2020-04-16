@@ -32,7 +32,7 @@ namespace Interface_5
             }
 
             MySqlCommand cmd = db.CreateCommand();
-            cmd.CommandText = "SELECT Ref,Code, Hauteur, Largeur, Profondeur, Prix_Client, Couleur, En_stock FROM `Composants`";
+            cmd.CommandText = "SELECT Ref,Code, Hauteur, Largeur, Profondeur, Prix_Client, Couleur, En_stock,Nb_Pièces_casier FROM `Composants`";
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -41,49 +41,55 @@ namespace Interface_5
                 if (componentReference == "Panneau GD")
                     sidePanelList.Add(new PanelClass(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
                         0, Convert.ToInt32(reader["Profondeur"]), Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]),
-                        reader["Couleur"].ToString()));
+                        reader["Couleur"].ToString(),Convert.ToInt32(reader["Nb_Pièces_casier"])));
 
                 else if(componentReference == "Panneau Ar")
                     backPanelList.Add(new PanelClass(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
                         Convert.ToInt32(reader["Largeur"]), 0,
-                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]), reader["Couleur"].ToString()));
+                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]),
+                        reader["Couleur"].ToString(), Convert.ToInt32(reader["Nb_Pièces_casier"])));
 
                 else if(componentReference == "Panneau HB")
                     horizontalPanelList.Add(new PanelClass(reader["Code"].ToString(), 0,
                         Convert.ToInt32(reader["Largeur"]), Convert.ToInt32(reader["Profondeur"]),
-                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]), reader["Couleur"].ToString()));
+                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]), 
+                        reader["Couleur"].ToString(), Convert.ToInt32(reader["Nb_Pièces_casier"])));
 
                 else if (componentReference == "Tasseau")
                     bracketList.Add(new Bracket(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]), 0, 0,
-                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"])));
+                        Convert.ToDouble(reader["Prix_Client"]), 
+                        Convert.ToInt32(reader["En_stock"]), Convert.ToInt32(reader["Nb_Pièces_casier"])));
 
                 else if(componentReference == "Traverse GD")
                     sideTraverseList.Add(new Traverse(reader["Code"].ToString(), 0, 0, Convert.ToInt32(reader["Profondeur"]),
-                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"])));
+                        Convert.ToDouble(reader["Prix_Client"]),
+                        Convert.ToInt32(reader["En_stock"]), Convert.ToInt32(reader["Nb_Pièces_casier"])));
 
                 else if(componentReference == "Traverse Ar")
                     backTraverseList.Add(new Traverse(reader["Code"].ToString(), 0,
                         Convert.ToInt32(reader["Largeur"]), 0, Convert.ToDouble(reader["Prix_Client"]),
-                        Convert.ToInt32(reader["En_stock"])));
+                        Convert.ToInt32(reader["En_stock"]), Convert.ToInt32(reader["Nb_Pièces_casier"])));
 
                 else if(componentReference == "Traverse Av")
                     forwardTraverseList.Add(new Traverse(reader["Code"].ToString(), 0,
                       Convert.ToInt32(reader["Largeur"]), 0, Convert.ToDouble(reader["Prix_Client"]),
-                      Convert.ToInt32(reader["En_stock"])));
+                      Convert.ToInt32(reader["En_stock"]), Convert.ToInt32(reader["Nb_Pièces_casier"])));
 
                 else if (componentReference == "Porte ")
                     doorList.Add(new Door(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
                         Convert.ToInt32(reader["Largeur"]), 0, Convert.ToDouble(reader["Prix_Client"]),
-                        Convert.ToInt32(reader["En_stock"]), reader["Couleur"].ToString()));
+                        Convert.ToInt32(reader["En_stock"]),
+                        reader["Couleur"].ToString(), Convert.ToInt32(reader["Nb_Pièces_casier"])));
 
                 else if(componentReference == "Cornieres" )
                     cornerList.Add(new Corner(reader["Code"].ToString(), Convert.ToInt32(reader["Hauteur"]),
                         Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"]),
-                        reader["Couleur"].ToString()));
+                        reader["Couleur"].ToString(), Convert.ToInt32(reader["Nb_Pièces_casier"])));
 
                 else if(componentReference == "Coupelles")
                     cupList.Add(new Cup(reader["Code"].ToString(), 0, 0, 0,
-                        Convert.ToDouble(reader["Prix_Client"]), Convert.ToInt32(reader["En_stock"])));
+                        Convert.ToDouble(reader["Prix_Client"]), 
+                        Convert.ToInt32(reader["En_stock"]), Convert.ToInt32(reader["Nb_Pièces_casier"])));
             }
             db.Close();
         }

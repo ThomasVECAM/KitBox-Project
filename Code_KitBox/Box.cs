@@ -32,8 +32,7 @@ namespace Interface_5
                     && this.depth == panel.GetDepth && this.color == panel.GetColor)
                 {
                     componentList.Add(panel);
-                    componentList.Add(panel);
-                    panel.quantity -= 2;
+                    panel.Quantity -= panel.QuantityNeedBox;
                 }
             }
             foreach (PanelClass panel in Globals.dataBaseComponents.backPanelList)
@@ -42,7 +41,7 @@ namespace Interface_5
                     && this.height == panel.GetHeight && this.color == panel.GetColor)
                 {
                     componentList.Add(panel);
-                    panel.quantity -= 1;
+                    panel.Quantity -= panel.QuantityNeedBox;
                 }
             }
             foreach (PanelClass panel in Globals.dataBaseComponents.sidePanelList)
@@ -51,8 +50,7 @@ namespace Interface_5
                        && this.height == panel.GetHeight && this.color == panel.GetColor)
                 {
                     componentList.Add(panel);
-                    componentList.Add(panel);
-                    panel.quantity -= 2;
+                    panel.Quantity -= panel.QuantityNeedBox;
                 }
             }
             foreach(Traverse traverse in Globals.dataBaseComponents.backTraverseList)
@@ -60,7 +58,7 @@ namespace Interface_5
                 if (this.width == traverse.GetWidth)
                 {
                     componentList.Add(traverse);
-                    traverse.quantity -= 1;
+                    traverse.Quantity -= traverse.QuantityNeedBox;
                 }
             }
             foreach (Traverse traverse in Globals.dataBaseComponents.forwardTraverseList)
@@ -68,7 +66,7 @@ namespace Interface_5
                 if (this.width == traverse.GetWidth)
                 {
                     componentList.Add(traverse);
-                    traverse.quantity -= 1;
+                    traverse.Quantity -= traverse.QuantityNeedBox;
                 }
             }
             foreach (Traverse traverse in Globals.dataBaseComponents.sideTraverseList)
@@ -76,8 +74,7 @@ namespace Interface_5
                 if (this.depth == traverse.GetDepth)
                 {
                     componentList.Add(traverse);
-                    componentList.Add(traverse);
-                    traverse.quantity -= 2;
+                    traverse.Quantity -= traverse.QuantityNeedBox;
                 }
             }
             foreach(Bracket bracket in Globals.dataBaseComponents.bracketList)
@@ -85,10 +82,7 @@ namespace Interface_5
                 if(this.height == bracket.GetHeight)
                 {
                     componentList.Add(bracket);
-                    componentList.Add(bracket);
-                    componentList.Add(bracket);
-                    componentList.Add(bracket);
-                    bracket.quantity -= 4;
+                    bracket.Quantity -= bracket.QuantityNeedBox;
                 }
             }
             if(this.hasDoor)
@@ -99,13 +93,11 @@ namespace Interface_5
                     if(this.height == door.GetHeight && this.width == door.GetWidth && door.GetColor == this.doorColor)
                     {
                         componentList.Add(door);
-                        componentList.Add(door);
-                        door.quantity -= 2;
+                        door.Quantity -= door.QuantityNeedBox;
                         if(this.doorColor != "Verre")
                         {
                             componentList.Add(Globals.dataBaseComponents.cupList[0]);
-                            componentList.Add(Globals.dataBaseComponents.cupList[0]);
-                            Globals.dataBaseComponents.cupList[0].quantity -= 2;
+                            Globals.dataBaseComponents.cupList[0].Quantity -= Globals.dataBaseComponents.cupList[0].QuantityNeedBox;
                         }
                     }
                 }
@@ -120,7 +112,7 @@ namespace Interface_5
         {
             foreach(Component component in componentList)
             {
-                component.quantity += 1;
+                component.Quantity += component.QuantityNeedBox;
             }
             componentList.Clear();
         }
@@ -129,21 +121,21 @@ namespace Interface_5
         {
             foreach (Component component in componentList)
             {
-                component.quantity += 1;
+                component.Quantity += component.QuantityNeedBox;
             }
         }
         public void DuplicationFurniture()
         {
             foreach (Component component in componentList)
             {
-                component.quantity -= 1;
+                component.Quantity -= component.QuantityNeedBox;
             }
         }
         public bool InStock()
         {
             foreach (Component component in componentList)
             {
-                if (component.quantity <= 0)
+                if (component.Quantity <= 0)
                     return false;
             }
             return true;
