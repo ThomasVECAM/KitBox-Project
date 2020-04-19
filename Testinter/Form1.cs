@@ -23,10 +23,6 @@ namespace Testdb
 
         public Form1()
         {
-            
-           
-
-            
             InitializeComponent();
         }
 
@@ -60,39 +56,31 @@ namespace Testdb
             {
                 db.Close();
             }
-           
-
-
-
-
-
-
-
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-           // "Select Code,Ref,Profondeur,Hauteur,Largeur,Couleur from Composants WHERE Code IN (
-           MySqlCommand cmd = db.CreateCommand();
-            cmd.CommandText = "SELECT * FROM Composant_Commande WHERE ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            // "Select Code,Ref,Profondeur,Hauteur,Largeur,Couleur from Composants WHERE Code IN (
+            lb1.Items.Clear();
+            MySqlCommand cmd = db.CreateCommand();
+            cmd.CommandText = "SELECT Component_Number,ID_Composant FROM Composant_Commande WHERE ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             MySqlCommand cmd2 = db.CreateCommand();
             cmd2.CommandText= "Select Code,Ref,Profondeur,Hauteur,Largeur,Couleur from Composants WHERE Code IN (SELECT ID_Composant FROM Composant_Commande WHERE ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() +")";
-                try
-                {
-                    db.Open();
-                    MySqlDataReader reader = cmd.ExecuteReader();
-                    dt2.Clear();
-                    dt2.Load(reader);
+            try
+            {
+                db.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                dt2.Clear();
+                dt2.Load(reader);
                 db.Close();
                 db.Open();
-                    MySqlDataReader reader2 = cmd2.ExecuteReader();
-                    while (reader2.Read())
-                    {
-                        lb1.Items.Add(reader2["Ref"]+" "+reader2["Code"]+": Dimension ="+reader2["Largeur"]+"x" +reader2["Profondeur"]+"x"+reader2["Hauteur"]+", Couleur ="+reader2["Couleur"]);
-                        
-                    }
+                MySqlDataReader reader2 = cmd2.ExecuteReader();
+                while (reader2.Read())
+                {
+                    lb1.Items.Add(reader2["Ref"]+" "+reader2["Code"]+": Dimension ="+reader2["Largeur"]+"x" +reader2["Profondeur"]+"x"+reader2["Hauteur"]+", Couleur ="+reader2["Couleur"]);
+                    
                 }
+            }
                 catch (Exception) { }
             dataGridView2.DataSource = dt2;
             db.Close();
@@ -136,20 +124,9 @@ namespace Testdb
             {
                 dt.Rows[item.Index].Delete();
             }
-            
-
             db.Close();
-            
-            
-            
-            
-
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -161,6 +138,7 @@ namespace Testdb
         {
 
         }
+
     }
 }
 

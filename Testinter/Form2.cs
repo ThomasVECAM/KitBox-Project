@@ -15,6 +15,7 @@ namespace Testdb
         MySqlConnection db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
         DataTable dt = new DataTable();
         DataTable dt2 = new DataTable();
+        DataTable dt3 = new DataTable();
         DataSet myDS = new DataSet();
         DataSet myDS2 = new DataSet();
         public Form2()
@@ -47,8 +48,19 @@ namespace Testdb
             reader = cmd.ExecuteReader();
             dt2.Load(reader);
             dataGridView2.DataSource = dt2;
+            try
+            {
+                db.Open();
+            }
+            catch (Exception erro)
+            {
+                Console.WriteLine("Erro" + erro);
+            }
+            cmd.CommandText = "SELECT ID_Fournisseur,Code_composant FROM Composants_Fournisseurs WHERE (Code_composant,Prix) in(SELECT Code_composant,MIN(Prix) Prix FROM Composants_Fournisseurs GROUP BY Code_composant)";
+            reader = cmd.ExecuteReader();
+            dt3.Load(reader);
+            dataGridView3.DataSource = dt3;
             db.Close();
-
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,15 +78,21 @@ namespace Testdb
                 {
                     if (Int32.Parse(row.Cells["En_Stock"].Value.ToString()) < Int32.Parse(row.Cells["Stock_Minimum"].Value.ToString()))
                     {
-                        
                         DataRow added = dt2.NewRow();
-                       // cmd.CommandText = "SELECT ID FROM Composants ";
-                        added["ID_Fournisseur"] = 1;
+                       
+                            foreach(DataGridViewRow fourn in dataGridView3.Rows) 
+                        {
+                            if (fourn.Cells["Code_composant"].Value.ToString() == row.Cells["Code"].Value.ToString())
+                            {
+                                added["ID_Fournisseur"] = fourn.Cells["ID_Fournisseur"].Value;
+                                break;
+                            }
+                        }
                         added["ID_Composant"] = row.Cells["Code"].Value;
                         added["Validation"] = false;
                         added["Quantity"] = Int32.Parse(row.Cells["En_Stock"].Value.ToString()) - Int32.Parse(row.Cells["Stock_Minimum"].Value.ToString());
                         dt2.Rows.Add(added);
-
+                       
                     }
                 }
                 catch
@@ -89,8 +107,6 @@ namespace Testdb
             
             foreach (DataGridViewRow row in dataGridView2.SelectedRows)
             {
-                
-                
                     bool check = bool.Parse(row.Cells["Validation"].Value.ToString());
                     if (check == true)
                     {
@@ -152,10 +168,10 @@ namespace Testdb
             {
 
             }
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM Commande_Fournisseur", db);
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM Commande_Fournisseur ", db);
             MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter);
-            dataAdapter.Fill(myDS,"Commande_Fournisseur");
-            dataAdapter.Update(myDS);
+            dataAdapter.Fill(myDS2,"Commande_Fournisseur");
+            dataAdapter.Update(myDS2);
 
             db.Close();
         }
@@ -164,6 +180,38 @@ namespace Testdb
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            db.Open();
+            MySqlCommand cmd = db.CreateCommand();
+            cmd.CommandText = "DELETE  FROM Composant WHERE Code ='" + dataGridView1.SelectedRows[0].Cells["Code"].Value.ToString() +"'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt = (DataTable)(dataGridView1.DataSource);
+            foreach (DataGridViewRow item in dataGridView1.SelectedRows)
+            {
+                dt.Rows[item.Index].Delete();
+            }
+            db.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            db.Open();
+            MySqlCommand cmd = db.CreateCommand();
+            cmd.CommandText = "DELETE  FROM Commande_Fournisseur WHERE ID_Composant = '" + dataGridView2.SelectedRows[0].Cells["ID_Composant"].Value.ToString() + "'";
+            MySqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt2 = (DataTable)(dataGridView2.DataSource);
+            foreach (DataGridViewRow item in dataGridView2.SelectedRows)
+            {
+                dt2.Rows[item.Index].Delete();
+            }
+            db.Close();
+        }
+
+       
+
+
     }
     }
 
