@@ -1,5 +1,20 @@
-# KitBox-Project
+# KitBox Groupe 5
 
-## Groupe 5
+## Projet
 
-### CECI EST NOTRE PROJET
+Application pour la création de meuble.
+
+## Logiciel
+    -StarUML
+    -Visual Studio
+    -Trello
+    -PhpMyAdmin
+## Language
+    -C#
+## Auteurs
+    Finias Calugar
+    Yassin Souidi
+    Thomas Vandermeersch
+    Emene Abah
+    Landry Taymans
+
