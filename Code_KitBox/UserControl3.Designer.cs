@@ -30,9 +30,10 @@
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.orderPrice = new System.Windows.Forms.Label();
             this.finishOrder = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.orderPrice = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +47,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.orderPrice);
             this.panel1.Controls.Add(this.finishOrder);
             this.panel1.Controls.Add(this.addButton);
@@ -54,6 +56,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(900, 600);
             this.panel1.TabIndex = 1;
+            // 
+            // orderPrice
+            // 
+            this.orderPrice.AutoSize = true;
+            this.orderPrice.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.orderPrice.Location = new System.Drawing.Point(14, 537);
+            this.orderPrice.Name = "orderPrice";
+            this.orderPrice.Size = new System.Drawing.Size(144, 28);
+            this.orderPrice.TabIndex = 12;
+            this.orderPrice.Text = "Total Price :";
             // 
             // finishOrder
             // 
@@ -85,14 +98,16 @@
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // orderPrice
+            // label8
             // 
-            this.orderPrice.AutoSize = true;
-            this.orderPrice.Location = new System.Drawing.Point(12, 553);
-            this.orderPrice.Name = "orderPrice";
-            this.orderPrice.Size = new System.Drawing.Size(150, 30);
-            this.orderPrice.TabIndex = 12;
-            this.orderPrice.Text = "Total Price :";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
+            this.label8.Location = new System.Drawing.Point(16, 565);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 18);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "TVA included";
             // 
             // UserControl3
             // 
@@ -116,5 +131,6 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button finishOrder;
         private System.Windows.Forms.Label orderPrice;
+        private System.Windows.Forms.Label label8;
     }
 }
