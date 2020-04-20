@@ -1,3 +1,5 @@
 # KitBox-Project
 
-## CECI EST NOTRE PROJET
+## Groupe 5
+
+### CECI EST NOTRE PROJET
