@@ -23,99 +23,68 @@ namespace Testdb
 
         public Form1()
         {
+
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            try
+            bool connected = false;
+            while(!connected)
             {
-                db.Open();
+                try
+                {
+                    db.Open();
+                    connected = true;
+                }
+                catch{}
             }
-            catch (Exception erro)
-            {
-                Console.WriteLine("Erro" + erro);
-            }
+
             MySqlCommand cmd = db.CreateCommand();
-            cmd.CommandText = "SELECT * FROM Commande WHERE Validation = 0 ";
+            cmd.CommandText = "SELECT Commande.ID,Client.Nom FROM Commande INNER JOIN Client  ON Commande.ID_Client = Client.ID ";
             MySqlDataReader reader = cmd.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView1.DataSource = dt;
-            try
-            {
-               
-                db.Close();
-            }
-            catch
-            {
-                db.Close();
-            }
+            db.Close();
         }
-
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // "Select Code,Ref,Profondeur,Hauteur,Largeur,Couleur from Composants WHERE Code IN (
-            lb1.Items.Clear();
-            MySqlCommand cmd = db.CreateCommand();
-            cmd.CommandText = "SELECT Component_Number,ID_Composant FROM Composant_Commande WHERE ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            MySqlCommand cmd2 = db.CreateCommand();
-            cmd2.CommandText= "Select Code,Ref,Profondeur,Hauteur,Largeur,Couleur from Composants WHERE Code IN (SELECT ID_Composant FROM Composant_Commande WHERE ID_Commande =" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() +")";
-            try
+            bool connected = false;
+            while (!connected)
             {
-                db.Open();
-                MySqlDataReader reader = cmd.ExecuteReader();
-                dt2.Clear();
-                dt2.Load(reader);
-                db.Close();
-                db.Open();
-                MySqlDataReader reader2 = cmd2.ExecuteReader();
-                while (reader2.Read())
+                try
                 {
-                    lb1.Items.Add(reader2["Ref"]+" "+reader2["Code"]+": Dimension ="+reader2["Largeur"]+"x" +reader2["Profondeur"]+"x"+reader2["Hauteur"]+", Couleur ="+reader2["Couleur"]);
-                    
+                    db.Open();
+                    connected = true;
                 }
+                catch { }
             }
-                catch (Exception) { }
-            dataGridView2.DataSource = dt2;
+            MySqlCommand cmd = db.CreateCommand();
+            cmd.CommandText = "SELECT Composant_Commande.Component_Number,Composant_Commande.Meuble,Composant_Commande.Box,"
+                + "Composants.Ref, Composants.Dimension,Composants.Couleur,Composants.Nb_Pièces_casier "
+                + "FROM Composant_Commande "
+                +"INNER JOIN Composants ON Composant_Commande.ID_Composant = Composants.Code WHERE ID_Commande =" 
+                + dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+            dataGridView2.DataSource = dt;
             db.Close();
-            
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            db.Open();
-            DataTable dt = (DataTable)(dataGridView1.DataSource);
-            
-            dt.TableName = "Table";
-            try
-            {
-                
-                myDS.Tables.Add(dt);
-            }
-            catch
-            {
-                
-            }
-
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM Commande ", db);
-            MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter);
-           
-            dataAdapter.Fill(myDS, "Commande");
-            dataAdapter.Update(myDS);
-            
-            db.Close();
-            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            db.Open();
+            bool connected = false;
+            while (!connected)
+            {
+                try
+                {
+                    db.Open();
+                    connected = true;
+                }
+                catch { }
+            }
             MySqlCommand cmd = db.CreateCommand();
             cmd.CommandText = "DELETE FROM Composant_Commande WHERE ID_Commande=" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() ;
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -127,18 +96,10 @@ namespace Testdb
             db.Close();
         }
 
-
         private void button4_Click(object sender, EventArgs e)
         {
             Form2 f = new Form2(); // This is bad
             f.Show();
         }
-
-        private void dataGridView2_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
     }
 }
-
