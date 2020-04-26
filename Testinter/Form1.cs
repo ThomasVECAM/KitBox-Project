@@ -88,11 +88,27 @@ namespace Testdb
             MySqlCommand cmd = db.CreateCommand();
             cmd.CommandText = "DELETE FROM Composant_Commande WHERE ID_Commande=" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() ;
             MySqlDataReader reader = cmd.ExecuteReader();
-            DataTable dt = (DataTable)(dataGridView1.DataSource);
-            foreach(DataGridViewRow item in dataGridView1.SelectedRows)
+            
+            db.Close();
+            connected = false;
+            while (!connected)
             {
-                dt.Rows[item.Index].Delete();
+                try
+                {
+                    db.Open();
+                    connected = true;
+                }
+                catch { }
             }
+            cmd.CommandText = "DELETE FROM Commande WHERE ID="+dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            reader = cmd.ExecuteReader();
+            foreach(DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                dataGridView1.Rows.Remove(row);
+            }
+            
+
+            
             db.Close();
         }
 
@@ -101,5 +117,12 @@ namespace Testdb
             Form2 f = new Form2(); // This is bad
             f.Show();
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+   
     }
 }
