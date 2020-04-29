@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace Interface_5
 {
@@ -55,11 +56,12 @@ namespace Interface_5
                 Globals.person.AddToDB();
             else
                 Globals.company.AddToDB_2();
-            
-            Globals.command = new MySqlCommand("INSERT INTO Commande(ID,ID_Client,Validation)" +
-                " VALUES(@ID,@ID_Client,0)", Globals.db);
+
+            Globals.command = new MySqlCommand("INSERT INTO Commande(ID,ID_Client,Prix,Validation)" +
+                " VALUES(@ID,@ID_Client,@Prix,0)", Globals.db);
             Globals.command.Parameters.AddWithValue("@ID", Globals.commandId);
             Globals.command.Parameters.AddWithValue("@ID_Client", Globals.customerId);
+            Globals.command.Parameters.AddWithValue("@Prix", GetPrice().ToString());
             Globals.command.ExecuteNonQuery();
             Globals.command.Parameters.Clear();
             
@@ -79,6 +81,19 @@ namespace Interface_5
             Globals.command = new MySqlCommand(sqlAddComponent, Globals.db);
             Globals.command.ExecuteNonQuery();
             Globals.db.Close();
+        }
+
+        public void Bill()
+        {
+            StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + Globals.commandId + ".txt");
+            bill.Write("KitBox Project magasin" + "\n" + "\n");
+            bill.Write("Facture de la commande n° " + Globals.commandId + "\n" + "\n");
+            bill.Write("Item            " + "Quantité   " + "Prix (€)"+ "\n");
+            foreach (Furniture furniture in this.furnitureList)
+            {
+                bill.Write(furniture.Bill() +"\n");
+            }
+            bill.Close();
         }
     }
 }

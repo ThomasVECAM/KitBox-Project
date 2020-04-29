@@ -1,0 +1,21 @@
+KitBox Project magasin
+
+Facture de la commande n° 8
+
+Item            Quantité   Prix (€)
+Furniture 1            1    72,84
+    Cornière Blanc 4      1,4
+    Box 1              1    71,44
+
+Furniture 1            1    72,42
+    Cornière Noir 4      0,98
+    Box 1              1    71,44
+
+Furniture 1            1    72,84
+    Cornière Galvanise 4      1,4
+    Box 1              1    71,44
+
+Furniture 1            1    72,56
+    Cornière Brun 4      1,12
+    Box 1              1    71,44
+

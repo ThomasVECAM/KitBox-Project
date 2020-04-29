@@ -202,5 +202,11 @@ namespace Interface_5
             get { return this.color; }
             set { color = value; }
         }
+
+        public string Bill()
+        {
+            string billText = "              " + 1 + "    " + this.GetPrice() + "\n";
+            return billText;
+        }
     }
 }

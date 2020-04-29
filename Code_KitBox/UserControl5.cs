@@ -60,6 +60,7 @@ namespace Interface_5
                 Globals.order.AddToDB(customerStatus);
                 userControlPannel.Controls.Clear();
                 userControlPannel.Controls.Add(new UserControl6());
+                Globals.order.Bill();
             }
             else
             {

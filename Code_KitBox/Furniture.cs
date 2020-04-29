@@ -185,5 +185,18 @@ namespace Interface_5
         {
             get { return boxList; }
         }
+        public string Bill()
+        {
+            string billText = this.name + "            " + this.nbFurnitures + "    " + this.GetPrice() + "\n";
+            billText += "    Cornière " + this.cornerColor + " " + this.cornerList[0].GetQuantityNeedBox 
+                + "      " + this.cornerList[0].GetPrice + "\n";
+            int i = 1;
+            foreach (Box box in this.boxList)
+            {
+                billText += "    Box " + i + box.Bill();
+                i++;
+            }
+            return billText;
+        }
     }
 }
