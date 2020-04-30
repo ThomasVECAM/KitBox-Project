@@ -7,7 +7,7 @@ namespace Interface_5
     {
         private string name, cornerColor;
         private List<Box> boxList;
-        private List<Corner> cornerList;
+        private Corner corner;
         private int depth, width;
         public int nbFurnitures;
 
@@ -17,7 +17,7 @@ namespace Interface_5
             this.depth = depth;
             this.width = width;
             this.boxList = new List<Box>();
-            this.cornerList = new List<Corner>();
+            this.corner = new Corner("0",0,0.0,0,"0",0);
             this.cornerColor = "";
             this.nbFurnitures = 1;
         }
@@ -32,8 +32,7 @@ namespace Interface_5
             double unitPrice = 0;
             foreach (Box box in boxList)
                 unitPrice += box.GetPrice();
-            foreach(Corner corner in cornerList)
-                unitPrice += corner.GetPrice;
+            unitPrice += this.corner.GetPrice;
             return unitPrice;
         }
 
@@ -66,33 +65,27 @@ namespace Interface_5
 
             foreach(Box box in boxList)
                 box.RemoveRequiredComponents();
-            foreach (Corner corner in cornerList)
-                corner.Quantity += corner.GetQuantityNeedBox;
+            this.corner.Quantity += this.corner.GetQuantityNeedBox;
         }
         public void RemoveDuplicadedFurniture()
         {
-            foreach (Corner corner in cornerList)
-                corner.Quantity  +=corner.GetQuantityNeedBox;
+            this.corner.Quantity += this.corner.GetQuantityNeedBox;
             foreach (Box box in boxList)
                 box.RemoveRequiredComponents_1();
         }
 
         public void DuplicateFurniture()
         {
-            foreach(Corner corner in cornerList)
-                corner.Quantity -= corner.GetQuantityNeedBox;
+            this.corner.Quantity -= this.corner.GetQuantityNeedBox;
             foreach (Box box in boxList)
                 box.DuplicationFurniture();
         }
 
         public bool InStock()
         {
-            foreach(Corner corner in cornerList)
-            {
-                if (corner.Quantity <= 0)
-                    return false;
-            }
-            foreach(Box box in boxList)
+            if (corner.Quantity <= 0)
+                return false;
+            foreach (Box box in boxList)
             {
                 if(box.InStock()==false)
                     return false;
@@ -102,10 +95,7 @@ namespace Interface_5
 
     public void AddRequiredCorners()
         {
-            //Remove the old corners configuration
-            foreach (Corner corner in cornerList)
-                corner.Quantity++;
-            cornerList.Clear();
+            this.corner.Quantity++;
 
 
             List<Corner> possibleCorner = new List<Corner>();
@@ -122,7 +112,7 @@ namespace Interface_5
             {
                 if(corner.GetHeight == maxHeight)
                 {
-                    cornerList.Add(corner);
+                    this.corner = corner;
                     corner.Quantity -= corner.GetQuantityNeedBox;
                 }
             }
@@ -150,17 +140,14 @@ namespace Interface_5
                     box.AddToDB(furnitureNumber, boxNumber);
                     boxNumber++;
                 }
-                foreach(Corner corner in cornerList)
-                {
-                    Globals.MySQLCommandText += "("
+                Globals.MySQLCommandText += "("
                         + Globals.componentIndex + ",'"
-                        + corner.GetID + "',"
+                        + this.corner.GetID + "',"
                         + Globals.commandId + ","
                         + boxNumber + ",'"
                         + furnitureNumber
                         + "'),";
-                    Globals.componentIndex += 1;
-                }
+                Globals.componentIndex += 1;
             }
         }
         public string Name
@@ -188,8 +175,8 @@ namespace Interface_5
         public string Bill()
         {
             string billText = this.name + "            " + this.nbFurnitures + "    " + this.GetPrice() + "\n";
-            billText += "    Cornière " + this.cornerColor + " " + this.cornerList[0].GetQuantityNeedBox 
-                + "      " + this.cornerList[0].GetPrice + "\n";
+            billText += "    Cornière " + this.cornerColor + " " + this.corner.GetQuantityNeedBox 
+                + "      " + this.corner.GetPrice + "\n";
             int i = 1;
             foreach (Box box in this.boxList)
             {
