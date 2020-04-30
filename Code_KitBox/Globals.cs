@@ -17,8 +17,6 @@ namespace Interface_5
         public static DataBaseComponents dataBaseComponents;
         public static MySqlCommand command;
         public static int componentIndex;
-        public static Person person;
-        public static Company company;
         public static MySqlConnection db;
         public static string MySQLCommandText;
     }

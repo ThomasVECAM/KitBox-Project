@@ -1,0 +1,11 @@
+KitBox Project magasin
+
+Facture de la commande n° 9
+
+Item            Quantité   Prix (€)
+Furniture 1            3    956,832
+    Cornière Brun 4      5,024
+    Box 1              1    104,64
+    Box 2              1    104,64
+    Box 3              1    104,64
+

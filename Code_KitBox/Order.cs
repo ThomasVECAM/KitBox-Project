@@ -8,6 +8,7 @@ namespace Interface_5
     class Order
     {
         private List<Furniture> furnitureList;
+        private Person client;
         public Order()
         {
             this.furnitureList = new List<Furniture>();
@@ -28,6 +29,11 @@ namespace Interface_5
         public List<Furniture> GetFurnitureList
         {
             get { return this.furnitureList; }
+        }
+        public Person Client
+        {
+            get { return this.client; }
+            set { this.client = value; }
         }
         public bool InStock()
         {
@@ -52,10 +58,9 @@ namespace Interface_5
                 catch (Exception) { }
 
             if (custommerStatus == "particular")
-
-                Globals.person.AddToDB();
+                this.client.AddToDB();
             else
-                Globals.company.AddToDB_2();
+                ((Company)this.client).AddToDB();
 
             Globals.command = new MySqlCommand("INSERT INTO Commande(ID,ID_Client,Prix,Validation)" +
                 " VALUES(@ID,@ID_Client,@Prix,0)", Globals.db);

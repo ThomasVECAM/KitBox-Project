@@ -10,7 +10,7 @@ namespace Interface_5
         {
             this.tvaNumber = tvaNumber;
         }
-        public void AddToDB_2()
+        public new void AddToDB()
         {
             //Création du client dans la base de donnée;
             Globals.command = new MySqlCommand("INSERT INTO Client(ID,Nom,Phone,Email,Adresse,Commune,Code_Postal,TVA)" +
