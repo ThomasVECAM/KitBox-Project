@@ -205,8 +205,10 @@ namespace Interface_5
 
         public string Bill()
         {
-            string billText = "              " + 1 + "    " + this.GetPrice() + "\n";
+            string billText = 1 + "|" + this.GetPrice() + "|\n";
             return billText;
+            /*string billText = "              " + 1 + "    " + this.GetPrice() + "\n";
+            return billText;*/
         }
     }
 }

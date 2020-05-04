@@ -90,7 +90,17 @@ namespace Interface_5
 
         public void Bill()
         {
-            StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + Globals.commandId + ".txt");
+            StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + Globals.commandId + ".md");
+            bill.Write("### Kitbox Project magasin\n---\n");
+            //bill.Write("|||\n|-|-|\n");
+            bill.Write("# Facture de la commande n° " + Globals.commandId + "\n");
+            bill.Write("||*Quantity*|*Price (€)*|\n" + "| -|:-:| -:|\n");
+            foreach (Furniture furniture in this.furnitureList)
+            {
+                bill.Write(furniture.Bill());
+            }
+            bill.Close();
+            /*StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + Globals.commandId + ".txt");
             bill.Write("KitBox Project magasin" + "\n" + "\n");
             bill.Write("Facture de la commande n° " + Globals.commandId + "\n" + "\n");
             bill.Write("Item            " + "Quantité   " + "Prix (€)"+ "\n");
@@ -98,7 +108,7 @@ namespace Interface_5
             {
                 bill.Write(furniture.Bill() +"\n");
             }
-            bill.Close();
+            bill.Close();*/
         }
     }
 }

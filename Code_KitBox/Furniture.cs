@@ -174,7 +174,18 @@ namespace Interface_5
         }
         public string Bill()
         {
-            string billText = this.name + "            " + this.nbFurnitures + "    " + this.GetPrice() + "\n";
+            string billText = "|**" + this.name + "**|" + this.nbFurnitures + "|" + this.GetPrice() + "|\n";
+            billText += "|Cornière " + this.cornerColor + "|" + this.corner.GetQuantityNeedBox
+                + "|" + this.corner.GetPrice + "|\n";
+            int i = 1;
+            foreach (Box box in this.boxList)
+            {
+                billText += "|Box " + i + "|" + box.Bill();
+                i++;
+            }
+            billText += "|||\n";
+            return billText
+            /*string billText = this.name + "            " + this.nbFurnitures + "    " + this.GetPrice() + "\n";
             billText += "    Cornière " + this.cornerColor + " " + this.corner.GetQuantityNeedBox 
                 + "      " + this.corner.GetPrice + "\n";
             int i = 1;
@@ -183,7 +194,7 @@ namespace Interface_5
                 billText += "    Box " + i + box.Bill();
                 i++;
             }
-            return billText;
+            return billText*/;
         }
     }
 }
