@@ -9,9 +9,11 @@ namespace Interface_5
     {
         private List<Furniture> furnitureList;
         private Person client;
-        public Order()
+        private int id;
+        public Order(int id)
         {
             this.furnitureList = new List<Furniture>();
+            this.id = id;
         }
         public void AddFurniture(int width,int depth)
         {
@@ -34,6 +36,11 @@ namespace Interface_5
         {
             get { return this.client; }
             set { this.client = value; }
+        }
+        public int Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
         }
         public bool InStock()
         {
@@ -64,7 +71,7 @@ namespace Interface_5
 
             Globals.command = new MySqlCommand("INSERT INTO Commande(ID,ID_Client,Prix,Validation)" +
                 " VALUES(@ID,@ID_Client,@Prix,0)", Globals.db);
-            Globals.command.Parameters.AddWithValue("@ID", Globals.commandId);
+            Globals.command.Parameters.AddWithValue("@ID", this.id);
             Globals.command.Parameters.AddWithValue("@ID_Client", Globals.customerId);
             Globals.command.Parameters.AddWithValue("@Prix", GetPrice().ToString());
             Globals.command.ExecuteNonQuery();
@@ -90,10 +97,10 @@ namespace Interface_5
 
         public void Bill()
         {
-            StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + Globals.commandId + ".md");
+            StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + this.id + ".md");
             bill.Write("### Kitbox Project magasin\n---\n");
             //bill.Write("|||\n|-|-|\n");
-            bill.Write("# Facture de la commande n° " + Globals.commandId + "\n");
+            bill.Write("# Facture de la commande n° " + this.id + "\n");
             bill.Write("||*Quantity*|*Price (€)*|\n" + "| -|:-:| -:|\n");
             foreach (Furniture furniture in this.furnitureList)
             {

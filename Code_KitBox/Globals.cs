@@ -11,7 +11,6 @@ namespace Interface_5
     static class Globals
     {
         public static int customerId;
-        public static int commandId;
         public static Order order;
         public static int furnitureIndex;
         public static DataBaseComponents dataBaseComponents;

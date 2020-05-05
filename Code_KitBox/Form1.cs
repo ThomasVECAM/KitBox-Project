@@ -6,6 +6,7 @@ namespace Interface_5
 {
     public partial class Form1 : Form
     {
+        private int commandId;
         public Form1()
         {
             Globals.dataBaseComponents = new DataBaseComponents();
@@ -41,16 +42,16 @@ namespace Interface_5
             cmd.CommandText = "SELECT MAX(ID) FROM `Commande`";
             string answer2 = cmd.ExecuteScalar().ToString();
             if (answer == "")
-                Globals.commandId = 1;
+                commandId = 1;
             else
-                Globals.commandId = Convert.ToInt32(answer2) + 1;
+                commandId = Convert.ToInt32(answer2) + 1;
             db.Close();
             InitializeComponent();
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            Globals.order = new Order();
+            Globals.order = new Order(commandId);
             UserControl1 First1User = new UserControl1();
             startPanel.Controls.Clear();
             startPanel.Controls.Add(First1User);

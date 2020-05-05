@@ -20,7 +20,7 @@ namespace Interface_5
             InitializeComponent();
             tvaPannel.Hide();
             checkBoxParticular.Checked = true;
-            orderNbLabel.Text = "#" + Globals.commandId.ToString();
+            orderNbLabel.Text = "#" + Globals.order.Id.ToString();
         }
 
         private void checkBoxParticular_CheckedChanged(object sender, EventArgs e)

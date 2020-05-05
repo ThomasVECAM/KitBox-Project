@@ -22,7 +22,7 @@
             Globals.MySQLCommandText += "("
                 + Globals.componentIndex + ",'"
                 + id + "',"
-                + Globals.commandId + ","
+                + Globals.order.Id + ","
                 + boxNumber + ",'"
                 + furnitureNumber
                 + "'),";

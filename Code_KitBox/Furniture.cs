@@ -143,7 +143,7 @@ namespace Interface_5
                 Globals.MySQLCommandText += "("
                         + Globals.componentIndex + ",'"
                         + this.corner.GetID + "',"
-                        + Globals.commandId + ","
+                        + Globals.order.Id + ","
                         + boxNumber + ",'"
                         + furnitureNumber
                         + "'),";
