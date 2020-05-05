@@ -48,12 +48,12 @@ namespace Interface_5
                 confirmButton.Text = "Wait...";
                 if (customerStatus == "particular")
                 {
-                    Globals.order.Client = new Person(name.Text, email.Text, phoneNumber.Text,
+                    Globals.order.Client = new Person(Globals.customerId, name.Text, email.Text, phoneNumber.Text,
                         adress.Text, city.Text, Convert.ToInt32(postalCode.Text));
                 }
                 else
                 {
-                    Globals.order.Client = new Company(name.Text, email.Text, phoneNumber.Text,
+                    Globals.order.Client = new Company(Globals.customerId, name.Text, email.Text, phoneNumber.Text,
                         adress.Text, city.Text, Convert.ToInt32(postalCode.Text), Convert.ToInt32(tvaNumber.Text));
                 }
 

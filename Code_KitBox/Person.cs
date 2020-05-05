@@ -5,9 +5,10 @@ namespace Interface_5
     class Person
     {
         public string name, email, phone, adress, city; 
-        public int postalCode;
-        public Person(string name, string email, string phone, string adress, string city, int postalCode)
+        public int id, postalCode;
+        public Person(int id, string name, string email, string phone, string adress, string city, int postalCode)
         {
+            this.id = id;
             this.name = name;
             this.email = email;
             this.phone = phone;
@@ -21,7 +22,7 @@ namespace Interface_5
             //Création du client dans la base de donnée;
             Globals.command = new MySqlCommand("INSERT INTO Client(ID,Nom,Phone,Email,Adresse,Commune,Code_Postal,TVA)" +
                 " VALUES(@ID,@Nom,@Phone,@Email,@Adresse,@Commune,@Code_Postal,0)", Globals.db);
-            Globals.command.Parameters.AddWithValue("@ID", Globals.customerId);
+            Globals.command.Parameters.AddWithValue("@ID", id);
             Globals.command.Parameters.AddWithValue("@Nom", name);
             Globals.command.Parameters.AddWithValue("@Phone", phone);
             Globals.command.Parameters.AddWithValue("@Email", email);

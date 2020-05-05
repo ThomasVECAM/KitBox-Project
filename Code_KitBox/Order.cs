@@ -99,7 +99,23 @@ namespace Interface_5
         {
             StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + this.id + ".md");
             bill.Write("### Kitbox Project magasin\n---\n");
-            //bill.Write("|||\n|-|-|\n");
+            bill.Write("||||\n|-|-|-|\n");
+            try 
+            {
+                Company company = ((Company)this.client);
+                bill.Write("|**ID Client :** " + company.id + "|**Nom :** " + company.name + "||\n");
+                bill.Write("|**Adresse mail :** " + company.email + "|**N° téléphone :** " + company.phone + "||\n");
+                bill.Write("|**Adresse :** " + company.adress + "|**Ville :** " + company.city
+                    + "|**Code postal :** " + company.postalCode + "|\n");
+                bill.Write("|**N° de TVA :** " + company.tvaNumber + "|||\n");
+            }
+            catch (Exception)
+            {
+                bill.Write("|**ID Client :** " + this.client.id + "|**Nom :** " + this.client.name + "||\n");
+                bill.Write("|**Adresse mail :** " + this.client.email + "|**N° téléphone :** " + this.client.phone + "||\n");
+                bill.Write("|**Adresse :** " + this.client.adress + "|**Ville :** " + this.client.city 
+                    + "|**Code postal :** " + this.client.postalCode + "|\n");
+            }
             bill.Write("# Facture de la commande n° " + this.id + "\n");
             bill.Write("||*Quantity*|*Price (€)*|\n" + "| -|:-:| -:|\n");
             foreach (Furniture furniture in this.furnitureList)
