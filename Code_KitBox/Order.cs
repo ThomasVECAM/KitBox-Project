@@ -117,11 +117,12 @@ namespace Interface_5
                     + "|**Code postal :** " + this.client.postalCode + "|\n");
             }
             bill.Write("# Facture de la commande n° " + this.id + "\n");
-            bill.Write("||*Quantity*|*Price (€)*|\n" + "| -|:-:| -:|\n");
+            bill.Write("||*Quantité*|*Prix (€)*|\n" + "| -|:-:| -:|\n");
             foreach (Furniture furniture in this.furnitureList)
             {
                 bill.Write(furniture.Bill());
             }
+            bill.Write("||**Prix total**|**" + this.GetPrice() + "**|");
             bill.Close();
             /*StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + Globals.commandId + ".txt");
             bill.Write("KitBox Project magasin" + "\n" + "\n");
