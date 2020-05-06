@@ -97,7 +97,7 @@ namespace Interface_5
 
         public void Bill()
         {
-            StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + this.id + ".md");
+            StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + this.id + "_" + this.client.name + ".md");
             bill.Write("### Kitbox Project magasin\n---\n");
             bill.Write("||||\n|-|-|-|\n");
             try 
