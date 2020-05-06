@@ -18,8 +18,12 @@ namespace Interface_5
             InitializeComponent();
             if(!Globals.order.InStock())
             {
-                mainLabel.Text = "Your command is unfortunatly not available";
+                mainLabel.Text = "Your order (n° " + Globals.order.Id + ") is unfortunatly not available";
                 mainLabel2.Text = "To pay an account";
+            }
+            else
+            {
+                mainLabel.Text = "Your order (n° " + Globals.order.Id + ") is now available";
             }
         }
     }
