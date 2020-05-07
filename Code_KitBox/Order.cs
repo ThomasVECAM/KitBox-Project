@@ -122,6 +122,8 @@ namespace Interface_5
             {
                 bill.Write(furniture.Bill());
             }
+            bill.Write("||*Total (HTVA)*|*" + Math.Round(this.GetPrice()/1.21, 3) + "*|\n");
+            bill.Write("||*TVA (21%)*|*" + Math.Round(this.GetPrice() * (0.21 / 1.21), 3) + "*|\n");
             bill.Write("||**Prix total**|**" + this.GetPrice() + "**|");
             bill.Close();
             /*StreamWriter bill = new StreamWriter(@"..\..\..\Factures\" + Globals.commandId + ".txt");
