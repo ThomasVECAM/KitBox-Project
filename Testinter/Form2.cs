@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
+
 namespace Testdb
 {
     public partial class Form2 : Form
@@ -30,13 +32,15 @@ namespace Testdb
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            try
+            bool connected = false;
+            while (!connected)
             {
-                db.Open();
-            }
-            catch (Exception erro)
-            {
-                Console.WriteLine("Erro" + erro);
+                try
+                {
+                    db.Open();
+                    connected = true;
+                }
+                catch { }
             }
             MySqlCommand cmd = db.CreateCommand();
             cmd.CommandText = "SELECT * FROM Composants ";
@@ -56,7 +60,8 @@ namespace Testdb
             {
                 Console.WriteLine("Erro" + erro);
             }
-            cmd.CommandText = "SELECT ID_Fournisseur,Code_composant FROM Composants_Fournisseurs WHERE (Code_composant,Prix) in(SELECT Code_composant,MIN(Prix) Prix FROM Composants_Fournisseurs GROUP BY Code_composant)";
+            //cmd.CommandText = "SELECT ID_Fournisseur,Code_composant FROM Composants_Fournisseurs WHERE (Code_composant,Prix) in(SELECT Code_composant,MIN(Prix) Prix FROM Composants_Fournisseurs GROUP BY Code_composant)";
+            cmd.CommandText = "SELECT * FROM Composants_Fournisseurs";
             reader = cmd.ExecuteReader();
             dt3.Load(reader);
             dataGridView3.DataSource = dt3;
@@ -67,38 +72,73 @@ namespace Testdb
         {
 
         }
+        Dictionary<string, int> meilleurFournisseur(string code)
+        {
+            Dictionary<string,int> dic = new Dictionary<string,int>();
+            dic["Prix"] = 0;
+            dic["Fournisseur"]=0;
+            dic["Delai"]=0;
+            foreach(DataGridViewRow fourn in dataGridView3.Rows)
+            {
+                if(fourn.Cells["Code_composant"].Value.ToString() == code && dic["Prix"] == 0)
+                {
+                    dic["Prix"] = (int)float.Parse(fourn.Cells["Prix"].Value.ToString())*100;
+                    dic["Delai"] = Int32.Parse(fourn.Cells["Delai"].Value.ToString());
+                    dic["Fournisseur"] = Int32.Parse(fourn.Cells["ID_Fournisseur"].Value.ToString());
+                }
+                else
+                {
+                    if ((int)float.Parse(fourn.Cells["Prix"].Value.ToString()) * 100 < dic["Prix"])
+                    {
+                        dic["Prix"] = (int)(float.Parse(fourn.Cells["Prix"].Value.ToString()) * 100);
+                        dic["Fournisseur"] = Int32.Parse(fourn.Cells["ID_Fournisseur"].Value.ToString());
+                        dic["Delai"] = Int32.Parse(fourn.Cells["Delai"].Value.ToString());
+                    }
+                    else if((int)float.Parse(fourn.Cells["Prix"].Value.ToString()) * 100 == dic["Prix"])
+                    {
+                        if(dic["Delai"] >= Int32.Parse(fourn.Cells["Delai"].Value.ToString()))
+                        {
+                            dic["Prix"] = (int)float.Parse(fourn.Cells["Prix"].Value.ToString()) * 100;
+                            dic["Fournisseur"] = Int32.Parse(fourn.Cells["ID_Fournisseur"].Value.ToString());
+                            dic["Delai"] = Int32.Parse(fourn.Cells["Delai"].Value.ToString());
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+          
+            return dic;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
 
-
                 try
                 {
-                    if (Int32.Parse(row.Cells["En_Stock"].Value.ToString()) < Int32.Parse(row.Cells["Stock_Minimum"].Value.ToString()))
+
+
+
+                    if (Int32.Parse(row.Cells["En_Stock"].Value.ToString()) > Int32.Parse(row.Cells["Stock_Minimum"].Value.ToString()))
                     {
                         DataRow added = dt2.NewRow();
-                       
-                            foreach(DataGridViewRow fourn in dataGridView3.Rows) 
-                        {
-                            if (fourn.Cells["Code_composant"].Value.ToString() == row.Cells["Code"].Value.ToString())
-                            {
-                                added["ID_Fournisseur"] = fourn.Cells["ID_Fournisseur"].Value;
-                                break;
-                            }
-                        }
+
+                        Dictionary<string, int> dic = meilleurFournisseur(row.Cells["Code"].Value.ToString());
+                        // added["Prix"]=dic["Prix"]/100;
+                        // added["Delai"]= dic["Delai"];
+                        added["ID_Fournisseur"] = dic["Fournisseur"];
                         added["ID_Composant"] = row.Cells["Code"].Value;
                         added["Validation"] = false;
                         added["Quantity"] = Int32.Parse(row.Cells["En_Stock"].Value.ToString()) - Int32.Parse(row.Cells["Stock_Minimum"].Value.ToString());
                         dt2.Rows.Add(added);
-                       
+
                     }
                 }
-                catch
-                {
-
-                }
+                catch { }
             }
         }
 
@@ -110,14 +150,12 @@ namespace Testdb
                     bool check = bool.Parse(row.Cells["Validation"].Value.ToString());
                     if (check == true)
                     {
-                        int compIndex;
                         string searchValue = row.Cells["ID_Composant"].Value.ToString();
                         foreach (DataGridViewRow comp in dataGridView1.Rows)
                         {
-                            if (comp.Cells["Code"].Value.ToString().Equals(searchValue))
+                            if (row.Cells["ID_Composant"].Value.ToString()== comp.Cells["Code"].Value.ToString())
                             {
-                                compIndex = row.Index;
-                                comp.Cells["En_Stock"].Value = Int32.Parse(dataGridView1.Rows[compIndex].Cells["En_Stock"].Value.ToString()) + Int32.Parse(row.Cells["Quantity"].Value.ToString());
+                                comp.Cells["En_Stock"].Value = Int32.Parse(comp.Cells["En_Stock"].Value.ToString()) + Int32.Parse(row.Cells["Quantity"].Value.ToString());
                                 break;
                             }
                         }
@@ -209,9 +247,11 @@ namespace Testdb
             db.Close();
         }
 
-       
-
-
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form3 f = new Form3(); // This is bad
+            f.Show();
+        }
     }
     }
 

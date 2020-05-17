@@ -70,6 +70,13 @@ namespace Testdb
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView2.DataSource = dt;
+            cmd.CommandText = "SELECT * FROM Client INNER JOIN Commande ON Client.ID=Commande.ID_Client WHERE Commande.ID = "+ dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                label1.Text= "INFO CLIENT: \n Nom: " + reader["Nom"] + "\n Adresse: " + reader["Adresse"] + "\n " + reader["Commune"] + " " + reader["Code_Postal"] + "\n Contact: " + reader["Phone"] + " " + reader["Email"];
+
+            }
             db.Close();
         }
 
