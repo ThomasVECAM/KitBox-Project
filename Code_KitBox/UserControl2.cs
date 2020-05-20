@@ -102,16 +102,18 @@ namespace Interface_5
                 heightComboBox.Items.Add(value.ToString());
             }
 
-          if (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList.Count == 0)
-          {
+
+            furnitureName.Text = Globals.order.GetFurnitureList[Globals.furnitureIndex].Name;
+
+            if (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList.Count == 0)
+            {
                 Globals.order.GetFurnitureList[Globals.furnitureIndex].AddBox();
                 AddInterfaceBox();
-          }
+            }
             else
             {
                 foreach (Box box in Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList)
                 {
-                    furnitureName.Text = Globals.order.GetFurnitureList[Globals.furnitureIndex].Name;
                     AddInterfaceBox();
                 }
             }
