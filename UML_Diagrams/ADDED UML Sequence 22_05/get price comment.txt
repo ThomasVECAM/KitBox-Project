@@ -1,0 +1,2 @@
+Le diagramme de séquence ci-dessus est un modèle de l'appel des fonctions GetPrice(),InStock() et Bill() lorsqu'elles sont appelées sur Order. 
+Cette architecture permet de facilement retrouver les informations sur une commande en particulier, un meuble en particulier, une box particulière ou encore un composant.

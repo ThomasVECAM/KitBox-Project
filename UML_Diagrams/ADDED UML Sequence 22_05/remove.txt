@@ -1,0 +1,1 @@
+Lors d'une suppression, il faut "réaprovisionner" le stock. C'est pourquoi, la fonction de suppression doit passer par plusieurs classes. C'est dans une des méthodes de box que le stock est réaugmenter : "En cas de suppression"
