@@ -19,5 +19,5 @@ Flot :
 Flot alternatif :
 - Le magasinier vérifie que toutes les pièces commandées sont dans le colis.
 - Il manque des pièces, il y a plus de pièces que commandées ou il y a des pièces endommagées.
-- Le magasinier modifie la liste de matériels commandés en fontion du matériel qui se trouve dans le colis.
+- Le magasinier modifie la liste de matériels commandés en fonction du matériel qui se trouve dans le colis.
 - Le magasinier met à jour le stock en fonction de la liste de matériels commandés modifiée.
