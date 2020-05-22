@@ -64,14 +64,14 @@ namespace Interface_5
                 RemoveDuplicadedFurniture();
 
             foreach(Box box in boxList)
-                box.RemoveRequiredComponents();
+                box.RemoveFurnitureComponents();
             this.corner.Quantity += this.corner.GetQuantityNeedBox;
         }
         public void RemoveDuplicadedFurniture()
         {
             this.corner.Quantity += this.corner.GetQuantityNeedBox;
             foreach (Box box in boxList)
-                box.RemoveRequiredComponents_1();
+                box.RemoveDuplicatedFurnitureComponents();
         }
 
         public void DuplicateFurniture()

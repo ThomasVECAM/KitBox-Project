@@ -108,7 +108,7 @@ namespace Interface_5
             this.RemoveRequiredComponents();
             this.AddRequiredComponents();
         }
-        public void RemoveRequiredComponents()
+        public void RemoveFurnitureComponents()
         {
             foreach(Component component in componentList)
             {
@@ -117,7 +117,7 @@ namespace Interface_5
             componentList.Clear();
         }
 
-        public void RemoveRequiredComponents_1() //when we remove a duplicaded furniture
+        public void RemoveDuplicatedFurnitureComponents() //when we remove a duplicaded furniture
         {
             foreach (Component component in componentList)
             {
