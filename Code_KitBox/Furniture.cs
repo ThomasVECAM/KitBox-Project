@@ -60,7 +60,7 @@ namespace Interface_5
 
         public void RemoveEntireFurniture()
         {
-            for(int i=0; i < nbFurnitures -1; i++)
+            for(int i=0; i < nbFurnitures -1; i++)//if multiple furnitures
                 RemoveDuplicadedFurniture();
 
             foreach(Box box in boxList)

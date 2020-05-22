@@ -276,7 +276,9 @@ namespace Interface_5
                 else
                     colorButtons[i].FlatAppearance.BorderSize = 0;
             }
-        } 
+            acutalizeDimensions();
+
+        }
         private void RemoveBoxButton_Click(object sender, EventArgs e)
         {
             int boxListLength = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList.Count(); 
