@@ -24,7 +24,10 @@ namespace Interface_5
             if (widthDepthComboBox.SelectedIndex > -1)
             {
                 Globals.order.AddFurniture(Convert.ToInt32(widthDepth[0]), Convert.ToInt32(widthDepth[1]));
-                Globals.furnitureIndex = Globals.order.GetFurnitureList.Count - 1;
+                int furnitureCount = Globals.order.GetFurnitureList.Count;
+                Globals.furnitureIndex = furnitureCount - 1;
+                Globals.order.GetFurnitureList[Globals.furnitureIndex].Name = "Furniture " + furnitureCount.ToString();
+
                 sizePanel.Controls.Clear();
                 sizePanel.Controls.Add(new UserControl2());
             }

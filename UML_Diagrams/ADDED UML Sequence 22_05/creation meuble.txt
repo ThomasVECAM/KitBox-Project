@@ -1,0 +1,3 @@
+Le diagramme de séquence de la création d'un meuble est un exemple. En effet, l'utilisateur n'est pas obligé d'entrer les différentes informations (couleur de box, de portes) dans l'ordre établi dans le diagramme de séquence. De plus, la méthode AddRequiredComponents(), est exécutée à chaque modifications. Cela permet de mettre à jour le prix, les dimensions et le stock en temps réel.
+
+Le diagramme est là pour montrer l'idée derrière le code. Il n'a pas pour but de refléter la pure réalité.
