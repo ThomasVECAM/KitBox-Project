@@ -20,6 +20,7 @@ namespace Testdb
         DataTable dt3 = new DataTable();
         DataSet myDS = new DataSet();
         DataSet myDS2 = new DataSet();
+        Form3 f3 = new Form3();
         public Form2()
         {
             InitializeComponent();
@@ -52,13 +53,15 @@ namespace Testdb
             reader = cmd.ExecuteReader();
             dt2.Load(reader);
             dataGridView2.DataSource = dt2;
-            try
+            connected = false;
+            while (!connected)
             {
-                db.Open();
-            }
-            catch (Exception erro)
-            {
-                Console.WriteLine("Erro" + erro);
+                try
+                {
+                    db.Open();
+                    connected = true;
+                }
+                catch { }
             }
             //cmd.CommandText = "SELECT ID_Fournisseur,Code_composant FROM Composants_Fournisseurs WHERE (Code_composant,Prix) in(SELECT Code_composant,MIN(Prix) Prix FROM Composants_Fournisseurs GROUP BY Code_composant)";
             cmd.CommandText = "SELECT * FROM Composants_Fournisseurs";
@@ -74,15 +77,15 @@ namespace Testdb
         }
         Dictionary<string, int> meilleurFournisseur(string code)
         {
-            Dictionary<string,int> dic = new Dictionary<string,int>();
+            Dictionary<string, int> dic = new Dictionary<string, int>();
             dic["Prix"] = 0;
-            dic["Fournisseur"]=0;
-            dic["Delai"]=0;
-            foreach(DataGridViewRow fourn in dataGridView3.Rows)
+            dic["Fournisseur"] = 0;
+            dic["Delai"] = 0;
+            foreach (DataGridViewRow fourn in dataGridView3.Rows)
             {
-                if(fourn.Cells["Code_composant"].Value.ToString() == code && dic["Prix"] == 0)
+                if (fourn.Cells["Code_composant"].Value.ToString() == code && dic["Prix"] == 0)
                 {
-                    dic["Prix"] = (int)float.Parse(fourn.Cells["Prix"].Value.ToString())*100;
+                    dic["Prix"] = (int)float.Parse(fourn.Cells["Prix"].Value.ToString()) * 100;
                     dic["Delai"] = Int32.Parse(fourn.Cells["Delai"].Value.ToString());
                     dic["Fournisseur"] = Int32.Parse(fourn.Cells["ID_Fournisseur"].Value.ToString());
                 }
@@ -94,9 +97,9 @@ namespace Testdb
                         dic["Fournisseur"] = Int32.Parse(fourn.Cells["ID_Fournisseur"].Value.ToString());
                         dic["Delai"] = Int32.Parse(fourn.Cells["Delai"].Value.ToString());
                     }
-                    else if((int)float.Parse(fourn.Cells["Prix"].Value.ToString()) * 100 == dic["Prix"])
+                    else if ((int)float.Parse(fourn.Cells["Prix"].Value.ToString()) * 100 == dic["Prix"])
                     {
-                        if(dic["Delai"] >= Int32.Parse(fourn.Cells["Delai"].Value.ToString()))
+                        if (dic["Delai"] >= Int32.Parse(fourn.Cells["Delai"].Value.ToString()))
                         {
                             dic["Prix"] = (int)float.Parse(fourn.Cells["Prix"].Value.ToString()) * 100;
                             dic["Fournisseur"] = Int32.Parse(fourn.Cells["ID_Fournisseur"].Value.ToString());
@@ -109,7 +112,7 @@ namespace Testdb
                     }
                 }
             }
-          
+
             return dic;
         }
 
@@ -144,32 +147,41 @@ namespace Testdb
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
             foreach (DataGridViewRow row in dataGridView2.SelectedRows)
             {
-                    bool check = bool.Parse(row.Cells["Validation"].Value.ToString());
-                    if (check == true)
+                bool check = bool.Parse(row.Cells["Validation"].Value.ToString());
+                if (check == true)
+                {
+                    string searchValue = row.Cells["ID_Composant"].Value.ToString();
+                    foreach (DataGridViewRow comp in dataGridView1.Rows)
                     {
-                        string searchValue = row.Cells["ID_Composant"].Value.ToString();
-                        foreach (DataGridViewRow comp in dataGridView1.Rows)
+                        if (row.Cells["ID_Composant"].Value.ToString() == comp.Cells["Code"].Value.ToString())
                         {
-                            if (row.Cells["ID_Composant"].Value.ToString()== comp.Cells["Code"].Value.ToString())
-                            {
-                                comp.Cells["En_Stock"].Value = Int32.Parse(comp.Cells["En_Stock"].Value.ToString()) + Int32.Parse(row.Cells["Quantity"].Value.ToString());
-                                break;
-                            }
+                            comp.Cells["En_Stock"].Value = Int32.Parse(comp.Cells["En_Stock"].Value.ToString()) + Int32.Parse(row.Cells["Quantity"].Value.ToString());
+                            break;
                         }
-                        dataGridView2.Rows.Remove(row);
-                        
                     }
+                    dataGridView2.Rows.Remove(row);
+
                 }
             }
+        }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            db.Open();
+            bool connected = false;
+            while (!connected)
+            {
+                try
+                {
+                    db.Open();
+                    connected = true;
+                }
+                catch { }
+            }
             DataTable dt = (DataTable)(dataGridView1.DataSource);
-           
+
             dt.TableName = "Table";
 
             try
@@ -188,15 +200,25 @@ namespace Testdb
             dataAdapter1.Update(myDS);
 
             db.Close();
+            System.Windows.Forms.MessageBox.Show("Successfully updated");
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
 
-            db.Open();
-            
+            bool connected = false;
+            while (!connected)
+            {
+                try
+                {
+                    db.Open();
+                    connected = true;
+                }
+                catch { }
+            }
+
             DataTable dt2 = (DataTable)(dataGridView2.DataSource);
-            
+
             dt2.TableName = "Table";
             try
             {
@@ -208,9 +230,9 @@ namespace Testdb
             }
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter("SELECT * FROM Commande_Fournisseur ", db);
             MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter);
-            dataAdapter.Fill(myDS2,"Commande_Fournisseur");
+            dataAdapter.Fill(myDS2, "Commande_Fournisseur");
             dataAdapter.Update(myDS2);
-
+            System.Windows.Forms.MessageBox.Show("Successfully updated");
             db.Close();
         }
 
@@ -221,9 +243,18 @@ namespace Testdb
 
         private void button5_Click(object sender, EventArgs e)
         {
-            db.Open();
+            bool connected = false;
+            while (!connected)
+            {
+                try
+                {
+                    db.Open();
+                    connected = true;
+                }
+                catch { }
+            }
             MySqlCommand cmd = db.CreateCommand();
-            cmd.CommandText = "DELETE  FROM Composant WHERE Code ='" + dataGridView1.SelectedRows[0].Cells["Code"].Value.ToString() +"'";
+            cmd.CommandText = "DELETE  FROM Composant WHERE Code ='" + dataGridView1.SelectedRows[0].Cells["Code"].Value.ToString() + "'";
             MySqlDataReader reader = cmd.ExecuteReader();
             DataTable dt = (DataTable)(dataGridView1.DataSource);
             foreach (DataGridViewRow item in dataGridView1.SelectedRows)
@@ -235,7 +266,16 @@ namespace Testdb
 
         private void button6_Click(object sender, EventArgs e)
         {
-            db.Open();
+            bool connected = false;
+            while (!connected)
+            {
+                try
+                {
+                    db.Open();
+                    connected = true;
+                }
+                catch { }
+            }
             MySqlCommand cmd = db.CreateCommand();
             cmd.CommandText = "DELETE  FROM Commande_Fournisseur WHERE ID_Composant = '" + dataGridView2.SelectedRows[0].Cells["ID_Composant"].Value.ToString() + "'";
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -249,9 +289,35 @@ namespace Testdb
 
         private void button7_Click(object sender, EventArgs e)
         {
-            Form3 f = new Form3(); // This is bad
-            f.Show();
+            try
+            {
+                f3.Show();
+            }
+            catch
+            {
+                bool bFormNameOpen = false;
+                FormCollection fc = Application.OpenForms;
+
+                foreach (Form frm in fc)
+                {
+                    //iterate through
+                    if (frm.GetType() == f3.GetType())
+                    {
+                        bFormNameOpen = true;
+                    }
+                }
+                if (bFormNameOpen == true)
+                {
+
+                }
+                else
+                {
+                    f3 = new Form3();
+                    f3.Show();
+                }
+            }
+
         }
     }
-    }
+}
 

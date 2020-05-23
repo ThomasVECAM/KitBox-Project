@@ -21,10 +21,14 @@ namespace Testdb
         DataSet myDS = new DataSet();
         DataTable dt2 = new DataTable();
 
+        Form2 f2 = new Form2();
+        Form3 f3 = new Form3();// This is bad
+
         public Form1()
         {
 
             InitializeComponent();
+            
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -70,13 +74,11 @@ namespace Testdb
             DataTable dt = new DataTable();
             dt.Load(reader);
             dataGridView2.DataSource = dt;
-            cmd.CommandText = "SELECT * FROM Client INNER JOIN Commande ON Client.ID=Commande.ID_Client WHERE Commande.ID = "+ dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            DataTable dt3 = new DataTable();
+            cmd.CommandText = "SELECT Client.ID, Client.Nom,Client.Phone,Client.Email,Client.Adresse,Client.Commune,Client.Code_Postal,Client.TVA FROM Client INNER JOIN Commande ON Client.ID=Commande.ID_Client WHERE Commande.ID = " + dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                label1.Text= "INFO CLIENT: \n Nom: " + reader["Nom"] + "\n Adresse: " + reader["Adresse"] + "\n " + reader["Commune"] + " " + reader["Code_Postal"] + "\n Contact: " + reader["Phone"] + " " + reader["Email"];
-
-            }
+            dt3.Load(reader);
+            dataGridView3.DataSource = dt3;
             db.Close();
         }
 
@@ -121,15 +123,98 @@ namespace Testdb
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Form2 f = new Form2(); // This is bad
-            f.Show();
+            try
+            {
+                f2.Show();
+            }
+            catch
+            {
+                bool bFormNameOpen=false;
+                FormCollection fc = Application.OpenForms;
+
+                foreach (Form frm in fc)
+                {
+                    //iterate through
+                    if (frm.GetType() == f2.GetType())
+                    {
+                        bFormNameOpen = true;
+                    }
+                }
+                if (bFormNameOpen==true)
+                {
+
+                }
+                else
+                {
+                    f2 = new Form2();
+                    f2.Show();
+                }
+                
+            }
+            
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
-   
+        private void button2_Click(object sender, EventArgs e)
+        {
+            db.Open();
+            DataTable dt = (DataTable)(dataGridView3.DataSource);
+
+            dt.TableName = "Table";
+
+            try
+            {
+
+                myDS.Tables.Add(dt);
+            }
+            catch
+            {
+
+            }
+
+            MySqlDataAdapter dataAdapter1 = new MySqlDataAdapter("SELECT * FROM Client WHERE ID= "+dataGridView3.Rows[0].Cells[0].Value.ToString(), db);
+            MySqlCommandBuilder builder = new MySqlCommandBuilder(dataAdapter1);
+            dataAdapter1.Fill(myDS, "Client");
+            dataAdapter1.Update(myDS);
+
+            db.Close();
+            System.Windows.Forms.MessageBox.Show("Successfully updated");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                f3.Show();
+            }
+            catch
+            {
+                bool bFormNameOpen = false;
+                FormCollection fc = Application.OpenForms;
+
+                foreach (Form frm in fc)
+                {
+                    //iterate through
+                    if (frm.GetType() == f3.GetType())
+                    {
+                        bFormNameOpen = true;
+                    }
+                }
+                if (bFormNameOpen == true)
+                {
+
+                }
+                else
+                {
+                    f3 = new Form3();
+                    f3.Show();
+                }
+
+            }
+        }
     }
 }
