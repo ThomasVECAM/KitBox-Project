@@ -105,7 +105,7 @@ namespace Interface_5
         }
         public void UpdateRequiredComponents()
         {
-            this.RemoveRequiredComponents();
+            this.RemoveFurnitureComponents();
             this.AddRequiredComponents();
         }
         public void RemoveFurnitureComponents()

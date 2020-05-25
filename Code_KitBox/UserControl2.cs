@@ -284,7 +284,7 @@ namespace Interface_5
             int boxListLength = Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList.Count(); 
             if (boxListLength > 1)
             {
-                Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].RemoveRequiredComponents();
+                Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].RemoveFurnitureComponents();
                 i = 1;
                 //Enlever l'objet supprimé
                 Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList.RemoveAt(buttonNr - 1);
