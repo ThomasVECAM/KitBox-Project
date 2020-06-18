@@ -32,7 +32,7 @@ namespace Interface_5
                 sizePanel.Controls.Add(new UserControl2());
             }
             else
-                MessageBox.Show("Please select width and depth");
+                MessageBox.Show("Please select width and depth.");
         }
         private void WidthDepthComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {

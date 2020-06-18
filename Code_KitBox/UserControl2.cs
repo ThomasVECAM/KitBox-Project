@@ -174,7 +174,7 @@ namespace Interface_5
                 AddInterfaceBox();
             }
             else
-                MessageBox.Show("Maximum of 7 boxes reached");
+                MessageBox.Show("Maximum of 7 boxes reached.");
         }
         private void AddInterfaceBox()
         {
@@ -236,7 +236,7 @@ namespace Interface_5
 
             Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].UpdateRequiredComponents();
             furniturePrice.Text = "Price : " +
-                (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetPrice()).ToString();
+                (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetPrice()).ToString() + " €";
             if (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetBoxList[buttonNr - 1].InStock())
                 stockLabel.BackColor = Color.Lime;
             else
@@ -309,7 +309,7 @@ namespace Interface_5
             }
 
             else
-                MessageBox.Show("You need at least 1 Box");
+                MessageBox.Show("You need at least 1 box.");
         }
         private void heightComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -323,7 +323,7 @@ namespace Interface_5
             string height = (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetHeight()).ToString();
             string width = (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetWidth).ToString();
             string depth = (Globals.order.GetFurnitureList[Globals.furnitureIndex].GetDepth).ToString();
-            heightLabel.Text = height + "x" + width + "x" + depth;   
+            heightLabel.Text = height + "x" + width + "x" + depth + " cm";   
         }
         private void duplicatBoxButton_Click(object sender, EventArgs e)
         {
@@ -334,7 +334,7 @@ namespace Interface_5
                 AddInterfaceBox();
             }
             else
-                MessageBox.Show("Maximum of 7 boxes reached");
+                MessageBox.Show("Maximum of 7 boxes reached.");
             acutalizeDimensions();
 
         }
@@ -348,7 +348,7 @@ namespace Interface_5
             }
             else
             {
-                MessageBox.Show("Please fill in all the required fields");
+                MessageBox.Show("Please fill in all the required fields.");
             }
 
         }

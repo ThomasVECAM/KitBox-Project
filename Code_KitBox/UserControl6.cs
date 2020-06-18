@@ -18,13 +18,18 @@ namespace Interface_5
             InitializeComponent();
             if(!Globals.order.InStock())
             {
-                mainLabel.Text = "Your order (n° " + Globals.order.Id + ") is unfortunatly not available";
-                mainLabel2.Text = "To pay an account";
+                mainLabel.Text = "Your order (n° " + Globals.order.Id + ") is unfortunatly not available.";
+                mainLabel2.Text = "To pay a down payement.";
             }
             else
             {
-                mainLabel.Text = "Your order (n° " + Globals.order.Id + ") is now available";
+                mainLabel.Text = "Your order (n° " + Globals.order.Id + ") is now available.";
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

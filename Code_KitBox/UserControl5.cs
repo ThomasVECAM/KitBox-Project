@@ -64,7 +64,7 @@ namespace Interface_5
             }
             else
             {
-                MessageBox.Show("All fields are not Valid");
+                MessageBox.Show("All fields are not validated.");
             }
         }
 

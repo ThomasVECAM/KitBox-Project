@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl1));
             this.label2 = new System.Windows.Forms.Label();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,20 +58,6 @@
             this.label2.Size = new System.Drawing.Size(205, 58);
             this.label2.TabIndex = 1;
             this.label2.Text = "x Depth";
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
-            this.cancelButton.FlatAppearance.BorderSize = 0;
-            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.ForeColor = System.Drawing.Color.White;
-            this.cancelButton.Location = new System.Drawing.Point(31, 532);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(150, 50);
-            this.cancelButton.TabIndex = 5;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = false;
             // 
             // nextButton
             // 
@@ -154,7 +139,6 @@
             this.sizePanel.Controls.Add(this.widthLabel);
             this.sizePanel.Controls.Add(this.widthDepthComboBox);
             this.sizePanel.Controls.Add(this.panel5);
-            this.sizePanel.Controls.Add(this.cancelButton);
             this.sizePanel.Controls.Add(this.nextButton);
             this.sizePanel.Controls.Add(this.pictureBox1);
             this.sizePanel.Controls.Add(this.pictureBox2);
@@ -228,7 +212,6 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel5;

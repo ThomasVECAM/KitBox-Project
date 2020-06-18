@@ -24,7 +24,8 @@ namespace Interface_5
             LabelFurnitureDimensions.Text = "Dimensions : "
                 + Globals.order.GetFurnitureList[indiceFurnitureList].GetHeight().ToString()
                 + "x" + Globals.order.GetFurnitureList[indiceFurnitureList].GetWidth.ToString()
-                + "x" + Globals.order.GetFurnitureList[indiceFurnitureList].GetDepth.ToString();
+                + "x" + Globals.order.GetFurnitureList[indiceFurnitureList].GetDepth.ToString()
+                + " cm";
             
             if (Globals.order.GetFurnitureList[indiceFurnitureList].InStock())
                 stockLabel.BackColor = Color.Lime;
@@ -43,7 +44,7 @@ namespace Interface_5
 
         private void removeButton_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure you want to remove :" + Globals.order.GetFurnitureList[indiceFurnitureList].Name.ToString()
+            DialogResult dialog = MessageBox.Show("Are you sure you want to remove : " + Globals.order.GetFurnitureList[indiceFurnitureList].Name.ToString()
             , "Exit", MessageBoxButtons.YesNo);
             if(dialog == DialogResult.Yes)
             {
@@ -66,7 +67,7 @@ namespace Interface_5
         {
             int actualnbFurniture = Globals.order.GetFurnitureList[indiceFurnitureList].nbFurnitures;
             if (actualnbFurniture == 1)
-                MessageBox.Show("You need at least 1 of this furniture !, if you want 0 of them : Click Remove");
+                MessageBox.Show("You need at least 1 item.");
             else
             {
                 Globals.order.GetFurnitureList[indiceFurnitureList].nbFurnitures--;
