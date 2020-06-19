@@ -14,7 +14,7 @@ namespace Testdb
 {
     public partial class Form2 : Form
     {
-        MySqlConnection db = new MySqlConnection("SERVER=db4free.net;PORT=3306;DATABASE=groupe5;UID=groupe5;PWD=4c66dfc7; old guids=true");
+        MySqlConnection db = new MySqlConnection("SERVER=mysql-projetkitbox.alwaysdata.net;PORT=3306;DATABASE=projetkitbox_db;UID=207353_thomas	;PWD=Y@sqydv6Yp798Xy; old guids=true");
         DataTable dt = new DataTable();
         DataTable dt2 = new DataTable();
         DataTable dt3 = new DataTable();
@@ -53,16 +53,6 @@ namespace Testdb
             reader = cmd.ExecuteReader();
             dt2.Load(reader);
             dataGridView2.DataSource = dt2;
-            connected = false;
-            while (!connected)
-            {
-                try
-                {
-                    db.Open();
-                    connected = true;
-                }
-                catch { }
-            }
             //cmd.CommandText = "SELECT ID_Fournisseur,Code_composant FROM Composants_Fournisseurs WHERE (Code_composant,Prix) in(SELECT Code_composant,MIN(Prix) Prix FROM Composants_Fournisseurs GROUP BY Code_composant)";
             cmd.CommandText = "SELECT * FROM Composants_Fournisseurs";
             reader = cmd.ExecuteReader();
